@@ -5,3 +5,6 @@ EH/power.o
 EH/power.py*
 EH/_power.so
 EH/power_wrap.*
+CosmoloPy.egg-info/
+build/
+dist/
