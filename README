@@ -1,18 +1,18 @@
 Prerequisits:
 
- Python
+  Python
 
- NumPy
+  NumPy
 
- SciPy
+  SciPy
 
-For tests:
+ For tests:
 
- nose
+  nose
 
-For perturbation-theory-based routines (most of the perturbation and
-reionization modules):
+ For perturbation-theory-based routines (most of the perturbation and
+ reionization modules):
 
- python-dev 
+  python-dev 
 
- swig
+  swig
