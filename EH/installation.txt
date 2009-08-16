@@ -1,0 +1,22 @@
+Go to the EH/ directory.
+
+Download the E&H power spectrum code:
+
+> python download_EH_power.py
+
+There should now be a file 'power.c' in the EH/ directory.
+
+Compile the python interface using swig:
+
+> swig -python power.i
+> gcc -I/usr/include/python2.6/ -c power.c power_wrap.c 
+> ld -shared power.o power_wrap.o -o _power.so
+
+Test it:
+
+>python
+>>> import power
+>>> power.TFmdm_set_cosm(0.3, 0.04, 0.0, 0, 0.7, 0.72, 0.0)
+0
+>>> power.TFmdm_onek_hmpc(100.0)
+1.4823634728600155e-06
