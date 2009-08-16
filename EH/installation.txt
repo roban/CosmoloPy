@@ -8,6 +8,8 @@ There should now be a file 'power.c' in the EH/ directory.
 
 Compile the python interface using swig:
 
+run install_EH.bash or:
+
 > swig -python power.i
 > gcc -I/usr/include/python2.6/ -c power.c power_wrap.c 
 > ld -shared power.o power_wrap.o -o _power.so
