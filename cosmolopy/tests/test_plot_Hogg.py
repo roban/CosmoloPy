@@ -174,9 +174,9 @@ def test_figure6():
                 " (astro-ph/9905116v4)")
 
 if __name__ == "__main__":
-    figure1()
-    figure2()
-    figure3()
-    figure6()
+    test_figure1()
+    test_figure2()
+    test_figure3()
+    test_figure6()
     pylab.show()
 
