@@ -4,6 +4,10 @@ setup(
     name = "CosmoloPy",
     version = "0.0.alpha",
     packages = find_packages(),
+    package_data = {
+        # If any package contains *.txt or *.rst files, include them:
+        '': ['*.so'],
+        },
     install_requires = ['numpy', 'scipy', 'nose'],
 
     # metadata for upload to PyPI
