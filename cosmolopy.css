@@ -20,8 +20,8 @@ a:hover { text-decoration:underline }
 
 .description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
 .download { float: right; }
+.fig { float: right; }
 pre { background: #000; color: #fff; padding: 15px;}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:0.5em;}
-
-
+img{border-style: none;}

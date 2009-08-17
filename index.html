@@ -11,59 +11,68 @@
 </head>
 
 <body>
-  <a href="http://github.com/roban/CosmoloPy"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png'></a></div>
   
   <div id="container">
-      
+
     <h1><a href="http://github.com/roban/CosmoloPy">CosmoloPy</a></h1>
 
     <div class="description">
       a cosmology package for Python.
     </div>
 
-    <h2>Help out</h2>
+    <h2>Contribute</h2>
 
+    <p>
+    You can contribute by requesting new features, testing out the
+    existing capabilities, or contributing your own code.</p>
+
+    <p>
     Please join
     the <a href='http://groups.google.com/group/cosmolopy-devel'>developer
-    discussion group</a> and help turn this into a comprehensive
+    discussion group</a> and help turn CosmoloPy into a comprehensive
     community-maintained package of basic cosmology routines. Whether
-    you plan to be a casual user or want to contribute lots of new
-    code, this is the place to introduce yourself and discuss the
-    future of the package.
-
-    You can contribute by requesting new features, testing out the
-    existing capabilities, or contributing your own code.
+    you plan to be a casual user or frequent contributor, this is the
+    place to introduce yourself and discuss the future of the package.
+    </p>
 
     <h2>Status</h2>
 
+    <p>
     The project is currently very preliminary. We need more testing
     and more features. 
+    </p>
 
+    <p>
     Please join the
     <a href='http://groups.google.com/group/cosmolopy-devel'>developer
     discussion group</a> if you are interested in using the code and
     ask about the status of the routines you are interested in
-    using. 
+    using.</p>
 
     <h2>Download</h2>
-    <p>You can clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/roban/CosmoloPy</pre> or view
-      the source code on
+
+    <p>You can clone the project
+      with <a href="http://git-scm.com">Git</a> by running:
+
+      <pre>$ git clone git://github.com/roban/CosmoloPy</pre> 
+
+      or view the source code on
       GitHub: <a href="http://github.com/roban/CosmoloPy"><code>roban/CosmoloPy</code></a>.
     </p>
 
     <p>
-      You can also download this project in either
+      You can also <b>download</b> this project in either
       <a href="http://github.com/roban/CosmoloPy/zipball/master">zip</a> or
       <a href="http://github.com/roban/CosmoloPy/tarball/master">tar</a> formats.
     </p>
 
     <h2>Installation</h2>
     <p><ul>
-	<li>Download the package (see above),</li>
-	<li>follow the instructions in <code>cosmolopy/EH/installation.txt</code>,</li>
-	<li>run 
+	<li>Download the package (see above).</li>
+	<li>Unpack it.</li>
+	<li>Follow the instructions in <code>cosmolopy/EH/installation.txt</code>.</li>
+	<li>Run the installation program:
 <pre>
 python setup.py build
 python setup.py nosetests
@@ -75,11 +84,14 @@ sudo python setup.py install
     
 
     <h2>Features</h2>
+    <div class=fig><a href='figs/dist2d_D_M.png'><img src='figs/dist2d_D_M_small.png'></a></div>
+      
 
     Current capabilities include 
     <ul>
-      <li>easy calculation of cosmological distance measures as a
-	function of redshift and cosmological parameters, </li>
+      <li>calculation of cosmological distance measures as a
+	  function of redshift and cosmological parameters,
+      </li>
       <li>perturbation-theory-based calculation of the matter power
 	spectrum and halo collapse fraction,</li>
       <li>integration of simple reionization models and calculation of
