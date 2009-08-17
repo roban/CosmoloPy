@@ -1,0 +1,10 @@
+Write tests for every function.
+
+Write examples/doctests for every function.
+
+Add all calculations from David Hogg's arXiv:astro-ph/9905116v4 to
+distance.py (or perhaps another module for volumes?)
+
+Implement more of the formalism from Haiman and Holder
+(2003ApJ...595....1H) in reionization.py?
+
