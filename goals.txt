@@ -7,6 +7,9 @@ Better setup.py (more dependencies like swig).
 Add all calculations from David Hogg's arXiv:astro-ph/9905116v4 to
 distance.py (or perhaps another module for volumes?)
 
+Perhaps some basic k-correction stuff, though KCorrection seems to
+have the sophisticated end covered.
+
 Implement more of the formalism from Haiman and Holder
 (2003ApJ...595....1H) in reionization.py?
 
