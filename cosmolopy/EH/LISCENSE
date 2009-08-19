@@ -1,7 +1,16 @@
+power.c is redistributed under the MIT License with the permission of
+Wayne Hu
+
+htt://background.uchicago.edu/~whu/transfer/transferpage.html
+
+and is described in Eisenstein, D. J., & Hu, W. "Power Spectra for
+Cold Dark Matter and Its Variants," 1999, ApJ, 511, 5
+[astro-ph/9710252]. Please cite this paper to acknowledge use of power
+spectrum calculations.
+
 The MIT License
 
-Copyright (c) 2009 Roban Hultman Kramer and contributors
-http://roban.github.com/CosmoloPy/
+power.c is copyright (c) 1997 Wayne Hu and Daniel Eisenstein
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

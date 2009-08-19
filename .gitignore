@@ -1,10 +1,9 @@
 *~
 *.pyc
-EH/power.c
-EH/power.o
-EH/power.py*
-EH/_power.so
-EH/power_wrap.*
+cosmolopy/EH/power.o
+cosmolopy/EH/power.py*
+cosmolopy/EH/_power.so
+cosmolopy/EH/power_wrap.*
 CosmoloPy.egg-info/
 build/
 dist/

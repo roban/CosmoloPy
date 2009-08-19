@@ -1,3 +1,10 @@
+CosmoloPy [http://roban.github.com/CosmoloPy/]
+
+a cosmology package for Python. 
+
+CosmoloPy is released under the MIT software liscense. (See the
+LISCENSE file.) 
+
 Prerequisits:
 
   Python
@@ -16,3 +23,6 @@ Prerequisits:
   python-dev 
 
   swig
+
+  power.c (see cosmolopy/EH/installation.txt)
+

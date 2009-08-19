@@ -1,5 +1,14 @@
 #!/usr/bin/env python
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
+import os
+
+eh_dir = os.path.join('.','cosmolopy','EH')
+
+power_module = Extension('cosmolopy.EH._power',
+                         sources=[os.path.join(eh_dir, 'power.i'),
+                                  os.path.join(eh_dir, 'power.c')]
+                         )
+
 setup(
     name = "CosmoloPy",
     version = "0.0.alpha",
@@ -9,6 +18,8 @@ setup(
         '': ['*.so'],
         },
     install_requires = ['numpy', 'scipy', 'nose'],
+
+    ext_modules = [power_module],
 
     # metadata for upload to PyPI
     author = "Roban Hultman Kramer",

@@ -1,3 +1,8 @@
+All of this should be taken care of by setup.py now. But in case it's
+needed:
+
+--------------
+
 Go to the EH/ directory.
 
 Download the E&H power spectrum code:
