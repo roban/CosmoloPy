@@ -39,7 +39,7 @@
     <h2>Status</h2>
 
     <p>
-    The project is currently very preliminary. We need more testing
+    The project is currently somewhat preliminary. We need more testing
     and more features. 
     </p>
 
@@ -71,15 +71,13 @@
     <p><ul>
 	<li>Download the package (see above).</li>
 	<li>Unpack it.</li>
-	<li>Follow the instructions in <code>cosmolopy/EH/installation.txt</code>.</li>
-	<li>Run the installation program:
+	<li>Run the installation program:</li>
+      </ul>
 <pre>
 python setup.py build
 python setup.py nosetests
 sudo python setup.py install
 </pre>
-	    </li>
-      </ul>
     </p>
     
 
@@ -87,25 +85,49 @@ sudo python setup.py install
     <div class=fig><a href='figs/dist2d_D_M.png'><img src='figs/dist2d_D_M_small.png'></a></div>
       
 
-    Current capabilities include 
-    <ul>
-      <li>calculation of cosmological distance measures as a
+      Current capabilities include 
+      <ul>
+	<li>calculation of cosmological distance measures as a
 	  function of redshift and cosmological parameters,
-      </li>
-      <li>perturbation-theory-based calculation of the matter power
-	spectrum and halo collapse fraction,</li>
-      <li>integration of simple reionization models and calculation of
-	the electron scattering (Thompson scattering) optical depth
-	due to reionization.</li>
-    </ul>
+	</li>
+	<li>perturbation-theory-based calculation of the matter power
+	  spectrum and halo collapse fraction,</li>
+	<li>integration of simple reionization models and calculation of
+	  the electron scattering (Thompson scattering) optical depth
+	  due to reionization.</li>
+      </ul>
 
-    <h2>Authors</h2>
-    <p><a href='http://www.astro.columbia.edu/~roban/'>Roban Hultman Kramer</a> (roban@astro.columbia.edu)<br/></p>
+    <h2>Acknowledgment</h2>
+      <p>If you use any of the routines that make use of power
+	spectrum calculations, please cite <br />
+	
+	<blockquote>
+	  Eisenstein, D. J., & Hu, W. 1999, ApJ, 511, 5
+	  [<a href='http://www.arxiv.org/abs/astro-ph/9710252'>astro-ph/9710252</a>]<br />
+	</blockquote>
 
-    Please consider contributing to this project. Introduce yourself
-    on
-    the <a href='http://groups.google.com/group/cosmolopy-devel'>CosmoloPy
-    developer discussion group</a>.
+	as the source of the matter power spectrum.
+      </p>
+      
+      <p>The use of CosmoloPy in general does not <em>require</em> any
+	acknowledgment, but it is nice as a courtesy and as a service
+	to others who might benefit from finding out about it. Please
+	consider including the URL of this
+	page: <code>http://roban.github.com/CosmoloPy/</code>
+      </p>
+
+      <h2>Authors</h2>
+
+      <p><a href='http://www.astro.columbia.edu/~roban/'>Roban Hultman
+	  Kramer</a> (roban@astro.columbia.edu)<br/></p>
+      
+      <p>
+	Please consider contributing to this project. Introduce
+	yourself on
+	the <a href='http://groups.google.com/group/cosmolopy-devel'>CosmoloPy
+	developer discussion group</a>.
+      </p>
+      
     
     <h2>Other resources</h2>
     Some <a href='others.txt'>other Python cosmology software</a>.
