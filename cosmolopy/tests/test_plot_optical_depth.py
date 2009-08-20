@@ -119,7 +119,7 @@ def test_GBL_tau_inst():
     pylab.ylabel(r"$\mathrm{10^4 \times (num.\tau - ana.\tau)/ana.\tau}$")
 
 if __name__ == "__main__":
-    test_GBL()
-    test_plot_GBL()
+    test_GBL_tau_star()
+    test_GBL_tau_inst()
     pylab.show()
 
