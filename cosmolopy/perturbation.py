@@ -78,8 +78,10 @@ def transfer_function_EH(k, **cosmology):
     # 	5) omega_lambda -- Cosmological constant 
     # 	6) hubble       -- Hubble constant, in units of 100 km/s/Mpc 
     # 	7) redshift     -- The redshift at which to evaluate */
+    if int(cosmology['N_nu']) != cosmology['N_nu']:
+        raise TypeError('N_nu must be an integer.')
     power.TFmdm_set_cosm(cosmology['omega_M_0'], cosmology['omega_b_0'], 
-                         cosmology['omega_n_0'],  cosmology['N_nu'], 
+                         cosmology['omega_n_0'],  int(cosmology['N_nu']), 
                          cosmology['omega_lambda_0'], cosmology['h'], 
                          z_val)
     
@@ -178,13 +180,17 @@ def _klims(r, cosmology):
     maxintegrand = numpy.max(integrand)
     factor = 1.e-4
     highmask = integrand > maxintegrand * factor
+    while highmask.ndim > logk.ndim:
+        highmask = numpy.logical_or.reduce(highmask)
 
     mink = numpy.min(logk[highmask])
     maxk = numpy.max(logk[highmask])
 
     return mink, maxk
  
-def _sigmasq_r_scalar(r, **cosmology):
+def _sigmasq_r_scalar(r, 
+                      n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
+                      omega_lambda_0, h):
     """Calculate sigma_r^2 at z=0. Works only for scalar r. 
 
     Used internally by the sigma_r function.
@@ -193,7 +199,11 @@ def _sigmasq_r_scalar(r, **cosmology):
     ----------
     
     r : array
-       radius in Mpc
+       radius in Mpc.
+
+    n, omega_M_0, omega_b_0, omega_n_0, N_nu, omega_lambda_0, h:
+       cosmological parameters, specified like this to allow this
+       function to be vectorized (see source code of sigma_r).
 
     Returns:
     -------
@@ -203,6 +213,14 @@ def _sigmasq_r_scalar(r, **cosmology):
     """
     # r is in Mpc, so k will also by in Mpc for the integration.
 
+    cosmology = {'n':n, 
+                 'deltaSqr':deltaSqr,
+                 'omega_M_0':omega_M_0, 
+                 'omega_b_0':omega_b_0, 
+                 'omega_n_0':omega_n_0, 
+                 'N_nu':N_nu, 
+                 'omega_lambda_0':omega_lambda_0, 
+                 'h':h,}
     logk_lim = _klims(r, cosmology)
     #print "Integrating from logk = %.1f to %.1f." % logk_lim
     
@@ -212,7 +230,7 @@ def _sigmasq_r_scalar(r, **cosmology):
                               logk_lim[1], 
                               args=(r, cosmology),
                               limit=10000)#, epsabs=1e-9, epsrel=1e-9)
-    return 1.e10 * integral, 1e10 * error
+    return 1.e10 * integral, 1.e10 * error
 
 def sigma_r(r, z, **cosmology):
     r"""RMS mass fluctuations of a sphere of radius r at redshift z.
@@ -252,8 +270,19 @@ def sigma_r(r, z, **cosmology):
     if 'deltaSqr' not in cosmology:
         cosmology['deltaSqr'] = norm_power(**cosmology)
     
-    sigma_0_func = numpy.vectorize(lambda x: _sigmasq_r_scalar(x, **cosmology))
-    sigmasq_0, errorsq_0 = sigma_0_func(r)
+    #Uses 'n', as well as (for transfer_function_EH), 'omega_M_0',
+    #'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
+
+    sigma_0_func = numpy.vectorize(_sigmasq_r_scalar)
+    sigmasq_0, errorsq_0 = sigma_0_func(r,
+                                        cosmology['n'],
+                                        cosmology['deltaSqr'],
+                                        cosmology['omega_M_0'],
+                                        cosmology['omega_b_0'],
+                                        cosmology['omega_n_0'],
+                                        cosmology['N_nu'],
+                                        cosmology['omega_lambda_0'],
+                                        cosmology['h'],)
     sigma = numpy.sqrt(sigmasq_0) * fg
 
     # Propagate the error on sigmasq_0 to sigma.
@@ -271,14 +300,14 @@ def norm_power(**cosmology):
     deltaSqr = (cosmology['sigma_8'] / 
                 sigma_r(8.0 / cosmology['h'], 0.0, **cosmology)[0] 
                 )**2.0
-    print " deltaSqr = %.3g" % deltaSqr
+    #print " deltaSqr = %.3g" % deltaSqr
 
     del cosmology['deltaSqr']
     sig8 = sigma_r(8.0 / cosmology['h'], 0.0, deltaSqr=deltaSqr, 
                    **cosmology)[0]
-    print " Input     sigma_8 = %.3g" % cosmology['sigma_8']
-    print " Numerical sigma_8 = %.3g" % sig8
-    print "     sigma_8 error = %.3g" % (sig8 - cosmology['sigma_8'])
+    #print " Input     sigma_8 = %.3g" % cosmology['sigma_8']
+    #print " Numerical sigma_8 = %.3g" % sig8
+    #print "     sigma_8 error = %.3g" % (sig8 - cosmology['sigma_8'])
     return deltaSqr
 
 #def rho_crit(h):
@@ -293,6 +322,14 @@ def power_spectrum(k, z, **cosmology):
     ----------
     
     k should be in Mpc^-1
+
+    Cosmological Parameters:
+    -----------------------
+    
+    Uses 'n', and either 'sigma_8' or 'deltaSqr', as well as, for
+    transfer_function_EH, 'omega_M_0', 'omega_b_0', 'omega_n_0',
+    'N_nu', 'omega_lambda_0', and 'h'.
+    
 
     Notes:
     -----
@@ -544,7 +581,8 @@ def sig_del(temp_min, z, mass=None, passed_min_mass = False, **cosmology):
     else:
         mass_min = virial_mass(temp_min, z, **cosmology)
     r_min = mass_to_radius(mass_min, **cosmology) 
-    sigma_min = sigma_r(r_min, 0., **cosmology)[0]
+    sigma_min = sigma_r(r_min, 0., **cosmology)
+    sigma_min = sigma_min[0]
 
     fg = fgrowth(z, cosmology['omega_M_0'])
     delta_c = 1.686 / fg
