@@ -95,7 +95,7 @@ def test_GBL_tau_inst():
     pylab.title("Compare to GB&L fig. 1 (astro-ph/9812125v3.)")
     for i in range(len(linestyle)):
         pylab.plot(z, tau_inst[i], ls=linestyle[i], color='b')
-        pylab.plot(z[1:], tau_int[i], ls=linestyle[i], color='r')
+        pylab.plot(z, tau_int[i], ls=linestyle[i], color='r')
 
     pylab.xlim(0,80)
     pylab.ylim(0,1)
@@ -104,15 +104,16 @@ def test_GBL_tau_inst():
     
     pylab.subplot(2,1,2)
     for i in range(len(linestyle)):
-        pylab.plot(z[1:], 
-                   1.e4 * (tau_int[i,:] - tau_inst[i,1:])/tau_inst[i,1:], 
+        pylab.plot(z, 
+                   1.e4 * (tau_int[i] - tau_inst[i])/tau_inst[i], 
                    ls=linestyle[i], color='k')
-        diff = (tau_int[i,:] - tau_inst[i,1:]) / tau_inst[i,1:]
-
+        diff = (tau_int[i] - tau_inst[i]) / tau_inst[i]
+        diff[numpy.isnan(diff)] = 0.0
         print ("max fractional error in num. int. = %.3g" % 
                numpy.max(numpy.abs(diff))
                )
-        ntest.assert_array_less(numpy.abs(diff), 2.e-4)
+        ntest.assert_array_less(numpy.abs(diff), 
+                                numpy.zeros(diff.shape) + 2.e-4)
 
     pylab.xlim(0,40)
     pylab.xlabel(r"$\mathrm{z_{ion}}$")

@@ -67,9 +67,7 @@ def test_tau_BKP():
                                                z, **cosmo)
         tau_0 = tau_later[:, -1] + tau_z0
 
-        tau = numpy.empty((f_ion.shape[0], z.shape[0]))
-        tau[:, 1:] = tau_later
-        tau[:, 0] = 0.0
+        tau = tau_later
 
         print "tau(WMAP) = %.3f" % cosmo['tau']
         for j in range(len(f_ion.flat)):

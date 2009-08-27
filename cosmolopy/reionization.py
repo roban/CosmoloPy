@@ -412,7 +412,9 @@ def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
     # Mpc^3 s^-1 * Mpc^-3 / s^-1 -> unitless
     integrand = -1. * tau_star * x * ((1. + z)**2.) / H_z
 
-    integral = si.cumtrapz(integrand, z)
+    integral = numpy.empty(integrand.shape)
+    integral[...,1:] = si.cumtrapz(integrand, z)
+    integral[...,0] = 0.0
     return numpy.abs(integral)
 
 def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=2.0, 
