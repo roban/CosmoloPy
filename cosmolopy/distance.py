@@ -100,6 +100,15 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     Optionally calculate the integral from z0 to z.
 
+    Returns:
+    -------
+    
+    d_co: ndarray
+       Comoving distance in Mpc.
+
+    err: ndarray
+       Extimate of numerical integration error from scipy.integrate.quad.
+
     """
 
     cosmo = set_omega_k_0(cosmo)
@@ -216,6 +225,16 @@ def lookback_time(z, z0 = 0.0, **cosmo):
     See equation 30 of David Hogg's arXiv:astro-ph/9905116v4
 
     Optionally calculate the integral from z0 to z.
+
+    Returns:
+    -------
+
+    t_look: ndarray
+       Lookback time in seconds.
+
+    err: ndarray 
+       Estimate of numerical integration error in lookback time (in s)
+       from scipy.integrate.quad.
 
     """
 
