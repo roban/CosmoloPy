@@ -14,14 +14,14 @@ Constants are:
 
 doc = ""
 
+doc += "  pc_cm: Parsec in cm\n"
+pc_cm = 3.08568025e18 #cm
+
 doc += "  Mpc_cm: Megaparsec in cm\n"
 Mpc_cm = 3.08568025e24 # cm
 
 doc += "  Mpc_km: Megaparsec in km\n"
 Mpc_km = Mpc_cm * 1.0e-5 # km
-
-doc += "  pc_cm: Parsec in cm\n"
-pc_cm = 3.08568025e18 #cm
 
 doc += "  angstrom_cm: Angstrom in cm\n"
 angstrom_cm = 1e-8 #cm
@@ -30,7 +30,10 @@ doc += "  yr_s: a year in s\n"
 yr_s = 365. * 24. * 60. * 60.
 
 doc += "  Myr_s: Megayear in s\n"
-Myr_s = 1e9 * yr_s 
+Myr_s = 1.e6 * yr_s 
+
+doc += "  Gyr_s: Gigayear in s\n"
+Gyr_s = 1.e9 * yr_s 
 
 doc += "  amu_g: atomic mass unit in g\n"
 amu_g = 1.66053886e-24 #g
