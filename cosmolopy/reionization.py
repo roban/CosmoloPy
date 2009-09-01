@@ -160,7 +160,7 @@ def clumping_factor_BKP(z):
     """
     return numpy.sqrt(26.2917 * numpy.exp(-0.1822 * z + 0.003505 * z**2.))
 
-def _udot_BKP(u, t, coeff_rec_func, redshift_func, ion_func):
+def _udot(u, t, coeff_rec_func, redshift_func, ion_func):
     """du/dt where u = x - f_* f_esc,gamma N_gamma F
     
     Parameters:
@@ -214,17 +214,18 @@ def _udot_BKP(u, t, coeff_rec_func, redshift_func, ion_func):
                (z, t, crf, udot, w, x, u))
     return udot
 
-def integrate_ionization_BKP(z, coeff_ion,
-                             temp_min = 1e4,
-                             passed_min_mass = False,
-                             temp_gas=1e4, 
-                             alpha_B=None,
-                             clump_fact_func = clumping_factor_BKP,
-                             **cosmo):  
+def integrate_ionization_recomb(z, coeff_ion,
+                                temp_min = 1e4,
+                                passed_min_mass = False,
+                                temp_gas=1e4, 
+                                alpha_B=None,
+                                clump_fact_func = clumping_factor_BKP,
+                                **cosmo):  
 
-    """Integrate an ODE describing ionization and recombination rates.
+    """Integrate an ODE describing IGM ionization and recombination
+    rates.
 
-    As described in Bagla, Kulkarni & Padmanabhan (hereafter BKP,
+    See, e.g. Bagla, Kulkarni & Padmanabhan (hereafter BKP,
     2009MNRAS.397..971B).
 
     Parameters:
@@ -241,7 +242,7 @@ def integrate_ionization_BKP(z, coeff_ion,
 
        The coefficient converting the collapse fraction to ionized
        fraction, neglecting recombinations. Equivalent to the product
-       (f_star * f_esc_gamma * N_gamma) in the BKP formalism.
+       (f_star * f_esc_gamma * N_gamma) in the BKP paper.
 
 
     temp_min: 
@@ -275,20 +276,22 @@ def integrate_ionization_BKP(z, coeff_ion,
     Notes:
     -----
     
-    BKP, as is fairly standard, assume that the ionized fraction is
-    contained in fully ionized bubbles surrounded by a fully neutral
-    IGM. The output is therefore the volume filling factor of ionized
-    regions, not the ionized fraction of a uniformly ionized IGM.
+    We assume, as is fairly standard (e.g. BKP), that the ionized
+    fraction is contained in fully ionized bubbles surrounded by a
+    fully neutral IGM. The output is therefore the volume filling
+    factor of ionized regions, not the ionized fraction of a
+    uniformly-ionized IGM.
 
     I have also made the standard assumption that all ionized photons
     are immediately absorbed, which allows the two differential
-    equations to be combined into a single ODE. BKP say that this
-    induces less than 5% error in the final value of the
+    equations (one for ionization-recombination and one for
+    emission-photoionizaion) to be combined into a single ODE. BKP say
+    that this induces less than 5% error in the final value of the
     electron-scattering optical depth.
 
     I believe there is an extraneous factor of m_p in the second term
-    of their equation 6, unless I am misunderstanding the definition
-    of their variables. I have left it out.
+    of BKP equation 6, unless I am misunderstanding the definition of
+    their variables. I have left it out.
 
     """
 
@@ -331,7 +334,7 @@ def integrate_ionization_BKP(z, coeff_ion,
     t, terr1, terr2 = cd.age(z, **cosmo)
 
     # Integrate to find u(z) = x(z) - w(z), where w is the ionization fraction 
-    u = si.odeint(_udot_BKP, y0=0.0, t=t,
+    u = si.odeint(_udot, y0=0.0, t=t,
                   args=(coeff_rec_func, redfunc, ionfunc))
     u = u.flatten()
 

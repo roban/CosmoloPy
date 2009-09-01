@@ -66,7 +66,7 @@ def test_plot_FZH():
     pylab.ylim(0, 1)
 
 def test_plot_integrate_ionization():
-    """Plot results of integrate_ionization_BKP (no quantitative tests).
+    """Plot results of integrate_ionization_recomb (no quantitative tests).
     """
 
     cosmo = cparam.WMAP5_mean(flat=True)
@@ -87,9 +87,9 @@ def test_plot_integrate_ionization():
     w_rec = numpy.empty(x_fcol.shape)
     for i in range(x_fcol.shape[0]):
         # calculate ionized fraction, including recombinations
-        x_rec[i], w_rec[i], t  = cr.integrate_ionization_BKP(z, c_ion[i,0],
-                                                             temp_min = T_min,
-                                                             **cosmo)
+        x_rec[i], w_rec[i], t = cr.integrate_ionization_recomb(z, c_ion[i,0],
+                                                               temp_min = T_min,
+                                                               **cosmo)
     
     #linestyle = ['-', ':', '--']
     color = ['r', 'g', 'b']
