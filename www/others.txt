@@ -31,6 +31,12 @@ Other python cosmology resources:
 
   OO interface to distance measure calculations. 
 
+*Taro Sato's Python version of kcorrect by Michael Blanton
+
+  http://nomo17k.wordpress.com/2009/08/02/kcorrect-kcorrect-python-port-project/
+
+  k correction and photometric redshifts.
+
 Miscellaneous non-python projects:
 ---------------------------------
 
