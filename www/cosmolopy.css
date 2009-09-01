@@ -1,0 +1,27 @@
+body {
+       background-color: #FFFFF0;    
+       margin-top: 1.0em;
+       font-family: "sans-serif"; 
+       color: #000000;
+       }
+#container {
+             margin: 0 auto;
+             width: 90%;
+             }
+h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; }
+h1 .small { font-size: 0.4em; }
+h1 a { text-decoration: none }
+h2 { font-size: 1.1em; color: #AA0000; }
+    h3 { text-align: center; color: #AA0000; }
+a { color: #0000AA; 
+    text-decoration:none 
+    }
+a:hover { text-decoration:underline }
+
+.description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
+.download { float: right; }
+.fig { float: right; }
+pre { background: #000; color: #fff; padding: 15px;}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.footer { text-align:center; padding-top:0.5em;}
+img{border-style: none;}
