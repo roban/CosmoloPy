@@ -1,8 +1,9 @@
 body {
-       background-color: #FFFFF0;    
+       background-color: #FFFFF3;    
        margin-top: 1.0em;
        font-family: "sans-serif"; 
        color: #000000;
+       max-width: 90ex;
        }
 #container {
              margin: 0 auto;
@@ -21,7 +22,7 @@ a:hover { text-decoration:underline }
 .description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
 .download { float: right; }
 .fig { float: right; }
-pre { background: #000; color: #fff; padding: 15px;}
+pre { background: #D0D0FF; color: #000000; padding: 15px; width:80ex}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:0.5em;}
 img{border-style: none;}

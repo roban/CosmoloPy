@@ -109,6 +109,15 @@ def comoving_distance(z, z0 = 0, **cosmo):
     err: ndarray
        Extimate of numerical integration error from scipy.integrate.quad.
 
+    Examples:
+    --------
+
+    >>> import cosmolopy.distance as cd
+    >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
+    >>> d_co, err = cd.comoving_distance(6., **cosmo)
+    >>> print "Comoving distance = %.1f Mpc" % (d_co)
+    Comoving distance = 8017.8 Mpc
+
     """
 
     cosmo = set_omega_k_0(cosmo)
@@ -178,6 +187,15 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
     Warning: returns two error estimates, one from each invocation of
     comoving_distance_transverse (see the docstring for that function
     for explanation of the error estimate).
+
+    Examples:
+    --------
+
+    >>> import cosmolopy.distance as cd
+    >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
+    >>> d_a, err1, err2 = cd.angular_diameter_distance(6., **cosmo)
+    >>> print "Angular diameter distance = %.1f Mpc" % (d_a)
+    Angular diameter distance = 1145.4 Mpc
 
     """
 
@@ -322,3 +340,7 @@ def redshift_d_light(dl, z_guess = 6.0, **cosmo):
     dl_diff = lambda z: abs(dl - light_travel_distance(z, **cosmo)[0])
     z = scipy.optimize.fmin(dl_diff, z_guess)
     return z
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
