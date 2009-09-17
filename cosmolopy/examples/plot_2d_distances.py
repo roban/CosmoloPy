@@ -55,27 +55,6 @@ def plot_DA(filename):
     plot_dist(z, dz, om, dom, da, dh, 'angular diameter distance', r'D_A',
               filename)
 
-def make_and_plot_DA():
-    """The dimensionless angular diameter distance DA/DH. 
-    """
-
-    dz = 0.1
-    z = numpy.arange(0., 5. + dz, dz)
-
-    cosmo = {}
-    dom = 0.05
-    om = numpy.atleast_2d(numpy.arange(0.1,
-                                       1. + dom,
-                                       dom)).transpose()
-    cosmo['omega_M_0'] = om
-    cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
-    cosmo['h'] = 0.701
-    
-    dh = cd.hubble_distance_z(0, **cosmo)
-    da, da_err1, da_err2 = cd.angular_diameter_distance(z, **cosmo)
-
-    plot_dist(z, dz, om, dom, da, dh, 'angular diameter distance', r'D_A')
-
 def plot_dist(z, dz, om, dom, dist, dh, name, mathname, filename=None):
     x, y = numpy.meshgrid(z, om)
     pylab.figure(figsize=(5.5,4.5))    
