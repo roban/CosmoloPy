@@ -21,7 +21,7 @@ a:hover { text-decoration:underline }
 
 .description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
 .download { float: right; }
-.fig { float: right; }
+.fig { float: right; margin: 10px}
 pre { background: #D0D0FF; color: #000000; padding: 15px; width:80ex}
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .footer { text-align:center; padding-top:0.5em;}
