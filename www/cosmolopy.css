@@ -1,11 +1,14 @@
 body {
        background-color: #FFFFF3;    
-       font-family: "sans-serif"; 
+       font-family: "serif"; 
        color: #000000;
        }
-h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; }
-h2 { font-size: 1.1em; color: #AA0000; }
-h3 { text-align: center; color: #AA0000; }
+h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; 
+     font-family: "sans-serif"; }
+h2 { font-size: 1.1em; color: #AA0000; 
+     font-family: "sans-serif"; }
+h3 { text-align: center; color: #AA0000
+     font-family: "sans-serif"; }
 a { color: #0000AA; 
     text-decoration:none 
     }
