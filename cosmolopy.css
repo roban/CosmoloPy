@@ -1,28 +1,37 @@
 body {
        background-color: #FFFFF3;    
-       margin-top: 1.0em;
        font-family: "sans-serif"; 
        color: #000000;
-       max-width: 90ex;
        }
-#container {
-             margin: 0 auto;
-             width: 90%;
-             }
 h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; }
-h1 .small { font-size: 0.4em; }
-h1 a { text-decoration: none }
 h2 { font-size: 1.1em; color: #AA0000; }
-    h3 { text-align: center; color: #AA0000; }
+h3 { text-align: center; color: #AA0000; }
 a { color: #0000AA; 
     text-decoration:none 
     }
 a:hover { text-decoration:underline }
-
-.description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
-.download { float: right; }
-.fig { float: right; margin: 10px}
 pre { background: #D0D0FF; color: #000000; padding: 15px; width:80ex}
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-.footer { text-align:center; padding-top:0.5em;}
 img{border-style: none;}
+p{ max-width: 80ex}
+ul{ max-width: 80ex }
+.container {
+             with=100%
+             margin: 0;
+             }
+.description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
+.fig { float: right; margin: 10px}
+.news { float: right; margin: 0 10px; min-width:244px;
+        padding: 0; text-align: center}
+.news h2 { margin-bottom: 1ex; margin-top: 0.0ex}
+.news ul {
+          marker-offset: 0px;
+          list-style-image: none;
+          list-style-type: none;
+          padding: 0px;
+          margin: 0px;
+          font-size: 80%; 
+          }
+.news li {
+           padding: 0.75ex 0em;
+           }        
+.footer { text-align:center; padding-top:1em; }

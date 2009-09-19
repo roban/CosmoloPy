@@ -1,59 +1,85 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <link rel="stylesheet" type="text/css" href="cosmolopy.css" />
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>CosmoloPy: basic cosmological routines for Python (Numpy/SciPy)</title>
-	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  
+  <title>CosmoloPy: basic cosmological routines for Python (Numpy/SciPy)</title>
+  
 </head>
 
 <body>
-  <div id="container">
-
+  <div class=container>
+    
     <h1><a href="http://github.com/roban/CosmoloPy">CosmoloPy</a></h1>
-
+    
     <div class="description">
       a cosmology package for Python.
     </div>
-
-
-    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png'></a></div>
+    
+    <h2>Features</h2>
+    <div class=fig>
+      <a href='figs/dist2d_D_M.png'><img src='figs/dist2d_D_M_small.png' alt='propper motion distance vs. redshift and Omega_M'/></a>
+    </div>
+    
+    Current capabilities include calculation of
+    <ul>
+      <li>cosmological distance measures as a function
+	of redshift and cosmological parameters
+	(<code>cosmolopy.distance</code>),
+      </li>
+      <li>the matter power spectrum and halo collapse fraction, using
+	Press-schechter perturbation theory
+	(<code>cosmolopy.perturbation</code>),</li>
+      <li>simple reionization models and the electron Thompson
+	scattering optical depth due to reionization, for comparison
+	with WMAP tau (<code>cosmolopy.reionization</code>).</li>
+    </ul>
+    
     <h2>Contribute</h2>
-
+    
     <p>
-    You can contribute by using the code and providing feedback,
-    requesting new features, or contributing your own code.</p>
-
+      The best way to contribute to the development of CosmoloPy is to
+      use the code and provide feedback, request new features, or add
+      features yourself.</p>
+    
     <p>
-    Please join
-    the <a href='http://groups.google.com/group/cosmolopy-devel'>developer
-    discussion group</a> and help turn CosmoloPy into a comprehensive
-    community-maintained package of basic cosmology routines. Whether
-    you plan to be a casual user or frequent contributor, this is the
-    place to introduce yourself and discuss the future of the package.
+      Please join
+      the <a href='http://groups.google.com/group/cosmolopy-devel'>developer
+	discussion group</a> and help turn CosmoloPy into a comprehensive
+      community-maintained package of basic cosmology routines. Whether
+      you plan to be a casual user or frequent contributor, this is the
+      place to introduce yourself and discuss the future of the package.
     </p>
 
-
+    <div class=news>
+      <h2>News</h2>
+      <ul>
+	<li><a href='http://www.astrobetter.com/python/cosmolopy-cosmology-routines-for-python/#more-873'>Guest post on Astro Better</a></li>
+      </ul>
+    </div>
+    
     <h2>Status</h2>
-
     <p>
-    The API is still in flux (particularly the reionization routines),
-    but CosmoloPy should already be quite usable.
+      The API is still in flux (particularly the reionization routines),
+      but CosmoloPy should already be quite usable.
     </p>
 
     <p>
-    Please join the
-    <a href='http://groups.google.com/group/cosmolopy-devel'>developer
-    discussion group</a> if you are interested in using the code and
-    ask about the status of the routines you are interested in
-    using.</p>
+      Please join the
+      <a href='http://groups.google.com/group/cosmolopy-devel'>developer
+	discussion group</a> if you are interested in using the code and
+      ask about the status of the routines you are interested in
+      using.</p>
 
+
+    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a></div>
+    
     <a name='download'></a>
     <h2>Download</h2>
-
+    
     <p>You can clone the CosmoloPy project
     with <a href="http://git-scm.com">Git</a> by running:
 
@@ -82,11 +108,12 @@ sudo python setup.py install
     
     <h2>Usage</h2>
 
+    <p>
     Most functions are designed to take a cosmology parameters as
     keywords. The easiest way to use CosmoloPy is to create a
     dictionary of the cosmology parameters and pass it to each
     function using the <code>**</code> syntax.
-    <p>
+</p>
 <pre>
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
@@ -94,28 +121,12 @@ sudo python setup.py install
 >>> print "Comoving distance = %.1f Mpc" % (d_co)
 Comoving distance = 8017.8 Mpc
 </pre>
-
+<p>
 Look in
 the <a href='http://github.com/roban/CosmoloPy/tree/ffe282b08e8d61dc6fb7c1af3ba428b99f6da264/cosmolopy/tests'><code>tests/</code></a>
 and <a href='http://github.com/roban/CosmoloPy/tree/ffe282b08e8d61dc6fb7c1af3ba428b99f6da264/cosmolopy/examples'><code>examples/</code></a>
 directories for more examples.
     </p>
-
-    <h2>Features</h2>
-    <div class=fig><a href='figs/dist2d_D_M.png'><img src='figs/dist2d_D_M_small.png'></a></div>
-      
-
-      Current capabilities include 
-      <ul>
-	<li>calculation of cosmological distance measures as a
-	  function of redshift and cosmological parameters,
-	</li>
-	<li>perturbation-theory-based calculation of the matter power
-	  spectrum and halo collapse fraction,</li>
-	<li>integration of simple reionization models and calculation of
-	  the electron scattering (Thompson scattering) optical depth
-	  due to reionization.</li>
-      </ul>
 
     <h2>Acknowledgment</h2>
       <p>If you use any of the routines that make use of power
