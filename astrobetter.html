@@ -1,0 +1,48 @@
+<a href='http://roban.github.com/CosmoloPy/figs/dist2d_D_A.png'><img style="float:left; margin: 0px; border: 0" src='http://roban.github.com/CosmoloPy/figs/dist2d_D_A_small.png' alt='angular diameter distance calculated with CosmoloPy'></a>
+
+<em>Sample blurb about me, feel free to modify or delete:</em> This is
+a guest post by <a href='http://www.astro.columbia.edu/~roban/'>Roban
+Hultman Kramer</a>, who is currently an astronomy grad student at
+Columbia University, but will be starting as a Zwicky Fellow at ETH
+Zurich in January.
+
+<p><a href='http://roban.github.com/CosmoloPy/'>CosmoloPy</a> is a
+package of basic cosmology routines for Python, designed for use with
+<a href='http://scipy.org/'>NumPy and SciPy</a>. Features currently
+include: calculation of cosmological distance measures,
+perturbation-theory-based calculation of the matter power spectrum and
+halo collapse fraction (courtesy of Eisenstein & Hu's transfer
+function code), and integration of simple reionization models and the
+resulting electron scattering optical depth due to reionization. I
+hope it will prove useful to the increasing number of astronomers
+turning to Python.</p>
+
+Using CosmoloPy is as simple as setting up a dictionary of
+cosmological parameters (some WMAP5 parameters are provided for
+convenience in <code>cosmolopy.parameters</code>) and passing it to
+the functions you want to use. For instance, we could quickly calculate the comoving distance to redshift 6 like this:
+<pre>
+>>> import cosmolopy.distance as cd
+>>> cosmo = {'omega_M_0' : 0.3,
+...          'omega_lambda_0' : 0.7, 
+...          'h' : 0.72}
+>>> d_co, err = cd.comoving_distance(z=6., **cosmo)
+>>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
+Comoving distance to z=6 is 8017.8 Mpc
+</pre>
+A few more lines
+of <a href='http://github.com/roban/CosmoloPy/blob/master/cosmolopy/examples/plot_2d_distances.py'>code</a>,
+and you can produce a plot like the one shown above.
+
+<p>CosmoloPy is released under
+the <a href='http://www.opensource.org/licenses/mit-license.php'>MIT
+software license</a>, which allows it to be freely used and
+modified. So
+please <a href='http://roban.github.com/CosmoloPy/#download'>download
+it</a>, use it, and request or add features you'd like to see included
+(and point out bugs we need to fix). Anyone can
+access <a href='http://github.com/roban/CosmoloPy/tree/master'>the git
+repository</a>, so please edit the code and send in useful changes and
+additions. All questions about use or development can be posted to
+the <a href='http://groups.google.com/group/cosmolopy-devel'>developer
+discussion group</a>.</p>
