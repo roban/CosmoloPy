@@ -13,19 +13,20 @@ a { color: #0000AA;
     text-decoration:none 
     }
 a:hover { text-decoration:underline }
-pre { background: #D0D0FF; color: #000000; padding: 15px; width:80ex}
+pre { background: #D0D0FF; color: #000000; padding: 2ex; width:90ex}
 img{border-style: none;}
-p{ max-width: 80ex}
-ul{ max-width: 80ex }
-.container {
-             with=100%
-             margin: 0;
+p{ max-width: 90ex }
+ul{ max-width: 90ex }
+.container { align: center;
+             width:90%;
+             max-width:150ex;
+             margin: 0 5%;
              }
 .description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
 .fig { float: right; margin: 10px}
 .news { float: right; margin: 0 10px; min-width:244px;
-        padding: 0; text-align: center}
-.news h2 { margin-bottom: 1ex; margin-top: 0.0ex}
+        padding: 0; text-align: center; min-height:8em}
+.news h2 { margin-bottom: 1ex; margin-top: 0.0ex }
 .news ul {
           marker-offset: 0px;
           list-style-image: none;
