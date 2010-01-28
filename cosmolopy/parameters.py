@@ -12,7 +12,8 @@ def add_extras(cosmo):
     return cosmo
 
 def WMAP7_BAO_H0_mean(flat=False, extras=True):
-    """WMAP7 + BAO + H_0 parameters from Komatsu et al. (arxiv:1001.4538v1).
+    """WMAP7 + BAO + H_0 parameters from Komatsu et al.
+    (arxiv:1001.4538v1)
 
     Parameters:
     ----------
@@ -39,6 +40,42 @@ def WMAP7_BAO_H0_mean(flat=False, extras=True):
              'tau' : 0.087, #0.084,
              'z_reion' : 10.4, #10.9,
              't_0' : 13.75, #13.72
+             }
+    if flat:
+        cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
+        cosmo['omega_k_0'] = 0.0
+    if extras:
+        add_extras(cosmo)
+    return cosmo
+
+def WMAP7_ML(flat=False, extras=True):
+    """WMAP7 ML parameters from Komatsu et al. (arxiv:1001.4538v1)
+
+    Parameters:
+    ----------
+    
+    flat: boolean
+    
+      If True, sets omega_lambda_0 = 1 - omega_M_0 to ensure omega_k_0
+      = 0 exactly. Also sets omega_k_0 = 0 explicitly.
+
+    extras: boolean
+
+      If True, sets neutrino number N_nu = 0, neutrino density
+      omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
+
+      """
+    omega_c_0 = 0.217
+    omega_b_0 = 0.0445
+    cosmo = {'omega_b_0' : omega_b_0,
+             'omega_M_0' : omega_b_0 + omega_c_0,
+             'omega_lambda_0' : 0.738,
+             'h' : 0.714,
+             'n' : 0.969,
+             'sigma_8' : 0.803,
+             'tau' : 0.086,
+             'z_reion' : 10.3,
+             't_0' : 13.71,
              }
     if flat:
         cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']

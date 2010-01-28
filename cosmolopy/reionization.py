@@ -420,8 +420,8 @@ def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
     integral[...,0] = 0.0
     return numpy.abs(integral)
 
-def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=2.0, 
-                          return_tau_star=False, **cosmo):
+def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=1.0, z_rHe = None,
+                          return_tau_star=False, verbose=0, **cosmo):
     """Optical depth assuming instantaneous reionization and a flat
     universe.
 
@@ -438,10 +438,15 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=2.0,
        Ionized fraction of hydrogen after reionization.
 
     x_ionHe:
-       value of X_HeII + 2 * X_HeIII after reionization (where X_HeII
-       is the fraction of helium that is singly ionized, and X_HeII is
-       the fraction of helium that is doubly ionized). Set to 2. for
-       fully ionized helium.
+       Set to 2.0 for fully ionized helium. Set to 1.0 for singly
+       ionized helium. Set to 0.0 for neutral helium. This value
+       equals X_HeII + 2 * X_HeIII after z_r (where X_HeII is the
+       fraction of helium that is singly ionized, and X_HeII is the
+       fraction of helium that is doubly ionized).
+
+    z_rHe (optional): 
+       Redshift of instantaneos Helium reionization, i.e. when helium
+       becomes doubly ionized. z_rHe should be less than z_r. 
 
     return_tau_star: Boolean
       whether or not to return the value of tau_star, as defined by
@@ -468,25 +473,51 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=2.0,
     if numpy.any(cden.get_omega_k_0(**cosmo) != 0):
         raise ValueError, "Not valid for non-flat (omega_k_0 !=0) cosmology."
 
+
+    if z_rHe is not None:
+        # Optical depth from z_rHe to 0 with He fully (twice) ionized. 
+        tau_short_all = optical_depth_instant(z_rHe, x_ionH, x_ionHe=2.0,
+                                             **cosmo)
+
+        # Optical depth from z_rHe to 0 without He fully ionized. 
+        tau_short_H = optical_depth_instant(z_rHe, x_ionH, x_ionHe, **cosmo)
+
+        # Difference due to fully ionized He (added to tau later):
+        tau_short_He = tau_short_all - tau_short_H
+        if(verbose > 0) :
+            print "tau_short_He = ", tau_short_He            
+
     rho_crit, rho_0, n_He_0, n_H_0 = cden.baryon_densities(**cosmo)
 
     # comoving Mpc^-1
     n_p = n_H_0 + 2. * n_He_0
     
     # comoving Mpc^-1
-    n_e = n_H_0 * x_ionH + n_He_0 * x_ionHe
+    n_e = (n_H_0 * x_ionH) + (n_He_0 * x_ionHe)
 
     # fraction of electrons that are free
     x = n_e / n_p
+
+    if(verbose > 0) :
+        print "n_He/n_H = ", n_He_0 / n_H_0
+        print "x = ne/np = ", x
+        print "n_e/n_H_0 = ", n_e/n_H_0
 
     H_0 = cc.H100_s * cosmo['h']
 
     # Mpc s^-1 * Mpc^2 * Mpc^-3 / s^-1 -> unitless
     tau_star = cc.c_light_Mpc_s * cc.sigma_T_Mpc * n_p * x / H_0
 
+    ### The tau_star expressions above and below are mathematically identical.
+    #tau_star = cc.c_light_Mpc_s * cc.sigma_T_Mpc * n_H_0 * (n_e/n_H_0) / H_0
+
     e_z_reion = cd.e_z(z_r, **cosmo)
     
     tau = 2. * tau_star * (e_z_reion - 1.0) / (3. * cosmo['omega_M_0'])
+
+    if z_rHe is not None:
+        # Add in the Helium reionization contribution:
+        tau += tau_short_He
 
     if return_tau_star:
         return tau, tau_star

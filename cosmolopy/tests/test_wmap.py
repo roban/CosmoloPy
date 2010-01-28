@@ -14,6 +14,7 @@ import cosmolopy.perturbation as cp
 import cosmolopy.distance as cd
 import cosmolopy.density as cden
 import cosmolopy.reionization as cr
+#import reionization as cr
 import cosmolopy.constants as cc
 import cosmolopy.parameters as cparam
 #import parameters as cparam
@@ -29,23 +30,34 @@ def test_tau_instant():
     # Can't match WMAP7 optical depths exactly. Need to look into new
     # treatment in CAMB as mentioned in the WMAP7 paper (see
     # parameters.py).
-    cosmos = [#cparam.WMAP7_BAO_H0_mean(flat=True),
+    cosmos = [cparam.WMAP7_BAO_H0_mean(flat=True),
+              cparam.WMAP7_ML(flat=True),
               cparam.WMAP5_BAO_SN_mean(flat=True),
               cparam.WMAP5_ML(flat=True),
               cparam.WMAP5_mean(flat=True)]
 
+    # The WMAP5 numbers apparently assume He is neutral, while WMAP7
+    # includes simultaneous singly ionized He plus Helium (double)
+    # reionization at z=3.5.
+    x_ionHe_list = [1.0, 1.0, 0, 0, 0]
+    z_rHe_list = [3.5, 3.5, None, None, None] #[3.5, None, None, None]
     for cosmo in cosmos:
         # Fully ionized H
         x_ionH = 1.0
-        
-        # The WMAP5 numbers apparently assume He is neutral
-        x_ionHe = 0.0
+
+        # He ionization with H?
+        x_ionHe = x_ionHe_list.pop(0)
+
+        # Redshift for Helium double reionization?
+        z_rHe = z_rHe_list.pop(0)
 
         zr = cosmo['z_reion']
         tau_zr = cosmo['tau']
         tau_calc = cr.optical_depth_instant(zr, 
                                             x_ionH=x_ionH, 
                                             x_ionHe=x_ionHe,
+                                            z_rHe=z_rHe,
+                                            verbose = 1,
                                             **cosmo)
 
         print "z_r = %f, testing tau:" % zr,
@@ -73,6 +85,7 @@ def test_t_0():
 
     flat = True
     cosmos = [cparam.WMAP7_BAO_H0_mean(flat=True),
+              cparam.WMAP7_ML(flat=True),
               cparam.WMAP5_BAO_SN_mean(flat=True),
               cparam.WMAP5_ML(flat=True),
               cparam.WMAP5_mean(flat=True)]
