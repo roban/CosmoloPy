@@ -11,6 +11,42 @@ def add_extras(cosmo):
     cosmo.update(extras)
     return cosmo
 
+def WMAP7_BAO_H0_mean(flat=False, extras=True):
+    """WMAP7 + BAO + H_0 parameters from Komatsu et al. (arxiv:1001.4538v1).
+
+    Parameters:
+    ----------
+    
+    flat: boolean
+    
+      If True, sets omega_lambda_0 = 1 - omega_M_0 to ensure omega_k_0
+      = 0 exactly. Also sets omega_k_0 = 0 explicitly.
+
+    extras: boolean
+
+      If True, sets neutrino number N_nu = 0, neutrino density
+      omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
+
+      """
+    omega_c_0 = 0.227 #0.228
+    omega_b_0 = 0.0456 #0.0456
+    cosmo = {'omega_b_0' : omega_b_0,
+             'omega_M_0' : omega_b_0 + omega_c_0,
+             'omega_lambda_0' : 0.728, #0.726,
+             'h' : 0.704, #0.706,
+             'n' : 0.963, #0.960,
+             'sigma_8' : 0.809, #0.812,
+             'tau' : 0.087, #0.084,
+             'z_reion' : 10.4, #10.9,
+             't_0' : 13.75, #13.72
+             }
+    if flat:
+        cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
+        cosmo['omega_k_0'] = 0.0
+    if extras:
+        add_extras(cosmo)
+    return cosmo
+
 def WMAP5_BAO_SN_mean(flat=False, extras=True):
     """WMAP5 + BAO + SN parameters from Komatsu et al. (2009ApJS..180..330K).
 
@@ -24,7 +60,7 @@ def WMAP5_BAO_SN_mean(flat=False, extras=True):
 
     extras: boolean
 
-      If True, sets neutrino numbe N_nu = 0, neutrino density
+      If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
     Notes:
@@ -89,7 +125,7 @@ def WMAP5_ML(flat=False, extras=True):
 
     extras: boolean
 
-      If True, sets neutrino numbe N_nu = 0, neutrino density
+      If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
     Notes:
@@ -131,7 +167,7 @@ def WMAP5_mean(flat=False, extras=True):
 
     extras: boolean
 
-      If True, sets neutrino numbe N_nu = 0, neutrino density
+      If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
     Notes:

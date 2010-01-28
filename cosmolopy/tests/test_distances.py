@@ -64,7 +64,7 @@ def test_distances(threshold = 1e-3):
 
     for i in range(len(labels)):
         diff = (cd_dists[i] - ic_dists[:,i+1]) / ic_dists[:,i+1]
-        maxdiff = numpy.max(numpy.abs(diff))
+        maxdiff = numpy.max(numpy.abs(diff[ic_dists[:,i+1] > 0]))
         print "Maximum fraction difference in %s is %e." % (labels[i],
                                                             maxdiff)
         assert(numpy.all(maxdiff < threshold[i]))

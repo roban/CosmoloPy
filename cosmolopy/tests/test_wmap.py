@@ -16,6 +16,7 @@ import cosmolopy.density as cden
 import cosmolopy.reionization as cr
 import cosmolopy.constants as cc
 import cosmolopy.parameters as cparam
+#import parameters as cparam
 
 import test_utils as tu
 
@@ -25,7 +26,11 @@ def test_tau_instant():
     dz = 0.1
     z = numpy.arange(80., 0. - 1.5 * dz, -1. * dz)
 
-    cosmos = [cparam.WMAP5_BAO_SN_mean(flat=True),
+    # Can't match WMAP7 optical depths exactly. Need to look into new
+    # treatment in CAMB as mentioned in the WMAP7 paper (see
+    # parameters.py).
+    cosmos = [#cparam.WMAP7_BAO_H0_mean(flat=True),
+              cparam.WMAP5_BAO_SN_mean(flat=True),
               cparam.WMAP5_ML(flat=True),
               cparam.WMAP5_mean(flat=True)]
 
@@ -33,7 +38,7 @@ def test_tau_instant():
         # Fully ionized H
         x_ionH = 1.0
         
-        # The WMAP numbers apparently assume He is neutral
+        # The WMAP5 numbers apparently assume He is neutral
         x_ionHe = 0.0
 
         zr = cosmo['z_reion']
@@ -67,9 +72,10 @@ def test_t_0():
     z = numpy.arange(80., 0. - 1.5 * dz, -1. * dz)
 
     flat = True
-    cosmos = [cparam.WMAP5_BAO_SN_mean(flat),
-              cparam.WMAP5_ML(flat),
-              cparam.WMAP5_mean(flat)]
+    cosmos = [cparam.WMAP7_BAO_H0_mean(flat=True),
+              cparam.WMAP5_BAO_SN_mean(flat=True),
+              cparam.WMAP5_ML(flat=True),
+              cparam.WMAP5_mean(flat=True)]
 
     for cosmo in cosmos:
         age, err_f, err_t = cd.age(0.0, **cosmo)
