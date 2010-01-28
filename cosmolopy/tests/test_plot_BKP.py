@@ -61,7 +61,10 @@ def test_tau_BKP():
                                                          alpha_B=alpha_B,
                                                          **cosmo)
         # calculate the optical depth in this scenario
-        tau_z0 = cr.optical_depth_instant(z[-1], **cosmo)
+        tau_z0 = cr.optical_depth_instant(z[-1],
+                                          x_ionH=1.0,
+                                          x_ionHe=2.0,
+                                          **cosmo)
 
         tau_later = cr.integrate_optical_depth(x_rec, x_ionHe * x_rec, 
                                                z, **cosmo)
