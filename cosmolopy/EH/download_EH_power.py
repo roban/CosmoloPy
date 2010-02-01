@@ -12,19 +12,24 @@ The url for the code is:
 
 """
 
+
 import urllib
 import os
 
-# Find the directory this script resides in.
-current_dir = os.path.dirname(os.path.abspath(__file__))
+def download_power():
+    # Find the directory this script resides in.
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Name for saved file.
-target = os.path.join(current_dir, 'power.c')
+    # Name for saved file.
+    target = os.path.join(current_dir, 'power.c')
 
-url = r'http://background.uchicago.edu/~whu/transfer/power.c'
+    url = r'http://background.uchicago.edu/~whu/transfer/power.c'
+    
+    print __doc__
 
-print __doc__
+    urllib.urlretrieve(url, filename=target)
 
-urllib.urlretrieve(url, filename=target)
+    print "Downloaded to %s" % target
 
-print "Downloaded to %s" % target
+if __name__ == "__main__":
+    download_power()

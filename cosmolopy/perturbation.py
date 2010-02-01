@@ -12,6 +12,7 @@ EH/installation.txt for installation instructions.
 """
 
 import math
+import warnings
 
 import numpy
 import scipy
@@ -307,7 +308,9 @@ def norm_power(**cosmology):
                    **cosmology)[0]
     #print " Input     sigma_8 = %.3g" % cosmology['sigma_8']
     #print " Numerical sigma_8 = %.3g" % sig8
-    #print "     sigma_8 error = %.3g" % (sig8 - cosmology['sigma_8'])
+    sigma_8_error = (sig8 - cosmology['sigma_8'])/cosmology['sigma_8']
+    if sigma_8_error > 1e-4:
+        warnings.warn("High sigma_8 fractional error = %.3g" % sigma_8_error)
     return deltaSqr
 
 #def rho_crit(h):
@@ -652,17 +655,9 @@ def collapse_fraction(sigma_min, delta_crit, sigma_mass=0, delta=0):
     ...          'sigma_8' : 0.9
     ...          } 
     >>> fc = cp.collapse_fraction(*cp.sig_del(1e4, 0, **cosmo))
-     deltaSqr = 3.12e-09
-     Input     sigma_8 = 0.9
-     Numerical sigma_8 = 0.9
-         sigma_8 error = 1.49e-05
     >>> print round(fc, 4)
     0.7328
     >>> fc = cp.collapse_fraction(*cp.sig_del(1e2, 0, **cosmo))
-     deltaSqr = 3.12e-09
-     Input     sigma_8 = 0.9
-     Numerical sigma_8 = 0.9
-         sigma_8 error = 1.49e-05
     >>> print round(fc, 4)
     0.8571
     

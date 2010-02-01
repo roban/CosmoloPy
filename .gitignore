@@ -1,4 +1,5 @@
 *~
+.coverage
 *.pyc
 cosmolopy/EH/power.o
 cosmolopy/EH/power.py*
