@@ -16,7 +16,8 @@ def test_age():
     cosmo['omega_M_0'] = numpy.array([[0.99],[0.01],[0.3]])
     cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
     cosmo['h'] = 0.7
-    
+    cd.set_omega_k_0(cosmo)
+
     linestyle = ['-', ':', '--']
 
     gyr = 1e9 * cc.yr_s

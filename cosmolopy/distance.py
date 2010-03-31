@@ -53,10 +53,8 @@ def e_z(z, **cosmo):
 
     """
 
-    omega_k = get_omega_k_0(**cosmo)
-
     return (cosmo['omega_M_0'] * (1+z)**3. + 
-            omega_k * (1+z)**2. + 
+            cosmo['omega_k_0'] * (1+z)**2. + 
             cosmo['omega_lambda_0'])**0.5
 
 def hubble_z(z, **cosmo):
@@ -87,11 +85,16 @@ def hubble_distance_z(z, **cosmo):
     return cc.c_light_Mpc_s / (H_0 * e_z(z, **cosmo))
 
 def _comoving_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
-    return hubble_distance_z(z, 
-                             omega_M_0=omega_M_0, 
-                             omega_lambda_0=omega_lambda_0, 
-                             omega_k_0=omega_k_0,
-                             h=h)
+
+    e_z = (omega_M_0 * (1+z)**3. + 
+           omega_k_0 * (1+z)**2. + 
+           omega_lambda_0)**0.5
+    
+    H_0 = h * cc.H100_s
+    
+    H_z =  H_0 * e_z
+
+    return cc.c_light_Mpc_s / (H_z)
 
 def comoving_distance(z, z0 = 0, **cosmo):
     """Calculate the line-of-sight comoving distance (in Mpc) to redshift z.
@@ -120,7 +123,7 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     """
 
-    cosmo = set_omega_k_0(cosmo)
+    #cosmo = set_omega_k_0(cosmo)
 
     dc_func = \
         numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h: 
@@ -159,7 +162,9 @@ def comoving_distance_transverse(z, **cosmo):
 
     # We use atleast_1d to allow us to write code for arrays of omega
     # values.
-    omega_k_0 = numpy.atleast_1d(get_omega_k_0(**cosmo)) 
+    #omega_k_0 = numpy.atleast_1d(get_omega_k_0(**cosmo))
+    omega_k_0 = get_omega_k_0(**cosmo)
+    
 
     if numpy.all(omega_k_0 == 0.0):
         return d_c, d_c_err
@@ -231,11 +236,16 @@ def luminosity_distance(z, **cosmo):
 
 
 def _lookback_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
-    return 1./((1. + z) * hubble_z(z, 
-                                   omega_M_0=omega_M_0, 
-                                   omega_lambda_0=omega_lambda_0, 
-                                   omega_k_0=omega_k_0,
-                                   h=h))
+
+    e_z = (omega_M_0 * (1+z)**3. + 
+           omega_k_0 * (1+z)**2. + 
+           omega_lambda_0)**0.5
+
+    H_0 = h * cc.H100_s
+
+    H_z =  H_0 * e_z
+    
+    return 1./((1. + z) * H_z)
 
 def lookback_time(z, z0 = 0.0, **cosmo):
     """Calculate the lookback time (in s) to redshift z.
@@ -256,7 +266,7 @@ def lookback_time(z, z0 = 0.0, **cosmo):
 
     """
 
-    cosmo = set_omega_k_0(cosmo)
+    #cosmo = set_omega_k_0(cosmo)
 
     lt_func = \
         numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h: 
@@ -304,12 +314,32 @@ def age_flat(z, **cosmo):
 
     return t_z
 
-def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1, **cosmo):
+def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
+                       return_inverse=False,
+                       **cosmo):
     """Return an interpolation function that will give age as a funtion of z
+
+    If return_inverse is True, will also return a function giving z as
+    a function of age.
+
+    Returns
+    -------
+
+    agefunc, err_f, err_t
+
+    or
+    
+    agefunc, redfunc, err_f, err_t
+    
     """
     z = numpy.arange(zmin, zmax, zstep)
     ages, err_f, err_t = age(z, **cosmo)
-    return scipy.interpolate.interp1d(z, ages), err_f, err_t
+    agefunc = scipy.interpolate.interp1d(z, ages)
+    if return_inverse:
+        redfunc = scipy.interpolate.interp1d(ages[::-1], z[::-1])
+        return agefunc, redfunc, err_f, err_t
+    else:
+        return agefunc, err_f, err_t
 
 def quick_redshift_age_function(zmax = 20., zmin = 0., zstep = 0.1, **cosmo):
     """Return an interpolation function that will give z as a funtion of

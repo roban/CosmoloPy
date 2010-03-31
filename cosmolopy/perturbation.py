@@ -31,6 +31,9 @@ except ImportError:
 # Turn on printing of special function error messages.
 scipy.special.errprint(1)
 
+@numpy.vectorize
+def _vec_transfer_func(k):
+    return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
 def transfer_function_EH(k, **cosmology):
     """
     Calculate the transfer function as a function of wavenumber k.
@@ -64,7 +67,6 @@ def transfer_function_EH(k, **cosmology):
     and perturbation_installation.txt in this directory.
 
     """
-    k = numpy.atleast_1d(k)
     
     z_val=0
 
@@ -88,10 +90,9 @@ def transfer_function_EH(k, **cosmology):
     
     # Given a wavenumber in Mpc^-1, return the transfer function for
     # the cosmology held in the global variables.
-    pfunc = numpy.vectorize(lambda k: (power.TFmdm_onek_mpc(k), 
-                                       power.cvar.tf_cbnu))
-    transFunc = pfunc(k)
-    return transFunc
+    if numpy.isscalar(k):
+        return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
+    return _vec_transfer_func(k)
 
 def fgrowth(z, omega_M_0, unnormed=False):
     r"""Cosmological perturbation growth factor, normalized to 1 at z = 0.
@@ -233,6 +234,7 @@ def _sigmasq_r_scalar(r,
                               limit=10000)#, epsabs=1e-9, epsrel=1e-9)
     return 1.e10 * integral, 1.e10 * error
 
+_sigmasq_r_vec = numpy.vectorize(_sigmasq_r_scalar)
 def sigma_r(r, z, **cosmology):
     r"""RMS mass fluctuations of a sphere of radius r at redshift z.
 
@@ -274,16 +276,26 @@ def sigma_r(r, z, **cosmology):
     #Uses 'n', as well as (for transfer_function_EH), 'omega_M_0',
     #'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
 
-    sigma_0_func = numpy.vectorize(_sigmasq_r_scalar)
-    sigmasq_0, errorsq_0 = sigma_0_func(r,
-                                        cosmology['n'],
-                                        cosmology['deltaSqr'],
-                                        cosmology['omega_M_0'],
-                                        cosmology['omega_b_0'],
-                                        cosmology['omega_n_0'],
-                                        cosmology['N_nu'],
-                                        cosmology['omega_lambda_0'],
-                                        cosmology['h'],)
+    if numpy.isscalar(r):
+        sigmasq_0, errorsq_0 = _sigmasq_r_scalar(r,
+                                                 cosmology['n'],
+                                                 cosmology['deltaSqr'],
+                                                 cosmology['omega_M_0'],
+                                                 cosmology['omega_b_0'],
+                                                 cosmology['omega_n_0'],
+                                                 cosmology['N_nu'],
+                                                 cosmology['omega_lambda_0'],
+                                                 cosmology['h'],)
+    else:
+        sigmasq_0, errorsq_0 = _sigmasq_r_vec(r,
+                                              cosmology['n'],
+                                              cosmology['deltaSqr'],
+                                              cosmology['omega_M_0'],
+                                              cosmology['omega_b_0'],
+                                              cosmology['omega_n_0'],
+                                              cosmology['N_nu'],
+                                              cosmology['omega_lambda_0'],
+                                              cosmology['h'],)
     sigma = numpy.sqrt(sigmasq_0) * fg
 
     # Propagate the error on sigmasq_0 to sigma.

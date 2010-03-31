@@ -33,6 +33,7 @@ def test_GBL_tau_star():
     cosmo['h'] = 0.65
     cosmo['omega_b_0'] = 0.02 / cosmo['h']**2.
     cosmo['Y_He'] = 0.24
+    cd.set_omega_k_0(cosmo)
 
     tau_inst, tau_star = cr.optical_depth_instant(z, 
                                                   x_ionH=x_ionH, 
@@ -83,6 +84,7 @@ def test_GBL_tau_inst():
     cosmo['h'] = 0.65
     cosmo['omega_b_0'] = 0.02 / cosmo['h']**2.
     cosmo['Y_He'] = 0.24
+    cd.set_omega_k_0(cosmo)
 
     tau_inst = cr.optical_depth_instant(z, x_ionH=x_ionH, x_ionHe=x_ionHe, 
                                         **cosmo)

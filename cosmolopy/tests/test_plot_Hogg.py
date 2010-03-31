@@ -29,6 +29,7 @@ def test_figure1():
     cosmo['omega_M_0'] = numpy.array([[1.0],[0.05],[0.2]])
     cosmo['omega_lambda_0'] = numpy.array([[0.0],[0.0],[0.8]])
     cosmo['h'] = 0.5
+    cd.set_omega_k_0(cosmo)
     
     linestyle = ['-', ':', '--']
 
@@ -70,6 +71,7 @@ def test_figure2():
     cosmo['omega_M_0'] = numpy.array([[1.0],[0.05],[0.2]])
     cosmo['omega_lambda_0'] = numpy.array([[0.0],[0.0],[0.8]])
     cosmo['h'] = 0.5
+    cd.set_omega_k_0(cosmo)
     
     linestyle = ['-', ':', '--']
 
@@ -114,6 +116,7 @@ def test_figure3():
     cosmo['omega_M_0'] = numpy.array([[1.0],[0.05],[0.2]])
     cosmo['omega_lambda_0'] = numpy.array([[0.0],[0.0],[0.8]])
     cosmo['h'] = 0.5
+    cd.set_omega_k_0(cosmo)
     
     linestyle = ['-', ':', '--']
 
@@ -154,6 +157,7 @@ def test_figure6():
     cosmo['omega_M_0'] = numpy.array([[1.0],[0.05],[0.2]])
     cosmo['omega_lambda_0'] = numpy.array([[0.0],[0.0],[0.8]])
     cosmo['h'] = 0.5
+    cd.set_omega_k_0(cosmo)
     
     linestyle = ['-', ':', '--']
 
