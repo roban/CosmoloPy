@@ -456,7 +456,7 @@ def radius_to_mass(r, **cosmology):
     if 'rho_0' in cosmology:
         rho_0 = cosmology['rho_0']
     else:
-        rho_crit, rho_0 = cosmo_densities(**cosmology)
+        rho_crit, rho_0 = cden.cosmo_densities(**cosmology)
 
     mass = volume * rho_0
     return mass
@@ -515,7 +515,7 @@ def virial_temp(mass, z, mu=None, **cosmology):
         
     return temp
 
-def virial_mass(temp, z, **cosmology):
+def virial_mass(temp, z, mu=None, **cosmology):
     r"""Calculate the mass of a halo of the given Virial temperature.
 
     Uses equation 26 of Barkana & Loeb (2001PhR...349..125B), solved
@@ -562,11 +562,12 @@ def virial_mass(temp, z, **cosmology):
     10000.0
 
     """
-    t_crit = 1e4
-    mu = (temp < t_crit) * 1.22 + (temp >= t_crit) * 0.59
+    if mu is None:
+        t_crit = 1e4
+        mu = (temp < t_crit) * 1.22 + (temp >= t_crit) * 0.59
     
     divisor = virial_temp(1.0e8 / cosmology['h'], z, mu=mu, **cosmology)
-    return 1.0e8 * (temp/divisor)**(3.0/2.0) / cosmology['h'];
+    return 1.0e8 * (temp/divisor)**(3.0/2.0) / cosmology['h']
 
 def sig_del(temp_min, z, mass=None, passed_min_mass = False, **cosmology):
     """Convenience function to calculate collapse fraction inputs.
