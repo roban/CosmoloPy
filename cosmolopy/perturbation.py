@@ -29,7 +29,7 @@ except ImportError:
     print "Some functions will not work." 
 
 # Turn on printing of special function error messages.
-scipy.special.errprint(1)
+#scipy.special.errprint(1)
 
 @numpy.vectorize
 def _vec_transfer_func(k):
