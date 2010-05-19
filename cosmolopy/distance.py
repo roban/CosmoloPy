@@ -280,7 +280,7 @@ def lookback_time(z, z0 = 0.0, **cosmo):
                           )
     return t_look, err
 
-def age(z, **cosmo):
+def age(z, use_flat=True, **cosmo):
     """Calculate the age of the universe as seen at redshift z.
 
     Age at z is lookback time at z'->Infinity minus lookback time at z.
@@ -290,6 +290,8 @@ def age(z, **cosmo):
     Returns two error estimates: one for the full age of the universe,
     the other for the lookback time.
     """
+    if use_flat and get_omega_k_0(**cosmo) == 0:
+        return age_flat(z, **cosmo), float('nan'), float('nan')
     fullage, err_f = lookback_time(numpy.Inf, **cosmo)
     tl, err_t = lookback_time(z, **cosmo)
     age = fullage - tl
