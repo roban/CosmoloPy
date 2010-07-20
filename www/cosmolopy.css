@@ -1,15 +1,15 @@
 body {
-       background-color: #FFFFF3;    
-       font-family: "serif"; 
+       background-color: #FFFFFF;    
+       font-family: "Veradana,sans-serif";
        color: #000000;
        }
 h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; 
      font-family: "sans-serif"; }
 h2 { font-size: 1.1em; color: #AA0000; 
      font-family: "sans-serif"; }
-h3 { text-align: center; color: #AA0000
+h3 { font-size: 1.0em; color: #AA0000; 
      font-family: "sans-serif"; }
-a { color: #0000AA; 
+a { color: #5050AA; 
     text-decoration:none 
     }
 a:hover { text-decoration:underline }
@@ -22,7 +22,7 @@ ul{ max-width: 90ex }
              max-width:150ex;
              margin: 0 5%;
              }
-.description { font-size: 1.0em; margin-bottom: 0.5em; margin-top: 0;}
+.description { font-size: 1.1em; margin-bottom: 0.5em; margin-top: 0;}
 .fig { float: right; margin: 10px}
 .news { float: right; margin: 0 10px; min-width:244px;
         padding: 0; text-align: center; min-height:8em}
