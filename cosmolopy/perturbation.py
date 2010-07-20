@@ -569,6 +569,28 @@ def virial_mass(temp, z, mu=None, **cosmology):
     divisor = virial_temp(1.0e8 / cosmology['h'], z, mu=mu, **cosmology)
     return 1.0e8 * (temp/divisor)**(3.0/2.0) / cosmology['h']
 
+def virial_temp_HB(mass, z):
+    """Virial temperature from halo mass according to Haiman & Bryan
+    (2006ApJ...650....7).
+
+    z is the redshift.
+
+    Units are Msun and kelvin.
+
+    """
+    return 1800. * (mass/1e6)**(2./3.) * (1.+z)/21
+
+def virial_mass_HB(temp, z):
+    """Halo mass from Virial temperature according to Haiman & Bryan
+    (2006ApJ...650....7).
+
+    z is the redshift.
+
+    Units are Msun and kelvin.
+
+    """
+    return 1e6 * (21. * temp / (1800 * (1+z)))**(3./2.)
+
 def sig_del(temp_min, z, mass=None, passed_min_mass = False, **cosmology):
     """Convenience function to calculate collapse fraction inputs.
 

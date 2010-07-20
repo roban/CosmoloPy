@@ -16,7 +16,7 @@ import cosmolopy.reionization as cr
 import cosmolopy.constants as cc
 import cosmolopy.parameters as cparam
 
-import test_utils as tu
+import testingutils as tu
 
 def test_plot_FZH():
     """Plot figure 3 from FZH (2004ApJ...613....1F) (no quantitative tests).

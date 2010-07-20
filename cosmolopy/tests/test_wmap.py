@@ -19,7 +19,7 @@ import cosmolopy.constants as cc
 import cosmolopy.parameters as cparam
 #import parameters as cparam
 
-import test_utils as tu
+import testingutils as tu
 
 def test_tau_instant():
     """Check the optical depth we get using the WMAP z_reion. 

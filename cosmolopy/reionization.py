@@ -10,6 +10,7 @@ import perturbation as cp
 import distance as cd
 import constants as cc
 import density as cden
+import utils as cu
 
 def delta_lambda_delta_dl(z, delta_dl, **cosmo):
     """Calculate Lyman-alpha wavelength shift given light-travel distance.
@@ -160,7 +161,40 @@ def clumping_factor_BKP(z):
     """
     return numpy.sqrt(26.2917 * numpy.exp(-0.1822 * z + 0.003505 * z**2.))
 
-def _udot(u, t, coeff_rec_func, redshift_func, ion_func):
+def clumping_factor_HB(z, beta=2):
+    """Clumping factor as a function of redshift used by Haiman & Bryan (2006).
+
+    See Haiman & Bryan (2006ApJ...650....7H).
+    """
+    return 1 + 9 * ((1 + z)/7)**(-beta)
+
+def clumping_factor_Chary(z):
+    """Clumping factor as a function of redshift estimated from Chary (2008)
+
+    Chary, R.-R. 2008, ApJ, 680, 32 (2008ApJ...680...32C) shows a nice
+    plot (Figure 2a) of clumping factor for neutral and ionized gas
+    with and without halos included and adopts the clumping factor for
+    ionized gas without source halos (but with other halos), which
+    rises (apparently, from the graph) as a constant powerlaw from ~2
+    and z=15 to 6 at z=8, steepens to reach 8 at z=7, and ~17 at
+    z=5.
+
+    This function returns the values of a piecewise powerlaw (as a
+    function of redshift) interpolated/extrapolated through those
+    points.
+    """
+    _zclumpChary = numpy.array([15, 8, 7, 5])
+    _clumpChary = numpy.array([2, 6, 8, 17])
+    _logclumpChary = numpy.log10(_clumpChary)
+    _logczfunc = utils.Extrapolate1d(_zclumpChary, _logclumpChary,
+                                     bounds_behavior=['extrapolate',
+                                                      'extrapolate'],
+                                     slopes=[None, None],
+                                     npoints = [2, 2])
+    
+    return 10.0**_logczfunc(z)
+
+def _udot(u, t, coeff_rec_func, redshift_func, ion_func, bubble=True):
     """du/dt where u = x - f_* f_esc,gamma N_gamma F
     
     Parameters:
@@ -174,17 +208,22 @@ def _udot(u, t, coeff_rec_func, redshift_func, ion_func):
     
     ion_func: function returing ionized fraction neglecting recombinations
 
-    coeff_rec_func: function returning clumping_factor^2 alpha_B n_H_0 (1+z)^3
+    coeff_rec_func: function returning clumping_factor alpha_B n_H_0 (1+z)^3
+
+    bubble: If True, assume ionized gas is in fully-ionized bubbles
+            and other gas is fully neutral. If False, asssume gas is
+            uniformly fractionally ionized.
 
     Notes:
     -----
 
-    This is implemented as a reformulation of the ODE described in
-    Bagla, Kulkarni & Padmanabhan (2009MNRAS.397..971B).
+    This is implemented as a reformulation of the normal ODE
+    describing ionization and recombination (see, e.g. Bagla, Kulkarni
+    & Padmanabhan (2009MNRAS.397..971B).
 
     The original ODE is:
 
-    dx/dt = -alpha_B C^2 n_H x + f_* f_esc,gamma N_gamma dF/dt
+    dx/dt = -alpha_B C n_H x + f_* f_esc,gamma N_gamma dF/dt
 
     If we let u = x - w, where w = f_* f_esc,gamma N_gamma F(t) then
 
@@ -192,7 +231,7 @@ def _udot(u, t, coeff_rec_func, redshift_func, ion_func):
 
     which gives
 
-    du/dt = -alpha_B C^2 n_H x = -alpha_B C^2 n_H (u + w)
+    du/dt = -alpha_B C n_H x = -alpha_B C n_H (u + w)
 
     We have an analytical expression for w, so we can numerically
     integrate the ODE to give us u(t) or x(t) = u(t) + w(t).
@@ -206,23 +245,159 @@ def _udot(u, t, coeff_rec_func, redshift_func, ion_func):
     #                             **cosmo)
 
     x = u + w
-    x = x * (x <= 1.) + 1.0 * (x > 1.) 
-    udot = -1. * crf * x
+    x = x * (x <= 1.) + 1.0 * (x > 1.)
+    if bubble:
+        udot = -1. * crf * x
+    else:
+        udot = -1. * crf * x**2
     #if (abs(round(z,1) - z) < 0.01):
     if (False):
         print ("z=%.3f; t=%.1g; c=%.2g; udot=%.2g; w,x,u = %.2g, %.2g, %.2g" % 
                (z, t, crf, udot, w, x, u))
     return udot
 
-def integrate_ionization_recomb(z, coeff_ion,
-                                temp_min = 1e4,
-                                passed_min_mass = False,
-                                temp_gas=1e4, 
-                                alpha_B=None,
-                                clump_fact_func = clumping_factor_BKP,
-                                **cosmo):  
+def integrate_ion_recomb(z,
+                         ion_func,
+                         clump_fact_func,
+                         xHe=1.0,
+                         temp_gas=1e4, 
+                         alpha_B=None,
+                         bubble=True,
+                         **cosmo):  
 
-    """Integrate an ODE describing IGM ionization and recombination
+    """Integrate IGM ionization and recombination rates.
+
+    Given an arbitrary function describing the ionizing emissivity
+    density, integrates an ODE describing IGM ionization and
+    recombination rates.
+
+    See, e.g. Bagla, Kulkarni & Padmanabhan (hereafter BKP,
+    2009MNRAS.397..971B).
+
+    Parameters:
+    ----------
+
+    z: array 
+
+       The redshift values at which to calculate the ionized
+       fraction. This array should be in reverse numerical order. The
+       first redshift specified should be early enough that the
+       universe is still completely neutral.
+
+    ion_func: 
+
+       A function giving the ratio of the total density of emitted
+       ionizing photons to the density hydrogen atoms (or hydrogen
+       plus helium, if you prefer) as a function of redshift.
+
+    temp_gas: 
+
+       Gas temperature used to calculate the recombination coefficient
+       if alpha_b is not specified.
+
+    alpha_B:
+
+       Optional recombination coefficient in units of cm^3
+       s^-1. In alpha_B=None, it is calculated from temp_gas.
+
+    clump_fact_func: function
+
+      Function returning the clumping factor when given a redshift,
+      defined as <n_HII^2>/<n_HII>^2. 
+
+   **cosmo: dict
+
+      Dictionary specifying the cosmological parameters.
+
+    Notes:
+    -----
+
+    We only track recombination of hydrogen, but if xHe > 0, then the
+    density is boosted by the addition of xHe * nHe. This is
+    eqiuvalent to assuming the the ionized fraction of helium is
+    always proportional to the ionized fraction of hydrogen. If
+    xHe=1.0, then helium is singly ionized in the same proportion as
+    hydrogen. If xHe=2.0, then helium is fully ionized in the same
+    proportion as hydrogen.
+    
+    We assume, as is fairly standard (e.g. BKP), that the ionized
+    fraction is contained in fully ionized bubbles surrounded by a
+    fully neutral IGM. The output is therefore the volume filling
+    factor of ionized regions, not the ionized fraction of a
+    uniformly-ionized IGM.
+
+    I have also made the standard assumption that all ionized photons
+    are immediately absorbed, which allows the two differential
+    equations (one for ionization-recombination and one for
+    emission-photoionizaion) to be combined into a single ODE. BKP say
+    that this induces less than 5% error in the final value of the
+    electron-scattering optical depth.
+
+    I believe there is an extraneous factor of m_p in the second term
+    of BKP equation 6, unless I am misunderstanding the definition of
+    their variables. I have left it out.
+
+    """
+
+    # Determine recombination coefficient.
+    if alpha_B is None:
+        alpha_B_cm = cr.recomb_rate_coeff_HG(temp_gas, 'H', 'B')
+    else:
+        alpha_B_cm = alpha_B
+    alpha_B = alpha_B_cm * cc.Gyr_s / (cc.Mpc_cm**3.)
+    print ("Recombination rate alpha_B = %.4g (Mpc^3 Gyr^-1) = %.4g (cm^3 s^-1)" 
+           % (alpha_B, alpha_B_cm))
+
+    # Normalize power spectrum.
+    if 'deltaSqr' not in cosmo:
+        cosmo['deltaSqr'] = cp.norm_power(**cosmo)
+
+    # Calculate useful densities.
+    rho_crit, rho_0, n_He_0, n_H_0 = cden.baryon_densities(**cosmo)
+
+    # Boost density to approximately account for helium.
+    nn = (n_H_0 + xHe * n_He_0)
+
+    # Function used in the integration.
+    # Units: (Mpc^3 Gyr^-1) * Mpc^-3 = Gyr^-1
+    coeff_rec_func = lambda z1: (clump_fact_func(z1) * 
+                                 alpha_B * 
+                                 nn * (1.+z1)**3.)
+
+    # Generate a function that converts age of the universe to z.
+    red_func, rerr1, rerr2 = \
+        cd.quick_redshift_age_function(zmax = 1.1 * numpy.max(z), 
+                                       zmin = -0.0,
+                                       dz = 0.01,
+                                       **cosmo)
+
+    ref_func_Gyr = lambda t1: red_func(t1 * cc.Gyr_s)
+
+    # Convert specified redshifts to cosmic time (age of the universe).
+    t = cd.age(z, **cosmo)[0]/cc.Gyr_s
+
+    # Integrate to find u(z) = x(z) - w(z), where w is the ionization fraction 
+    u = si.odeint(_udot, y0=0.0, t=t,
+                  args=(coeff_rec_func, ref_func_Gyr, ion_func, bubble))
+    u = u.flatten()
+
+    w = ion_func(z)
+    x = u + w
+    #x[x > 1.0] = 1.0
+    return x, w, t
+
+def integrate_ion_recomb_collapse(z, coeff_ion,
+                                  temp_min = 1e4,
+                                  passed_min_mass = False,
+                                  temp_gas=1e4, 
+                                  alpha_B=None,
+                                  clump_fact_func = clumping_factor_BKP,
+                                  **cosmo):  
+
+    """IGM ionization state with recombinations from evolution of the
+    halo collapse fraction.
+
+    Integrates an ODE describing IGM ionization and recombination
     rates.
 
     See, e.g. Bagla, Kulkarni & Padmanabhan (hereafter BKP,
@@ -344,6 +519,69 @@ def integrate_ionization_recomb(z, coeff_ion,
     x = u + w
     x[x > 1.0] = 1.0
     return x, w, t
+
+def ionization_from_luminosity(z, ratedensityfunc, xHe=1.0,
+                               rate_is_tfunc = False,
+                               ratedensityfunc_args = (),
+                               method = 'romberg',
+                               **cosmo):
+    """Integrate the ionization history given an ionizing luminosity
+    function, ignoring recombinations.
+
+    Parameters
+    ----------
+    
+    ratedensityfunc: callable
+        function giving comoving ionizing photon emission rate
+        density, or ionizing emissivity (photons s^-1 Mpc^-3) as a
+        function of redshift (or time).
+
+    rate_is_tfunc: boolean
+        Set to true if ratedensityfunc is a function of time rather than z.
+
+    Notes
+    -----
+
+    Ignores recombinations.
+
+    The ionization rate is computed as ratedensity / nn, where nn = nH
+    + xHe * nHe. So if xHe is 1.0, we are assuming that helium becomes
+    singly ionized at proportionally the same rate as hydrogen. If xHe
+    is 2.0, we are assuming helium becomes fully ionizing at
+    proportionally the same rate as hydrogen.
+
+    The returened x is therefore the ionized fraction of hydrogen, and
+    the ionized fraction of helium is xHe * x.
+
+    """
+
+    cosmo = cd.set_omega_k_0(cosmo)
+    rhoc, rho0, nHe, nH = cden.baryon_densities(**cosmo)
+    nn = (nH + xHe * nHe)
+    if rate_is_tfunc:
+        t = cd.age(z, **cosmo)[0]
+        def dx_dt(t1):
+            return numpy.nan_to_num(ratedensityfunc(t1, *ratedensityfunc_args) /
+                                    nn)
+        sorti = numpy.argsort(t)
+        x = numpy.empty(t.shape)
+        x[sorti] = utils.integrate_piecewise(dx_dt, t[sorti], method = method)
+        return x
+    else:
+        dt_dz = lambda z1: cd._lookback_integral(z1,
+                                                 cosmo['omega_M_0'],
+                                                 cosmo['omega_lambda_0'],
+                                                 cosmo['omega_k_0'],
+                                                 cosmo['h'])
+        def dx_dz(z1):
+            z1 = numpy.abs(z1)
+            return numpy.nan_to_num(dt_dz(z1) *
+                                    ratedensityfunc(z1, *ratedensityfunc_args) /
+                                    nn)
+        sorti = numpy.argsort(-z)
+        x = numpy.empty(z.shape)
+        x[sorti] = utils.integrate_piecewise(dx_dz, -z[sorti], method = method)
+        return x
  
 def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
     """Calculated optical depth due to electron scattering given a profile
@@ -524,3 +762,12 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=1.0, z_rHe = None,
     else:
         return tau
     
+def nDotRecMHR(z, clump_fact=1.0):
+    """Recombination rate density from Madau, Haardt, & Rees 1999.
+
+    Assumes hydrogen is fully ionized.
+    
+    Units are s^-1 coMpc^-3.
+
+    """
+    return 1e50 * clump_fact * ((1. + z)/7.)**3
