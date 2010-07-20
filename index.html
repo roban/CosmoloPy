@@ -32,7 +32,16 @@
     <div class="description">
       a cosmology package for Python.
     </div>
+
+<p>    
+<a href='#features'>Features</a> |  <a href='#download'>Download</a> |  <a
+href='#installation'>Installation</a> |  <a href='#usage'>Usage</a> |  <a
+href='#contribute'>Contribute</a> |  <a href='#status'>Status</a> |  <a
+href='#acknowledgment'>Acknowledgment</a> |  <a
+href='#authors'>Authors</a> |  <a href='#other'>Other Resources</a>
+</p>
     
+    <a name='features'></a>
     <h2>Features</h2>
     
     Current capabilities include calculation of
@@ -42,13 +51,121 @@
 	(<code>cosmolopy.distance</code>),
       </li>
       <li>the matter power spectrum and halo collapse fraction, using
-	Press-schechter perturbation theory
+	Press-Schechter perturbation theory
 	(<code>cosmolopy.perturbation</code>),</li>
       <li>simple reionization models and the electron Thompson
 	scattering optical depth due to reionization, for comparison
 	with WMAP tau (<code>cosmolopy.reionization</code>).</li>
     </ul>
+
+    <a name='download'></a>
+    <h2>Download</h2>
     
+    <h3>git clone</h3>
+    <p>You can clone the CosmoloPy project
+    with <a href="http://git-scm.com">Git</a> by running:
+
+      <pre>$ git clone git://github.com/roban/CosmoloPy</pre> 
+      or view the source code on
+      GitHub: <a href="http://github.com/roban/CosmoloPy"><code>roban/CosmoloPy</code></a>
+    </p>
+    
+    <h3>tar or zip bundle</h3>
+      You can download the package in either<br>
+      <b><a href="http://github.com/roban/CosmoloPy/zipball/master">zip</a></b> or<br>
+     <b><a href="http://github.com/roban/CosmoloPy/tarball/master">tar</a></b> format.<br>
+    </p>
+
+     <a name='installation'></a>
+    <h2>Installation</h2>
+    <p><ul>
+	<li>Download the package (see above).</li>
+	<li>Unpack it.</li>
+	<li>Run the installation program:</li>
+      </ul>
+<pre>
+python setup.py build
+python setup.py nosetests
+sudo python setup.py install
+</pre>
+    </p>
+
+    <a name='usage'></a>
+    <h2>Usage</h2>
+
+    <p>
+    Most functions are designed to take a cosmology parameters as
+    keywords. The easiest way to use CosmoloPy is to create a
+    dictionary of the cosmology parameters and pass it to each
+    function using the <code>**</code> syntax.
+</p>
+<pre>
+>>> import cosmolopy.distance as cd
+>>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
+>>> d_co, err = cd.comoving_distance(6., **cosmo)
+>>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
+Comoving distance to z=6 is 8017.8 Mpc
+</pre>
+
+<p>
+The cosmolopy package also defines some convenient shortcuts,
+including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so
+you can just do this:
+<pre>
+>>> from cosmolopy import *
+>>> d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
+>>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
+Angluar-diameter distance to z=6 is 1209.9 Mpc
+>>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+Light-travel distance to z=6 is 3922.9 Mpc
+</pre>
+
+<p>
+Calculate the mass of a halo with Virial temperature of 10^4 kelvin,
+then verify the Virial temperature for a halo of that mass:
+</p>
+
+<pre>
+>>> import cosmolopy.perturbation as cp
+>>> cosmo = {'omega_M_0' : 0.27, 
+... 'omega_lambda_0' : 1-0.27, 
+... 'omega_b_0' : 0.045, 
+... 'omega_n_0' : 0.0,
+... 'N_nu' : 0,
+... 'h' : 0.72,
+... 'n' : 1.0,
+... 'sigma_8' : 0.9
+... } 
+>>> mass = cp.virial_mass(1e4, 6.0, **cosmo)
+>>> temp = cp.virial_temp(mass, 6.0, **cosmo)
+>>> print "Mass = %.3g M_sun" % mass
+Mass = 1.68e+08 M_sun
+>>> print round(temp, 4)
+10000.0
+</pre>
+
+<p>Calculate the critical and matter densities:</p>
+
+<pre>
+>>> from cosmolopy import *
+>>> 'rho_crit=%.3g Msun/Mpc^3, rho_0=%.3g Msun/Mpc^3' % cden.cosmo_densities(**fidcosmo)
+'rho_crit=1.38e+11 Msun/Mpc^3, rho_0=3.75e+10 Msun/Mpc^3'
+</pre>
+
+</p>
+
+
+<p>
+Look in
+the <a href='http://github.com/roban/CosmoloPy/tree/master/cosmolopy/tests/'><code>tests/</code></a>
+and <a href='http://github.com/roban/CosmoloPy/tree/master/cosmolopy/examples/'><code>examples/</code></a>
+directories for more examples.
+    </p>
+
+    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a></div>
+    
+
+    <a name='contribute'></a>
     <h2>Contribute</h2>
     
     <p>
@@ -65,80 +182,26 @@
       place to introduce yourself and discuss the future of the package.
     </p>
     
+    <a name='status'></a>
     <h2>Status</h2>
     <p>
-      The API is still in flux (particularly the reionization routines),
-      but CosmoloPy should already be quite usable.
+      CosmoloPy is under active development, but is quite usable.
     </p>
 
     <p>
-      Please join the
-      <a href='http://groups.google.com/group/cosmolopy-devel'>developer
-	discussion group</a> if you are interested in using the code and
-      ask about the status of the routines you are interested in
-      using.</p>
+      Feel free to join the
+      <a href='http://groups.google.com/group/cosmolopy-devel'>discussion
+      group</a> and ask about the status of the routines you are
+      interested in using, if you are curious.</p>
 
-
-    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a></div>
-    
-    <a name='download'></a>
-    <h2>Download</h2>
-    
-    <p>You can clone the CosmoloPy project
-    with <a href="http://git-scm.com">Git</a> by running:
-
-      <pre>$ git clone git://github.com/roban/CosmoloPy</pre> 
-      
-      or download the package in either<br>
-      <b><a href="http://github.com/roban/CosmoloPy/zipball/master">zip</a></b> or<br>
-     <b><a href="http://github.com/roban/CosmoloPy/tarball/master">tar</a></b> format<br>
-      or view the source code on
-      GitHub: <a href="http://github.com/roban/CosmoloPy"><code>roban/CosmoloPy</code></a>.
-    </p>
-
-
-    <h2>Installation</h2>
-    <p><ul>
-	<li>Download the package (see above).</li>
-	<li>Unpack it.</li>
-	<li>Run the installation program:</li>
-      </ul>
-<pre>
-python setup.py build
-python setup.py nosetests
-sudo python setup.py install
-</pre>
-    </p>
-    
-    <h2>Usage</h2>
-
-    <p>
-    Most functions are designed to take a cosmology parameters as
-    keywords. The easiest way to use CosmoloPy is to create a
-    dictionary of the cosmology parameters and pass it to each
-    function using the <code>**</code> syntax.
-</p>
-<pre>
->>> import cosmolopy.distance as cd
->>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
->>> d_co, err = cd.comoving_distance(6., **cosmo)
->>> print "Comoving distance = %.1f Mpc" % (d_co)
-Comoving distance = 8017.8 Mpc
-</pre>
-<p>
-Look in
-the <a href='http://github.com/roban/CosmoloPy/tree/ffe282b08e8d61dc6fb7c1af3ba428b99f6da264/cosmolopy/tests'><code>tests/</code></a>
-and <a href='http://github.com/roban/CosmoloPy/tree/ffe282b08e8d61dc6fb7c1af3ba428b99f6da264/cosmolopy/examples'><code>examples/</code></a>
-directories for more examples.
-    </p>
-
+    <a name='acknowledgment'></a>
     <h2>Acknowledgment</h2>
       <p>If you use any of the routines that make use of power
 	spectrum calculations, please cite <br />
 	
 	<blockquote>
 	  Eisenstein, D. J., & Hu, W. 1999, ApJ, 511, 5
-	  [<a href='http://www.arxiv.org/abs/astro-ph/9710252'>astro-ph/9710252</a>]<br />
+	  [<a href='http://adsabs.harvard.edu/abs/1999ApJ...511....5E'>1999ApJ...511....5E</a>; <a href='http://www.arxiv.org/abs/astro-ph/9710252'>astro-ph/9710252</a>]<br />
 	</blockquote>
 
 	as the source of the matter power spectrum.
@@ -153,6 +216,7 @@ directories for more examples.
 	in work benefiting from CosmoloPy.
       </p>
 
+      <a name='authors'></a>
       <h2>Authors</h2>
 
       <p><a href='http://www.astro.columbia.edu/~roban/'>Roban Hultman
@@ -165,7 +229,7 @@ directories for more examples.
 	developer discussion group</a>.
       </p>
       
-    
+      <a name='other'></a>    
     <h2>Other resources</h2>
     Some <a href='others.html'>other Python cosmology software</a>.
     
