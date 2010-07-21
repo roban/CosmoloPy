@@ -1,6 +1,6 @@
 import numpy
 
-import cosmolopy.utils
+import cosmolopy.utils as utils
 from cosmolopy.luminosityfunction import BrokenPowerlawSED
 
 def test_BrokenPowerlawSED(plot=False):

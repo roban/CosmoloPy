@@ -1,7 +1,7 @@
 import numpy
 
-from utils import *
-from saveable import Saveable
+from cosmolopy.utils import *
+from cosmolopy.saveable import Saveable
 
 
 ######### Testing ############
@@ -105,6 +105,7 @@ def test_Extrapolate1d():
 
     assert numpy.all(numpy.abs((y1 - ytrue)[mask]) < 1e-10)
 
+    import pylab
     pylab.plot(x, y, 'o')
     pylab.plot(x1, y1, '-')
     pylab.plot(x1, ytrue, ':')

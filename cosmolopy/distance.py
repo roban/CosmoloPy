@@ -290,7 +290,7 @@ def age(z, use_flat=True, **cosmo):
     Returns two error estimates: one for the full age of the universe,
     the other for the lookback time.
     """
-    if use_flat and get_omega_k_0(**cosmo) == 0:
+    if use_flat and numpy.all(get_omega_k_0(**cosmo) == 0):
         return age_flat(z, **cosmo), float('nan'), float('nan')
     fullage, err_f = lookback_time(numpy.Inf, **cosmo)
     tl, err_t = lookback_time(z, **cosmo)

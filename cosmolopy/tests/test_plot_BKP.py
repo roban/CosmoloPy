@@ -55,11 +55,11 @@ def test_tau_BKP():
         print
         print names[i]
         # calculate ionized fraction, including recombinations
-        x_rec, w_rec, t = cr.integrate_ionization_recomb(z, f_ion,
-                                                         m_min,
-                                                         passed_min_mass=True,
-                                                         alpha_B=alpha_B,
-                                                         **cosmo)
+        x_rec, w_rec, t = cr.integrate_ion_recomb_collapse(z, f_ion,
+                                                           m_min,
+                                                           passed_min_mass=True,
+                                                           alpha_B=alpha_B,
+                                                           **cosmo)
         # calculate the optical depth in this scenario
         tau_z0 = cr.optical_depth_instant(z[-1],
                                           x_ionH=1.0,

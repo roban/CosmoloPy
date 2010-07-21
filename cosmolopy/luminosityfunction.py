@@ -11,10 +11,9 @@ import scipy.special
 import cosmolopy.distance as cd
 import cosmolopy.parameters as cp
 import cosmolopy.constants as cc
-import utils
-from saveable import Saveable
-import magnitudes
-import ionization
+import cosmolopy.utils as utils
+from cosmolopy.saveable import Saveable
+import cosmolopy.magnitudes as magnitudes
 
 def mass_from_sfr(sfr):
     """Use Labbe et al. (2009) relation between stellar mass and SFR.
@@ -181,7 +180,7 @@ def iPhotonRateDensity(schechterParams,
     See Also
     --------
 
-    ionization.BrokenPowerlawSED
+    BrokenPowerlawSED
 
     schechterTotLM
 
@@ -190,7 +189,7 @@ def iPhotonRateDensity(schechterParams,
         lum = schechterTotLM(**schechterParams)
     else:
         lum = schechterCumuLM(maglim, **schechterParams)
-    rQL = ionization.BrokenPowerlawSED(**sedParams).iPhotonRateRatio(wavelength)
+    rQL = BrokenPowerlawSED(**sedParams).iPhotonRateRatio(wavelength)
     return lum * rQL
 
 # From Bouwens et al. (2007)
@@ -322,7 +321,7 @@ class LFHistory(Saveable):
         print "alpha:",
         print self._alphafunc.extrap_string()
         
-        self._SED = ionization.BrokenPowerlawSED(**sedParams)
+        self._SED = BrokenPowerlawSED(**sedParams)
         self._rQL = self._SED.iPhotonRateRatio(wavelength)
 
         for name, func in globals().items():
@@ -363,12 +362,12 @@ class LFHistory(Saveable):
         return lum * self._rQL
 
     def ionization(self, z, maglim=None):
-        xH = ionization.ionization_from_luminosity(z,
-                                                   self._iPhotFunc,
-                                                   rate_is_tfunc =
-                                                   self.extrap_var == 't',
-                                                   ratedensityfunc_args=[maglim],
-                                                   **self.cosmo)
+        xH = cr.ionization_from_luminosity(z,
+                                           self._iPhotFunc,
+                                           rate_is_tfunc =
+                                           self.extrap_var == 't',
+                                           ratedensityfunc_args=[maglim],
+                                           **self.cosmo)
         return xH
 
     def params_t(self, t):
