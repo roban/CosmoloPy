@@ -69,7 +69,7 @@ def get_X_Y(**cosmo):
 def baryon_densities(**cosmo):
     """Hydrogen number density at z=0.
 
-    Parameters:
+    Parameters
     ----------
 
     **cosmo: cosmological parameters
@@ -78,7 +78,7 @@ def baryon_densities(**cosmo):
        needed by cosmo_densities.
        
 
-    Returns:
+    Returns
     -------
 
     rho_crit, rho_0, n_He_0, n_H_0

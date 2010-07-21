@@ -1,4 +1,4 @@
-"""CosmoloPy: A package of cosmology routines built on NumPy/SciPy.
+"""CosmoloPy is a package of cosmology routines built on NumPy/SciPy.
 
 Most functions in the modules of this package are designed to take
 cosmological parameters as keywords and will ignore any extraneous
@@ -7,7 +7,7 @@ parameters and pass it to any function.
 
 The parameters module supplies some convenient pre-defined parameter sets.
 
-Examples:
+Examples
 --------
 
 Calculate the mass of a halo with Virial temperature of 10^4 kelvin,
