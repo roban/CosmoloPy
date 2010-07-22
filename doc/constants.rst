@@ -1,4 +1,0 @@
-constants
-=========
-
-.. automodule:: cosmolopy.constants

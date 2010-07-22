@@ -15,7 +15,7 @@ def WMAP7_BAO_H0_mean(flat=False, extras=True):
     """WMAP7 + BAO + H_0 parameters from Komatsu et al.
     (arxiv:1001.4538v1)
 
-    Parameters:
+    Parameters
     ----------
     
     flat: boolean
@@ -51,7 +51,7 @@ def WMAP7_BAO_H0_mean(flat=False, extras=True):
 def WMAP7_ML(flat=False, extras=True):
     """WMAP7 ML parameters from Komatsu et al. (arxiv:1001.4538v1)
 
-    Parameters:
+    Parameters
     ----------
     
     flat: boolean
@@ -87,7 +87,7 @@ def WMAP7_ML(flat=False, extras=True):
 def WMAP5_BAO_SN_mean(flat=False, extras=True):
     """WMAP5 + BAO + SN parameters from Komatsu et al. (2009ApJS..180..330K).
 
-    Parameters:
+    Parameters
     ----------
     
     flat: boolean
@@ -100,7 +100,7 @@ def WMAP5_BAO_SN_mean(flat=False, extras=True):
       If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
-    Notes:
+    Notes
     -----
 
     From the abstract of the paper:
@@ -152,7 +152,7 @@ def WMAP5_ML(flat=False, extras=True):
     """WMAP5 parameters (using WMAP data alone) from Komatsu et
     al. (2009ApJS..180..330K).
 
-    Parameters:
+    Parameters
     ----------
     
     flat: boolean
@@ -165,7 +165,7 @@ def WMAP5_ML(flat=False, extras=True):
       If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
-    Notes:
+    Notes
     -----
 
     Values taken from "WMAP 5 Year ML" column of Table 1 of the paper.
@@ -194,7 +194,7 @@ def WMAP5_mean(flat=False, extras=True):
     """WMAP5 parameters (using WMAP data alone) from Komatsu et
     al. (2009ApJS..180..330K).
 
-    Parameters:
+    Parameters
     ----------
     
     flat: boolean
@@ -207,7 +207,7 @@ def WMAP5_mean(flat=False, extras=True):
       If True, sets neutrino number N_nu = 0, neutrino density
       omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
 
-    Notes:
+    Notes
     -----
 
     Values taken from "WMAP 5 Year Mean" of Table 1 of the paper.

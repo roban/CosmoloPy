@@ -32,7 +32,7 @@ def set_omega_k_0(cosmo):
     """Returns the cosmo dictionary with omega_k_0 set.
     See get_omega_k_0.
     
-    Note that cosmo is not passed as **cosmo for once. This function
+    Note that cosmo is not passed as \*\*cosmo for once. This function
     modifies the dictionary in place and returns the result.
 
     """
@@ -103,7 +103,7 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     Optionally calculate the integral from z0 to z.
 
-    Returns:
+    Returns
     -------
     
     d_co: ndarray
@@ -112,7 +112,7 @@ def comoving_distance(z, z0 = 0, **cosmo):
     err: ndarray
        Extimate of numerical integration error from scipy.integrate.quad.
 
-    Examples:
+    Examples
     --------
 
     >>> import cosmolopy.distance as cd
@@ -193,7 +193,7 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
     comoving_distance_transverse (see the docstring for that function
     for explanation of the error estimate).
 
-    Examples:
+    Examples
     --------
 
     >>> import cosmolopy.distance as cd
@@ -254,7 +254,7 @@ def lookback_time(z, z0 = 0.0, **cosmo):
 
     Optionally calculate the integral from z0 to z.
 
-    Returns:
+    Returns
     -------
 
     t_look: ndarray

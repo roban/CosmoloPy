@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy.perturbation</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cosmolopy-module.html">Package&nbsp;cosmolopy</a> ::
+        Module&nbsp;perturbation
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module perturbation</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html">source&nbsp;code</a></span></p>
+<p>Routines related to perturbation theory and the power spectrum.</p>
+<p>This module relies largely on code from:</p>
+<p>Eisenstein &amp; Hu (1999 ApJ 511 5)</p>
+<p><a class="rst-reference external" href="http://background.uchicago.edu/~whu/transfer/transferpage.html" target="_top">http://background.uchicago.edu/~whu/transfer/transferpage.html</a></p>
+<p>You need to download this code for many functions to work. See
+EH/installation.txt for installation instructions.</p>
+
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Functions</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#transfer_function_EH" class="summary-sig-name">transfer_function_EH</a>(<span class="summary-sig-arg">k</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate the transfer function as a function of wavenumber k.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#transfer_function_EH">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#fgrowth" class="summary-sig-name">fgrowth</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">omega_M_0</span>,
+        <span class="summary-sig-arg">unnormed</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Cosmological perturbation growth factor, normalized to 1 at z = 0.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#fgrowth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#w_tophat" class="summary-sig-name">w_tophat</a>(<span class="summary-sig-arg">k</span>,
+        <span class="summary-sig-arg">r</span>)</span><br />
+      Calculate the k-space Fourier transform of a spherical tophat.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#w_tophat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#sigma_r" class="summary-sig-name">sigma_r</a>(<span class="summary-sig-arg">r</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      RMS mass fluctuations of a sphere of radius r at redshift z.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sigma_r">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#norm_power" class="summary-sig-name">norm_power</a>(<span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Normalize the power spectrum to the specified sigma_8.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#norm_power">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#power_spectrum" class="summary-sig-name">power_spectrum</a>(<span class="summary-sig-arg">k</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculates the matter power spectrum P(k,z).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#power_spectrum">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#volume_radius_dmdr" class="summary-sig-name">volume_radius_dmdr</a>(<span class="summary-sig-arg">mass</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate volume, radius, and dm/dr for a sphere of the given mass.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#volume_radius_dmdr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#mass_to_radius" class="summary-sig-name">mass_to_radius</a>(<span class="summary-sig-arg">mass</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate the radius in Mpc of a sphere of the given mass.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#mass_to_radius">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#radius_to_mass" class="summary-sig-name">radius_to_mass</a>(<span class="summary-sig-arg">r</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate the mass of a sphere of radius r in Mpc.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#radius_to_mass">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#virial_temp" class="summary-sig-name">virial_temp</a>(<span class="summary-sig-arg">mass</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">mu</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate the Virial temperature for a halo of a given mass.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_temp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#virial_mass" class="summary-sig-name">virial_mass</a>(<span class="summary-sig-arg">temp</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">mu</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Calculate the mass of a halo of the given Virial temperature.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_mass">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#virial_temp_HB" class="summary-sig-name">virial_temp_HB</a>(<span class="summary-sig-arg">mass</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Virial temperature from halo mass according to Haiman &amp; Bryan
+(2006ApJ...650....7).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_temp_HB">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#virial_mass_HB" class="summary-sig-name">virial_mass_HB</a>(<span class="summary-sig-arg">temp</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Halo mass from Virial temperature according to Haiman &amp; Bryan
+(2006ApJ...650....7).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_mass_HB">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#sig_del" class="summary-sig-name">sig_del</a>(<span class="summary-sig-arg">temp_min</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">mass</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Convenience function to calculate collapse fraction inputs.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sig_del">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#collapse_fraction" class="summary-sig-name">collapse_fraction</a>(<span class="summary-sig-arg">sigma_min</span>,
+        <span class="summary-sig-arg">delta_crit</span>,
+        <span class="summary-sig-arg">sigma_mass</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">delta</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Fraction of mass contained in collapsed objects.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#collapse_fraction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Function Details</span></td>
+</tr>
+</table>
+<a name="transfer_function_EH"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">transfer_function_EH</span>(<span class="sig-arg">k</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#transfer_function_EH">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the transfer function as a function of wavenumber k.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>cosmology <span class="classifier-delimiter">:</span> <span class="rst-classifier">dict</span></dt>
+<dd>Specify the cosmological parameters with the keys 'omega_M_0',
+'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.</dd>
+<dt>k <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>Wavenumber in Mpc^-1.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<p>A tupple of arrays matching the shape of k, the first is the
+transfer function for CDM + Baryons, the second is for CDM +
+Baryons + Neutrinos.</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>Uses transfer function code from Eisenstein &amp; Hu (1999 ApJ 511 5)</p>
+<p>See power.c from</p>
+<p><a class="rst-reference external" href="http://background.uchicago.edu/~whu/transfer/transferpage.html" target="_top">http://background.uchicago.edu/~whu/transfer/transferpage.html</a></p>
+<p>and perturbation_installation.txt in this directory.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="fgrowth"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fgrowth</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">omega_M_0</span>,
+        <span class="sig-arg">unnormed</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#fgrowth">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Cosmological perturbation growth factor, normalized to 1 at z = 0.</p>
+<p>Approximate forumla from Carol, Press, &amp; Turner (1992, ARA&amp;A, 30,
+499), &quot;good to a few percent in regions of plausible Omega_M,
+Omega_Lambda&quot;.</p>
+<p>This is proportional to D_1(z) from Eisenstein &amp; Hu (1999 ApJ 511
+5) equation 10, but the normalization is different: fgrowth = 1 at
+z = 0 and <tt class="rst-docutils literal"><span class="pre">D_1(z)</span> <span class="pre">=</span> <span class="pre">\frac{1+z_\mathrm{eq}}{1+z}</span></tt> as z goes
+to infinity.</p>
+<p>To get D_1 one would just use</p>
+<pre class="rst-literal-block">
+D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
+</pre>
+<p>(see EHequation 1 for z_eq).</p>
+<pre class="rst-literal-block">
+\mathtt{fgrowth} = \frac{D_1(z)}{D_1(0)}
+</pre>
+<p>Setting unnormed to true turns off normalization.</p>
+<p>Note: assumes Omega_lambda_0 = 1 - Omega_M_0!</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="w_tophat"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">w_tophat</span>(<span class="sig-arg">k</span>,
+        <span class="sig-arg">r</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#w_tophat">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the k-space Fourier transform of a spherical tophat.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>k: array</dt>
+<dd>wavenumber</dd>
+<dt>r: array</dt>
+<dd>radius of the 3-D spherical tophat</dd>
+</dl>
+<p>Note: k and r need to be in the same units.</p>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt><tt class="rst-docutils literal"><span class="pre">\tilde{w}</span></tt>: array</dt>
+<dd>the value of the transformed function at wavenumber k.</dd>
+</dl>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sigma_r"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sigma_r</span>(<span class="sig-arg">r</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sigma_r">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>RMS mass fluctuations of a sphere of radius r at redshift z.</p>
+<p>Returns sigma and the error on sigma.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>r <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>radius of sphere in Mpc</dd>
+<dt>z <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>redshift</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt>sigma:</dt>
+<dd>RMS mass fluctuations of a sphere of radius r at redshift z.</dd>
+<dt>error:</dt>
+<dd>An estimate of the numerical error on the calculated value of sigma.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<pre class="rst-literal-block">
+\sigma(R,z) = \sqrt{\int_0^\infty \frac{k^2}{2 \pi^2}~P(k, z)~
+\tilde{w}_k^2(k, R)~dk} = \sigma(R,0) \left(\frac{D_1(z)}{D_1(0)}\right)
+</pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="norm_power"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">norm_power</span>(<span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#norm_power">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Normalize the power spectrum to the specified sigma_8.</p>
+<p>Returns the factor deltaSqr.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="power_spectrum"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">power_spectrum</span>(<span class="sig-arg">k</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#power_spectrum">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculates the matter power spectrum P(k,z).</p>
+<p>Uses equation 25 of Eisenstein &amp; Hu (1999 ApJ 511 5).</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<p>k should be in Mpc^-1</p>
+</div>
+<div class="rst-section" id="rst-cosmological-parameters">
+<h1 class="heading">Cosmological Parameters</h1>
+<p>Uses 'n', and either 'sigma_8' or 'deltaSqr', as well as, for
+transfer_function_EH, 'omega_M_0', 'omega_b_0', 'omega_n_0',
+'N_nu', 'omega_lambda_0', and 'h'.</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<pre class="rst-literal-block">
+P(k,z) = \delta^2 \frac{2 \pi^2}{k^3} \left(\frac{c k}{h
+H_{100}}\right)^{3+n} \left(T(k,z) \frac{D_1(z)}{D_1(0)}\right)^2
+</pre>
+<p>Using the non-dependence of the transfer function on redshift, we can
+rewrite this as</p>
+<pre class="rst-literal-block">
+P(k,z) = P(k,0) \left( \frac{D_1(z)}{D_1(0)} \right)^2
+</pre>
+<p>which is used by sigma_r to the z-dependence out of the integral.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="volume_radius_dmdr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">volume_radius_dmdr</span>(<span class="sig-arg">mass</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#volume_radius_dmdr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate volume, radius, and dm/dr for a sphere of the given mass.</p>
+<p>Uses the mean density of the universe.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>mass: array</dt>
+<dd>mass of the sphere in Solar Masses, M_sun.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<p>volume in Mpc^3
+radius in Mpc
+dmdr in Msun / Mpc</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="mass_to_radius"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">mass_to_radius</span>(<span class="sig-arg">mass</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#mass_to_radius">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the radius in Mpc of a sphere of the given mass.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<p>mass in Msun</p>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<p>radius in Mpc</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>This is a convenience function that calls volume_radius_dmdr and
+returns only the radius.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="radius_to_mass"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">radius_to_mass</span>(<span class="sig-arg">r</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#radius_to_mass">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the mass of a sphere of radius r in Mpc.</p>
+<p>Uses the mean density of the universe.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="virial_temp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">virial_temp</span>(<span class="sig-arg">mass</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">mu</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_temp">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the Virial temperature for a halo of a given mass.</p>
+<p>Calculate the Virial temperature in Kelvin for a halo of a given
+mass using equation 26 of Barkana &amp; Loeb.</p>
+<p>The transition from neutral to ionized is assumed to occur at temp
+= 1e4K. At temp &gt;= 10^4 k, the mean partical mass drops from 1.22
+to 0.59 to very roughly account for collisional ionization.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>mass: array</dt>
+<dd>Mass in Solar Mass units.</dd>
+<dt>z: array</dt>
+<dd>Redshift.</dd>
+<dt>mu: array, optional</dt>
+<dd>Mean mass per particle.</dd>
+</dl>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="virial_mass"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">virial_mass</span>(<span class="sig-arg">temp</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">mu</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_mass">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the mass of a halo of the given Virial temperature.</p>
+<p>Uses equation 26 of Barkana &amp; Loeb (2001PhR...349..125B), solved
+for T_vir as a function of mass.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>temp: array</dt>
+<dd>Virial temperature of the halo in Kelvin.</dd>
+<dt>z: array</dt>
+<dd>Redshift.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt>mass: array</dt>
+<dd>The mass of such a halo in Solar Masses.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>At temp &gt;= 10^4 k, the mean partical mass drops from 1.22 to 0.59
+to very roughly account for collisional ionization.</p>
+</div>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.27,
+<span class="py-more">... </span>         <span class="py-string">'omega_lambda_0'</span> : 1-0.27,
+<span class="py-more">... </span>         <span class="py-string">'omega_b_0'</span> : 0.045,
+<span class="py-more">... </span>         <span class="py-string">'omega_n_0'</span> : 0.0,
+<span class="py-more">... </span>         <span class="py-string">'N_nu'</span> : 0,
+<span class="py-more">... </span>         <span class="py-string">'h'</span> : 0.72,
+<span class="py-more">... </span>         <span class="py-string">'n'</span> : 1.0,
+<span class="py-more">... </span>         <span class="py-string">'sigma_8'</span> : 0.9
+<span class="py-more">... </span>         }
+<span class="py-prompt">&gt;&gt;&gt; </span>mass = virial_mass(1e4, 6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>temp = virial_temp(mass, 6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Mass = %.3g M_sun&quot;</span> % mass
+<span class="py-output">Mass = 1.68e+08 M_sun</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> round(temp, 4)
+<span class="py-output">10000.0</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="virial_temp_HB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">virial_temp_HB</span>(<span class="sig-arg">mass</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_temp_HB">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Virial temperature from halo mass according to Haiman &amp; Bryan
+(2006ApJ...650....7).</p>
+<p>z is the redshift.</p>
+<p>Units are Msun and kelvin.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="virial_mass_HB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">virial_mass_HB</span>(<span class="sig-arg">temp</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_mass_HB">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Halo mass from Virial temperature according to Haiman &amp; Bryan
+(2006ApJ...650....7).</p>
+<p>z is the redshift.</p>
+<p>Units are Msun and kelvin.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sig_del"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sig_del</span>(<span class="sig-arg">temp_min</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">mass</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">passed_min_mass</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sig_del">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convenience function to calculate collapse fraction inputs.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>temp_min:</dt>
+<dd>Minimum Virial temperature for a halo to be counted. Or minimum
+mass, if passed_min_mass is True.</dd>
+<dt>z:</dt>
+<dd>Redshift.</dd>
+<dt>mass: optional</dt>
+<dd>The mass of the region under consideration. Defaults to
+considering the entire universe.</dd>
+<dt>passed_min_mass: boolean</dt>
+<dd>Indicates that the first argument is actually the minimum mass,
+not the minimum Virial temperature.</dd>
+</dl>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="collapse_fraction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">collapse_fraction</span>(<span class="sig-arg">sigma_min</span>,
+        <span class="sig-arg">delta_crit</span>,
+        <span class="sig-arg">sigma_mass</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">delta</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#collapse_fraction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Fraction of mass contained in collapsed objects.</p>
+<p>Use sig_del to conveniently obtain sigma_min and delta_crit. See
+Examples velow.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>sigma_min:</dt>
+<dd>The standard deviatiation of density fluctuations on the scale
+corresponding to the minimum mass for a halo to be counted.</dd>
+<dt>delta_crit:</dt>
+<dd>The critical (over)density of collapse.</dd>
+<dt>sigma_mass:</dt>
+<dd>The standard deviation of density fluctuations on the scale
+corresponding to the mass of the region under
+consideration. Use zero to consider the entire universe.</dd>
+<dt>delta:</dt>
+<dd>The overdensity of the region under consideration. Zero
+corresponds to the mean density of the universe.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>The fraction of the mass in a region of mass m that has already
+collapsed into halos above mass m_min is:</p>
+<pre class="rst-literal-block">
+f_\mathrm{col} = \mathrm{erfc} \left[ \frac{\delta_c - \delta(m)}
+{ \sqrt {2 [\sigma^2(m_\mathrm{min}) - \sigma^2(m)]}} \right]
+</pre>
+<p>The answer isn't real if sigma_mass &gt; sigma_min.</p>
+<p>Note that there is a slight inconsistency in the mass used to
+calculate sigma in the above formula, since the region deviates
+from the average density.</p>
+</div>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> numpy
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> perturbation <span class="py-keyword">as</span> cp
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.27,
+<span class="py-more">... </span>         <span class="py-string">'omega_lambda_0'</span> : 1-0.27,
+<span class="py-more">... </span>         <span class="py-string">'omega_b_0'</span> : 0.045,
+<span class="py-more">... </span>         <span class="py-string">'omega_n_0'</span> : 0.0,
+<span class="py-more">... </span>         <span class="py-string">'N_nu'</span> : 0,
+<span class="py-more">... </span>         <span class="py-string">'h'</span> : 0.72,
+<span class="py-more">... </span>         <span class="py-string">'n'</span> : 1.0,
+<span class="py-more">... </span>         <span class="py-string">'sigma_8'</span> : 0.9
+<span class="py-more">... </span>         }
+<span class="py-prompt">&gt;&gt;&gt; </span>fc = cp.collapse_fraction(*cp.sig_del(1e4, 0, **cosmo))
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> round(fc, 4)
+<span class="py-output">0.7328</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>fc = cp.collapse_fraction(*cp.sig_del(1e2, 0, **cosmo))
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> round(fc, 4)
+<span class="py-output">0.8571</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 22 15:08:36 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

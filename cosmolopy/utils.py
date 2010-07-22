@@ -1,3 +1,5 @@
+"""Some utilities used by various CosmoloPy modules.
+"""
 import warnings
 import math
 import pickle
