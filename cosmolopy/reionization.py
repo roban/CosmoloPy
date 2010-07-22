@@ -29,11 +29,10 @@ def delta_lambda_delta_dl(z, delta_dl, **cosmo):
     wavelength0 = cc.lambda_Lya_0 * (1+z0)
     return wavelength, wavelength0, z, z0
 
-
 def recomb_rate_coeff_HG(temp, species, case):
     """Recombination rate coefficients for HII, HeII and HeIII.
 
-    Paramaters:
+    Parameters
     ----------
 
     temp is the temperature in K
@@ -42,7 +41,7 @@ def recomb_rate_coeff_HG(temp, species, case):
 
     case is 'A' or 'B'.
 
-    Notes:
+    Notes
     -----
     
     From Hui and Gnedin (1997MNRAS.292...27H).
@@ -103,7 +102,7 @@ def ionization_from_collapse(z, coeff_ion, temp_min, passed_min_mass = False,
     """Calculate the ionized fraction of the universe using
     perturbation theory.
 
-    Parameters:
+    Parameters
     ----------
 
     z: 
@@ -126,11 +125,11 @@ def ionization_from_collapse(z, coeff_ion, temp_min, passed_min_mass = False,
        Set this to True if you pass a minimum mass, False (default) if
        you pass a minimum Virial temperature.
 
-    **cosmo: dict
+    cosmo: dict
 
        Cosmological parameters.
 
-    Notes:
+    Notes
     -----
 
     See Furlanetto et al. (2004ApJ...613....1F).
@@ -197,7 +196,7 @@ def clumping_factor_Chary(z):
 def _udot(u, t, coeff_rec_func, redshift_func, ion_func, bubble=True):
     """du/dt where u = x - f_* f_esc,gamma N_gamma F
     
-    Parameters:
+    Parameters
     ----------
 
     u: integral of du/dt as defined below
@@ -214,7 +213,7 @@ def _udot(u, t, coeff_rec_func, redshift_func, ion_func, bubble=True):
             and other gas is fully neutral. If False, asssume gas is
             uniformly fractionally ionized.
 
-    Notes:
+    Notes
     -----
 
     This is implemented as a reformulation of the normal ODE
@@ -264,18 +263,9 @@ def integrate_ion_recomb(z,
                          alpha_B=None,
                          bubble=True,
                          **cosmo):  
-
-    """Integrate IGM ionization and recombination rates.
-
-    Given an arbitrary function describing the ionizing emissivity
-    density, integrates an ODE describing IGM ionization and
-    recombination rates.
-
-    See, e.g. Bagla, Kulkarni & Padmanabhan (hereafter BKP,
-    2009MNRAS.397..971B).
-
+    """Integrate IGM ionization and recombination given an ionization function.
+    
     Parameters:
-    ----------
 
     z: array 
 
@@ -305,12 +295,11 @@ def integrate_ion_recomb(z,
       Function returning the clumping factor when given a redshift,
       defined as <n_HII^2>/<n_HII>^2. 
 
-   **cosmo: dict
+   cosmo: dict
 
       Dictionary specifying the cosmological parameters.
 
     Notes:
-    -----
 
     We only track recombination of hydrogen, but if xHe > 0, then the
     density is boosted by the addition of xHe * nHe. This is
@@ -394,17 +383,9 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
                                   clump_fact_func = clumping_factor_BKP,
                                   **cosmo):  
 
-    """IGM ionization state with recombinations from evolution of the
-    halo collapse fraction.
-
-    Integrates an ODE describing IGM ionization and recombination
-    rates.
-
-    See, e.g. Bagla, Kulkarni & Padmanabhan (hereafter BKP,
-    2009MNRAS.397..971B).
-
-    Parameters:
-    ----------
+    """IGM ionization state with recombinations from halo collapse
+    fraction. Integrates an ODE describing IGM ionization and
+    recombination rates.
 
     z: array 
 
@@ -444,13 +425,10 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
 
       Function returning the clumping factor when given a redshift.
 
-   **cosmo: dict
+   cosmo: dict
 
       Dictionary specifying the cosmological parameters.
 
-    Notes:
-    -----
-    
     We assume, as is fairly standard (e.g. BKP), that the ionized
     fraction is contained in fully ionized bubbles surrounded by a
     fully neutral IGM. The output is therefore the volume filling
@@ -587,7 +565,7 @@ def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
     """Calculated optical depth due to electron scattering given a profile
     of the filling factor of ionized gas vs. redshift.
 
-    Parameters:
+    Parameters
     ----------
     
     x_ionH: array
@@ -603,17 +581,17 @@ def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
     z: array
        Redshift values at which the filling factor is specified.
 
-    **cosmo: cosmological parameters
+    cosmo: cosmological parameters
     
        uses: 'X_H' and/or 'Y_He', plus parameters needed for hubble_z
 
-    Returns:
+    Returns
     -------
 
     tau: array
        The optical depth as a function of z.
 
-    Notes:
+    Notes
     -----
 
     The precision of your result depends on the spacing of the input
@@ -665,8 +643,8 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=1.0, z_rHe = None,
 
     Calculates the optical depth due to Thompson scattering off free
     electrons in the IGM. 
-
-    Parameters:
+    
+    Parameters
     ----------
 
     z_r: 
@@ -690,9 +668,9 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=1.0, z_rHe = None,
       whether or not to return the value of tau_star, as defined by
       Griffiths et al. (arxiv:astro-ph/9812125v3)
 
-    **cosmo: cosmological parameters
+    cosmo: cosmological parameters
 
-    Returns:
+    Returns
     -------
 
     tau: array 
@@ -700,7 +678,7 @@ def optical_depth_instant(z_r, x_ionH=1.0, x_ionHe=1.0, z_rHe = None,
 
     tau_star: array or scalar
 
-    Notes:
+    Notes
     -----
 
     See, e.g. Griffiths et al. (arxiv:astro-ph/9812125v3, note that

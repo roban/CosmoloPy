@@ -38,7 +38,7 @@ def transfer_function_EH(k, **cosmology):
     """
     Calculate the transfer function as a function of wavenumber k.
 
-    Parameters:
+    Parameters
     ----------
 
     cosmology : dict 
@@ -48,14 +48,14 @@ def transfer_function_EH(k, **cosmology):
     k : array
        Wavenumber in Mpc^-1.
 
-    Returns:
+    Returns
     -------
 
     A tupple of arrays matching the shape of k, the first is the
     transfer function for CDM + Baryons, the second is for CDM +
     Baryons + Neutrinos.
 
-    Notes:
+    Notes
     -----
 
     Uses transfer function code from Eisenstein & Hu (1999 ApJ 511 5)
@@ -103,18 +103,18 @@ def fgrowth(z, omega_M_0, unnormed=False):
 
     This is proportional to D_1(z) from Eisenstein & Hu (1999 ApJ 511
     5) equation 10, but the normalization is different: fgrowth = 1 at
-    z = 0 and :math:`D_1(z) = \frac{1+z_\mathrm{eq}}{1+z}` as z goes
+    z = 0 and ``D_1(z) = \frac{1+z_\mathrm{eq}}{1+z}`` as z goes
     to infinity.
     
     To get D_1 one would just use 
     
-    .. math:
+    ::
     
         D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
 
     (see \EH\ equation 1 for z_eq).
 
-    .. math:
+    ::
     
         \mathtt{fgrowth} = \frac{D_1(z)}{D_1(0)}
 
@@ -141,7 +141,7 @@ def fgrowth(z, omega_M_0, unnormed=False):
 def w_tophat(k, r):
     r"""Calculate the k-space Fourier transform of a spherical tophat.
 
-    Parameters:
+    Parameters
     ----------
     
     k: array
@@ -152,11 +152,11 @@ def w_tophat(k, r):
 
     Note: k and r need to be in the same units.
 
-    Returns:
+    Returns
     -------
     
-    :math:`\tilde{w}`: array
-       the value of the transformed function at wavenumber k.
+    ``\tilde{w}``: array
+      the value of the transformed function at wavenumber k.
     
     """
     return (3. * ( numpy.sin(k * r) - k * r * numpy.cos(k * r) ) / 
@@ -197,7 +197,7 @@ def _sigmasq_r_scalar(r,
 
     Used internally by the sigma_r function.
 
-    Parameters:
+    Parameters
     ----------
     
     r : array
@@ -207,7 +207,7 @@ def _sigmasq_r_scalar(r,
        cosmological parameters, specified like this to allow this
        function to be vectorized (see source code of sigma_r).
 
-    Returns:
+    Returns
     -------
 
     sigma^2, error(sigma^2)
@@ -240,7 +240,7 @@ def sigma_r(r, z, **cosmology):
 
     Returns sigma and the error on sigma.
     
-    Parameters:
+    Parameters
     ----------
     
     r : array
@@ -249,7 +249,7 @@ def sigma_r(r, z, **cosmology):
     z : array
        redshift
 
-    Returns:
+    Returns
     -------
 
     sigma:
@@ -258,12 +258,12 @@ def sigma_r(r, z, **cosmology):
     error:
        An estimate of the numerical error on the calculated value of sigma.
 
-    Notes:
+    Notes
     -----
-    .. math:
+    ::
 
-    \sigma(R,z) = \sqrt{\int_0^\infty \frac{k^2}{2 \pi^2}~P(k, z)~
-    \tilde{w}_k^2(k, R)~dk} = \sigma(R,0) \left(\frac{D_1(z)}{D_1(0)}\right)
+      \sigma(R,z) = \sqrt{\int_0^\infty \frac{k^2}{2 \pi^2}~P(k, z)~
+      \tilde{w}_k^2(k, R)~dk} = \sigma(R,0) \left(\frac{D_1(z)}{D_1(0)}\right)
 
     """
     omega_M_0 = cosmology['omega_M_0']
@@ -333,12 +333,12 @@ def power_spectrum(k, z, **cosmology):
 
     Uses equation 25 of Eisenstein & Hu (1999 ApJ 511 5).
 
-    Parameters:
+    Parameters
     ----------
     
     k should be in Mpc^-1
 
-    Cosmological Parameters:
+    Cosmological Parameters
     -----------------------
     
     Uses 'n', and either 'sigma_8' or 'deltaSqr', as well as, for
@@ -346,20 +346,20 @@ def power_spectrum(k, z, **cosmology):
     'N_nu', 'omega_lambda_0', and 'h'.
     
 
-    Notes:
+    Notes
     -----
 
-    .. math:
+    ::
 
-    P(k,z) = \delta^2 \frac{2 \pi^2}{k^3} \left(\frac{c k}{h
-    H_{100}}\right)^{3+n} \left(T(k,z) \frac{D_1(z)}{D_1(0)}\right)^2
+      P(k,z) = \delta^2 \frac{2 \pi^2}{k^3} \left(\frac{c k}{h
+      H_{100}}\right)^{3+n} \left(T(k,z) \frac{D_1(z)}{D_1(0)}\right)^2
 
     Using the non-dependence of the transfer function on redshift, we can
     rewrite this as
 
-    .. math:
+    ::
 
-    P(k,z) = P(k,0) \left( \frac{D_1(z)}{D_1(0)} \right)^2
+      P(k,z) = P(k,0) \left( \frac{D_1(z)}{D_1(0)} \right)^2
 
     which is used by sigma_r to the z-dependence out of the integral. 
 
@@ -399,13 +399,13 @@ def volume_radius_dmdr(mass, **cosmology):
 
     Uses the mean density of the universe.
 
-    Parameters:
+    Parameters
     ----------
 
     mass: array
        mass of the sphere in Solar Masses, M_sun. 
 
-    Returns:
+    Returns
     -------
 
     volume in Mpc^3
@@ -425,17 +425,17 @@ def volume_radius_dmdr(mass, **cosmology):
 def mass_to_radius(mass, **cosmology):
     """Calculate the radius in Mpc of a sphere of the given mass.
 
-    Parameters:
+    Parameters
     -----------
     
     mass in Msun
 
-    Returns:
+    Returns
     -------
 
     radius in Mpc
 
-    Notes:
+    Notes
     -----
 
     This is a convenience function that calls volume_radius_dmdr and
@@ -472,7 +472,7 @@ def virial_temp(mass, z, mu=None, **cosmology):
     = 1e4K. At temp >= 10^4 k, the mean partical mass drops from 1.22
     to 0.59 to very roughly account for collisional ionization.
 
-    Parameters:
+    Parameters
     ----------
 
     mass: array
@@ -521,7 +521,7 @@ def virial_mass(temp, z, mu=None, **cosmology):
     Uses equation 26 of Barkana & Loeb (2001PhR...349..125B), solved
     for T_vir as a function of mass.
 
-    Parameters:
+    Parameters
     ----------
     
     temp: array
@@ -530,19 +530,19 @@ def virial_mass(temp, z, mu=None, **cosmology):
     z: array
        Redshift.
 
-    Returns:
+    Returns
     -------
     
     mass: array
        The mass of such a halo in Solar Masses.
 
-    Notes:
+    Notes
     -----
 
     At temp >= 10^4 k, the mean partical mass drops from 1.22 to 0.59
     to very roughly account for collisional ionization.
 
-    Examples:
+    Examples
     --------
 
     >>> cosmo = {'omega_M_0' : 0.27, 
@@ -594,7 +594,7 @@ def virial_mass_HB(temp, z):
 def sig_del(temp_min, z, mass=None, passed_min_mass = False, **cosmology):
     """Convenience function to calculate collapse fraction inputs.
 
-    Parameters:
+    Parameters
     ----------
 
     temp_min:
@@ -638,7 +638,7 @@ def collapse_fraction(sigma_min, delta_crit, sigma_mass=0, delta=0):
     Use sig_del to conveniently obtain sigma_min and delta_crit. See
     Examples velow.
 
-    Parameters:
+    Parameters
     ----------
 
     sigma_min: 
@@ -657,16 +657,16 @@ def collapse_fraction(sigma_min, delta_crit, sigma_mass=0, delta=0):
        The overdensity of the region under consideration. Zero
        corresponds to the mean density of the universe.
 
-    Notes:
+    Notes
     -----
 
     The fraction of the mass in a region of mass m that has already
     collapsed into halos above mass m_min is:
 
-    .. math:
+    ::
 
-    f_\mathrm{col} = \mathrm{erfc} \left[ \frac{\delta_c - \delta(m)}
-    { \sqrt {2 [\sigma^2(m_\mathrm{min}) - \sigma^2(m)]}} \right]
+      f_\mathrm{col} = \mathrm{erfc} \left[ \frac{\delta_c - \delta(m)}
+      { \sqrt {2 [\sigma^2(m_\mathrm{min}) - \sigma^2(m)]}} \right]
 
     
     The answer isn't real if sigma_mass > sigma_min.
@@ -675,8 +675,8 @@ def collapse_fraction(sigma_min, delta_crit, sigma_mass=0, delta=0):
     calculate sigma in the above formula, since the region deviates
     from the average density.
 
-    Examples:
-    -----
+    Examples
+    --------
 
     >>> import numpy
     >>> import perturbation as cp

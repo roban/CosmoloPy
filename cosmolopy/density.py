@@ -14,7 +14,7 @@ from distance import get_omega_k_0, set_omega_k_0
 def omega_M_z(z, **cosmo):
     """Matter density omega_M as a function of redshift z.
 
-    Notes:
+    Notes
     -----
 
     From Lahav et al. (1991, MNRAS 251, 128) equations 11b-c. This is
@@ -31,7 +31,7 @@ def omega_M_z(z, **cosmo):
 def cosmo_densities(**cosmo):
     """Calculate the critical and mean densities of the universe.
 
-    Returns:
+    Returns
     -------
     rho_crit and rho_0 in solar masses per cubic Megaparsec.
 
@@ -72,10 +72,10 @@ def baryon_densities(**cosmo):
     Parameters
     ----------
 
-    **cosmo: cosmological parameters
+    cosmo: cosmological parameters
 
-       parameters used: 'omega_b_0', 'X_H' and/or 'Y_He', plus those
-       needed by cosmo_densities.
+    parameters used: 'omega_b_0', 'X_H' and/or 'Y_He', plus those
+    needed by cosmo_densities.
        
 
     Returns

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy.luminosityfunction.BrokenPowerlawSED</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cosmolopy-module.html">Package&nbsp;cosmolopy</a> ::
+        <a href="cosmolopy.luminosityfunction-module.html">Module&nbsp;luminosityfunction</a> ::
+        Class&nbsp;BrokenPowerlawSED
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class BrokenPowerlawSED</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">BrokenPowerlawSED</strong>
+</pre>
+
+<hr />
+Define an SED with a break at 912 Angstroms and different
+slopes above and below the break.
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="lambdanu"></a><span class="summary-sig-name">lambdanu</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wavelength</span>)</span><br />
+      Convert between wavelength (Ang) and frequency (Hz) or vice-versa.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.lambdanu">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#luminosity_wavelength" class="summary-sig-name">luminosity_wavelength</a>(<span class="summary-sig-arg">wavelength0</span>,
+        <span class="summary-sig-arg">wavelength1</span>)</span><br />
+      Normalized luminosity in the defined band.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.luminosity_wavelength">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#photonRate_wavelength" class="summary-sig-name">photonRate_wavelength</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wavelength0</span>,
+        <span class="summary-sig-arg">wavelength1</span>)</span><br />
+      Normalized photon emission rate in the band between
+wavelength0 and wavelength1.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.photonRate_wavelength">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s_ion</span>=<span class="summary-sig-default">-3.0</span>,
+        <span class="summary-sig-arg">s_red</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">break_factor</span>=<span class="summary-sig-default">6.0</span>)</span><br />
+      Return a model SED for a galaxy.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#__call__" class="summary-sig-name">__call__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nu</span>)</span><br />
+      Calculate the spectrum at the given frequency/frequencies.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.__call__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#iPhotonRateRatio" class="summary-sig-name">iPhotonRateRatio</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">wavelength</span>=<span class="summary-sig-default">1500.0</span>)</span><br />
+      The ratio of ionizing photon emission rate to luminosity.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.iPhotonRateRatio">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="planck_erg_s"></a><span class="summary-name">planck_erg_s</span> = <code title="6.6260755e-27">6.6260755e-27</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="luminosity_wavelength"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">luminosity_wavelength</span>(<span class="sig-arg">wavelength0</span>,
+        <span class="sig-arg">wavelength1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.luminosity_wavelength">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Normalized luminosity in the defined band.</p>
+<p>wavelength0 and wavelength1 in Angstroms.</p>
+<p>This is the fraction of total luminosity in the band.
+Multiply the result by the total luminosity (energy per
+second) to get physical units.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="photonRate_wavelength"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">photonRate_wavelength</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wavelength0</span>,
+        <span class="sig-arg">wavelength1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.photonRate_wavelength">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Normalized photon emission rate in the band between
+wavelength0 and wavelength1.</p>
+<p>Units are erg^-1 (which could also be expressed as s^-1 per
+(erg/s)).</p>
+<p>Multiply the result by the total luminosity (in ergs per unit
+time), to get the actual photon emission rate.</p>
+<div class="rst-section" id="rst-example">
+<h1 class="heading">Example</h1>
+<p>To get the ionizing photon emission rate (per unit luminosity):
+&gt;&gt;&gt; BrokenPowerlawSED().photonRate(0., 912.)
+3272819078.0292048</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s_ion</span>=<span class="sig-default">-3.0</span>,
+        <span class="sig-arg">s_red</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">break_factor</span>=<span class="sig-default">6.0</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a model SED for a galaxy.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>s_ion:</dt>
+<dd>spectral index (f_nu ~ nu^s_ion) at lambda &lt; 912 Ang</dd>
+<dt>s_red:</dt>
+<dd>spectral index (f_nu ~ nu^s_red) at lambda &gt; 912 Ang</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>Bolton and Haehnelt (2007MNRAS.382..325B) use an SED with</p>
+<blockquote>
+<dl class="rst-docutils">
+<dt>eps_nu ~ v^0  for 912 &lt; lambda &lt; 3000 Ang.</dt>
+<dd>~ v^-3 for       labmda &lt; 912 Ang.</dd>
+</dl>
+</blockquote>
+<p>'with an additional break in the spectrum at the Lyman limit'</p>
+<blockquote>
+eps_L = eps(1500)/6</blockquote>
+</div>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__call__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__call__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">nu</span>)</span>
+    <br /><em class="fname">(Call operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.__call__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the spectrum at the given frequency/frequencies.</p>
+<p>Multiply by the total luminosity to get the luminosity per
+unit frequency.</p>
+<p>Units are (fraction of total luminosity) per Hz.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="iPhotonRateRatio"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">iPhotonRateRatio</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">wavelength</span>=<span class="sig-default">1500.0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.luminosityfunction-pysrc.html#BrokenPowerlawSED.iPhotonRateRatio">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The ratio of ionizing photon emission rate to luminosity.</p>
+<div class="rst-section" id="rst-paramters">
+<h1 class="heading">Paramters</h1>
+<dl class="rst-docutils">
+<dt>lambda:</dt>
+<dd>wavelength in Angstroms</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<p>The ratio of ionizing photon emission rate to luminosity at
+the given wavelength Q/L_nu(lambda) in units of photons s^-1
+(erg s^-1 Hz^-1)^-1.</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>While this function takes an argument in angstroms, the ratio
+is calculated using the luminosity per unit frequence, so as
+to be easily comensurate with luminosities inferred from AB
+magnitudes.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 22 15:08:36 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

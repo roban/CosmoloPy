@@ -1,4 +1,4 @@
-"""Calculation of the matter power spectrum transfer function.
+"""Eisenstein & Hu power spectrum transfer function (see `cosmolopy.perturbation`).
 
 This module is a python wrapper of code from:
 

@@ -7,11 +7,27 @@ parameters and pass it to any function.
 
 The parameters module supplies some convenient pre-defined parameter sets.
 
-Examples
---------
+Usage
+-----
 
-Calculate the mass of a halo with Virial temperature of 10^4 kelvin,
-then verify the Virial temperature for a halo of that mass.
+Most functions are designed to take a cosmology parameters as keywords. The easiest way to use CosmoloPy is to create a dictionary of the cosmology parameters and pass it to each function using the ** syntax.
+
+>>> import cosmolopy.distance as cd
+>>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
+>>> d_co, err = cd.comoving_distance(6., **cosmo)
+>>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
+Comoving distance to z=6 is 8017.8 Mpc
+
+The cosmolopy package also defines some convenient shortcuts, including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so you can just do this:
+
+>>> from cosmolopy import *
+>>> d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
+>>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
+Angluar-diameter distance to z=6 is 1209.9 Mpc
+>>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+Light-travel distance to z=6 is 3922.9 Mpc
+
+Calculate the mass of a halo with Virial temperature of 10^4 kelvin, then verify the Virial temperature for a halo of that mass:
 
 >>> import cosmolopy.perturbation as cp
 >>> cosmo = {'omega_M_0' : 0.27, 
@@ -30,11 +46,13 @@ Mass = 1.68e+08 M_sun
 >>> print round(temp, 4)
 10000.0
 
-Calculate the critical and matter densities.
+Calculate the critical and matter densities:
 
 >>> from cosmolopy import *
->>> 'rho_crit=%.3g Msun, rho_0=%.3g Msun' % cden.cosmo_densities(**fidcosmo)
-'rho_crit=1.38e+11 Msun, rho_0=3.75e+10 Msun'
+>>> 'rho_crit=%.3g Msun/Mpc^3, rho_0=%.3g Msun/Mpc^3' % cden.cosmo_densities(**fidcosmo)
+'rho_crit=1.38e+11 Msun/Mpc^3, rho_0=3.75e+10 Msun/Mpc^3'
+
+Look in the tests/ and examples/ directories for more examples. 
 
 """
 
