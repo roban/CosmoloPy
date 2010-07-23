@@ -10,7 +10,10 @@ The parameters module supplies some convenient pre-defined parameter sets.
 Usage
 -----
 
-Most functions are designed to take a cosmology parameters as keywords. The easiest way to use CosmoloPy is to create a dictionary of the cosmology parameters and pass it to each function using the ** syntax.
+Most functions are designed to take a cosmology parameters as
+keywords. The easiest way to use CosmoloPy is to create a dictionary
+of the cosmology parameters and pass it to each function using the **
+syntax.
 
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
@@ -18,16 +21,20 @@ Most functions are designed to take a cosmology parameters as keywords. The easi
 >>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
 Comoving distance to z=6 is 8017.8 Mpc
 
-The cosmolopy package also defines some convenient shortcuts, including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so you can just do this:
+The cosmolopy package also defines some convenient shortcuts,
+including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so
+you can just do this:
 
 >>> from cosmolopy import *
 >>> d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
 >>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
 Angluar-diameter distance to z=6 is 1209.9 Mpc
 >>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+>>> print "Light-travel distance to z=6 is %.1f Mpc" % (d_light)
 Light-travel distance to z=6 is 3922.9 Mpc
 
-Calculate the mass of a halo with Virial temperature of 10^4 kelvin, then verify the Virial temperature for a halo of that mass:
+Calculate the mass of a halo with Virial temperature of 10^4 kelvin,
+then verify the Virial temperature for a halo of that mass:
 
 >>> import cosmolopy.perturbation as cp
 >>> cosmo = {'omega_M_0' : 0.27, 

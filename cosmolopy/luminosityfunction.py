@@ -672,7 +672,7 @@ class BrokenPowerlawSED(object):
         -------
 
         To get the ionizing photon emission rate (per unit luminosity):
-        >>> BrokenPowerlawSED().photonRate(0., 912.)
+        >>> BrokenPowerlawSED().photonRate_wavelength(0., 912.)
         3272819078.0292048
         """
         return ((1./self.planck_erg_s) *

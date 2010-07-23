@@ -445,7 +445,7 @@ def integrate_piecewise(function, x, method='romberg', return_pieces=False,
                         **kwargs):
     """Integrate function and return the integral at a sequence of points.
 
-    Integration methods available are: quad, romberg.
+    Integration methods available are: quad, romberg. 
 
     Parameters
     ----------

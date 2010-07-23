@@ -117,6 +117,7 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     >>> import cosmolopy.distance as cd
     >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
+    >>> cosmo = cd.set_omega_k_0(cosmo)
     >>> d_co, err = cd.comoving_distance(6., **cosmo)
     >>> print "Comoving distance = %.1f Mpc" % (d_co)
     Comoving distance = 8017.8 Mpc
@@ -198,6 +199,7 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
 
     >>> import cosmolopy.distance as cd
     >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
+    >>> cosmo = cd.set_omega_k_0(cosmo)
     >>> d_a, err1, err2 = cd.angular_diameter_distance(6., **cosmo)
     >>> print "Angular diameter distance = %.1f Mpc" % (d_a)
     Angular diameter distance = 1145.4 Mpc

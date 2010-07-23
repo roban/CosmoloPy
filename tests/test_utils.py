@@ -30,26 +30,28 @@ def test_PiecewisePowerlaw(n=4, plot=False):
     y = pfunc(x)
 
     integral = pfunc.integrate(0, x)
-    numintegral = vecquad(pfunc, 0, x)[0]
+    numintegral = integrate_piecewise(pfunc, x, method='quad')
 
     integral2 = pfunc.integrate(x, x[-1])
-    numintegral2 = vecquad(pfunc, x, x[-1])[0]
+    numintegral2 = numintegral[-1] - numintegral
 
     # Weighted integral
     integral3 = pfunc.integrate(0, x, weight_power=1.5)
     weightedfunc = lambda x: (x**1.5) * pfunc(x)
-    numintegral3 = vecquad(weightedfunc, 0, x)[0]
+    numintegral3 = integrate_piecewise(weightedfunc, x, method='quad')
 
     if plot:
         import pylab
 
         pylab.subplot(221)
+        pylab.title('x vs. y')
         pylab.plot(x,y)
         pylab.xlim(min(x), max(x))
         for xlim in pfunc._limits.flat:
             pylab.axvline(x=xlim)
         
         pylab.subplot(223)
+        pylab.title('x vs. forward/reverse integral')
         pylab.plot(x, integral)
         pylab.plot(x, numintegral)
         pylab.plot(x, integral2)
@@ -58,11 +60,13 @@ def test_PiecewisePowerlaw(n=4, plot=False):
         pylab.xlim(min(x), max(x))
 
         pylab.subplot(222)
+        pylab.title('frac. diffs (num - ana)/ana')
         pylab.plot(x, (integral - numintegral)/integral)
         pylab.plot(x, (integral2 - numintegral2)/integral2)
         pylab.plot(x, (integral3 - numintegral3)/integral3)
 
         pylab.subplot(224)
+        pylab.title('weighted integrals')
         pylab.plot(x, integral3)
         pylab.plot(x, numintegral3)
         

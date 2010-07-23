@@ -1,27 +1,24 @@
-CosmoloPy [http://roban.github.com/CosmoloPy/]
+CosmoloPy 
+=========
 
-a cosmology package for Python. 
+a cosmology package for Python
 
-CosmoloPy is released under the MIT software liscense. (See the
-LISCENSE file.) 
+For documentation and installation instructions, see
+http://roban.github.com/CosmoloPy/
 
-Prerequisits:
+CosmoloPy is released under the MIT software liscense (see LISCENSE).
 
+Prerequisites
+------------
   Python
-
   NumPy
-
   SciPy
 
  For tests:
-
   nose
 
- For perturbation-theory-based routines (most of the perturbation and
- reionization modules):
-
+ For power spectrum calculation (needed for most of the perturbation module):
   python-dev 
-
   swig
 
 
