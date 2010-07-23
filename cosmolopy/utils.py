@@ -445,6 +445,12 @@ def integrate_piecewise(function, x, method='romberg', return_pieces=False,
                         **kwargs):
     """Integrate function and return the integral at a sequence of points.
 
+    Useful when you want to efficiently calculate a cumulative integral.
+
+    Also useful for piecewise-defined functions where discontinuities
+    or critical points cause quadrature routines to complain or become
+    inaccurate.
+
     Integration methods available are: quad, romberg. 
 
     Parameters
@@ -505,25 +511,23 @@ def integrate_piecewise(function, x, method='romberg', return_pieces=False,
     return integral
 
 @numpy.vectorize
-def vecquad(function, low, high, kwargs={}):
-    """Integrate a function from low to high.
-
-    Vectorized convenience function.
-    """
+def _vecquad(function, low, high, **kwargs):
     integral, error = scipy.integrate.quad(function, 
                                            low,
                                            high,
                                            **kwargs)
     return integral, error
 
-@numpy.vectorize
-def logquad(function, low, high, **kwargs):
-    """Integrate a function from low to high using a log transform.
-
-    The log transform is applied to the variable over which the
-    integration is being performed.
-    """
+def vecquad(function, low, high, **kwargs):
+    """Integrate a function from low to high (vectorized).
     
+    Vectorized convenience function.
+    
+    """
+    return _vecquad(function,low,high, **kwargs)
+
+@numpy.vectorize
+def _logquad(function, low, high, **kwargs):
     # Transform the function to log space.
     def func_dlnx (lnx):
         x = numpy.exp(lnx)
@@ -533,6 +537,15 @@ def logquad(function, low, high, **kwargs):
                                            math.log(high),
                                            **kwargs)
     return integral, error
+
+def logquad(function, low, high, **kwargs):
+    """Integrate a function from low to high using a log transform (vectorized).
+
+    The log transform is applied to the variable over which the
+    integration is being performed.
+    
+    """
+    return _logquad(function, low, high, **kwargs)
 
 class Normalize:
     """A decorator that normalizes a function.

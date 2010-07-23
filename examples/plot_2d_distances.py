@@ -15,47 +15,62 @@ def plot_DM(filename):
     """The dimensionless proper motion distance DM/DH. 
     """
 
+    # Set up an array of redshift values.
     dz = 0.1
-    z = numpy.arange(0., 5. + 1.1 * dz, dz)
+    z = numpy.arange(0., 10. + 1.1 * dz, dz)
 
+    # Set up a cosmology dictionary, with an array of matter density values.
     cosmo = {}
-    dom = 0.1
-    om = numpy.atleast_2d(numpy.arange(0.1,
-                                       1. + 1.1 * dom,
-                                       dom)).transpose()
+    dom = 0.01
+    om = numpy.atleast_2d(numpy.linspace(0.1, 1.0, (1.-0.1)/dom)).transpose()
     cosmo['omega_M_0'] = om
     cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
     cosmo['h'] = 0.701
-    
+    cosmo['omega_k_0'] = 0.0
+
+    # Calculate the hubble distance.
     dh = cd.hubble_distance_z(0, **cosmo)
+    # Calculate the comoving distance.
     dm, dm_err = cd.comoving_distance_transverse(z, **cosmo)
 
+    # Make plots.
     plot_dist(z, dz, om, dom, dm, dh, 'proper motion distance', r'D_M', 
+              filename)
+    plot_dist_ony(z, dz, om, dom, dm, dh, 'proper motion distance', r'D_M', 
               filename)
 
 def plot_DA(filename):
     """The dimensionless angular diameter distance DA/DH. 
     """
 
+    # Set up an array of redshift values.
     dz = 0.1
-    z = numpy.arange(0., 5. + dz, dz)
+    z = numpy.arange(0., 10. + dz, dz)
 
+    # Set up a cosmology dictionary, with an array of matter density values.
     cosmo = {}
-    dom = 0.05
-    om = numpy.atleast_2d(numpy.arange(0.1,
-                                       1. + dom,
-                                       dom)).transpose()
+    dom = 0.01
+    om = numpy.atleast_2d(numpy.linspace(0.1, 1.0, (1.-0.1)/dom)).transpose()
     cosmo['omega_M_0'] = om
     cosmo['omega_lambda_0'] = 1. - cosmo['omega_M_0']
     cosmo['h'] = 0.701
-    
+    cosmo['omega_k_0'] = 0.0
+
+    # Calculate the hubble distance.
     dh = cd.hubble_distance_z(0, **cosmo)
+    # Calculate the angular diameter distance.
     da, da_err1, da_err2 = cd.angular_diameter_distance(z, **cosmo)
 
+    # Make plots.
     plot_dist(z, dz, om, dom, da, dh, 'angular diameter distance', r'D_A',
               filename)
+    plot_dist_ony(z, dz, om, dom, da, dh, 'angular diameter distance', r'D_A',
+                  filename)
 
 def plot_dist(z, dz, om, dom, dist, dh, name, mathname, filename=None):
+    """Make a 2-D plot of a distance versus redshift (x) and matter density (y).
+    """
+    # Grid of redshift and matter density values.
     x, y = numpy.meshgrid(z, om)
     pylab.figure(figsize=(5.5,4.5))    
     pylab.imshow(dist/dh, 
@@ -81,6 +96,33 @@ def plot_dist(z, dz, om, dom, dist, dh, name, mathname, filename=None):
         prefix, extension = filename.split('.')
         pylab.savefig(prefix + '_' + mathname + '.' + extension,
                       bbox_inches="tight")
+
+
+def plot_dist_ony(z, dz, om, dom, dist, dh, name, mathname, filename=None):
+    """Make a 2-D plot of matter density versus redshift (x) and distance (y)
+    """
+
+
+    dist = dist/dh
+    z = z * numpy.ones(dist.shape)
+    om = om * numpy.ones(dist.shape)
+
+    pylab.figure(figsize=(5.5,4.5))    
+
+
+    pylab.contour(z, dist, om, 50)
+    cb = pylab.colorbar()
+    cb.ax.set_ylabel(r'$\Omega_M = 1 - \Omega_\lambda$')
+    
+    pylab.xlim(z.min(), z.max())
+    pylab.ylim(dist.min(), dist.max()) 
+    pylab.xlabel("redshift z")
+    pylab.ylabel(name + r': $'+mathname+'/D_H$')
+    pylab.title(name)
+    if filename is not None:
+        prefix, extension = filename.split('.')
+        pylab.savefig(prefix + '_' + mathname + '_ony.' + extension,
+                      bbox_inches="tight")        
 
 if __name__ == "__main__":
     if len(sys.argv)==1:

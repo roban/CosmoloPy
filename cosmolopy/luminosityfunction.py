@@ -1,4 +1,4 @@
-"""Routines related to galaxy luminosity functions.
+"""Routines related to galaxy luminosity functions (Schechter functions).
 
 """
 

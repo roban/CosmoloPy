@@ -142,6 +142,46 @@ Some utilities used by various CosmoloPy modules.
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.utils-module.html#vecquad" class="summary-sig-name">vecquad</a>(<span class="summary-sig-arg">function</span>,
+        <span class="summary-sig-arg">low</span>,
+        <span class="summary-sig-arg">high</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Integrate a function from low to high (vectorized).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.utils-pysrc.html#vecquad">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.utils-module.html#logquad" class="summary-sig-name">logquad</a>(<span class="summary-sig-arg">function</span>,
+        <span class="summary-sig-arg">low</span>,
+        <span class="summary-sig-arg">high</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Integrate a function from low to high using a log transform (vectorized).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.utils-pysrc.html#logquad">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
 <!-- ==================== VARIABLES ==================== -->
 <a name="section-Variables"></a>
@@ -151,20 +191,6 @@ Some utilities used by various CosmoloPy modules.
   <td align="left" colspan="2" class="table-header">
     <span class="table-header">Variables</span></td>
 </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="vecquad"></a><span class="summary-name">vecquad</span> = <code title="&lt;numpy.lib.function_base.vectorize object at 0xa33ffcc&gt;">&lt;numpy.lib.function_base.vectorize object at 0xa33ffcc&gt;</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="logquad"></a><span class="summary-name">logquad</span> = <code title="&lt;numpy.lib.function_base.vectorize object at 0xa34404c&gt;">&lt;numpy.lib.function_base.vectorize object at 0xa34404c&gt;</code>
-    </td>
-  </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
@@ -240,6 +266,10 @@ max, if max is specified.</p>
   </tr></table>
   
   <p>Integrate function and return the integral at a sequence of points.</p>
+<p>Useful when you want to efficiently calculate a cumulative integral.</p>
+<p>Also useful for piecewise-defined functions where discontinuities
+or critical points cause quadrature routines to complain or become
+inaccurate.</p>
 <p>Integration methods available are: quad, romberg.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
@@ -264,6 +294,53 @@ preceding segments.</dd>
 <dd>The value of the integral at each x. The first value is always zero.</dd>
 </dl>
 </div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="vecquad"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">vecquad</span>(<span class="sig-arg">function</span>,
+        <span class="sig-arg">low</span>,
+        <span class="sig-arg">high</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.utils-pysrc.html#vecquad">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Integrate a function from low to high (vectorized).</p>
+<p>Vectorized convenience function.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="logquad"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">logquad</span>(<span class="sig-arg">function</span>,
+        <span class="sig-arg">low</span>,
+        <span class="sig-arg">high</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.utils-pysrc.html#logquad">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Integrate a function from low to high using a log transform (vectorized).</p>
+<p>The log transform is applied to the variable over which the
+integration is being performed.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -295,7 +372,7 @@ preceding segments.</dd>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Jul 23 12:05:45 2010
+    Generated by Epydoc 3.0.1 on Sat Jul 24 13:58:02 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -1,4 +1,5 @@
-"""Provides some pre-defined sets of cosmological parameters."""
+"""Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).
+"""
 
 def add_extras(cosmo):
     """Sets neutrino number N_nu = 0, neutrino density

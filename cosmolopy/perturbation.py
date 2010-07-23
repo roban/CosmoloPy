@@ -1,13 +1,10 @@
 """Routines related to perturbation theory and the power spectrum.
 
-This module relies largely on code from:
+This module relies largely on power.c from Eisenstein & Hu (1999 ApJ 511 5)
 
-Eisenstein & Hu (1999 ApJ 511 5)
+  http://background.uchicago.edu/~whu/transfer/transferpage.html
 
-http://background.uchicago.edu/~whu/transfer/transferpage.html
-
-You need to download this code for many functions to work. See
-EH/installation.txt for installation instructions.
+See notes in `cosmolopy.EH`.
 
 """
 
@@ -26,7 +23,7 @@ try:
     import EH.power as power
 except ImportError:
     print "Error importing EH.power. See EH/installation.txt."
-    print "Some functions will not work." 
+    print "Some functions (transfer_function_EH, etc.) will not work." 
 
 # Turn on printing of special function error messages.
 #scipy.special.errprint(1)
@@ -51,20 +48,17 @@ def transfer_function_EH(k, **cosmology):
     Returns
     -------
 
-    A tupple of arrays matching the shape of k, the first is the
-    transfer function for CDM + Baryons, the second is for CDM +
-    Baryons + Neutrinos.
+    A tupple of arrays matching the shape of k:
+
+      (the transfer function for CDM + Baryons,
+      the transfer function for CDM + Baryons + Neutrinos).
 
     Notes
     -----
 
-    Uses transfer function code from Eisenstein & Hu (1999 ApJ 511 5)
+    Uses transfer function code power.c from Eisenstein & Hu (1999 ApJ 511 5).
 
-    See power.c from
-
-    http://background.uchicago.edu/~whu/transfer/transferpage.html
-
-    and perturbation_installation.txt in this directory.
+      http://background.uchicago.edu/~whu/transfer/transferpage.html
 
     """
     

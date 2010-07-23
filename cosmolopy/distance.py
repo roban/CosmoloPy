@@ -346,8 +346,14 @@ def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
         return agefunc, err_f, err_t
 
 def quick_redshift_age_function(zmax = 20., zmin = 0., zstep = 0.1, **cosmo):
-    """Return an interpolation function that will give z as a funtion of
-       the age of the universe.
+    """Return an interpolation function giving z as a funtion of age
+    of the universe.
+
+    Returns
+    -------
+
+    redfunc, err_f, err_t
+
     """
     z = numpy.arange(zmin, zmax, zstep)
     z = z[::-1]

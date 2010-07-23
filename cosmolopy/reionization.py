@@ -185,11 +185,11 @@ def clumping_factor_Chary(z):
     _zclumpChary = numpy.array([15, 8, 7, 5])
     _clumpChary = numpy.array([2, 6, 8, 17])
     _logclumpChary = numpy.log10(_clumpChary)
-    _logczfunc = utils.Extrapolate1d(_zclumpChary, _logclumpChary,
-                                     bounds_behavior=['extrapolate',
-                                                      'extrapolate'],
-                                     slopes=[None, None],
-                                     npoints = [2, 2])
+    _logczfunc = cu.Extrapolate1d(_zclumpChary, _logclumpChary,
+                                  bounds_behavior=['extrapolate',
+                                                   'extrapolate'],
+                                  slopes=[None, None],
+                                  npoints = [2, 2])
     
     return 10.0**_logczfunc(z)
 
@@ -543,7 +543,7 @@ def ionization_from_luminosity(z, ratedensityfunc, xHe=1.0,
                                     nn)
         sorti = numpy.argsort(t)
         x = numpy.empty(t.shape)
-        x[sorti] = utils.integrate_piecewise(dx_dt, t[sorti], method = method)
+        x[sorti] = cu.integrate_piecewise(dx_dt, t[sorti], method = method)
         return x
     else:
         dt_dz = lambda z1: cd._lookback_integral(z1,
@@ -558,7 +558,7 @@ def ionization_from_luminosity(z, ratedensityfunc, xHe=1.0,
                                     nn)
         sorti = numpy.argsort(-z)
         x = numpy.empty(z.shape)
-        x[sorti] = utils.integrate_piecewise(dx_dz, -z[sorti], method = method)
+        x[sorti] = cu.integrate_piecewise(dx_dz, -z[sorti], method = method)
         return x
  
 def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
