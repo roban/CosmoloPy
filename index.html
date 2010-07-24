@@ -16,8 +16,12 @@
     <div class=news>
       <h2>News</h2>
       <ul>
-	<li><a href='http://groups.google.com/group/cosmolopy-devel/browse_thread/thread/23f7c00b304d065e'>WMAP year 7 parameters</a></li>
-	<li><a href='http://www.astrobetter.com/python/cosmolopy-cosmology-routines-for-python/#more-873'>Guest post on Astro Better</a></li>
+	<li>Now on PyPI
+	(see <a href='#download'>download</a>)</li>
+	<li><a href='http://groups.google.com/group/cosmolopy-devel/browse_thread/thread/23f7c00b304d065e'>WMAP
+	year 7 parameters</a></li>
+	<li><a href='http://www.astrobetter.com/python/cosmolopy-cosmology-routines-for-python/#more-873'>Guest
+	post on Astro Better</a></li>
       </ul>
 
       <br>
@@ -50,26 +54,44 @@ Resources</a>
       with <a href='http://numpy.scipy.org/'>NumPy</a>
       and <a href='http://www.scipy.org/'>SciPy</a>.</p>
 
-    
-    Current capabilities include calculation of
-    <ul>
-      <li>cosmological distance measures as a function
-	of redshift and cosmological parameters
-	(<code>cosmolopy.distance</code>),
-      </li>
-      <li>the matter power spectrum and halo collapse fraction, using
-	Press-Schechter perturbation theory
-	(<code>cosmolopy.perturbation</code>),</li>
-      <li>simple reionization models and the electron Thompson
-	scattering optical depth due to reionization, for comparison
-	with WMAP tau (<code>cosmolopy.reionization</code>).</li>
-    </ul>
+      <h3>Capabilities include:</h3>
+      <dl>
+	<dt><a href="docAPI/cosmolopy.density-module.html">cosmolopy.density</a></dt>
+	<dd>Calculate various cosmological densities.</dd>
+	
+	<dt><a href="docAPI/cosmolopy.distance-module.html">cosmolopy.distance</a></dt>
+	<dd>Calculate various cosmological distance measures.</dd>
+	<dt><a href="docAPI/cosmolopy.luminosityfunction-module.html">cosmolopy.luminosityfunction</a></dt>
+	<dd>Routines related to galaxy luminosity functions (Schecter functions).</dd>
+	<dt><a href="docAPI/cosmolopy.magnitudes-module.html">cosmolopy.magnitudes</a></dt>
+	<dd>Simple routines for conversion in and out of the AB magnitude system.</dd>
+	<dt><a href="docAPI/cosmolopy.parameters-module.html">cosmolopy.parameters</a></dt>
+	<dd>Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).</dd>
+	<dt><a href="docAPI/cosmolopy.perturbation-module.html">cosmolopy.perturbation</a></dt>
+	
+	<dd>Routines related to perturbation theory and the power spectrum.</dd>
+	<dt><a href="docAPI/cosmolopy.reionization-module.html">cosmolopy.reionization</a></dt>
+	<dd>Routines related to the reionization of the IGM.</dd>
+      </dl>
+      </p>
 
     <a name='download'></a>
     <h2>Download</h2>
+
+    <h3>With pip or easy_install (recommended)</h3>
+    <em>Release version 0.1</em>
+      <p>You can install the latest release from PyPI by running:
+	<pre>$ easy_install CosmoloPy</pre>
+	or
+	<pre>$ pip install CosmoloPy</pre>
+	or download the source package manually
+	from <a href='http://pypi.python.org/pypi?name=CosmoloPy&:action=display'>PyPI</a>, unpack it, and run
+	<pre>$ python setup.py install</pre>
+      </p>
+      
     
     <h3>git clone</h3>
-    <p>You can clone the CosmoloPy project
+    <p>You can clone the CosmoloPy project (latest development version)
     with <a href="http://git-scm.com">Git</a> by running:
 
       <pre>$ git clone git://github.com/roban/CosmoloPy</pre> 
@@ -78,24 +100,27 @@ Resources</a>
     </p>
     
     <h3>tar or zip bundle</h3>
-      You can download the package in either<br>
-      <b><a href="http://github.com/roban/CosmoloPy/zipball/master">zip</a></b> or<br>
-     <b><a href="http://github.com/roban/CosmoloPy/tarball/master">tar</a></b> format.<br>
-    </p>
+    <p> You can download the development version of the package from
+      GitHub:<br>
+	<b><a href="http://github.com/roban/CosmoloPy/zipball/master">zip
+	file of development version</a></b> or<br>
+	  <b><a href="http://github.com/roban/CosmoloPy/tarball/master">tar file of development version</a></b><br>
+	  </p>
 
      <a name='installation'></a>
-    <h2>Installation</h2>
-    <p><ul>
-	<li>Download the package (see above).</li>
-	<li>Unpack it.</li>
-	<li>Run the installation program:</li>
-      </ul>
+    <h2>Installation from source</h2>
+	  <p>If you've downloaded or cloned the source package (i.e.,
+	  not using easy_install or pip):
+    <ul>
+      <li>Unpack it.</li>
+      <li>Run the installation program:</li>
+    </ul>
 <pre>
-python setup.py build
-python setup.py nosetests
-sudo python setup.py install
+$ python setup.py build
+$ python setup.py nosetests
+$ sudo python setup.py install
 </pre>
-    </p>
+	  </p>
 
     <a name='documentation'></a>
     <h2>Documentation</h2>
