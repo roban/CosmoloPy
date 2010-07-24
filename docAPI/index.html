@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;cosmolopy
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package cosmolopy</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy-pysrc.html">source&nbsp;code</a></span></p>
+<p>CosmoloPy is a package of cosmology routines built on NumPy/SciPy.</p>
+<div class="rst-section" id="rst-capabilities-include">
+<h1 class="heading">Capabilities include</h1>
+<dl class="rst-docutils">
+<dt><a href="cosmolopy.density-module.html" class="link">cosmolopy.density</a></dt>
+<dd>Calculate various cosmological densities.</dd>
+<dt><a href="cosmolopy.distance-module.html" class="link">cosmolopy.distance</a></dt>
+<dd>Calculate various cosmological distance measures.</dd>
+<dt><a href="cosmolopy.luminosityfunction-module.html" class="link">cosmolopy.luminosityfunction</a></dt>
+<dd>Routines related to galaxy luminosity functions (Schecter functions).</dd>
+<dt><a href="cosmolopy.magnitudes-module.html" class="link">cosmolopy.magnitudes</a></dt>
+<dd>Simple routines for conversion in and out of the AB magnitude system.</dd>
+<dt><a href="cosmolopy.parameters-module.html" class="link">cosmolopy.parameters</a></dt>
+<dd>Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).</dd>
+<dt><a href="cosmolopy.perturbation-module.html" class="link">cosmolopy.perturbation</a></dt>
+<dd>Routines related to perturbation theory and the power spectrum.</dd>
+<dt><a href="cosmolopy.reionization-module.html" class="link">cosmolopy.reionization</a></dt>
+<dd>Routines related to the reionization of the IGM.</dd>
+</dl>
+<p>Most functions in the modules of this package are designed to take
+cosmological parameters as keywords and will ignore any extraneous
+keywords. This means you can make a dictionary of all of your cosmological
+parameters and pass it to any function.</p>
+<p>The parameters module supplies some convenient pre-defined parameter sets.</p>
+</div>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Most functions are designed to take a cosmology parameters as
+keywords. The easiest way to use CosmoloPy is to create a dictionary
+of the cosmology parameters and pass it to each function using the **
+syntax.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span>:0.3, <span class="py-string">'omega_lambda_0'</span>:0.7, <span class="py-string">'omega_k_0'</span>:0.0, <span class="py-string">'h'</span>:0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>d_co, err = cd.comoving_distance(6., **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Comoving distance to z=6 is %.1f Mpc&quot;</span> % (d_co)
+<span class="py-output">Comoving distance to z=6 is 8017.8 Mpc</span></pre>
+<p>The cosmolopy package also defines some convenient shortcuts,
+including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so
+you can just do this:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> *
+<span class="py-prompt">&gt;&gt;&gt; </span>d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Angluar-diameter distance to z=6 is %.1f Mpc&quot;</span> % (d_a)
+<span class="py-output">Angluar-diameter distance to z=6 is 1209.9 Mpc</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>d_light, err = cd.light_travel_distance(6, **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Light-travel distance to z=6 is %.1f Mpc&quot;</span> % (d_light)
+<span class="py-output">Light-travel distance to z=6 is 3922.9 Mpc</span></pre>
+<p>Calculate the mass of a halo with Virial temperature of 10^4 kelvin,
+then verify the Virial temperature for a halo of that mass:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.perturbation <span class="py-keyword">as</span> cp
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.27,
+<span class="py-more">... </span><span class="py-string">'omega_lambda_0'</span> : 1-0.27,
+<span class="py-more">... </span><span class="py-string">'omega_b_0'</span> : 0.045,
+<span class="py-more">... </span><span class="py-string">'omega_n_0'</span> : 0.0,
+<span class="py-more">... </span><span class="py-string">'N_nu'</span> : 0,
+<span class="py-more">... </span><span class="py-string">'h'</span> : 0.72,
+<span class="py-more">... </span><span class="py-string">'n'</span> : 1.0,
+<span class="py-more">... </span><span class="py-string">'sigma_8'</span> : 0.9
+<span class="py-more">... </span>}
+<span class="py-prompt">&gt;&gt;&gt; </span>mass = cp.virial_mass(1e4, 6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>temp = cp.virial_temp(mass, 6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Mass = %.3g M_sun&quot;</span> % mass
+<span class="py-output">Mass = 1.68e+08 M_sun</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> round(temp, 4)
+<span class="py-output">10000.0</span></pre>
+<p>Calculate the critical and matter densities:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> *
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">'rho_crit=%.3g Msun/Mpc^3, rho_0=%.3g Msun/Mpc^3'</span> % cden.cosmo_densities(**fidcosmo)
+<span class="py-output">'rho_crit=1.38e+11 Msun/Mpc^3, rho_0=3.75e+10 Msun/Mpc^3'</span></pre>
+<p>Look in the tests/ and examples/ directories for more examples.</p>
+</div>
+
+<!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Submodules</span></td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="cosmolopy.EH-module.html">cosmolopy.EH</a></strong>: <em class="summary">See <a href="cosmolopy.perturbation-module.html#transfer_function_EH" class="link">cosmolopy.perturbation.transfer_function_EH</a></em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.constants-module.html">cosmolopy.constants</a></strong>: <em class="summary">Various constants used by CosmoloPy code.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.density-module.html">cosmolopy.density</a></strong>: <em class="summary">Calculate various cosmological densities.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.distance-module.html">cosmolopy.distance</a></strong>: <em class="summary">Calculate various cosmological distance measures.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.luminosityfunction-module.html">cosmolopy.luminosityfunction</a></strong>: <em class="summary">Routines related to galaxy luminosity functions (Schechter functions).</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.magnitudes-module.html">cosmolopy.magnitudes</a></strong>: <em class="summary">Simple routines for conversion in and out of the AB magnitude system.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.parameters-module.html">cosmolopy.parameters</a></strong>: <em class="summary">Provides some pre-defined sets of cosmological parameters (e.g.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.perturbation-module.html">cosmolopy.perturbation</a></strong>: <em class="summary">Routines related to perturbation theory and the power spectrum.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.reionization-module.html">cosmolopy.reionization</a></strong>: <em class="summary">Routines related to the reionization of the IGM.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.saveable-module.html">cosmolopy.saveable</a></strong>: <em class="summary">Defines a Saveable class with methods to save and restore.</em>    </li>
+    <li> <strong class="uidlink"><a href="cosmolopy.utils-module.html">cosmolopy.utils</a></strong>: <em class="summary">Some utilities used by various CosmoloPy modules.</em>    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="cosmolopy-module.html#fidcosmo" class="summary-name">fidcosmo</a> = <code title="{'N_nu': 0,
+ 'Y_He': 0.24,
+ 'h': 0.704,
+ 'n': 0.963,
+ 'omega_M_0': 0.2726,
+ 'omega_b_0': 0.0456,
+ 'omega_k_0': 0.0,
+ 'omega_lambda_0': 0.7274,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">N_nu</code><code class="variable-quote">'</code><code class="variable-op">: </code>0<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">Y_He</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.24<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">h</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.704<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">n</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.963<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Variables Details</span></td>
+</tr>
+</table>
+<a name="fidcosmo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">fidcosmo</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">N_nu</code><code class="variable-quote">'</code><code class="variable-op">: </code>0<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">Y_He</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.24<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">h</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.704<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">n</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.963<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">omega_M_0</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.2726<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">omega_b_0</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0456<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">omega_k_0</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.0<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">omega_lambda_0</code><code class="variable-quote">'</code><code class="variable-op">: </code>0.7274<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jul 24 13:58:02 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

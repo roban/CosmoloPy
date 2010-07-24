@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy.density</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cosmolopy-module.html">Package&nbsp;cosmolopy</a> ::
+        Module&nbsp;density
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cosmolopy.density-module.html">Module cosmolopy.density</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Calculate various cosmological densities.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">math</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">numpy</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">scipy</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">scipy</tt><tt class="py-op">.</tt><tt class="py-name">special</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">scipy</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method cosmolopy.utils.PiecewisePowerlaw.integrate()=cosmolopy.utils.PiecewisePowerlaw-class.html#integrate"><a title="cosmolopy.utils.PiecewisePowerlaw.integrate" class="py-name" href="#" onclick="return doclink('link-0', 'integrate', 'link-0');">integrate</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">si</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module cosmolopy.constants=cosmolopy.constants-module.html"><a title="cosmolopy.constants" class="py-name" href="#" onclick="return doclink('link-1', 'constants', 'link-1');">constants</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cc</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module cosmolopy.distance=cosmolopy.distance-module.html"><a title="cosmolopy.distance" class="py-name" href="#" onclick="return doclink('link-2', 'distance', 'link-2');">distance</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cd</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="cosmolopy.distance" class="py-name" href="#" onclick="return doclink('link-3', 'distance', 'link-2');">distance</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Function cosmolopy.distance.get_omega_k_0()=cosmolopy.distance-module.html#get_omega_k_0"><a title="cosmolopy.distance.get_omega_k_0" class="py-name" href="#" onclick="return doclink('link-4', 'get_omega_k_0', 'link-4');">get_omega_k_0</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Function cosmolopy.distance.set_omega_k_0()=cosmolopy.distance-module.html#set_omega_k_0"><a title="cosmolopy.distance.set_omega_k_0" class="py-name" href="#" onclick="return doclink('link-5', 'set_omega_k_0', 'link-5');">set_omega_k_0</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="omega_M_z"></a><div id="omega_M_z-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="omega_M_z-toggle" onclick="return toggle('omega_M_z');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.density-module.html#omega_M_z">omega_M_z</a><tt class="py-op">(</tt><tt class="py-param">z</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">cosmo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="omega_M_z-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="omega_M_z-expanded"><a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt class="py-docstring">"""Matter density omega_M as a function of redshift z.</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">    Notes</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    -----</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    From Lahav et al. (1991, MNRAS 251, 128) equations 11b-c. This is</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">    equivalent to equation 10 of Eisenstein &amp; Hu (1999 ApJ 511 5).</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-6" class="py-name"><a title="cosmolopy.distance.get_omega_k_0" class="py-name" href="#" onclick="return doclink('link-6', 'get_omega_k_0', 'link-4');">get_omega_k_0</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">cosmo</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">1.0</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">+</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_M_0'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">/</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">                      <tt class="py-op">(</tt><tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_M_0'</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">+</tt> <tt class="py-name">z</tt><tt class="py-op">)</tt><tt class="py-op">**</tt><tt class="py-number">3.</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_M_0'</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-number">1.</tt> <tt class="py-op">+</tt> <tt class="py-name">z</tt><tt class="py-op">)</tt><tt class="py-op">**</tt><tt class="py-number">3.</tt> <tt class="py-op">/</tt>  </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">                <tt class="py-name">cd</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Function cosmolopy.distance.e_z()=cosmolopy.distance-module.html#e_z"><a title="cosmolopy.distance.e_z" class="py-name" href="#" onclick="return doclink('link-7', 'e_z', 'link-7');">e_z</a></tt><tt class="py-op">(</tt><tt class="py-name">z</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">cosmo</tt><tt class="py-op">)</tt><tt class="py-op">**</tt><tt class="py-number">2.</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="cosmo_densities"></a><div id="cosmo_densities-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="cosmo_densities-toggle" onclick="return toggle('cosmo_densities');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.density-module.html#cosmo_densities">cosmo_densities</a><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-param">cosmo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmo_densities-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="cosmo_densities-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-docstring">"""Calculate the critical and mean densities of the universe.</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    Returns</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    -------</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">    rho_crit and rho_0 in solar masses per cubic Megaparsec.</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-name">omega_M_0</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_M_0'</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name">h</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'h'</tt><tt class="py-op">]</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-name">rho_crit</tt> <tt class="py-op">=</tt> <tt class="py-number">3.</tt> <tt class="py-op">*</tt> <tt class="py-op">(</tt><tt class="py-name">h</tt> <tt class="py-op">*</tt> <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Variable cosmolopy.constants.H100_s=cosmolopy.constants-module.html#H100_s"><a title="cosmolopy.constants.H100_s" class="py-name" href="#" onclick="return doclink('link-8', 'H100_s', 'link-8');">H100_s</a></tt><tt class="py-op">)</tt><tt class="py-op">**</tt><tt class="py-number">2.</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-number">8.</tt> <tt class="py-op">*</tt> <tt class="py-name">math</tt><tt class="py-op">.</tt><tt class="py-name">pi</tt> <tt class="py-op">*</tt> <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Variable cosmolopy.constants.G_const_Mpc_Msun_s=cosmolopy.constants-module.html#G_const_Mpc_Msun_s"><a title="cosmolopy.constants.G_const_Mpc_Msun_s" class="py-name" href="#" onclick="return doclink('link-9', 'G_const_Mpc_Msun_s', 'link-9');">G_const_Mpc_Msun_s</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-name">rho_0</tt> <tt class="py-op">=</tt> <tt class="py-name">omega_M_0</tt> <tt class="py-op">*</tt> <tt class="py-name">rho_crit</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">     </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-comment">#print " Critical density rho_crit = %.3g Msun/Mpc^3" % rho_crit</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-comment">#print " Matter density      rho_0 = %.3g Msun/Mpc^3" % rho_0</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">rho_crit</tt><tt class="py-op">,</tt> <tt class="py-name">rho_0</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="get_X_Y"></a><div id="get_X_Y-def"><a name="L51"></a><tt class="py-lineno"> 51</tt> <a class="py-toggle" href="#" id="get_X_Y-toggle" onclick="return toggle('get_X_Y');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.density-module.html#get_X_Y">get_X_Y</a><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-param">cosmo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_X_Y-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="get_X_Y-expanded"><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-docstring">"""Calculate fraction of baryonic mass in hydrogen and helium.</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">    Assumes X_H + Y_He = 1.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">    You must specify either 'X_H', or 'Y_He', or both.</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">'X_H'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cosmo</tt> <tt class="py-keyword">and</tt> <tt class="py-string">'Y_He'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cosmo</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">X_H</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'X_H'</tt><tt class="py-op">]</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">Y_He</tt> <tt class="py-op">=</tt> <tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">X_H</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-string">'Y_He'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cosmo</tt> <tt class="py-keyword">and</tt> <tt class="py-string">'X_H'</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cosmo</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">Y_He</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'Y_He'</tt><tt class="py-op">]</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">X_H</tt> <tt class="py-op">=</tt> <tt class="py-number">1.</tt> <tt class="py-op">-</tt> <tt class="py-name">Y_He</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">X_H</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'X_H'</tt><tt class="py-op">]</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">Y_He</tt> <tt class="py-op">=</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'Y_He'</tt><tt class="py-op">]</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">X_H</tt><tt class="py-op">,</tt> <tt class="py-name">Y_He</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">     </tt>
+<a name="baryon_densities"></a><div id="baryon_densities-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="baryon_densities-toggle" onclick="return toggle('baryon_densities');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.density-module.html#baryon_densities">baryon_densities</a><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-param">cosmo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="baryon_densities-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="baryon_densities-expanded"><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-docstring">"""Hydrogen number density at z=0.</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    Parameters</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">    ----------</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">    cosmo: cosmological parameters</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">    parameters used: 'omega_b_0', 'X_H' and/or 'Y_He', plus those</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">    needed by cosmo_densities.</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">       </tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    Returns</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">    -------</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">    rho_crit, rho_0, n_He_0, n_H_0</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">    The first two are in units of solar masses per cubic</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">    Megaparsec. The later two are in number per cubic Megaparsec.</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">     </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">X_H</tt><tt class="py-op">,</tt> <tt class="py-name">Y_He</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name" targets="Function cosmolopy.density.get_X_Y()=cosmolopy.density-module.html#get_X_Y"><a title="cosmolopy.density.get_X_Y" class="py-name" href="#" onclick="return doclink('link-10', 'get_X_Y', 'link-10');">get_X_Y</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">cosmo</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name">rho_crit</tt><tt class="py-op">,</tt> <tt class="py-name">rho_0</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name" targets="Function cosmolopy.density.cosmo_densities()=cosmolopy.density-module.html#cosmo_densities"><a title="cosmolopy.density.cosmo_densities" class="py-name" href="#" onclick="return doclink('link-11', 'cosmo_densities', 'link-11');">cosmo_densities</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">cosmo</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">n_H_0</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">rho_crit</tt> <tt class="py-op">*</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_b_0'</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">X_H</tt> <tt class="py-op">*</tt> <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Variable cosmolopy.constants.M_sun_g=cosmolopy.constants-module.html#M_sun_g"><a title="cosmolopy.constants.M_sun_g" class="py-name" href="#" onclick="return doclink('link-12', 'M_sun_g', 'link-12');">M_sun_g</a></tt> <tt class="py-op">/</tt>  </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">             <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Variable cosmolopy.constants.m_H_g=cosmolopy.constants-module.html#m_H_g"><a title="cosmolopy.constants.m_H_g" class="py-name" href="#" onclick="return doclink('link-13', 'm_H_g', 'link-13');">m_H_g</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-name">n_He_0</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">rho_crit</tt> <tt class="py-op">*</tt> <tt class="py-name">cosmo</tt><tt class="py-op">[</tt><tt class="py-string">'omega_b_0'</tt><tt class="py-op">]</tt> <tt class="py-op">*</tt> <tt class="py-name">Y_He</tt> <tt class="py-op">*</tt> <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="cosmolopy.constants.M_sun_g" class="py-name" href="#" onclick="return doclink('link-14', 'M_sun_g', 'link-12');">M_sun_g</a></tt> <tt class="py-op">/</tt>  </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">              <tt class="py-name">cc</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable cosmolopy.constants.m_He_g=cosmolopy.constants-module.html#m_He_g"><a title="cosmolopy.constants.m_He_g" class="py-name" href="#" onclick="return doclink('link-15', 'm_He_g', 'link-15');">m_He_g</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-comment">#    print " Hydrogen number density n_H_0 = %.4g (Mpc^-3)" % n_H_0</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">rho_crit</tt><tt class="py-op">,</tt> <tt class="py-name">rho_0</tt><tt class="py-op">,</tt> <tt class="py-name">n_He_0</tt><tt class="py-op">,</tt> <tt class="py-name">n_H_0</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jul 24 13:58:03 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

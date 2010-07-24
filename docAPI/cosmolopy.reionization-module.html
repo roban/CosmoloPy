@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy.reionization</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cosmolopy-module.html">Package&nbsp;cosmolopy</a> ::
+        Module&nbsp;reionization
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module reionization</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.reionization-pysrc.html">source&nbsp;code</a></span></p>
+Routines related to the reionization of the IGM.
+
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Functions</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#delta_lambda_delta_dl" class="summary-sig-name">delta_lambda_delta_dl</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">delta_dl</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculate Lyman-alpha wavelength shift given light-travel distance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#delta_lambda_delta_dl">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#recomb_rate_coeff_HG" class="summary-sig-name">recomb_rate_coeff_HG</a>(<span class="summary-sig-arg">temp</span>,
+        <span class="summary-sig-arg">species</span>,
+        <span class="summary-sig-arg">case</span>)</span><br />
+      Recombination rate coefficients for HII, HeII and HeIII.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#recomb_rate_coeff_HG">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#ionization_from_collapse" class="summary-sig-name">ionization_from_collapse</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">coeff_ion</span>,
+        <span class="summary-sig-arg">temp_min</span>,
+        <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculate the ionized fraction of the universe using
+perturbation theory.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#ionization_from_collapse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#quick_ion_col_function" class="summary-sig-name">quick_ion_col_function</a>(<span class="summary-sig-arg">coeff_ion</span>,
+        <span class="summary-sig-arg">temp_min</span>,
+        <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">zmax</span>=<span class="summary-sig-default">20.0</span>,
+        <span class="summary-sig-arg">zmin</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.1</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Return a function giving ionization_from_collapse as a function
+of redshift (based on interpolation).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#quick_ion_col_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#clumping_factor_BKP" class="summary-sig-name">clumping_factor_BKP</a>(<span class="summary-sig-arg">z</span>)</span><br />
+      Clumping factor as a function of redshift used by Bagla et al.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_BKP">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#clumping_factor_HB" class="summary-sig-name">clumping_factor_HB</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">beta</span>=<span class="summary-sig-default">2</span>)</span><br />
+      Clumping factor as a function of redshift used by Haiman &amp; Bryan (2006).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_HB">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#clumping_factor_Chary" class="summary-sig-name">clumping_factor_Chary</a>(<span class="summary-sig-arg">z</span>)</span><br />
+      Clumping factor as a function of redshift estimated from Chary (2008)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_Chary">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#integrate_ion_recomb" class="summary-sig-name">integrate_ion_recomb</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">ion_func</span>,
+        <span class="summary-sig-arg">clump_fact_func</span>,
+        <span class="summary-sig-arg">xHe</span>=<span class="summary-sig-default">1.0</span>,
+        <span class="summary-sig-arg">temp_gas</span>=<span class="summary-sig-default">10000.0</span>,
+        <span class="summary-sig-arg">alpha_B</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">bubble</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Integrate IGM ionization and recombination given an ionization function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_ion_recomb">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#integrate_ion_recomb_collapse" class="summary-sig-name">integrate_ion_recomb_collapse</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">coeff_ion</span>,
+        <span class="summary-sig-arg">temp_min</span>=<span class="summary-sig-default">10000.0</span>,
+        <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">temp_gas</span>=<span class="summary-sig-default">10000.0</span>,
+        <span class="summary-sig-arg">alpha_B</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">clump_fact_func</span>=<span class="summary-sig-default">&lt;function clumping_factor_BKP at 0xa7c2d84&gt;</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      fraction.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_ion_recomb_collapse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#ionization_from_luminosity" class="summary-sig-name">ionization_from_luminosity</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">ratedensityfunc</span>,
+        <span class="summary-sig-arg">xHe</span>=<span class="summary-sig-default">1.0</span>,
+        <span class="summary-sig-arg">rate_is_tfunc</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">ratedensityfunc_args</span>=<span class="summary-sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>,
+        <span class="summary-sig-arg">method</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">romberg</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Integrate the ionization history given an ionizing luminosity
+function, ignoring recombinations.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#ionization_from_luminosity">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#integrate_optical_depth" class="summary-sig-name">integrate_optical_depth</a>(<span class="summary-sig-arg">x_ionH</span>,
+        <span class="summary-sig-arg">x_ionHe</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculated optical depth due to electron scattering given a profile
+of the filling factor of ionized gas vs.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_optical_depth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#optical_depth_instant" class="summary-sig-name">optical_depth_instant</a>(<span class="summary-sig-arg">z_r</span>,
+        <span class="summary-sig-arg">x_ionH</span>=<span class="summary-sig-default">1.0</span>,
+        <span class="summary-sig-arg">x_ionHe</span>=<span class="summary-sig-default">1.0</span>,
+        <span class="summary-sig-arg">z_rHe</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">return_tau_star</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">verbose</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Optical depth assuming instantaneous reionization and a flat
+universe.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#optical_depth_instant">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#nDotRecMHR" class="summary-sig-name">nDotRecMHR</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">clump_fact</span>=<span class="summary-sig-default">1.0</span>)</span><br />
+      Recombination rate density from Madau, Haardt, &amp; Rees 1999.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#nDotRecMHR">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Function Details</span></td>
+</tr>
+</table>
+<a name="delta_lambda_delta_dl"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">delta_lambda_delta_dl</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">delta_dl</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#delta_lambda_delta_dl">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate Lyman-alpha wavelength shift given light-travel distance.</p>
+<p>Wavelengths are in Angstroms.</p>
+<p>Returns lambda(z), lambda(z - Deltaz), z, z - Deltaz</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="recomb_rate_coeff_HG"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">recomb_rate_coeff_HG</span>(<span class="sig-arg">temp</span>,
+        <span class="sig-arg">species</span>,
+        <span class="sig-arg">case</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#recomb_rate_coeff_HG">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Recombination rate coefficients for HII, HeII and HeIII.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<p>temp is the temperature in K</p>
+<p>species is 'H', 'He0', or 'He1'.</p>
+<p>case is 'A' or 'B'.</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>From Hui and Gnedin (1997MNRAS.292...27H).</p>
+<p>Valid for He0 for temperatures between 5e3 and 5e5 K.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="ionization_from_collapse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ionization_from_collapse</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">coeff_ion</span>,
+        <span class="sig-arg">temp_min</span>,
+        <span class="sig-arg">passed_min_mass</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#ionization_from_collapse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the ionized fraction of the universe using
+perturbation theory.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<p>z:</p>
+<blockquote>
+Redshift values at which to evaluate the ionized fraction.</blockquote>
+<p>coeff_ion:</p>
+<blockquote>
+Coefficient giving the ratio between collapse fraction and
+ionized fraction (neglecting recombinations and assuming all
+photons are instantly absorbed).</blockquote>
+<p>temp_min:</p>
+<blockquote>
+Either the minimum Virial temperature (in Kelvin) or minimum
+mass of halos (in solar masses) contributing to reionization.</blockquote>
+<p>passed_temp_min: Boolean</p>
+<blockquote>
+Set this to True if you pass a minimum mass, False (default) if
+you pass a minimum Virial temperature.</blockquote>
+<p>cosmo: dict</p>
+<blockquote>
+Cosmological parameters.</blockquote>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>See Furlanetto et al. (2004ApJ...613....1F).</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="quick_ion_col_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">quick_ion_col_function</span>(<span class="sig-arg">coeff_ion</span>,
+        <span class="sig-arg">temp_min</span>,
+        <span class="sig-arg">passed_min_mass</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">zmax</span>=<span class="sig-default">20.0</span>,
+        <span class="sig-arg">zmin</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">zstep</span>=<span class="sig-default">0.1</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#quick_ion_col_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a function giving ionization_from_collapse as a function
+of redshift (based on interpolation).</p>
+<p>Calling the resulting function is much faster than evaluating
+ionization_from_collapse.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clumping_factor_BKP"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clumping_factor_BKP</span>(<span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_BKP">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clumping factor as a function of redshift used by Bagla et al. 2009.</p>
+<p>See Bagla, Kulkarni &amp; Padmanabhan (2009MNRAS.397..971B).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clumping_factor_HB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clumping_factor_HB</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">beta</span>=<span class="sig-default">2</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_HB">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clumping factor as a function of redshift used by Haiman &amp; Bryan (2006).</p>
+<p>See Haiman &amp; Bryan (2006ApJ...650....7H).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clumping_factor_Chary"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clumping_factor_Chary</span>(<span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#clumping_factor_Chary">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clumping factor as a function of redshift estimated from Chary (2008)</p>
+<p>Chary, R.-R. 2008, ApJ, 680, 32 (2008ApJ...680...32C) shows a nice
+plot (Figure 2a) of clumping factor for neutral and ionized gas
+with and without halos included and adopts the clumping factor for
+ionized gas without source halos (but with other halos), which
+rises (apparently, from the graph) as a constant powerlaw from ~2
+and z=15 to 6 at z=8, steepens to reach 8 at z=7, and ~17 at
+z=5.</p>
+<p>This function returns the values of a piecewise powerlaw (as a
+function of redshift) interpolated/extrapolated through those
+points.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="integrate_ion_recomb"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">integrate_ion_recomb</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">ion_func</span>,
+        <span class="sig-arg">clump_fact_func</span>,
+        <span class="sig-arg">xHe</span>=<span class="sig-default">1.0</span>,
+        <span class="sig-arg">temp_gas</span>=<span class="sig-default">10000.0</span>,
+        <span class="sig-arg">alpha_B</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">bubble</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_ion_recomb">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Integrate IGM ionization and recombination given an ionization function.</p>
+<blockquote>
+<p>Parameters:</p>
+<p>z: array</p>
+<blockquote>
+The redshift values at which to calculate the ionized
+fraction. This array should be in reverse numerical order. The
+first redshift specified should be early enough that the
+universe is still completely neutral.</blockquote>
+<p>ion_func:</p>
+<blockquote>
+A function giving the ratio of the total density of emitted
+ionizing photons to the density hydrogen atoms (or hydrogen
+plus helium, if you prefer) as a function of redshift.</blockquote>
+<p>temp_gas:</p>
+<blockquote>
+Gas temperature used to calculate the recombination coefficient
+if alpha_b is not specified.</blockquote>
+<p>alpha_B:</p>
+<blockquote>
+Optional recombination coefficient in units of cm^3
+s^-1. In alpha_B=None, it is calculated from temp_gas.</blockquote>
+<p>clump_fact_func: function</p>
+<blockquote>
+Function returning the clumping factor when given a redshift,
+defined as &lt;n_HII^2&gt;/&lt;n_HII&gt;^2.</blockquote>
+</blockquote>
+<p>cosmo: dict</p>
+<blockquote>
+<blockquote>
+Dictionary specifying the cosmological parameters.</blockquote>
+<p>Notes:</p>
+<p>We only track recombination of hydrogen, but if xHe &gt; 0, then the
+density is boosted by the addition of xHe * nHe. This is
+eqiuvalent to assuming the the ionized fraction of helium is
+always proportional to the ionized fraction of hydrogen. If
+xHe=1.0, then helium is singly ionized in the same proportion as
+hydrogen. If xHe=2.0, then helium is fully ionized in the same
+proportion as hydrogen.</p>
+<p>We assume, as is fairly standard (e.g. BKP), that the ionized
+fraction is contained in fully ionized bubbles surrounded by a
+fully neutral IGM. The output is therefore the volume filling
+factor of ionized regions, not the ionized fraction of a
+uniformly-ionized IGM.</p>
+<p>I have also made the standard assumption that all ionized photons
+are immediately absorbed, which allows the two differential
+equations (one for ionization-recombination and one for
+emission-photoionizaion) to be combined into a single ODE. BKP say
+that this induces less than 5% error in the final value of the
+electron-scattering optical depth.</p>
+<p>I believe there is an extraneous factor of m_p in the second term
+of BKP equation 6, unless I am misunderstanding the definition of
+their variables. I have left it out.</p>
+</blockquote>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="integrate_ion_recomb_collapse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">integrate_ion_recomb_collapse</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">coeff_ion</span>,
+        <span class="sig-arg">temp_min</span>=<span class="sig-default">10000.0</span>,
+        <span class="sig-arg">passed_min_mass</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">temp_gas</span>=<span class="sig-default">10000.0</span>,
+        <span class="sig-arg">alpha_B</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">clump_fact_func</span>=<span class="sig-default">&lt;function clumping_factor_BKP at 0xa7c2d84&gt;</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_ion_recomb_collapse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <dl class="rst-docutils">
+<dt>IGM ionization state with recombinations from halo collapse</dt>
+<dd><p class="rst-first">fraction. Integrates an ODE describing IGM ionization and
+recombination rates.</p>
+<p>z: array</p>
+<blockquote>
+The redshift values at which to calculate the ionized
+fraction. This array should be in reverse numerical order. The
+first redshift specified should be early enough that the
+universe is still completely neutral.</blockquote>
+<p>coeff_ion:</p>
+<blockquote>
+The coefficient converting the collapse fraction to ionized
+fraction, neglecting recombinations. Equivalent to the product
+(f_star * f_esc_gamma * N_gamma) in the BKP paper.</blockquote>
+<p>temp_min:</p>
+<blockquote>
+See docs for ionization_from_collapse. Either the minimum virial
+temperature or minimum mass of halos contributing to
+reionization.</blockquote>
+<p>passed_temp_min:</p>
+<blockquote>
+See documentation for ionization_from_collapse.</blockquote>
+<p>temp_gas:</p>
+<blockquote>
+Gas temperature used to calculate the recombination coefficient
+if alpha_b is not specified.</blockquote>
+<p>alpha_B:</p>
+<blockquote>
+Optional recombination coefficient in units of cm^3
+s^-1. In alpha_B=None, it is calculated from temp_gas.</blockquote>
+<p>clump_fact_func: function</p>
+<blockquote class="rst-last">
+Function returning the clumping factor when given a redshift.</blockquote>
+</dd>
+</dl>
+<p>cosmo: dict</p>
+<blockquote>
+<blockquote>
+Dictionary specifying the cosmological parameters.</blockquote>
+<p>We assume, as is fairly standard (e.g. BKP), that the ionized
+fraction is contained in fully ionized bubbles surrounded by a
+fully neutral IGM. The output is therefore the volume filling
+factor of ionized regions, not the ionized fraction of a
+uniformly-ionized IGM.</p>
+<p>I have also made the standard assumption that all ionized photons
+are immediately absorbed, which allows the two differential
+equations (one for ionization-recombination and one for
+emission-photoionizaion) to be combined into a single ODE. BKP say
+that this induces less than 5% error in the final value of the
+electron-scattering optical depth.</p>
+<p>I believe there is an extraneous factor of m_p in the second term
+of BKP equation 6, unless I am misunderstanding the definition of
+their variables. I have left it out.</p>
+</blockquote>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="ionization_from_luminosity"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ionization_from_luminosity</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">ratedensityfunc</span>,
+        <span class="sig-arg">xHe</span>=<span class="sig-default">1.0</span>,
+        <span class="sig-arg">rate_is_tfunc</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">ratedensityfunc_args</span>=<span class="sig-default"><code class="variable-group">(</code><code class="variable-group">)</code></span>,
+        <span class="sig-arg">method</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">romberg</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#ionization_from_luminosity">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Integrate the ionization history given an ionizing luminosity
+function, ignoring recombinations.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>ratedensityfunc: callable</dt>
+<dd>function giving comoving ionizing photon emission rate
+density, or ionizing emissivity (photons s^-1 Mpc^-3) as a
+function of redshift (or time).</dd>
+<dt>rate_is_tfunc: boolean</dt>
+<dd>Set to true if ratedensityfunc is a function of time rather than z.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>Ignores recombinations.</p>
+<p>The ionization rate is computed as ratedensity / nn, where nn = nH
++ xHe * nHe. So if xHe is 1.0, we are assuming that helium becomes
+singly ionized at proportionally the same rate as hydrogen. If xHe
+is 2.0, we are assuming helium becomes fully ionizing at
+proportionally the same rate as hydrogen.</p>
+<p>The returened x is therefore the ionized fraction of hydrogen, and
+the ionized fraction of helium is xHe * x.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="integrate_optical_depth"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">integrate_optical_depth</span>(<span class="sig-arg">x_ionH</span>,
+        <span class="sig-arg">x_ionHe</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_optical_depth">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculated optical depth due to electron scattering given a profile
+of the filling factor of ionized gas vs. redshift.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<p>x_ionH: array</p>
+<blockquote>
+Ionized fraction of hydrogen as a function of z. Should be [0,1].</blockquote>
+<p>x_ionHe: array</p>
+<blockquote>
+Set x_ionHE to X_HeII + 2 * X_HeIII, where X_HeII is the
+fraction of helium that is singly ionized, and X_HeII is the
+fraction of helium that is doubly ionized. See Notes below.</blockquote>
+<dl class="rst-docutils">
+<dt>z: array</dt>
+<dd>Redshift values at which the filling factor is specified.</dd>
+</dl>
+<p>cosmo: cosmological parameters</p>
+<blockquote>
+uses: 'X_H' and/or 'Y_He', plus parameters needed for hubble_z</blockquote>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt>tau: array</dt>
+<dd>The optical depth as a function of z.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>The precision of your result depends on the spacing of the input
+arrays. When in doubt, try doubling your z resolution and see if
+the optical depth values have converged.</p>
+<p>100% singly ionized helium means x_ionHe = 1.0, 100% doubly
+ionized helium means x_ionHe = 2.0</p>
+<p>If you want helium to be singly ionized at the same rate as
+hydrogen, set x_ionHe = x_ionH.</p>
+<p>If you want helium to be doubly ionized at the same rate as
+hydrogen is ionized, set x_ionHe = 2 * x_ionH.</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="optical_depth_instant"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">optical_depth_instant</span>(<span class="sig-arg">z_r</span>,
+        <span class="sig-arg">x_ionH</span>=<span class="sig-default">1.0</span>,
+        <span class="sig-arg">x_ionHe</span>=<span class="sig-default">1.0</span>,
+        <span class="sig-arg">z_rHe</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">return_tau_star</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">verbose</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#optical_depth_instant">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Optical depth assuming instantaneous reionization and a flat
+universe.</p>
+<p>Calculates the optical depth due to Thompson scattering off free
+electrons in the IGM.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>z_r:</dt>
+<dd>Redshift of instantaneos reionization.</dd>
+<dt>x_ionH:</dt>
+<dd>Ionized fraction of hydrogen after reionization.</dd>
+<dt>x_ionHe:</dt>
+<dd>Set to 2.0 for fully ionized helium. Set to 1.0 for singly
+ionized helium. Set to 0.0 for neutral helium. This value
+equals X_HeII + 2 * X_HeIII after z_r (where X_HeII is the
+fraction of helium that is singly ionized, and X_HeII is the
+fraction of helium that is doubly ionized).</dd>
+<dt>z_rHe (optional):</dt>
+<dd>Redshift of instantaneos Helium reionization, i.e. when helium
+becomes doubly ionized. z_rHe should be less than z_r.</dd>
+<dt>return_tau_star: Boolean</dt>
+<dd>whether or not to return the value of tau_star, as defined by
+Griffiths et al. (arxiv:astro-ph/9812125v3)</dd>
+</dl>
+<p>cosmo: cosmological parameters</p>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt>tau: array</dt>
+<dd>optical depth to election</dd>
+</dl>
+<p>tau_star: array or scalar</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>See, e.g. Griffiths et al. (arxiv:astro-ph/9812125v3, note that
+the published version [ 1999MNRAS.308..854G] has typos)</p>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nDotRecMHR"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nDotRecMHR</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">clump_fact</span>=<span class="sig-default">1.0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.reionization-pysrc.html#nDotRecMHR">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Recombination rate density from Madau, Haardt, &amp; Rees 1999.</p>
+<p>Assumes hydrogen is fully ionized.</p>
+<p>Units are s^-1 coMpc^-3.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cosmolopy-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jul 24 13:58:02 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

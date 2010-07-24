@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   
-  <title>CosmoloPy: basic cosmological routines for Python (Numpy/SciPy)</title>
+  <title>CosmoloPy: a cosmology package for Python.</title>
   
 </head>
 
@@ -22,8 +22,7 @@
 
       <br>
 
-      <a href='figs/dist2d_D_M.png'><img src='figs/dist2d_D_M_small.png' alt='propper motion distance vs. redshift and Omega_M'/></a>
-
+      <a href='figs/dist2d_D_A_ony.png'><img src='figs/dist2d_D_A_ony_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a>
 
     </div>
     
@@ -34,15 +33,23 @@
     </div>
 
 <p>    
-<a href='#features'>Features</a> |  <a href='#download'>Download</a> |  <a
-href='#installation'>Installation</a> |  <a href='#usage'>Usage</a> |  <a
-href='#contribute'>Contribute</a> |  <a href='#status'>Status</a> |  <a
-href='#acknowledgment'>Acknowledgment</a> |  <a
-href='#authors'>Authors</a> |  <a href='#other'>Other Resources</a>
+<a href='#features'>Features</a> | <a href='#download'>Download</a>
+| <a href='#installation'>Installation</a>
+| <a href='#usage'>Usage</a>
+| <a href='#documentation'>Documentation</a>
+| <a href='#contribute'>Contribute</a> | <a href='#status'>Status</a>
+| <a href='#acknowledgment'>Acknowledgment</a>
+| <a href='#authors'>Authors</a> | <a href='#other'>Other
+Resources</a>
 </p>
     
     <a name='features'></a>
     <h2>Features</h2>
+
+      <p>CosmoloPy is built on and designed for use
+      with <a href='http://numpy.scipy.org/'>NumPy</a>
+      and <a href='http://www.scipy.org/'>SciPy</a>.</p>
+
     
     Current capabilities include calculation of
     <ul>
@@ -90,6 +97,21 @@ sudo python setup.py install
 </pre>
     </p>
 
+    <a name='documentation'></a>
+    <h2>Documentation</h2>
+
+    <p>The <a href='docAPI/index.html'>API documentation</a> is
+    generated from the docstrings with Epydoc.</p>
+
+    <p>The <a href='docAPI/module-tree.html'>Module Tree</a> gives an
+    overview of the organization and capabilities of the package.</p>
+
+    <p>The source code is fairly well-commented, and should serve as
+    the ultimate reference. See "source code" links in
+    the <a href='docAPI/index.html'>API docs</a>
+    or <a href="http://github.com/roban/CosmoloPy">view the source on
+    GitHub</a>.
+
     <a name='usage'></a>
     <h2>Usage</h2>
 
@@ -117,6 +139,7 @@ you can just do this:
 >>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
 Angluar-diameter distance to z=6 is 1209.9 Mpc
 >>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+>>> print "Light-travel distance to z=6 is %.1f Mpc" % (d_light)
 Light-travel distance to z=6 is 3922.9 Mpc
 </pre>
 
@@ -157,12 +180,14 @@ Mass = 1.68e+08 M_sun
 
 <p>
 Look in
-the <a href='http://github.com/roban/CosmoloPy/tree/master/cosmolopy/tests/'><code>tests/</code></a>
-and <a href='http://github.com/roban/CosmoloPy/tree/master/cosmolopy/examples/'><code>examples/</code></a>
+the <a href='http://github.com/roban/CosmoloPy/tree/master/tests/'><code>tests/</code></a>
+and <a href='http://github.com/roban/CosmoloPy/tree/master/examples/'><code>examples/</code></a>
 directories for more examples.
     </p>
 
-    <div class=fig><a href='figs/dist2d_D_A.png'><img src='figs/dist2d_D_A_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a></div>
+    <div class=fig>
+      <a href='figs/dist2d_D_M_ony.png'><img src='figs/dist2d_D_M_ony_small.png' alt='propper motion distance vs. redshift and Omega_M'/></a>
+    </div>
     
 
     <a name='contribute'></a>

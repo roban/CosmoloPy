@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cosmolopy</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;cosmolopy
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cosmolopy-module.html">Package cosmolopy</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""CosmoloPy is a package of cosmology routines built on NumPy/SciPy.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">Capabilities include</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">--------------------</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.density`</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">  Calculate various cosmological densities.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.distance`</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">  Calculate various cosmological distance measures.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.luminosityfunction`</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">  Routines related to galaxy luminosity functions (Schecter functions).</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.magnitudes`</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">  Simple routines for conversion in and out of the AB magnitude system.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.parameters`</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring">  Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.perturbation`</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">  Routines related to perturbation theory and the power spectrum.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">`cosmolopy.reionization`</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">  Routines related to the reionization of the IGM. </tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">Most functions in the modules of this package are designed to take</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">cosmological parameters as keywords and will ignore any extraneous</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">keywords. This means you can make a dictionary of all of your cosmological</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">parameters and pass it to any function. </tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">The parameters module supplies some convenient pre-defined parameter sets.</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">Usage</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">-----</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">Most functions are designed to take a cosmology parameters as</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring">keywords. The easiest way to use CosmoloPy is to create a dictionary</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">of the cosmology parameters and pass it to each function using the **</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">syntax.</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; import cosmolopy.distance as cd</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; d_co, err = cd.comoving_distance(6., **cosmo)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; print "Comoving distance to z=6 is %.1f Mpc" % (d_co)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">Comoving distance to z=6 is 8017.8 Mpc</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-docstring">The cosmolopy package also defines some convenient shortcuts,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-docstring">including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">you can just do this:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; from cosmolopy import *</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-docstring">Angluar-diameter distance to z=6 is 1209.9 Mpc</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; d_light, err = cd.light_travel_distance(6, **fidcosmo)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; print "Light-travel distance to z=6 is %.1f Mpc" % (d_light)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring">Light-travel distance to z=6 is 3922.9 Mpc</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">Calculate the mass of a halo with Virial temperature of 10^4 kelvin,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">then verify the Virial temperature for a halo of that mass:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; import cosmolopy.perturbation as cp</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; cosmo = {'omega_M_0' : 0.27, </tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring">... 'omega_lambda_0' : 1-0.27, </tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-docstring">... 'omega_b_0' : 0.045, </tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-docstring">... 'omega_n_0' : 0.0,</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-docstring">... 'N_nu' : 0,</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-docstring">... 'h' : 0.72,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"><tt class="py-docstring">... 'n' : 1.0,</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"><tt class="py-docstring">... 'sigma_8' : 0.9</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"><tt class="py-docstring">... } </tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; mass = cp.virial_mass(1e4, 6.0, **cosmo)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; temp = cp.virial_temp(mass, 6.0, **cosmo)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; print "Mass = %.3g M_sun" % mass</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line"><tt class="py-docstring">Mass = 1.68e+08 M_sun</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; print round(temp, 4)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"><tt class="py-docstring">10000.0</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"><tt class="py-docstring">Calculate the critical and matter densities:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; from cosmolopy import *</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line"><tt class="py-docstring">&gt;&gt;&gt; 'rho_crit=%.3g Msun/Mpc^3, rho_0=%.3g Msun/Mpc^3' % cden.cosmo_densities(**fidcosmo)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line"><tt class="py-docstring">'rho_crit=1.38e+11 Msun/Mpc^3, rho_0=3.75e+10 Msun/Mpc^3'</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line"><tt class="py-docstring">Look in the tests/ and examples/ directories for more examples. </tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module cosmolopy.constants=cosmolopy.constants-module.html"><a title="cosmolopy.constants" class="py-name" href="#" onclick="return doclink('link-0', 'constants', 'link-0');">constants</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cc</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module cosmolopy.density=cosmolopy.density-module.html"><a title="cosmolopy.density" class="py-name" href="#" onclick="return doclink('link-1', 'density', 'link-1');">density</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cden</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module cosmolopy.distance=cosmolopy.distance-module.html"><a title="cosmolopy.distance" class="py-name" href="#" onclick="return doclink('link-2', 'distance', 'link-2');">distance</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cd</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module cosmolopy.perturbation=cosmolopy.perturbation-module.html"><a title="cosmolopy.perturbation" class="py-name" href="#" onclick="return doclink('link-3', 'perturbation', 'link-3');">perturbation</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cp</tt> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Module cosmolopy.reionization=cosmolopy.reionization-module.html"><a title="cosmolopy.reionization" class="py-name" href="#" onclick="return doclink('link-4', 'reionization', 'link-4');">reionization</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cr</tt> </tt>
+<a name="L95"></a><tt class="py-lineno">95</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Module cosmolopy.parameters=cosmolopy.parameters-module.html"><a title="cosmolopy.parameters" class="py-name" href="#" onclick="return doclink('link-5', 'parameters', 'link-5');">parameters</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">cparam</tt> </tt>
+<a name="L96"></a><tt class="py-lineno">96</tt>  <tt class="py-line"> </tt>
+<a name="L97"></a><tt class="py-lineno">97</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable cosmolopy.fidcosmo=cosmolopy-module.html#fidcosmo"><a title="cosmolopy.fidcosmo" class="py-name" href="#" onclick="return doclink('link-6', 'fidcosmo', 'link-6');">fidcosmo</a></tt> <tt class="py-op">=</tt> <tt class="py-name">cparam</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Function cosmolopy.parameters.WMAP7_BAO_H0_mean()=cosmolopy.parameters-module.html#WMAP7_BAO_H0_mean"><a title="cosmolopy.parameters.WMAP7_BAO_H0_mean" class="py-name" href="#" onclick="return doclink('link-7', 'WMAP7_BAO_H0_mean', 'link-7');">WMAP7_BAO_H0_mean</a></tt><tt class="py-op">(</tt><tt class="py-name">flat</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">extras</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno">98</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sat Jul 24 13:58:04 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
