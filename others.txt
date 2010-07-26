@@ -1,5 +1,27 @@
+Python astronomy resources
+---------------------------
+
+See http://www.astropython.org/resources for a nice up-to-date list of
+python astronomy resources. 
+
 Other python cosmology resources
 --------------------------------
+
+Below is a (no-doubt incomplete) list of cosmology-specific resources
+I've come across.
+
+CosmoFisher by David Ventimiglia
+
+  http://dventimi.github.com/CosmoFisher/
+
+  "Python code 'to help create, manipulate, visualize, and gain value
+  from Fisher information matrices'
+
+cosmology module in esutil
+
+  http://code.google.com/p/esutil/
+
+  Mostly distance measures.
 
 James Schombert's version of Ned Wright's Cosmology Calculator
 
