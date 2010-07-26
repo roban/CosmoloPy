@@ -309,7 +309,7 @@ def integrate_ion_recomb(z,
     hydrogen. If xHe=2.0, then helium is fully ionized in the same
     proportion as hydrogen.
     
-    We assume, as is fairly standard (e.g. BKP), that the ionized
+    We assume, as is fairly standard, that the ionized
     fraction is contained in fully ionized bubbles surrounded by a
     fully neutral IGM. The output is therefore the volume filling
     factor of ionized regions, not the ionized fraction of a
@@ -318,19 +318,13 @@ def integrate_ion_recomb(z,
     I have also made the standard assumption that all ionized photons
     are immediately absorbed, which allows the two differential
     equations (one for ionization-recombination and one for
-    emission-photoionizaion) to be combined into a single ODE. BKP say
-    that this induces less than 5% error in the final value of the
-    electron-scattering optical depth.
-
-    I believe there is an extraneous factor of m_p in the second term
-    of BKP equation 6, unless I am misunderstanding the definition of
-    their variables. I have left it out.
+    emission-photoionizaion) to be combined into a single ODE. 
 
     """
 
     # Determine recombination coefficient.
     if alpha_B is None:
-        alpha_B_cm = cr.recomb_rate_coeff_HG(temp_gas, 'H', 'B')
+        alpha_B_cm = recomb_rate_coeff_HG(temp_gas, 'H', 'B')
     else:
         alpha_B_cm = alpha_B
     alpha_B = alpha_B_cm * cc.Gyr_s / (cc.Mpc_cm**3.)
@@ -429,7 +423,7 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
 
       Dictionary specifying the cosmological parameters.
 
-    We assume, as is fairly standard (e.g. BKP), that the ionized
+    We assume, as is fairly standard, that the ionized
     fraction is contained in fully ionized bubbles surrounded by a
     fully neutral IGM. The output is therefore the volume filling
     factor of ionized regions, not the ionized fraction of a
@@ -438,13 +432,7 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
     I have also made the standard assumption that all ionized photons
     are immediately absorbed, which allows the two differential
     equations (one for ionization-recombination and one for
-    emission-photoionizaion) to be combined into a single ODE. BKP say
-    that this induces less than 5% error in the final value of the
-    electron-scattering optical depth.
-
-    I believe there is an extraneous factor of m_p in the second term
-    of BKP equation 6, unless I am misunderstanding the definition of
-    their variables. I have left it out.
+    emission-photoionizaion) to be combined into a single ODE.
 
     """
 
