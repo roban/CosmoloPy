@@ -4,6 +4,8 @@ import cosmolopy.utils as utils
 from cosmolopy.luminosityfunction import BrokenPowerlawSED
 
 def test_BrokenPowerlawSED(plot=False):
+    """Test that the BrokenPowerlawSED has the right break and normalization.
+    """
     if plot: import pylab
     runtest_BrokenPowerlawSED(BrokenPowerlawSED(), plot=plot)
     runtest_BrokenPowerlawSED(BrokenPowerlawSED(s_ion=-2., s_red=-0.5), plot=plot)

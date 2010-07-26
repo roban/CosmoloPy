@@ -23,9 +23,12 @@ ul{ max-width: 90ex }
              margin: 0 5%;
              }
 .description { font-size: 1.1em; margin-bottom: 0.5em; margin-top: 0;}
+.linkstoc { font-size: 0.9em; margin-bottom: 0; margin-top: 0; 
+            background: #F0F0FF;}
 .fig { float: right; margin: 10px}
 .news { float: right; margin: 0 10px; min-width:244px;
-        padding: 0; text-align: center; min-height:8em}
+        padding: 0; text-align: center; min-height:8em;
+        background: #FFFFFF;}
 .news h2 { margin-bottom: 1ex; margin-top: 0.0ex }
 .news ul {
           marker-offset: 0px;
