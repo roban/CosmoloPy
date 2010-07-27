@@ -5,15 +5,16 @@ body {
        }
 h1 { font-size: 1.5em; color: #AA0000; margin-bottom: 0.5em; 
      font-family: "sans-serif"; }
-h2 { font-size: 1.1em; color: #AA0000; 
-     font-family: "sans-serif"; }
+h2 { font-size: 1.3em; color: #AA0000; 
+     font-family: "sans-serif"; background: #FFE0E0;}
 h3 { font-size: 1.0em; color: #AA0000; 
-     font-family: "sans-serif"; }
-a { color: #5050AA; 
+     font-family: "sans-serif";}
+a { color: #3030AA; 
     text-decoration:none 
     }
 a:hover { text-decoration:underline }
-pre { background: #D0D0FF; color: #000000; padding: 2ex; width:90ex}
+pre { font-size: 1.1em; 
+      background: #D0D0FF; color: #000000; padding: 2ex; width:90ex}
 img{border-style: none;}
 p{ max-width: 90ex }
 ul{ max-width: 90ex }
@@ -24,11 +25,11 @@ ul{ max-width: 90ex }
              }
 .description { font-size: 1.1em; margin-bottom: 0.5em; margin-top: 0;}
 .linkstoc { font-size: 0.9em; margin-bottom: 0; margin-top: 0; 
-            background: #F0F0FF;}
-.fig { float: right; margin: 10px}
-.news { float: right; margin: 0 10px; min-width:244px;
+            background: #E0E0FF;}
+.fig { float: right; margin: 0px; border:1px solid #000000; background: #FFFFFF}
+.news { float: right; margin: 0 0px; min-width:244px;
         padding: 0; text-align: center; min-height:8em;
-        background: #FFFFFF;}
+        background: #FFFFFF; border:1px solid #000000}
 .news h2 { margin-bottom: 1ex; margin-top: 0.0ex }
 .news ul {
           marker-offset: 0px;
