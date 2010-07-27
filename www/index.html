@@ -68,7 +68,7 @@
 	<dt><a href="docAPI/cosmolopy.distance-module.html">cosmolopy.distance</a></dt>
 	<dd>Calculate various cosmological distance measures.</dd>
 	<dt><a href="docAPI/cosmolopy.luminosityfunction-module.html">cosmolopy.luminosityfunction</a></dt>
-	<dd>Routines related to galaxy luminosity functions (Schecter functions).</dd>
+	<dd>Routines related to galaxy luminosity functions (Schechter functions).</dd>
 	<dt><a href="docAPI/cosmolopy.magnitudes-module.html">cosmolopy.magnitudes</a></dt>
 	<dd>Simple routines for conversion in and out of the AB magnitude system.</dd>
 	<dt><a href="docAPI/cosmolopy.parameters-module.html">cosmolopy.parameters</a></dt>
@@ -84,7 +84,7 @@
     <a name='download'></a>
     <h2>Download</h2>
 
-    <h3>With pip or easy_install (recommended)</h3>
+    <h3>Install with <tt>pip</tt> or <tt>easy_install</tt> (recommended)</h3>
     <em>Latest release</em>
       <p>You can install the latest release from PyPI by running:
 	<pre>$ easy_install CosmoloPy</pre>
@@ -96,7 +96,7 @@
       </p>
       
     
-    <h3>git clone</h3>
+    <h3>Download with <tt>git clone</tt></h3>
     <p>You can clone the CosmoloPy project (latest development version)
     with <a href="http://git-scm.com">Git</a> by running:
 
@@ -105,7 +105,7 @@
       GitHub: <a href="http://github.com/roban/CosmoloPy"><code>roban/CosmoloPy</code></a>
     </p>
     
-    <h3>tar or zip bundle</h3>
+    <h3>Download as a tar or zip bundle</h3>
     <p> You can download the development version of the package from
       GitHub:<br>
 	<b><a href="http://github.com/roban/CosmoloPy/zipball/master">zip
@@ -146,12 +146,11 @@ $ sudo python setup.py install
     <a name='usage'></a>
     <h2>Usage</h2>
 
-    <p>
-    Most functions are designed to take a cosmology parameters as
-    keywords. The easiest way to use CosmoloPy is to create a
-    dictionary of the cosmology parameters and pass it to each
-    function using the <code>**</code> syntax.
-</p>
+    <p>Functions take cosmological parameters (which can be numpy
+      arrays) as keywords, and ignore any extra keywords. This means
+      you can make a dictionary of all of your cosmological parameters
+      and pass it to any function using the <code>**</code> syntax.
+    </p>
 <pre>
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}

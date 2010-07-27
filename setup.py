@@ -23,7 +23,7 @@ setup(
 
     ext_modules = [power_module],
 
-    tests_require = ['nose',],
+    tests_require = ['nose', 'matplotlib'],
     test_suite = 'nose.collector',
 
     # metadata for upload to PyPI

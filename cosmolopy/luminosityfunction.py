@@ -122,12 +122,12 @@ def magnitudeAB_from_sfr(sfr):
     return magnitudes.magnitude_AB_from_L_nu(lnu)
 
 def schechterL(luminosity, phiStar, alpha, LStar):
-    """Schecter luminosity function."""
+    """Schechter luminosity function."""
     LOverLStar = (luminosity/LStar)
     return (phiStar/LStar) * LOverLStar**alpha * numpy.exp(- LOverLStar)
 
 def schechterM(magnitude, phiStar, alpha, MStar):
-    """Schecter luminosity function by magnitudes."""
+    """Schechter luminosity function by magnitudes."""
     MStarMinM = 0.4 * (MStar - magnitude)
     return (0.4 * numpy.log(10) * phiStar *
             10.0**(MStarMinM * (alpha + 1.)) * numpy.exp(-10.**MStarMinM))
@@ -176,7 +176,7 @@ def iPhotonRateDensity(schechterParams,
 
     in units of photons s^-1.
 
-    Given schecterParams, the parameters of a Schecter luminosity
+    Given schecterParams, the parameters of a Schechter luminosity
     function (in terms of AB Magnitudes), sedParams, the parameters of
     the galactic Spectral Energy Distribution, and the wavelength of
     the AB Magnitudes, calculate the emission rate density of ionizing
@@ -252,7 +252,7 @@ T2010ICLF = {'z' : [4., 5., 7., 8., 9.],
              'alpha' : [-1.57, -1.63, -1.84, -1.90, -1.999]}
 
 class LFHistory(Saveable):
-    """Interpolate / extrapolate the Schecter parameters.
+    """Interpolate / extrapolate the Schechter parameters.
     
     By default, above the observed redshift range:
     
@@ -376,7 +376,7 @@ class LFHistory(Saveable):
         return xH
 
     def params_t(self, t):
-        """Return interp/extrapolated Schecter function parameters."""
+        """Return interp/extrapolated Schechter function parameters."""
         if self.extrap_var == 't':
             return {'MStar':self._MStarfunc(t),
                     'phiStar':self._phiStarfunc(t),
@@ -386,7 +386,7 @@ class LFHistory(Saveable):
             raise NotImplementedError, "params_t not implemented for z interps!"
 
     def params_z(self, z):
-        """Return interp/extrapolated Schecter function parameters."""
+        """Return interp/extrapolated Schechter function parameters."""
         if self.extrap_var == 'z':
             return {'MStar':self._MStarfunc(z),
                     'phiStar':self._phiStarfunc(z),

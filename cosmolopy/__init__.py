@@ -22,22 +22,20 @@ Capabilities include
   Routines related to perturbation theory and the power spectrum.
 
 `cosmolopy.reionization`
-  Routines related to the reionization of the IGM. 
+  Routines related to the reionization of the IGM.
 
-Most functions in the modules of this package are designed to take
-cosmological parameters as keywords and will ignore any extraneous
-keywords. This means you can make a dictionary of all of your cosmological
-parameters and pass it to any function. 
+Functions take cosmological parameters (which can be numpy arrays)
+as keywords, and ignore any extra keywords. This means you can make a
+dictionary of all of your cosmological parameters and pass it to any
+function.  
 
-The parameters module supplies some convenient pre-defined parameter sets.
+The `parameters` module supplies some convenient pre-defined parameter sets.
 
 Usage
 -----
 
-Most functions are designed to take a cosmology parameters as
-keywords. The easiest way to use CosmoloPy is to create a dictionary
-of the cosmology parameters and pass it to each function using the **
-syntax.
+The easiest way to use CosmoloPy is to create a dictionary of the
+cosmology parameters and pass it to each function using the ** syntax.
 
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
