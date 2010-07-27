@@ -1,5 +1,9 @@
 """Routines related to galaxy luminosity functions (Schechter functions).
 
+The `LFHistory` class implements a luminosity function history,
+encapsulating the changes in the galaxy luminosity distribution
+parameters as a function of redshift.
+
 """
 
 import os
@@ -8,6 +12,7 @@ import optparse
 import numpy
 import scipy.special
 
+import cosmolopy.reionization as cr
 import cosmolopy.distance as cd
 import cosmolopy.parameters as cp
 import cosmolopy.constants as cc
@@ -573,63 +578,6 @@ def test_plot_schechter():
 
     #pylab.show()
 
-if __name__ == '__main__':
-
-    usage = """Run with a filename argument to produce image files, e.g.:
-    python luminosityfunction.py lum.png
-    """
-    
-    ### Argument parsing. ###
-    parser = optparse.OptionParser(usage)
-    parser.add_option("-f", "--file", action='store_true', dest="filename",
-                      default=None)
-    (options, args) = parser.parse_args()
-    if (len(args) > 0) and (options.filename is None):
-        options.filename = args[0]
-
-    if options.filename is None:
-        print "No filename given."
-        print usage
-    else:
-        prefix, extension = os.path.splitext(options.filename)
-    
-    import pylab
-
-    plotLFevo() # Canonical observed LF
-    plotLFevo(extrap_var='z')
-    plotLFevo(params=B2008_fixed)
-    plotLFevo(params=B2008_fixed, extrap_var='z')
-
-    test_plot_schechter()
-    
-#    plotLFevo(maglim=None) # Integrate LF all the way to zero luminosity
-#    plotLFevo(B2008_fixed) # Use fixed alpha, phiStar
-#    plotLFevo(B2008_fixed, maglim=None) # ... integrated to L=0
-
-    # ... with alpha raised to -1.4 (from -1.74)
-#    newparams = B2008_fixed
-#    newparams['alpha'] = numpy.array(newparams['alpha'])
-#    newparams['alpha'][:] = -1.4
-
-#    plotLFevo(newparams, maglim=None)
-
-#    test_plot_schechter()
-
-    ### Plot output code. ###
-    if options.filename is None:
-        pylab.show()
-    else:
-        from matplotlib import _pylab_helpers
-        for manager in _pylab_helpers.Gcf.get_all_fig_managers():
-            fig = manager.canvas.figure
-            if len(fig.get_label()) > 0:
-                label = fig.get_label()
-            else:
-                label = '_Fig' + str(manager.num)
-            newfilename = prefix + '_' + label + extension
-            fig.savefig(newfilename, dpi=75)#, bbox_inches="tight")
-
-	
 class BrokenPowerlawSED(object):
     """Define an SED with a break at 912 Angstroms and different
     slopes above and below the break.
@@ -765,3 +713,60 @@ class BrokenPowerlawSED(object):
 
         return (self.photonRate_wavelength(0.,912.) /
                 self(self.lambdanu(wavelength)))
+
+if __name__ == '__main__':
+
+    usage = """Run with a filename argument to produce image files, e.g.:
+    python luminosityfunction.py lum.png
+    """
+    
+    ### Argument parsing. ###
+    parser = optparse.OptionParser(usage)
+    parser.add_option("-f", "--file", action='store_true', dest="filename",
+                      default=None)
+    (options, args) = parser.parse_args()
+    if (len(args) > 0) and (options.filename is None):
+        options.filename = args[0]
+
+    if options.filename is None:
+        print "No filename given."
+        print usage
+    else:
+        prefix, extension = os.path.splitext(options.filename)
+    
+    import pylab
+
+    plotLFevo() # Canonical observed LF
+    plotLFevo(extrap_var='z')
+    plotLFevo(params=B2008_fixed)
+    plotLFevo(params=B2008_fixed, extrap_var='z')
+
+    test_plot_schechter()
+    
+#    plotLFevo(maglim=None) # Integrate LF all the way to zero luminosity
+#    plotLFevo(B2008_fixed) # Use fixed alpha, phiStar
+#    plotLFevo(B2008_fixed, maglim=None) # ... integrated to L=0
+
+    # ... with alpha raised to -1.4 (from -1.74)
+#    newparams = B2008_fixed
+#    newparams['alpha'] = numpy.array(newparams['alpha'])
+#    newparams['alpha'][:] = -1.4
+
+#    plotLFevo(newparams, maglim=None)
+
+#    test_plot_schechter()
+
+    ### Plot output code. ###
+    if options.filename is None:
+        pylab.show()
+    else:
+        from matplotlib import _pylab_helpers
+        for manager in _pylab_helpers.Gcf.get_all_fig_managers():
+            fig = manager.canvas.figure
+            if len(fig.get_label()) > 0:
+                label = fig.get_label()
+            else:
+                label = '_Fig' + str(manager.num)
+            newfilename = prefix + '_' + label + extension
+            fig.savefig(newfilename, dpi=75)#, bbox_inches="tight")
+	

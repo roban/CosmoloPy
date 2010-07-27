@@ -3,6 +3,21 @@
 Saveable is designed to be subclassed to create new types of objects
 that can easily be pickled and reloaded.
 """
+
+import pickle
+
+class NullWriter:
+    """Dummy file-like object that does nothing.
+
+    From
+    http://stackoverflow.com/questions/1809958/hide-stderr-output-in-unit-tests
+
+    Used in Saveable.
+    """
+    def write(self, s):
+        pass
+
+
 def loadSaveable(filename):
     """Return an instance of an object unpickled from a file.
     """
