@@ -1,0 +1,62 @@
+CosmoloPy<br>
+Description: a cosmology package for Python<br>
+Homepage URL: <a href='http://roban.github.com/CosmoloPy/'>http://roban.github.com/CosmoloPy/</a><br>
+Version: 0.1.001<br>
+
+<p>
+CosmoloPy is a package of cosmology routines for Python, designed for
+use with NumPy and SciPy. Reionization is a particular focus. See
+below for a longer list of capabilities.
+
+
+<p>Functions take cosmological parameters (which can be numpy arrays)
+as keywords, and ignore any extra keywords. This means you can make a
+dictionary of all of your cosmological parameters and pass it to any
+function.
+
+<p><b>Example</b>
+
+<p>
+Calculate the comoving distance to redshift 6.
+<pre>
+>>> import cosmolopy.distance as cd
+>>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
+>>> d_co, err = cd.comoving_distance(6., **cosmo)
+>>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
+Comoving distance to z=6 is 8017.8 Mpc
+</pre>
+
+<p>
+Look
+in <a href='http://github.com/roban/CosmoloPy/tree/master/tests/'><code>tests/</code></a>
+and <a href='http://github.com/roban/CosmoloPy/tree/master/examples/'><code>examples/</code></a>
+for more examples.
+
+<p>
+<b>Capabilities</b>
+<p>See the <a href='http://roban.github.com/CosmoloPy/docAPI/'>API
+docs</a> for a full listing.
+<dl>
+  <dt><a href="http://roban.github.com/CosmoloPy/docAPI/cosmolopy.reionization-module.html">cosmolopy.reionization</a></dt>
+  <dd>Routines related to the reionization of the IGM.</dd>
+  <dt><a href="http://roban.github.com/CosmoloPy/docAPI/cosmolopy.distance-module.html">cosmolopy.distance</a></dt>
+  <dd>Calculate various cosmological distance measures.</dd>
+  <dt><a href="http://roban.github.com/CosmoloPy/docAPI/cosmolopy.luminosityfunction-module.html">cosmolopy.luminosityfunction</a></dt>
+  <dd>Routines related to galaxy luminosity functions (Schechter
+    functions).</dd>
+  <dt><a href="http://roban.github.com/CosmoloPy/docAPI/cosmolopy.perturbation-module.html">cosmolopy.perturbation</a></dt>
+  <dd>Routines related to perturbation theory and the power
+    spectrum.</dd>
+
+</dl>
+</p>
+
+<a href='http://roban.github.com/CosmoloPy/'><img src='http://roban.github.com/CosmoloPy/figs/dist2d_D_A_ony_small.png' alt='angular diameter distance versus redshift and Omega_M'/></a>
+
+<a href='http://roban.github.com/CosmoloPy/'><img src='http://roban.github.com/CosmoloPy/figs/dist2d_D_M_ony_small.png' alt='propper motion distance vs. redshift and Omega_M'/></a>
+
+
+
+
+
+

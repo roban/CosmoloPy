@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>cosmolopy.saveable</title>
+  <title>cosmolopy.saveable.NullWriter</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,7 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="cosmolopy-module.html">Package&nbsp;cosmolopy</a> ::
-        Module&nbsp;saveable
+        <a href="cosmolopy.saveable-module.html">Module&nbsp;saveable</a> ::
+        Class&nbsp;NullWriter
       </span>
     </td>
     <td>
@@ -48,44 +49,20 @@
     </td>
   </tr>
 </table>
-<!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module saveable</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.saveable-pysrc.html">source&nbsp;code</a></span></p>
-<p>Defines a Saveable class with methods to save and restore.</p>
-<p>Saveable is designed to be subclassed to create new types of objects
-that can easily be pickled and reloaded.</p>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class NullWriter</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.saveable-pysrc.html#NullWriter">source&nbsp;code</a></span></p>
+<p>Dummy file-like object that does nothing.</p>
+<p>From
+<a class="rst-reference external" href="http://stackoverflow.com/questions/1809958/hide-stderr-output-in-unit-tests" target="_top">http://stackoverflow.com/questions/1809958/hide-stderr-output-in-unit-tests</a></p>
+<p>Used in Saveable.</p>
 
-<!-- ==================== CLASSES ==================== -->
-<a name="section-Classes"></a>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td align="left" colspan="2" class="table-header">
-    <span class="table-header">Classes</span></td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="cosmolopy.saveable.NullWriter-class.html" class="summary-name">NullWriter</a><br />
-      Dummy file-like object that does nothing.
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="cosmolopy.saveable.Saveable-class.html" class="summary-name">Saveable</a><br />
-      An object with methods to save and restore.
-    </td>
-  </tr>
-</table>
-<!-- ==================== FUNCTIONS ==================== -->
-<a name="section-Functions"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td align="left" colspan="2" class="table-header">
-    <span class="table-header">Functions</span></td>
+    <span class="table-header">Instance Methods</span></td>
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
@@ -93,31 +70,15 @@ that can easily be pickled and reloaded.</p>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="loadSaveable"></a><span class="summary-sig-name">loadSaveable</span>(<span class="summary-sig-arg">filename</span>)</span><br />
-      Return an instance of an object unpickled from a file.</td>
+          <td><span class="summary-sig"><a name="write"></a><span class="summary-sig-name">write</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="cosmolopy.saveable-pysrc.html#loadSaveable">source&nbsp;code</a></span>
+            <span class="codelink"><a href="cosmolopy.saveable-pysrc.html#NullWriter.write">source&nbsp;code</a></span>
             
           </td>
         </tr>
       </table>
       
-    </td>
-  </tr>
-</table>
-<!-- ==================== VARIABLES ==================== -->
-<a name="section-Variables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td align="left" colspan="2" class="table-header">
-    <span class="table-header">Variables</span></td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
