@@ -43,6 +43,9 @@ float TFmdm_onek_hmpc(float kk);
 
 #include <math.h>
 #include <stdio.h>
+/* Added the following include statment to silence warnings (-RHK
+2010-08-03).  See http://github.com/roban/CosmoloPy/issues#issue/1 */
+#include <stdlib.h>
 
 /* Convenience from Numerical Recipes in C, 2nd edition */
 static float sqrarg;
