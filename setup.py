@@ -13,7 +13,7 @@ power_module = Extension('cosmolopy.EH._power',
 
 setup(
     name = "CosmoloPy",
-    version = "0.1.001",
+    version = "0.1.002",
     packages = find_packages(),
     package_data = {
         # If any package contains *.so files, include them:
