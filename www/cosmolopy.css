@@ -43,3 +43,5 @@ ul{ max-width: 90ex }
            padding: 0.75ex 0em;
            }        
 .footer { text-align:center; padding-top:1em; }
+
+.note {font-size: 0.9em; font-style:italic}
