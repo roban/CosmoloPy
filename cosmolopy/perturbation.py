@@ -133,7 +133,8 @@ def fgrowth(z, omega_M_0, unnormed=False):
             )
 
 def w_tophat(k, r):
-    r"""Calculate the k-space Fourier transform of a spherical tophat.
+    r"""Calculate the k-space Fourier transform of a spherical tophat window
+    function.
 
     Parameters
     ----------
@@ -144,18 +145,16 @@ def w_tophat(k, r):
     r: array
        radius of the 3-D spherical tophat
 
-    Note: k and r need to be in the same units.
+    Note: k and r need to be in compatible units (e.g. Mpc^-1 and Mpc).
 
     Returns
     -------
     
-    ``\tilde{w}``: array
-      the value of the transformed function at wavenumber k.
+    the value of the transformed function at wavenumber k.
     
     """
-    return (3. * ( numpy.sin(k * r) - k * r * numpy.cos(k * r) ) / 
-            ((k * r)**3.))
-
+    kr = k * r
+    return 3. * (numpy.sin(kr) - kr * numpy.cos(kr)) / (kr**3.)
 
 def _sigmasq_integrand_log(logk, r, cosmology):
     """Integrand used internally by the sigma_r function.
@@ -229,6 +228,7 @@ def _sigmasq_r_scalar(r,
     return 1.e10 * integral, 1.e10 * error
 
 _sigmasq_r_vec = numpy.vectorize(_sigmasq_r_scalar)
+
 def sigma_r(r, z, **cosmology):
     r"""RMS mass fluctuations of a sphere of radius r at redshift z.
 
@@ -296,6 +296,258 @@ def sigma_r(r, z, **cosmology):
     error = fg * errorsq_0 / (2. * sigmasq_0)
 
     return sigma, error
+
+def dwsqr_tophat_dr(k, r):
+    r"""Calculate the derivative of w_tophat^2 with respect to r.
+
+    Parameters:
+    ----------
+    
+    k: array
+      wavenumber
+
+    r: array
+       radius of the 3-D spherical tophat
+
+    Note: k and r need to be in compatible units (e.g. Mpc^-1 and Mpc).
+
+    Returns:
+    -------
+
+       the value of dw^2(k,r)/dr
+    
+    """
+    kr = k * r
+    w = w_tophat(k,r)
+    return 2. * w * 3. * k * ((numpy.sin(kr)/(kr**2.)) - (w/kr))
+
+def _dsigmasqdr_integrand_log(logk, r, cosmology):
+    """Integrand used internally by the sigma_r function.
+    """
+    k = numpy.exp(logk)
+    # The 1e-10 factor in the integrand is added to avoid roundoff
+    # error warnings. It is divided out later.
+    return (k *
+            (1.e-8 / (2. * math.pi**2.)) * k**2. * 
+            dwsqr_tophat_dr(k, r) * 
+            power_spectrum(k, 0.0, **cosmology))
+
+def _klims_dlnsig(r, cosmology):
+    """Integration limits used internally by the dlnsigmadr function."""
+    logkr = numpy.linspace(-8., 15., 500.)
+    logk =  logkr - numpy.log(r)
+    integrand = _dsigmasqdr_integrand_log(logk, r, cosmology)
+
+    maxintegrand = numpy.max(numpy.abs(integrand))
+    factor = 1.e-6
+    highmask = numpy.abs(integrand) > maxintegrand * factor
+    while highmask.ndim > logk.ndim:
+        highmask = numpy.logical_or.reduce(highmask)
+
+    mink = numpy.min(logk[highmask])
+    maxk = numpy.max(logk[highmask])
+
+    if False:
+        import pylab
+        pylab.figure()
+        pylab.plot(logk, integrand, 'k')
+        pylab.axvline(x=numpy.log(1/r))
+        pylab.axvline(x=mink)
+        pylab.axvline(x=maxk)
+
+        pylab.figure()
+        pylab.plot(logk, w_tophat(numpy.exp(logk), r), 'r')
+        pylab.axvline(x=numpy.log(1/r))
+        pylab.axvline(x=mink)
+        pylab.axvline(x=maxk)
+        
+        pylab.figure()
+        pylab.plot(logk, dwsqr_tophat_dr(numpy.exp(logk), r), 'b')
+        pylab.axvline(x=numpy.log(1/r))
+        pylab.axvline(x=mink)
+        pylab.axvline(x=maxk)
+
+        pylab.figure()
+        pylab.plot(logk, power_spectrum(numpy.exp(logk), 0.0, **cosmology))
+        pylab.axvline(x=numpy.log(1/r))
+        pylab.axvline(x=mink)
+        pylab.axvline(x=maxk)
+
+        pylab.show()
+
+    return mink, maxk
+ 
+def _dsigmasqdr_scalar(r, 
+                        n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
+                        omega_lambda_0, h):
+    """Calculate d(sigma_r^2)/dr at z=0. Works only for scalar r. 
+
+    Used internally by the dlnsigmadr function.
+
+    Parameters:
+    ----------
+    
+    r : array
+       radius in Mpc.
+
+    n, omega_M_0, omega_b_0, omega_n_0, N_nu, omega_lambda_0, h:
+       cosmological parameters, specified like this to allow this
+       function to be vectorized (see source code of sigma_r).
+
+    Returns:
+    -------
+
+    d(sigma^2)/dr, error(sigma^2)
+
+    """
+    # r is in Mpc, so k will also by in Mpc for the integration.
+
+    cosmology = {'n':n, 
+                 'deltaSqr':deltaSqr,
+                 'omega_M_0':omega_M_0, 
+                 'omega_b_0':omega_b_0, 
+                 'omega_n_0':omega_n_0, 
+                 'N_nu':N_nu, 
+                 'omega_lambda_0':omega_lambda_0, 
+                 'h':h,}
+    logk_lim = _klims_dlnsig(r, cosmology)
+    print "Integrating from logk = %.3f to %.3f for r=%.3g." % (logk_lim[0],
+                                                                logk_lim[1],
+                                                                r)
+
+    print "Integrating from logkr = %.3f to %.3f for r=%.3g." % (logk_lim[0] + numpy.log10(r),
+                                                                 logk_lim[1]  + numpy.log10(r),
+                                                                 r)
+
+
+    # Integrate over logk from -infinity to infinity.
+    integral, error = si.quad(_dsigmasqdr_integrand_log, 
+                              logk_lim[0], 
+                              logk_lim[1], 
+                              args=(r, cosmology),
+                              limit=10000)#, epsabs=1e-9, epsrel=1e-9)
+#    print "I = %.3g" % (1.e10 * integral)
+    return 1.e8 * integral, 1.e8 * error
+
+_dsigmasqdr_vec = numpy.vectorize(_dsigmasqdr_scalar)
+
+def dlnsigmadr(r, z, **cosmology):
+    r"""Calculate the derivative d(ln(sigma))/dr.
+
+    Returns sigma and the error on sigma.
+    
+    Parameters:
+    ----------
+    
+    r : array
+       radius of sphere in Mpc
+
+    z : array
+       redshift
+
+    Returns:
+    -------
+
+    dlnsigmadr:
+       the value of the derivative
+
+    sigma:
+       the value of sigma
+
+    """
+    omega_M_0 = cosmology['omega_M_0']
+    
+    fg = fgrowth(z, omega_M_0)
+
+    if 'deltaSqr' not in cosmology:
+        cosmology['deltaSqr'] = norm_power(**cosmology)
+    
+    #Uses 'n', as well as (for transfer_function_EH), 'omega_M_0',
+    #'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
+
+    if numpy.isscalar(r):
+        dsigmasqrdr_0, errorsq_0 = _dsigmasqdr_scalar(r,
+                                                     cosmology['n'],
+                                                     cosmology['deltaSqr'],
+                                                     cosmology['omega_M_0'],
+                                                     cosmology['omega_b_0'],
+                                                     cosmology['omega_n_0'],
+                                                     cosmology['N_nu'],
+                                                     cosmology['omega_lambda_0'],
+                                                     cosmology['h'],)
+    else:
+        dsigmasqrdr_0, errorsq_0 = _dsigmasqdr_vec(r,
+                                                cosmology['n'],
+                                                cosmology['deltaSqr'],
+                                                cosmology['omega_M_0'],
+                                                cosmology['omega_b_0'],
+                                                cosmology['omega_n_0'],
+                                                cosmology['N_nu'],
+                                                cosmology['omega_lambda_0'],
+                                                cosmology['h'],)
+    sigma, errsigma = sigma_r(r, z, **cosmology)
+
+    dsigmasqrdr = dsigmasqrdr_0 * (fg**2.)
+    
+    return dsigmasqrdr / (2. * sigma**2.), sigma
+
+def dndm_overf(m, z, **cosmology):
+    """Calculate (dn/dm)/f(sigma).
+
+    Used in calculating the halo mass function.
+
+    Returns
+    -------
+
+    (dn/dm)/f(sigma), sigma
+
+    Notes
+    -----
+
+    See, e.g, Reed et al. (2007 MNRAS 374 2) equation 3.
+    """
+
+    rho_crit, rho_0 = cden.cosmo_densities(**cosmology)
+
+    volume  = m / rho_0
+    r  = (volume / ((4. / 3.) * math.pi))**(1./3.)
+    dmdr = 4. * math.pi * r**2. * rho_0
+
+    dlnsdr, sigma = dlnsigmadr(r, z, **cosmology)
+    dlnsdm = dlnsdr / dmdr
+    
+    return -1. * rho_0 * dlnsdm / m, sigma
+
+def dndm_PS(m, z, delta_c=1.686, **cosmology):
+    """Calculate the Press-Schechter halo mass function.
+
+    Notes
+    -----
+
+    See, e.g., Reed et al. (2007 MNRAS 374 2) equations 1-4.
+    """
+    
+    dndm_f, sigma = dndm_overf(m, z, **cosmology)
+
+    f = (numpy.sqrt(2./math.pi) * (delta_c/sigma) *
+         numpy.exp(-1. * (delta_c/(2. * sigma))**2.))
+    return f * dndm_f
+
+def dndm_ST(m, z, A=0.3222, a=0.707, p=0.3, delta_c=1.686, **cosmology):
+    """Calculate the Sheth-Tormen halo mass function.
+
+    Notes
+    -----
+
+    See, e.g., Reed et al. (2007 MNRAS 374 2) equations 1-3, 5.
+    """
+
+    dndm_f, sigma = dndm_overf(m, z, **cosmology)
+
+    f = A * (numpy.sqrt(2. * a/math.pi) * (1. + (sigma/delta_c)**2./a) *
+             (delta_c/sigma) *
+             numpy.exp(-1. * a * (delta_c/(2. * sigma))**2.))
+    return f * dndm_f
 
 def norm_power(**cosmology):
     """Normalize the power spectrum to the specified sigma_8.
@@ -523,6 +775,9 @@ def virial_mass(temp, z, mu=None, **cosmology):
 
     z: array
        Redshift.
+
+    mu: array, optional
+       Mean mass per particle. 
 
     Returns
     -------
