@@ -534,11 +534,7 @@ def ionization_from_luminosity(z, ratedensityfunc, xHe=1.0,
         x[sorti] = cu.integrate_piecewise(dx_dt, t[sorti], method = method)
         return x
     else:
-        dt_dz = lambda z1: cd._lookback_integral(z1,
-                                                 cosmo['omega_M_0'],
-                                                 cosmo['omega_lambda_0'],
-                                                 cosmo['omega_k_0'],
-                                                 cosmo['h'])
+        dt_dz = lambda z1: cd.lookback_integrand(z1, **cosmo)
         def dx_dz(z1):
             z1 = numpy.abs(z1)
             return numpy.nan_to_num(dt_dz(z1) *

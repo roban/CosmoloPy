@@ -2,6 +2,8 @@
 
 Mostly follows David Hogg's pedagogical paper arXiv:astro-ph/9905116v4 .
 
+Distance units are Mpc, time units are seconds.
+
 """
 
 import math
@@ -84,7 +86,7 @@ def hubble_distance_z(z, **cosmo):
     
     return cc.c_light_Mpc_s / (H_0 * e_z(z, **cosmo))
 
-def _comoving_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
+def _comoving_integrand(z, omega_M_0, omega_lambda_0, omega_k_0, h):
 
     e_z = (omega_M_0 * (1+z)**3. + 
            omega_k_0 * (1+z)**2. + 
@@ -96,10 +98,26 @@ def _comoving_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
 
     return cc.c_light_Mpc_s / (H_z)
 
+def comoving_integrand(z, **cosmo):
+    """The derivative of the comoving distance with redshift: dd_c/dz.
+
+    See equation 15 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are Mpc.
+    
+    """
+    return _comoving_integrand(z,
+                               cosmo['omega_M_0'],
+                               cosmo['omega_lambda_0'],
+                               cosmo['omega_k_0'],
+                               cosmo['h'])
+
 def comoving_distance(z, z0 = 0, **cosmo):
     """Calculate the line-of-sight comoving distance (in Mpc) to redshift z.
 
     See equation 15 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are Mpc.
 
     Optionally calculate the integral from z0 to z.
 
@@ -128,7 +146,7 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     dc_func = \
         numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h: 
-                        si.quad(_comoving_integral, z0, z, limit=1000,
+                        si.quad(_comoving_integrand, z0, z, limit=1000,
                                 args=(omega_M_0, omega_lambda_0, omega_k_0, h)))
     d_co, err = dc_func(z, z0, 
                         cosmo['omega_M_0'],
@@ -148,6 +166,8 @@ def comoving_distance_transverse(z, **cosmo):
     This is also called the proper motion distance, D_M.
 
     See equation 16 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are Mpc.
 
     This is the distance d_m, such that the comoving distance between
     two events at the same redshift, but separated on the sky by some
@@ -189,6 +209,8 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
     z0 and z.
 
     See equations 18-19 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are Mpc.
 
     Warning: returns two error estimates, one from each invocation of
     comoving_distance_transverse (see the docstring for that function
@@ -237,7 +259,7 @@ def luminosity_distance(z, **cosmo):
     return da * (1+z)**2., err1, err2
 
 
-def _lookback_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
+def _lookback_integrand(z, omega_M_0, omega_lambda_0, omega_k_0, h):
 
     e_z = (omega_M_0 * (1+z)**3. + 
            omega_k_0 * (1+z)**2. + 
@@ -249,10 +271,26 @@ def _lookback_integral(z, omega_M_0, omega_lambda_0, omega_k_0, h):
     
     return 1./((1. + z) * H_z)
 
+def lookback_integrand(z, **cosmo):
+    """Calculate the derivative of the lookback time with redshift: dt_L/dz.
+
+    See equation 30 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are seconds.
+
+    """
+    return _lookback_integrand(z,
+                               cosmo['omega_M_0'],
+                               cosmo['omega_lambda_0'],
+                               cosmo['omega_k_0'],
+                               cosmo['h'])
+
 def lookback_time(z, z0 = 0.0, **cosmo):
     """Calculate the lookback time (in s) to redshift z.
 
     See equation 30 of David Hogg's arXiv:astro-ph/9905116v4
+
+    Units are s.
 
     Optionally calculate the integral from z0 to z.
 
@@ -272,7 +310,7 @@ def lookback_time(z, z0 = 0.0, **cosmo):
 
     lt_func = \
         numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h: 
-                        si.quad(_lookback_integral, z0, z, limit=1000,
+                        si.quad(_lookback_integrand, z0, z, limit=1000,
                                 args=(omega_M_0, omega_lambda_0, omega_k_0, h)))
     t_look, err = lt_func(z, z0, 
                           cosmo['omega_M_0'],
@@ -289,6 +327,8 @@ def age(z, use_flat=True, **cosmo):
     
     See also: lookback_time.
 
+    Units are s.
+
     Returns two error estimates: one for the full age of the universe,
     the other for the lookback time.
     """
@@ -301,6 +341,8 @@ def age(z, use_flat=True, **cosmo):
 
 def age_flat(z, **cosmo):
     """Calculate the age of the universe assuming a flat cosmology.
+    
+    Units are s.
 
     Analytical formula from Peebles, p. 317, eq. 13.2.
     """
@@ -322,6 +364,8 @@ def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
                        return_inverse=False,
                        **cosmo):
     """Return an interpolation function that will give age as a funtion of z
+
+    Units are s.
 
     If return_inverse is True, will also return a function giving z as
     a function of age.
@@ -348,6 +392,8 @@ def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
 def quick_redshift_age_function(zmax = 20., zmin = 0., zstep = 0.1, **cosmo):
     """Return an interpolation function giving z as a funtion of age
     of the universe.
+
+    Units of time are s.
 
     Returns
     -------
