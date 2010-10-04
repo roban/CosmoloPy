@@ -18,7 +18,7 @@ import cosmolopy.parameters as cp
 import cosmolopy.constants as cc
 import cosmolopy.utils as utils
 from cosmolopy.saveable import Saveable
-import cosmolopy.magnitudes as magnitudes
+import cosmolopy.magnitudes as cmag
 
 def mass_from_sfr(sfr):
     """Use Labbe et al. (2009) relation between stellar mass and SFR.
@@ -119,38 +119,70 @@ def magnitudeAB_from_sfr(sfr):
     magnitudes.magnitude_AB_from_L_nu.
     """
     lnu = L_nu_from_sfr(sfr)
-    return magnitudes.magnitude_AB_from_L_nu(lnu)
+    return cmag.magnitude_AB_from_L_nu(lnu)
 
 def schechterL(luminosity, phiStar, alpha, LStar):
-    """Schechter luminosity function."""
+    """Schechter luminosity function.
+
+    Number density per unit luminosity.
+    """
     LOverLStar = (luminosity/LStar)
-    return (phiStar/LStar) * LOverLStar**alpha * numpy.exp(- LOverLStar)
+    return (phiStar/LStar) * LOverLStar**alpha * numpy.exp(-LOverLStar)
 
 def schechterM(magnitude, phiStar, alpha, MStar):
-    """Schechter luminosity function by magnitudes."""
+    """Schechter luminosity function by magnitudes.
+
+    Number density per magnitude.
+    """
     MStarMinM = 0.4 * (MStar - magnitude)
     return (0.4 * numpy.log(10) * phiStar *
             10.0**(MStarMinM * (alpha + 1.)) * numpy.exp(-10.**MStarMinM))
+
+def _raise_mpmath_missing(p, x, errorinst):
+    """Used to raise an error if mpmath is needed but is missing.
+    """
+    print "Need mpmath for certain values of alpha (<-1 or <-2)."
+    print " attempted to calculate incomplete gamma with power = %.3f" % p
+    raise errorinst
+
+# Try importing mpmath, and store the error if unsuccessful.
+try:
+    from mpmath import gammainc
+    _mpgammainc = numpy.vectorize(gammainc)
+except ImportError as mpmatherrorinst:
+    _mpgammainc = lambda p, x: _raise_mpmath_missing(p,x,mpmatherrorinst)
+
+def mpmathgammaincc(p, x):
+    """Convenience alias for incomplete gamma function from mpmath.
+
+    Will raise an ImportError if mpmath failed to import.
+    """
+    return _mpgammainc(p, x)
 
 def schechterCumuLL(luminosity, phiStar, alpha, LStar):
     """Integrate luminosity in galaxies above luminosity=L.
 
     Uses an analytical formula.
     """
-    # Note that the scipy.special definition of incomplete gamma is
-    # normalized to one and is the lower incomplete gamma function, so
-    # we have to use the complement and multiply by the unnormalized
-    # integral (which is computed in schechterTotLL).
-    return (schechterTotLL(phiStar, alpha, LStar) *
-            (1. - scipy.special.gammainc(alpha+2., luminosity/LStar)))
+
+    if numpy.any(alpha > -2.):
+        # Note that the scipy.special definition of incomplete gamma
+        # is normalized to one, so we have to multiply by the
+        # unnormalized integral (which is computed in schechterTotLL).
+        return (schechterTotLL(phiStar, alpha, LStar) *
+                scipy.special.gammaincc(alpha+2., luminosity/LStar))
+    else:
+        return (phiStar * Lstar *
+                numpy.float64(mpmathgammaincc(alpha+2., luminosity/LStar)))
 
 def schechterCumuLM(magnitudeAB, phiStar, alpha, MStar):
     """Integrate luminosity in galaxies brighter than magnitudeAB.
 
-    Uses an analytical formula.
+    Uses schechterCumuLL after converting to luminosity with
+    `magnitudes.L_nu_from_magAB`.
     """
-    LStar = magnitudes.L_nu_from_magAB(MStar)
-    lum = magnitudes.L_nu_from_magAB(magnitudeAB)
+    LStar = cmag.L_nu_from_magAB(MStar)
+    lum = cmag.L_nu_from_magAB(magnitudeAB)
     return schechterCumuLL(lum, phiStar, alpha, LStar)
 
 def schechterTotLL(phiStar, alpha, LStar):
@@ -165,8 +197,49 @@ def schechterTotLM(phiStar, alpha, MStar):
 
     Uses an analytical formula.
     """
-    LStar = magnitudes.L_nu_from_magAB(MStar)
+    LStar = cmag.L_nu_from_magAB(MStar)
     return schechterTotLL(phiStar, alpha, LStar)
+
+def schechterCumuNL(luminosity, phiStar, alpha, LStar):
+    """Integrate number density in galaxies above luminosity=L.
+
+    Uses an analytical formula.
+    """
+    if numpy.any(alpha > -1.):
+        # Note that the scipy.special definition of incomplete gamma
+        # is normalized to one, so we have to multiply by the
+        # unnormalized integral (which is computed in schechterTotLL).
+        return (schechterTotNL(phiStar, alpha, LStar) *
+                scipy.special.gammaincc(alpha+1., luminosity/LStar))
+    else:
+        return (phiStar *
+                numpy.float64(mpmathgammaincc(alpha+1., luminosity/LStar)))
+
+def schechterCumuNM(magnitudeAB, phiStar, alpha, MStar):
+    """Integrate number density in galaxies brighter than magnitudeAB.
+
+    Uses schechterCumuNL after converting to luminosity with
+    `magnitudes.L_nu_from_magAB`.
+    """
+    LStar = cmag.L_nu_from_magAB(MStar)
+    lum = cmag.L_nu_from_magAB(magnitudeAB)
+    return schechterCumuNL(lum, phiStar, alpha, LStar)
+
+def schechterTotNL(phiStar, alpha, LStar):
+    """Integrate total number density in galaxies.
+
+    Uses an analytical formula.
+    """
+    return phiStar * LStar * scipy.special.gamma(alpha + 1.)
+
+def schechterTotNM(phiStar, alpha, MStar):
+    """Integrate total number density in galaxies.
+
+    Uses schechterTotNM after converting to luminosity with
+    `magnitudes.L_nu_from_magAB`.
+    """
+    LStar = cmag.L_nu_from_magAB(MStar)
+    return schechterTotNL(phiStar, alpha, LStar)
 
 def iPhotonRateDensity(schechterParams,
                        maglim=None,
@@ -176,7 +249,7 @@ def iPhotonRateDensity(schechterParams,
 
     in units of photons s^-1.
 
-    Given schecterParams, the parameters of a Schechter luminosity
+    Given schechterParams, the parameters of a Schechter luminosity
     function (in terms of AB Magnitudes), sedParams, the parameters of
     the galactic Spectral Energy Distribution, and the wavelength of
     the AB Magnitudes, calculate the emission rate density of ionizing
@@ -287,7 +360,11 @@ class LFHistory(Saveable):
 
         self.zobs = params['z']
         self.tobs = cd.age(self.zobs, **cosmo)[0]
-        self.MStar = params['MStar']
+        if 'MStar' in params:
+            self.MStar = params['MStar']
+        elif 'LStar' in params:
+            self.LStar = params['LStar']
+            self.MStar = cmag.magAB_from_L_nu(self.LStar)
         self.phiStar = params['phiStar']
         self.alpha = params['alpha']
 

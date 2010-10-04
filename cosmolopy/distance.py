@@ -248,7 +248,7 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
     return da12, err1, err2
 
 def luminosity_distance(z, **cosmo):
-    """Calculate the luminosity distance to redshift z.
+    """Calculate the luminosity distance (Mpc) to redshift z.
     
     Optionally calculate the integral from z0 to z.
 

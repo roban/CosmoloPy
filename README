@@ -34,4 +34,7 @@ Prerequisites
   python-dev 
   swig
 
+ For some Schechter function calculations (luminosityfunction module):
+  mpmath
+
 
