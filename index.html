@@ -94,7 +94,7 @@
     <h3>Install with <tt>pip</tt> or <tt>easy_install</tt> (recommended)</h3>
     <em>Latest release</em>
       <p>You can install the latest release from PyPI by running:
-	<pre>$ easy_install --upgrade CosmoloPy</pre>
+	<pre>$ easy_install CosmoloPy</pre>
 	or
 	<pre>$ pip install CosmoloPy</pre> or download the source
 	package manually
@@ -171,7 +171,7 @@ $ sudo python setup.py install
 <pre>
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
->>> d_co, err = cd.comoving_distance(6., **cosmo)
+>>> d_co = cd.comoving_distance(6., **cosmo)
 >>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
 Comoving distance to z=6 is 8017.8 Mpc
 </pre>
@@ -182,10 +182,10 @@ including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so
 you can just do this:
 <pre>
 >>> from cosmolopy import *
->>> d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
+>>> d_a = cd.angular_diameter_distance(6, **fidcosmo)
 >>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
 Angluar-diameter distance to z=6 is 1209.9 Mpc
->>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+>>> d_light = cd.light_travel_distance(6, **fidcosmo)
 >>> print "Light-travel distance to z=6 is %.1f Mpc" % (d_light)
 Light-travel distance to z=6 is 3922.9 Mpc
 </pre>
