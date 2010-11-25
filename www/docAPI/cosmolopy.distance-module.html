@@ -52,6 +52,7 @@
 <h1 class="epydoc">Module distance</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.distance-pysrc.html">source&nbsp;code</a></span></p>
 <p>Calculate various cosmological distance measures.</p>
 <p>Mostly follows David Hogg's pedagogical paper arXiv:astro-ph/9905116v4 .</p>
+<p>Distance units are Mpc, time units are seconds.</p>
 
 <!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
@@ -85,7 +86,8 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#set_omega_k_0" class="summary-sig-name">set_omega_k_0</a>(<span class="summary-sig-arg">cosmo</span>)</span><br />
-      Returns the cosmo dictionary with omega_k_0 set.</td>
+      Returns the cosmo dictionary with omega_k_0 set.
+See get_omega_k_0.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#set_omega_k_0">source&nbsp;code</a></span>
             
@@ -142,6 +144,24 @@
       Calculate the value of the Hubble distance at redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#hubble_distance_z">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#comoving_integrand" class="summary-sig-name">comoving_integrand</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      The derivative of the comoving distance with redshift: dd_c/dz.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_integrand">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -233,6 +253,61 @@
       Calculate the luminosity distance to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#luminosity_distance">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#diff_comoving_volume" class="summary-sig-name">diff_comoving_volume</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculate the differential comoving volume element
+dV_c/dz/dSolidAngle.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#diff_comoving_volume">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#comoving_volume" class="summary-sig-name">comoving_volume</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculate the comoving volume out to redshift z.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_volume">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#lookback_integrand" class="summary-sig-name">lookback_integrand</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Calculate the derivative of the lookback time with redshift: dt_L/dz.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#lookback_integrand">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -365,6 +440,7 @@ of the universe.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#redshift_d_light" class="summary-sig-name">redshift_d_light</a>(<span class="summary-sig-arg">dl</span>,
         <span class="summary-sig-arg">z_guess</span>=<span class="summary-sig-default">6.0</span>,
+        <span class="summary-sig-arg">fmin_args</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
       Calculate the redshift corresponding to a given light travel
 distance.</td>
@@ -515,6 +591,28 @@ appears in the definitions of many other distance measures.</p>
   </dl>
 </td></tr></table>
 </div>
+<a name="comoving_integrand"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">comoving_integrand</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_integrand">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The derivative of the comoving distance with redshift: dd_c/dz.</p>
+<p>See equation 15 of David Hogg's arXiv:astro-ph/9905116v4</p>
+<p>Units are Mpc.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="comoving_distance"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -533,14 +631,13 @@ appears in the definitions of many other distance measures.</p>
   
   <p>Calculate the line-of-sight comoving distance (in Mpc) to redshift z.</p>
 <p>See equation 15 of David Hogg's arXiv:astro-ph/9905116v4</p>
+<p>Units are Mpc.</p>
 <p>Optionally calculate the integral from z0 to z.</p>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
 <dl class="rst-docutils">
 <dt>d_co: ndarray</dt>
 <dd>Comoving distance in Mpc.</dd>
-<dt>err: ndarray</dt>
-<dd>Extimate of numerical integration error from scipy.integrate.quad.</dd>
 </dl>
 </div>
 <div class="rst-section" id="rst-examples">
@@ -549,9 +646,9 @@ appears in the definitions of many other distance measures.</p>
 <span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
 <span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
 <span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
-<span class="py-prompt">&gt;&gt;&gt; </span>d_co, err = cd.comoving_distance(6., **cosmo)
-<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Comoving distance = %.1f Mpc&quot;</span> % (d_co)
-<span class="py-output">Comoving distance = 8017.8 Mpc</span></pre>
+<span class="py-prompt">&gt;&gt;&gt; </span>d_co = cd.comoving_distance(6., **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Comoving distance to z=6 is %.1f Mpc&quot;</span> % (d_co)
+<span class="py-output">Comoving distance to z=6 is 8017.8 Mpc</span></pre>
 </div>
   <dl class="fields">
   </dl>
@@ -575,6 +672,7 @@ appears in the definitions of many other distance measures.</p>
   <p>Calculate the transverse comoving distance (in Mpc) to redshift z.</p>
 <p>This is also called the proper motion distance, D_M.</p>
 <p>See equation 16 of David Hogg's arXiv:astro-ph/9905116v4</p>
+<p>Units are Mpc.</p>
 <p>This is the distance d_m, such that the comoving distance between
 two events at the same redshift, but separated on the sky by some
 angle delta_theta is d_m * delta_theta.</p>
@@ -605,16 +703,14 @@ D_M.</p>
 <p>Optionally find the angular diameter distante between objects at
 z0 and z.</p>
 <p>See equations 18-19 of David Hogg's arXiv:astro-ph/9905116v4</p>
-<p>Warning: returns two error estimates, one from each invocation of
-comoving_distance_transverse (see the docstring for that function
-for explanation of the error estimate).</p>
+<p>Units are Mpc.</p>
 <div class="rst-section" id="rst-examples">
 <h1 class="heading">Examples</h1>
 <pre class="py-doctest">
 <span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
 <span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
 <span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
-<span class="py-prompt">&gt;&gt;&gt; </span>d_a, err1, err2 = cd.angular_diameter_distance(6., **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>d_a = cd.angular_diameter_distance(6., **cosmo)
 <span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Angular diameter distance = %.1f Mpc&quot;</span> % (d_a)
 <span class="py-output">Angular diameter distance = 1145.4 Mpc</span></pre>
 </div>
@@ -644,6 +740,98 @@ for explanation of the error estimate).</p>
   </dl>
 </td></tr></table>
 </div>
+<a name="diff_comoving_volume"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">diff_comoving_volume</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.distance-pysrc.html#diff_comoving_volume">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the differential comoving volume element
+dV_c/dz/dSolidAngle.</p>
+<p>See David Hogg's arXiv:astro-ph/9905116v4, equation 28.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>dVc = cd.diff_comoving_volume(6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;dV/dz/dSolidAngle at z=6 is %.3g Mpc**3&quot;</span> % (dVc)
+<span class="py-output">dV/dz/dSolidAngle at z=6 is 2.63e+10 Mpc**3</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="comoving_volume"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">comoving_volume</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_volume">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the comoving volume out to redshift z.</p>
+<p>See David Hogg's arXiv:astro-ph/9905116v4, equation 29.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>Vc = cd.comoving_volume(6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Vc = %.3g Mpc**3&quot;</span> % (Vc)
+<span class="py-output">Vc = 2.16e+12 Mpc**3</span></pre>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.0, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>Vc = cd.comoving_volume(6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Vc = %.3g Mpc**3&quot;</span> % (Vc)
+<span class="py-output">Vc = 1.68e+12 Mpc**3</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="lookback_integrand"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">lookback_integrand</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.distance-pysrc.html#lookback_integrand">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the derivative of the lookback time with redshift: dt_L/dz.</p>
+<p>See equation 30 of David Hogg's arXiv:astro-ph/9905116v4</p>
+<p>Units are seconds.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="lookback_time"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -662,15 +850,13 @@ for explanation of the error estimate).</p>
   
   <p>Calculate the lookback time (in s) to redshift z.</p>
 <p>See equation 30 of David Hogg's arXiv:astro-ph/9905116v4</p>
+<p>Units are s.</p>
 <p>Optionally calculate the integral from z0 to z.</p>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
 <dl class="rst-docutils">
 <dt>t_look: ndarray</dt>
 <dd>Lookback time in seconds.</dd>
-<dt>err: ndarray</dt>
-<dd>Estimate of numerical integration error in lookback time (in s)
-from scipy.integrate.quad.</dd>
 </dl>
 </div>
   <dl class="fields">
@@ -696,8 +882,18 @@ from scipy.integrate.quad.</dd>
   <p>Calculate the age of the universe as seen at redshift z.</p>
 <p>Age at z is lookback time at z'-&gt;Infinity minus lookback time at z.</p>
 <p>See also: lookback_time.</p>
-<p>Returns two error estimates: one for the full age of the universe,
-the other for the lookback time.</p>
+<p>Units are s.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>t = cd.age(6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;age at z=6.0 = %.3g Gyr&quot;</span> % (t/cc.Gyr_s)
+<span class="py-output">age at z=6.0 = 0.892 Gyr</span></pre>
+</div>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -718,7 +914,19 @@ the other for the lookback time.</p>
   </tr></table>
   
   <p>Calculate the age of the universe assuming a flat cosmology.</p>
+<p>Units are s.</p>
 <p>Analytical formula from Peebles, p. 317, eq. 13.2.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>t = cd.age_flat(6.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;age at z=6.0 is %.3g Gyr&quot;</span> % (t/cc.Gyr_s)
+<span class="py-output">age at z=6.0 is 0.892 Gyr</span></pre>
+</div>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -742,13 +950,26 @@ the other for the lookback time.</p>
   </tr></table>
   
   <p>Return an interpolation function that will give age as a funtion of z</p>
+<p>Units are s.</p>
 <p>If return_inverse is True, will also return a function giving z as
 a function of age.</p>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
-<p>agefunc, err_f, err_t</p>
+<p>agefunc</p>
 <p>or</p>
-<p>agefunc, redfunc, err_f, err_t</p>
+<p>agefunc, redfunc</p>
+</div>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>agefunc = cd.quick_age_function(**cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>t = agefunc(6.0)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;age at z=6.0 is %.3g Gyr&quot;</span> % (t/cc.Gyr_s)
+<span class="py-output">age at z=6.0 is 0.892 Gyr</span></pre>
 </div>
   <dl class="fields">
   </dl>
@@ -773,9 +994,22 @@ a function of age.</p>
   
   <p>Return an interpolation function giving z as a funtion of age
 of the universe.</p>
+<p>Units of time are s.</p>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
-<p>redfunc, err_f, err_t</p>
+<p>redfunc</p>
+</div>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>redfunc = cd.quick_redshift_age_function(**cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>z = redfunc(1.0 * cc.Gyr_s)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;When age=1.0Gyr z=%.2f&quot;</span> % (z)
+<span class="py-output">When age=1.0Gyr z=5.49</span></pre>
 </div>
   <dl class="fields">
   </dl>
@@ -799,6 +1033,16 @@ of the universe.</p>
   
   <p>Calculate the light travel distance to redshift z.</p>
 <p>Units are Mpc.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>dlookback = cd.light_travel_distance(3.0, 2.0, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Lookback distance from z=2 to 3 is %.2g Mpc&quot;</span> % (dlookback)
+<span class="py-output">Lookback distance from z=2 to 3 is 3.3e+02 Mpc</span></pre>
+</div>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -812,6 +1056,7 @@ of the universe.</p>
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">redshift_d_light</span>(<span class="sig-arg">dl</span>,
         <span class="sig-arg">z_guess</span>=<span class="sig-default">6.0</span>,
+        <span class="sig-arg">fmin_args</span>=<span class="sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
         <span class="sig-arg">**cosmo</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -822,6 +1067,21 @@ of the universe.</p>
   <p>Calculate the redshift corresponding to a given light travel
 distance.</p>
 <p>Units are the same as light_travel_distance (Mpc).</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>z = cd.redshift_d_light(10. * cc.c_light_Mpc_Gyr, **cosmo)
+<span class="py-output">Optimization terminated successfully.</span>
+<span class="py-output">         Current function value: 0.000112</span>
+<span class="py-output">         Iterations: 26</span>
+<span class="py-output">         Function evaluations: 52</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Redshift for a lookback time of 10Gyr is z=%.3f&quot;</span> % (z)
+<span class="py-output">Redshift for a lookback time of 10Gyr is z=2.025</span></pre>
+</div>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -853,7 +1113,7 @@ distance.</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 27 14:13:34 2010
+    Generated by Epydoc 3.0.1 on Thu Nov 25 15:47:58 2010
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
