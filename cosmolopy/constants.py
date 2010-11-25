@@ -58,6 +58,9 @@ c_light_cm_s = 29979245800. # cm/s
 doc += "  c_light_Mpc_s: Speed of light in Mpc/s\n"
 c_light_Mpc_s = c_light_cm_s / Mpc_cm # Mpc / s
 
+doc += "  c_light_Mpc_Gyr: Speed of light in Mpc/Gyr \n"
+c_light_Mpc_Gyr = Gyr_s * c_light_cm_s / Mpc_cm # Mpc / Gyr
+
 doc += "  H100_s: 100 km s^-1 Mpc^-1 in s^-1\n"
 H100_s = 100. / Mpc_km # s^-1
 

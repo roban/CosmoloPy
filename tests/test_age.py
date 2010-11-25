@@ -22,8 +22,8 @@ def test_age():
 
     gyr = 1e9 * cc.yr_s
 
-    tl, err = cd.lookback_time(z, **cosmo)
-    age, err_f, err_t = cd.age(z, **cosmo)
+    tl = cd.lookback_time(z, **cosmo)
+    age = cd.age(z, **cosmo)
     age_ana = cd.age_flat(z, **cosmo)
 
     pylab.figure(figsize=(6,6))

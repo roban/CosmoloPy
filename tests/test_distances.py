@@ -41,10 +41,10 @@ def test_distances(threshold = 1e-3):
 
     z = ic_dists[:,0]
 
-    cd_da, err1, err2 = cd.angular_diameter_distance(z, **cosmo)
-    cd_dt, err3 = cd.light_travel_distance(z, **cosmo)
-    cd_dl, err4, err5 = cd.luminosity_distance(z, **cosmo)
-    cd_dm, err6 = cd.comoving_distance_transverse(z, **cosmo)
+    cd_da = cd.angular_diameter_distance(z, **cosmo)
+    cd_dt = cd.light_travel_distance(z, **cosmo)
+    cd_dl = cd.luminosity_distance(z, **cosmo)
+    cd_dm = cd.comoving_distance_transverse(z, **cosmo)
     
     cd_dists = numpy.vstack((cd_dm, cd_da, cd_dt, cd_dl))
 
@@ -72,10 +72,10 @@ def test_distances(threshold = 1e-3):
                    diff, 
                    label=labels[i], ls='-')
 
-    pylab.plot(z, err2, label=labels[1] + ' err.', ls=':')
-    pylab.plot(z, err3, label=labels[2] + ' err.', ls=':')
-    pylab.plot(z, err5, label=labels[3] + ' err.', ls=':')
-    pylab.plot(z, err6, label=labels[0] + ' err.', ls=':')
+    #pylab.plot(z, err2, label=labels[1] + ' err.', ls=':')
+    #pylab.plot(z, err3, label=labels[2] + ' err.', ls=':')
+    #pylab.plot(z, err5, label=labels[3] + ' err.', ls=':')
+    #pylab.plot(z, err6, label=labels[0] + ' err.', ls=':')
 
     pylab.legend(loc='best')
 
