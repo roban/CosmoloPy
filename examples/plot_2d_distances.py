@@ -31,7 +31,7 @@ def plot_DM(filename):
     # Calculate the hubble distance.
     dh = cd.hubble_distance_z(0, **cosmo)
     # Calculate the comoving distance.
-    dm, dm_err = cd.comoving_distance_transverse(z, **cosmo)
+    dm = cd.comoving_distance_transverse(z, **cosmo)
 
     # Make plots.
     plot_dist(z, dz, om, dom, dm, dh, 'proper motion distance', r'D_M', 
@@ -59,7 +59,7 @@ def plot_DA(filename):
     # Calculate the hubble distance.
     dh = cd.hubble_distance_z(0, **cosmo)
     # Calculate the angular diameter distance.
-    da, da_err1, da_err2 = cd.angular_diameter_distance(z, **cosmo)
+    da = cd.angular_diameter_distance(z, **cosmo)
 
     # Make plots.
     plot_dist(z, dz, om, dom, da, dh, 'angular diameter distance', r'D_A',
