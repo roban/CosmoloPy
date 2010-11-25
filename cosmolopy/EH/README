@@ -1,0 +1,35 @@
+Original c code
+===============
+
+power.c is redistributed under the MIT License with the permission of
+Wayne Hu
+
+htt://background.uchicago.edu/~whu/transfer/transferpage.html
+
+and is described in Eisenstein, D. J., & Hu, W. "Power Spectra for
+Cold Dark Matter and Its Variants," 1999, ApJ, 511, 5
+[astro-ph/9710252]. Please cite this paper to acknowledge use of power
+spectrum calculations.
+
+See LISCENSE file.
+
+Python Interface
+================
+
+I use swig to generate the python interface to `power.c`.
+
+`power_wrap.c` and `power.py` are created from `power.i` and `power.c`
+by runing:
+
+ > swig -python power.i
+
+I used to let distutils run swig, but that stopped working for some
+reason. The code was:
+
+  power_module = Extension('cosmolopy.EH._power',
+  sources=[os.path.join(eh_dir, 'power.i'), os.path.join(eh_dir,
+  'power.c')])
+
+I still let distutils do the compiling to create `_power.so`. This has
+the advantage of not requiring the user to install swig.
+

@@ -5,20 +5,28 @@ import nose
 
 eh_dir = os.path.join('.','cosmolopy','EH')
 
+### I used to let distutils run swig for me on power.i to create
+### power_wrap.c and power.py, but that stopped working for some
+### reason.
 # Stuff used to build the cosmolopy.EH._power module:
+#power_module = Extension('cosmolopy.EH._power',
+#                         sources=[os.path.join(eh_dir, 'power.i'),
+#                                  os.path.join(eh_dir, 'power.c')]
+#                         )
 power_module = Extension('cosmolopy.EH._power',
-                         sources=[os.path.join(eh_dir, 'power.i'),
+                         sources=[os.path.join(eh_dir, 'power_wrap.c'),
                                   os.path.join(eh_dir, 'power.c')]
                          )
 
+packages = find_packages()
 setup(
     name = "CosmoloPy",
-    version = "0.1.004",
-    packages = find_packages(),
-    package_data = {
-        # If any package contains *.so files, include them:
-        '': ['*.so'],
-        },
+    version = "0.1.100",
+    packages = packages,
+#    package_data = {
+#        # If any package contains *.so files, include them:
+#        '': ['*.so'],
+#        },
     install_requires = ['numpy', 'scipy',],
 
     ext_modules = [power_module],

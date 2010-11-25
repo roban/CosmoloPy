@@ -348,11 +348,10 @@ def integrate_ion_recomb(z,
                                  nn * (1.+z1)**3.)
 
     # Generate a function that converts age of the universe to z.
-    red_func, rerr1, rerr2 = \
-        cd.quick_redshift_age_function(zmax = 1.1 * numpy.max(z), 
-                                       zmin = -0.0,
-                                       dz = 0.01,
-                                       **cosmo)
+    red_func = cd.quick_redshift_age_function(zmax = 1.1 * numpy.max(z), 
+                                              zmin = -0.0,
+                                              dz = 0.01,
+                                              **cosmo)
 
     ref_func_Gyr = lambda t1: red_func(t1 * cc.Gyr_s)
 
@@ -459,10 +458,9 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
                                 n_H_0 * (1.+z)**3.)
 
     # Generate a function that converts redshift to age of the universe.
-    redfunc, rerr1, rerr2 = \
-        cd.quick_redshift_age_function(zmax = 1.1 * numpy.max(z), 
-                                       zmin = -0.0,
-                                       **cosmo)
+    redfunc = cd.quick_redshift_age_function(zmax = 1.1 * numpy.max(z), 
+                                              zmin = -0.0,
+                                              **cosmo)
     # Function used in the integration.
     ionfunc = quick_ion_col_function(coeff_ion, 
                                      temp_min, 
@@ -472,7 +470,7 @@ def integrate_ion_recomb_collapse(z, coeff_ion,
                                      zstep = 0.1, **cosmo)
 
     # Convert specified redshifts to cosmic time (age of the universe).
-    t, terr1, terr2 = cd.age(z, **cosmo)
+    t = cd.age(z, **cosmo)
 
     # Integrate to find u(z) = x(z) - w(z), where w is the ionization fraction 
     u = si.odeint(_udot, y0=0.0, t=t,

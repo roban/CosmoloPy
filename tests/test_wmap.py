@@ -91,7 +91,7 @@ def test_t_0():
               cparam.WMAP5_mean(flat=True)]
 
     for cosmo in cosmos:
-        age, err_f, err_t = cd.age(0.0, **cosmo)
+        age = cd.age(0.0, **cosmo)
         age_flat = cd.age_flat(0.0, **cosmo)
         gyr = 1e9 * cc.yr_s
         age /= gyr

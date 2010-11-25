@@ -34,7 +34,7 @@ def test_figure1():
     linestyle = ['-', ':', '--']
 
     dh = cd.hubble_distance_z(0, **cosmo)
-    dm, dm_err = cd.comoving_distance_transverse(z, **cosmo)
+    dm = cd.comoving_distance_transverse(z, **cosmo)
 
     pylab.figure(figsize=(6,6))    
     for i in range(len(linestyle)):
@@ -76,10 +76,10 @@ def test_figure2():
     linestyle = ['-', ':', '--']
 
     dh = cd.hubble_distance_z(0, **cosmo)
-    da, err1, err2 = cd.angular_diameter_distance(z, **cosmo)
+    da = cd.angular_diameter_distance(z, **cosmo)
 
     # Also test the pathway with non-zero z0
-    da2, err12, err22 = cd.angular_diameter_distance(z, z0=1e-8, **cosmo)
+    da2 = cd.angular_diameter_distance(z, z0=1e-8, **cosmo)
 
     pylab.figure(figsize=(6,6))
     for i in range(len(linestyle)):
@@ -121,7 +121,7 @@ def test_figure3():
     linestyle = ['-', ':', '--']
 
     dh = cd.hubble_distance_z(0, **cosmo)
-    dl, err1, err2 = cd.luminosity_distance(z, **cosmo)
+    dl = cd.luminosity_distance(z, **cosmo)
 
     pylab.figure(figsize=(6,6))
     for i in range(len(linestyle)):
@@ -130,6 +130,46 @@ def test_figure3():
     pylab.ylim(0,16)
     pylab.xlabel("redshift z")
     pylab.ylabel(r"luminosity distance $D_L/D_H$")
+    pylab.title("compare to " + inspect.stack()[0][3].replace('test_', '') + 
+                " (astro-ph/9905116v4)")
+
+
+def test_figure5():
+    """Plot Hogg fig. 5: The dimensionless comoving volume element (1/DH)^3(dVC/dz).
+
+    The three curves are for the three world models, (omega_M, omega_lambda) =
+    (1, 0), solid; (0.05, 0), dotted; and (0.2, 0.8), dashed.
+
+    """
+    z = numpy.arange(0, 5.05, 0.05)
+
+    cosmo = {}
+    cosmo['omega_M_0'] = numpy.array([[1.0],[0.05],[0.2]])
+    cosmo['omega_lambda_0'] = numpy.array([[0.0],[0.0],[0.8]])
+    cosmo['h'] = 0.5
+    cd.set_omega_k_0(cosmo)
+    
+    linestyle = ['-', ':', '--']
+
+    dh = cd.hubble_distance_z(0, **cosmo)
+
+    dVc = cd.diff_comoving_volume(z, **cosmo)
+    dVc_normed = dVc/(dh**3.)
+
+    Vc = cd.comoving_volume(z, **cosmo)
+    dz = z[1:] - z[:-1]
+    dVc_numerical = (Vc[:,1:] - Vc[:,:-1])/dz/(4. * numpy.pi)
+    dVc_numerical_normed = dVc_numerical/(dh**3.)
+
+    pylab.figure(figsize=(6,6))
+    for i in range(len(linestyle)):
+        pylab.plot(z, dVc_normed[i], ls=linestyle[i], lw=2.)
+        pylab.plot(z[:-1], dVc_numerical_normed[i], ls=linestyle[i], 
+                   c='k', alpha=0.1)
+    pylab.xlim(0,5)
+    pylab.ylim(0,1.1)
+    pylab.xlabel("redshift z")
+    pylab.ylabel(r"comoving volume element $[1/D_H^3]$ $dV_c/dz/d\Omega$")
     pylab.title("compare to " + inspect.stack()[0][3].replace('test_', '') + 
                 " (astro-ph/9905116v4)")
 
@@ -163,8 +203,8 @@ def test_figure6():
 
     th = 1/ cd.hubble_z(0, **cosmo)
 
-    tl, err = cd.lookback_time(z, **cosmo)
-    age, err_f, err_t = cd.age(z, **cosmo)
+    tl = cd.lookback_time(z, **cosmo)
+    age = cd.age(z, **cosmo)
 
     pylab.figure(figsize=(6,6))
     for i in range(len(linestyle)):
@@ -178,9 +218,11 @@ def test_figure6():
                 " (astro-ph/9905116v4)")
 
 if __name__ == "__main__":
+
     test_figure1()
     test_figure2()
     test_figure3()
+    test_figure5()
     test_figure6()
     pylab.show()
 
