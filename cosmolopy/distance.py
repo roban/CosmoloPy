@@ -450,7 +450,58 @@ def age_flat(z, **cosmo):
 
     return t_z
 
-def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
+def quick_distance_function(function, zmax = 20., zmin = 0., zstep = 0.001,
+                            return_inverse=False, k=3,
+                            **cosmo):
+    """Return an interpolation function that will give distance as a
+    funtion of z
+
+    If return_inverse is True, will also return a function giving z as
+    a function of distance.
+
+    Inputs
+    ------
+
+    function -- the distance function to interpolate (can be any
+    callable that takes a redshift argument plus cosmology keywords).
+
+    k -- spline order (`scipy.interpolate.InterpolatedUnivariateSpline`)
+
+    Returns
+    -------
+
+    distfunc
+
+    or
+    
+    distfunc, zfunc
+
+    Examples
+    --------
+
+    >>> import cosmolopy.distance as cd
+    >>> import cosmolopy.constants as cc
+    >>> cosmo = {'omega_M_0' : 0.3, 'omega_lambda_0' : 0.7, 'h' : 0.72}
+    >>> cosmo = cd.set_omega_k_0(cosmo)
+    >>> distfunc, redfunc = cd.quick_distance_function(cd.luminosity_distance, return_inverse=True, **cosmo)
+    >>> d = distfunc(6.3333)
+    >>> z = redfunc(d)
+    >>> "%.1g" % (distfunc(6.3333)/cd.luminosity_distance(6.3333, **cosmo) - 1.0)
+    '-2e-16'
+    >>> "%.1g" % (z/6.3333 - 1.0)
+    '0'
+
+    """
+    z = numpy.linspace(zmin, zmax, math.ceil((zmax-zmin)/zstep))
+    dists = function(z, **cosmo)
+    distfunc = scipy.interpolate.InterpolatedUnivariateSpline(z, dists, k=k)
+    if return_inverse:
+        redfunc = scipy.interpolate.InterpolatedUnivariateSpline(dists, z, k=k)
+        return distfunc, redfunc
+    else:
+        return distfunc
+
+def quick_age_function(zmax = 20., zmin = 0., zstep = 0.001,
                        return_inverse=False,
                        **cosmo):
     """Return an interpolation function that will give age as a funtion of z
@@ -492,7 +543,7 @@ def quick_age_function(zmax = 20., zmin = 0., zstep = 0.1,
     else:
         return agefunc
 
-def quick_redshift_age_function(zmax = 20., zmin = 0., zstep = 0.1, **cosmo):
+def quick_redshift_age_function(zmax = 20., zmin = 0., zstep = 0.001, **cosmo):
     """Return an interpolation function giving z as a funtion of age
     of the universe.
 

@@ -91,5 +91,6 @@ import distance as cd
 import perturbation as cp
 import reionization as cr
 import parameters as cparam
+import magnitudes as cmag
 
 fidcosmo = cparam.WMAP7_BAO_H0_mean(flat=True, extras=True)
