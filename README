@@ -60,7 +60,13 @@ Installation from Source
 
 If you've downloaded the source, install it by running
 
-    > sudo pyton setup.py install
+    > sudo python setup.py install
+
+If you have trouble compiling from source, it's probably the EH.power
+module (everything else is pure python). You can install without it by
+running:
+
+    > sudo python setup_alt.py install
 
 Testing
 =======

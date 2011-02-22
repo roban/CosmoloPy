@@ -1,36 +1,20 @@
 #!/usr/bin/env python
-from setuptools import setup, find_packages, Extension
+
+######
+# This setup.py file does not compile or install the EH perturbation
+# theory modole.
+######
+
+from setuptools import setup, find_packages
 import os
 import nose
-
-eh_dir = os.path.join('.','cosmolopy','EH')
-
-### I used to let distutils run swig for me on power.i to create
-### power_wrap.c and power.py, but that stopped working for some
-### reason.
-# Stuff used to build the cosmolopy.EH._power module:
-#power_module = Extension('cosmolopy.EH._power',
-#                         sources=[os.path.join(eh_dir, 'power.i'),
-#                                  os.path.join(eh_dir, 'power.c')]
-#                         )
-power_module = Extension('cosmolopy.EH._power',
-                         sources=[os.path.join(eh_dir, 'power_wrap.c'),
-                                  os.path.join(eh_dir, 'power.c')]
-                         )
 
 packages = find_packages()
 setup(
     name = "CosmoloPy",
     version = "0.1.101",
     packages = packages,
-#    package_data = {
-#        # If any package contains *.so files, include them:
-#        '': ['*.so'],
-#        },
     install_requires = ['numpy', 'scipy',],
-
-    ext_modules = [power_module],
-
     tests_require = ['nose', 'matplotlib'],
     test_suite = 'nose.collector',
 
