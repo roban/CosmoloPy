@@ -50,7 +50,7 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="cosmolopy.luminosityfunction-module.html">Module cosmolopy.luminosityfunction</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Routines related to galaxy luminosity functions (Schechter functions).</tt> </tt>
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Galaxy luminosity functions (Schechter functions).</tt> </tt>
 <a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">The `LFHistory` class implements a luminosity function history,</tt> </tt>
 <a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">encapsulating the changes in the galaxy luminosity distribution</tt> </tt>
@@ -224,7 +224,7 @@
 <a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">                       <tt class="py-param">maglim</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
 <a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                       <tt class="py-param">sedParams</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
 <a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                       <tt class="py-param">wavelength</tt><tt class="py-op">=</tt><tt class="py-number">1500.</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="iPhotonRateDensity-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="iPhotonRateDensity-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-docstring">"""Calculate ion. photon rate density from a luminosity function.</tt> </tt>
+</div><div id="iPhotonRateDensity-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="iPhotonRateDensity-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-docstring">"""Ionizing photon rate density from a luminosity function.</tt> </tt>
 <a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-docstring">    in units of photons s^-1.</tt> </tt>
 <a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
@@ -395,7 +395,7 @@
 <a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__dict__</tt><tt class="py-op">[</tt><tt class="py-name">name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">newfunc</tt> </tt>
 </div><a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line"> </tt>
 <a name="LFHistory.iPhotonRateDensity_z"></a><div id="LFHistory.iPhotonRateDensity_z-def"><a name="L345"></a><tt class="py-lineno">345</tt> <a class="py-toggle" href="#" id="LFHistory.iPhotonRateDensity_z-toggle" onclick="return toggle('LFHistory.iPhotonRateDensity_z');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.luminosityfunction.LFHistory-class.html#iPhotonRateDensity_z">iPhotonRateDensity_z</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">,</tt> <tt class="py-param">maglim</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LFHistory.iPhotonRateDensity_z-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LFHistory.iPhotonRateDensity_z-expanded"><a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">        <tt class="py-docstring">"""Calculate ion. photon rate density from a luminosity function.</tt> </tt>
+</div><div id="LFHistory.iPhotonRateDensity_z-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LFHistory.iPhotonRateDensity_z-expanded"><a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">        <tt class="py-docstring">"""Ionizing photon rate density from a luminosity function.</tt> </tt>
 <a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-docstring">        See the iPhotonRateRatio function.</tt> </tt>
 <a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
@@ -407,7 +407,7 @@
 <a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">lum</tt> <tt class="py-op">*</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_rQL</tt> </tt>
 </div><a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"> </tt>
 <a name="LFHistory.iPhotonRateDensity_t"></a><div id="LFHistory.iPhotonRateDensity_t-def"><a name="L357"></a><tt class="py-lineno">357</tt> <a class="py-toggle" href="#" id="LFHistory.iPhotonRateDensity_t-toggle" onclick="return toggle('LFHistory.iPhotonRateDensity_t');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.luminosityfunction.LFHistory-class.html#iPhotonRateDensity_t">iPhotonRateDensity_t</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">t</tt><tt class="py-op">,</tt> <tt class="py-param">maglim</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="LFHistory.iPhotonRateDensity_t-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LFHistory.iPhotonRateDensity_t-expanded"><a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">        <tt class="py-docstring">"""Calculate ion. photon rate density from a luminosity function.</tt> </tt>
+</div><div id="LFHistory.iPhotonRateDensity_t-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="LFHistory.iPhotonRateDensity_t-expanded"><a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">        <tt class="py-docstring">"""Ionizing photon rate density from a luminosity function.</tt> </tt>
 <a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
 <a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"><tt class="py-docstring">        See the iPhotonRateRatio function.</tt> </tt>
 <a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
@@ -728,7 +728,7 @@
 <a name="L676"></a><tt class="py-lineno">676</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">s_red</tt> <tt class="py-op">=</tt> <tt class="py-name">s_red</tt> </tt>
 </div><a name="L677"></a><tt class="py-lineno">677</tt>  <tt class="py-line"> </tt>
 <a name="BrokenPowerlawSED.__call__"></a><div id="BrokenPowerlawSED.__call__-def"><a name="L678"></a><tt class="py-lineno">678</tt> <a class="py-toggle" href="#" id="BrokenPowerlawSED.__call__-toggle" onclick="return toggle('BrokenPowerlawSED.__call__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cosmolopy.luminosityfunction.BrokenPowerlawSED-class.html#__call__">__call__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nu</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="BrokenPowerlawSED.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BrokenPowerlawSED.__call__-expanded"><a name="L679"></a><tt class="py-lineno">679</tt>  <tt class="py-line">        <tt class="py-docstring">"""Calculate the spectrum at the given frequency/frequencies.</tt> </tt>
+</div><div id="BrokenPowerlawSED.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BrokenPowerlawSED.__call__-expanded"><a name="L679"></a><tt class="py-lineno">679</tt>  <tt class="py-line">        <tt class="py-docstring">"""The spectrum at the given frequency/frequencies.</tt> </tt>
 <a name="L680"></a><tt class="py-lineno">680</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
 <a name="L681"></a><tt class="py-lineno">681</tt>  <tt class="py-line"><tt class="py-docstring">        Multiply by the total luminosity to get the luminosity per</tt> </tt>
 <a name="L682"></a><tt class="py-lineno">682</tt>  <tt class="py-line"><tt class="py-docstring">        unit frequency.</tt> </tt>
@@ -854,7 +854,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 27 14:13:35 2010
+    Generated by Epydoc 3.0.1 on Tue Apr 26 11:07:51 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -50,7 +50,7 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module perturbation</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html">source&nbsp;code</a></span></p>
-<p>Routines related to perturbation theory and the power spectrum.</p>
+<p>Perturbation theory and the power spectrum routines.</p>
 <p>This module relies largely on power.c from Eisenstein &amp; Hu (1999 ApJ 511 5)</p>
 <blockquote>
 <a class="rst-reference external" href="http://background.uchicago.edu/~whu/transfer/transferpage.html" target="_top">http://background.uchicago.edu/~whu/transfer/transferpage.html</a></blockquote>
@@ -72,7 +72,7 @@
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#transfer_function_EH" class="summary-sig-name">transfer_function_EH</a>(<span class="summary-sig-arg">k</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate the transfer function as a function of wavenumber k.</td>
+      The transfer function as a function of wavenumber k.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#transfer_function_EH">source&nbsp;code</a></span>
             
@@ -109,7 +109,7 @@
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#w_tophat" class="summary-sig-name">w_tophat</a>(<span class="summary-sig-arg">k</span>,
         <span class="summary-sig-arg">r</span>)</span><br />
-      Calculate the k-space Fourier transform of a spherical tophat.</td>
+      The k-space Fourier transform of a spherical tophat.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#w_tophat">source&nbsp;code</a></span>
             
@@ -164,7 +164,7 @@
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#power_spectrum" class="summary-sig-name">power_spectrum</a>(<span class="summary-sig-arg">k</span>,
         <span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculates the matter power spectrum P(k,z).</td>
+      The matter power spectrum P(k,z).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#power_spectrum">source&nbsp;code</a></span>
             
@@ -182,7 +182,7 @@
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#volume_radius_dmdr" class="summary-sig-name">volume_radius_dmdr</a>(<span class="summary-sig-arg">mass</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate volume, radius, and dm/dr for a sphere of the given mass.</td>
+      The volume, radius, and dm/dr for a sphere of the given mass.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#volume_radius_dmdr">source&nbsp;code</a></span>
             
@@ -200,7 +200,7 @@
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#mass_to_radius" class="summary-sig-name">mass_to_radius</a>(<span class="summary-sig-arg">mass</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate the radius in Mpc of a sphere of the given mass.</td>
+      The radius in Mpc of a sphere of the given mass.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#mass_to_radius">source&nbsp;code</a></span>
             
@@ -218,7 +218,7 @@
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#radius_to_mass" class="summary-sig-name">radius_to_mass</a>(<span class="summary-sig-arg">r</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate the mass of a sphere of radius r in Mpc.</td>
+      The mass of a sphere of radius r in Mpc.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#radius_to_mass">source&nbsp;code</a></span>
             
@@ -238,7 +238,7 @@
         <span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">mu</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate the Virial temperature for a halo of a given mass.</td>
+      The Virial temperature for a halo of a given mass.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_temp">source&nbsp;code</a></span>
             
@@ -258,7 +258,7 @@
         <span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">mu</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
-      Calculate the mass of a halo of the given Virial temperature.</td>
+      The mass of a halo of the given Virial temperature.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#virial_mass">source&nbsp;code</a></span>
             
@@ -388,7 +388,7 @@
     </td>
   </tr></table>
   
-  <p>Calculate the transfer function as a function of wavenumber k.</p>
+  <p>The transfer function as a function of wavenumber k.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
 <dl class="rst-docutils">
@@ -438,7 +438,7 @@ the transfer function for CDM + Baryons + Neutrinos).</blockquote>
 Omega_Lambda&quot;.</p>
 <p>This is proportional to D_1(z) from Eisenstein &amp; Hu (1999 ApJ 511
 5) equation 10, but the normalization is different: fgrowth = 1 at
-z = 0 and <tt class="rst-docutils literal"><span class="pre">D_1(z)</span> <span class="pre">=</span> <span class="pre">\frac{1+z_\mathrm{eq}}{1+z}</span></tt> as z goes
+z = 0 and <tt class="rst-docutils literal">D_1(z) = <span class="pre">\frac{1+z_\mathrm{eq}}{1+z}</span></tt> as z goes
 to infinity.</p>
 <p>To get D_1 one would just use</p>
 <pre class="rst-literal-block">
@@ -469,7 +469,7 @@ D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
     </td>
   </tr></table>
   
-  <p>Calculate the k-space Fourier transform of a spherical tophat.</p>
+  <p>The k-space Fourier transform of a spherical tophat.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
 <dl class="rst-docutils">
@@ -483,7 +483,7 @@ D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
 <dl class="rst-docutils">
-<dt><tt class="rst-docutils literal"><span class="pre">\tilde{w}</span></tt>: array</dt>
+<dt><tt class="rst-docutils literal">\tilde{w}</tt>: array</dt>
 <dd>the value of the transformed function at wavenumber k.</dd>
 </dl>
 </div>
@@ -574,7 +574,7 @@ D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
     </td>
   </tr></table>
   
-  <p>Calculates the matter power spectrum P(k,z).</p>
+  <p>The matter power spectrum P(k,z).</p>
 <p>Uses equation 25 of Eisenstein &amp; Hu (1999 ApJ 511 5).</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
@@ -618,7 +618,7 @@ P(k,z) = P(k,0) \left( \frac{D_1(z)}{D_1(0)} \right)^2
     </td>
   </tr></table>
   
-  <p>Calculate volume, radius, and dm/dr for a sphere of the given mass.</p>
+  <p>The volume, radius, and dm/dr for a sphere of the given mass.</p>
 <p>Uses the mean density of the universe.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
@@ -652,7 +652,7 @@ dmdr in Msun / Mpc</p>
     </td>
   </tr></table>
   
-  <p>Calculate the radius in Mpc of a sphere of the given mass.</p>
+  <p>The radius in Mpc of a sphere of the given mass.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
 <p>mass in Msun</p>
@@ -685,7 +685,7 @@ returns only the radius.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the mass of a sphere of radius r in Mpc.</p>
+  <p>The mass of a sphere of radius r in Mpc.</p>
 <p>Uses the mean density of the universe.</p>
   <dl class="fields">
   </dl>
@@ -708,8 +708,8 @@ returns only the radius.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the Virial temperature for a halo of a given mass.</p>
-<p>Calculate the Virial temperature in Kelvin for a halo of a given
+  <p>The Virial temperature for a halo of a given mass.</p>
+<p>Calculates the Virial temperature in Kelvin for a halo of a given
 mass using equation 26 of Barkana &amp; Loeb.</p>
 <p>The transition from neutral to ionized is assumed to occur at temp
 = 1e4K. At temp &gt;= 10^4 k, the mean partical mass drops from 1.22
@@ -746,7 +746,7 @@ to 0.59 to very roughly account for collisional ionization.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the mass of a halo of the given Virial temperature.</p>
+  <p>The mass of a halo of the given Virial temperature.</p>
 <p>Uses equation 26 of Barkana &amp; Loeb (2001PhR...349..125B), solved
 for T_vir as a function of mass.</p>
 <div class="rst-section" id="rst-parameters">
@@ -980,7 +980,7 @@ from the average density.</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 27 14:13:34 2010
+    Generated by Epydoc 3.0.1 on Tue Apr 26 11:07:51 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
