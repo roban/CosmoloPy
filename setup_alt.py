@@ -7,7 +7,7 @@
 
 from setuptools import setup, find_packages
 import os
-import nose
+#import nose
 
 packages = find_packages()
 setup(

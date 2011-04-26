@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages, Extension
 import os
-import nose
+#import nose
 
 eh_dir = os.path.join('.','cosmolopy','EH')
 
