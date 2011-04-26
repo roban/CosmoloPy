@@ -1,4 +1,4 @@
-"""Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).
+"""Some pre-defined sets of cosmological parameters (e.g. from WMAP).
 """
 
 def add_extras(cosmo):

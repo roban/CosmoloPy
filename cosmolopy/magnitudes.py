@@ -1,4 +1,4 @@
-"""Simple routines for conversion in and out of the AB magnitude system.
+"""Conversions between fluxes, luminosities and AB magnitudes.
 """
 import math
 
@@ -25,7 +25,7 @@ def magnitude_AB_from_L_nu(luminosity_nu):
     return magAB
 
 def magnitude_AB(z, f_lambda, wavelength, **cosmo):
-    """Calculate the apparent and absolute AB magnitude given a flux.
+    """The apparent and absolute AB magnitude given a flux.
 
     Inputs
     ------

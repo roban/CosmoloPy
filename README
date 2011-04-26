@@ -28,7 +28,7 @@ Prerequisites
   NumPy
   SciPy
 
-For tests:
+For tests (optional):
   nose
   matplotlib
 
@@ -71,4 +71,15 @@ running:
 Testing
 =======
 
+The prefered way to run all tests is:
+
+    > python setup.py nosetests --with-doctest
+
+Or if you don't want to run the doctests:
+
     > python setup.py nosetests
+
+If you don't have nose:
+
+    > python setup.py test
+    > python -m doctest cosmolopy/*.py

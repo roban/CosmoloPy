@@ -1,4 +1,4 @@
-"""Calculate various cosmological densities.
+"""Cosmological densities like matter density, baryon density, etc.
 """
 import math
 
@@ -29,7 +29,7 @@ def omega_M_z(z, **cosmo):
                 cd.e_z(z, **cosmo)**2.)
 
 def cosmo_densities(**cosmo):
-    """Calculate the critical and mean densities of the universe.
+    """The critical and mean densities of the universe.
 
     Returns
     -------
@@ -49,7 +49,7 @@ def cosmo_densities(**cosmo):
     return rho_crit, rho_0
 
 def get_X_Y(**cosmo):
-    """Calculate fraction of baryonic mass in hydrogen and helium.
+    """The fraction of baryonic mass in hydrogen and helium.
 
     Assumes X_H + Y_He = 1.
 

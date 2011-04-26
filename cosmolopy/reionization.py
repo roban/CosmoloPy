@@ -1,4 +1,4 @@
-"""Routines related to the reionization of the IGM."""
+"""Routines related to the reionization history of the IGM."""
 
 import math
 
@@ -6,14 +6,18 @@ import numpy
 import scipy
 import scipy.integrate as si
 
-import perturbation as cp
+try:
+    import perturbation as cp
+except:
+    pass
+
 import distance as cd
 import constants as cc
 import density as cden
 import utils as cu
 
 def delta_lambda_delta_dl(z, delta_dl, **cosmo):
-    """Calculate Lyman-alpha wavelength shift given light-travel distance.
+    """The Lyman-alpha wavelength shift given light-travel distance.
 
     Wavelengths are in Angstroms.
 
@@ -99,8 +103,7 @@ def recomb_rate_coeff_HG(temp, species, case):
 
 def ionization_from_collapse(z, coeff_ion, temp_min, passed_min_mass = False,
                              **cosmo):
-    """Calculate the ionized fraction of the universe using
-    perturbation theory.
+    """The ionized fraction of the universe using perturbation theory.
 
     Parameters
     ----------
@@ -544,8 +547,8 @@ def ionization_from_luminosity(z, ratedensityfunc, xHe=1.0,
         return x
  
 def integrate_optical_depth(x_ionH, x_ionHe, z, **cosmo):
-    """Calculated optical depth due to electron scattering given a profile
-    of the filling factor of ionized gas vs. redshift.
+    """The electron scattering optical depth given ionized filling
+    factor vs. redshift.
 
     Parameters
     ----------

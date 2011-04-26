@@ -1,4 +1,4 @@
-"""Defines a Saveable class with methods to save and restore.
+"""A Saveable class with methods to save and restore.
 
 Saveable is designed to be subclassed to create new types of objects
 that can easily be pickled and reloaded.

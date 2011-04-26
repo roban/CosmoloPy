@@ -50,7 +50,7 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module reionization</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.reionization-pysrc.html">source&nbsp;code</a></span></p>
-Routines related to the reionization of the IGM.
+Routines related to the reionization history of the IGM.
 
 <!-- ==================== FUNCTIONS ==================== -->
 <a name="section-Functions"></a>
@@ -69,7 +69,7 @@ Routines related to the reionization of the IGM.
           <td><span class="summary-sig"><a href="cosmolopy.reionization-module.html#delta_lambda_delta_dl" class="summary-sig-name">delta_lambda_delta_dl</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">delta_dl</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate Lyman-alpha wavelength shift given light-travel distance.</td>
+      The Lyman-alpha wavelength shift given light-travel distance.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#delta_lambda_delta_dl">source&nbsp;code</a></span>
             
@@ -109,8 +109,7 @@ Routines related to the reionization of the IGM.
         <span class="summary-sig-arg">temp_min</span>,
         <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the ionized fraction of the universe using
-perturbation theory.</td>
+      The ionized fraction of the universe using perturbation theory.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#ionization_from_collapse">source&nbsp;code</a></span>
             
@@ -232,7 +231,7 @@ of redshift (based on interpolation).</td>
         <span class="summary-sig-arg">passed_min_mass</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">temp_gas</span>=<span class="summary-sig-default">10000.0</span>,
         <span class="summary-sig-arg">alpha_B</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">clump_fact_func</span>=<span class="summary-sig-default">&lt;function clumping_factor_BKP at 0xa74b5a4&gt;</span>,
+        <span class="summary-sig-arg">clump_fact_func</span>=<span class="summary-sig-default">&lt;function clumping_factor_BKP at 0x8fc04c4&gt;</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
       fraction. Integrates an ODE describing IGM ionization and
 recombination rates.</td>
@@ -279,8 +278,8 @@ function, ignoring recombinations.</td>
         <span class="summary-sig-arg">x_ionHe</span>,
         <span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculated optical depth due to electron scattering given a profile
-of the filling factor of ionized gas vs. redshift.</td>
+      The electron scattering optical depth given ionized filling
+factor vs. redshift.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.reionization-pysrc.html#integrate_optical_depth">source&nbsp;code</a></span>
             
@@ -374,7 +373,7 @@ universe.</td>
     </td>
   </tr></table>
   
-  <p>Calculate Lyman-alpha wavelength shift given light-travel distance.</p>
+  <p>The Lyman-alpha wavelength shift given light-travel distance.</p>
 <p>Wavelengths are in Angstroms.</p>
 <p>Returns lambda(z), lambda(z - Deltaz), z, z - Deltaz</p>
   <dl class="fields">
@@ -431,8 +430,7 @@ universe.</td>
     </td>
   </tr></table>
   
-  <p>Calculate the ionized fraction of the universe using
-perturbation theory.</p>
+  <p>The ionized fraction of the universe using perturbation theory.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
 <p>z:</p>
@@ -648,7 +646,7 @@ emission-photoionizaion) to be combined into a single ODE.</p>
         <span class="sig-arg">passed_min_mass</span>=<span class="sig-default">False</span>,
         <span class="sig-arg">temp_gas</span>=<span class="sig-default">10000.0</span>,
         <span class="sig-arg">alpha_B</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">clump_fact_func</span>=<span class="sig-default">&lt;function clumping_factor_BKP at 0xa74b5a4&gt;</span>,
+        <span class="sig-arg">clump_fact_func</span>=<span class="sig-default">&lt;function clumping_factor_BKP at 0x8fc04c4&gt;</span>,
         <span class="sig-arg">**cosmo</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -775,8 +773,8 @@ the ionized fraction of helium is xHe * x.</p>
     </td>
   </tr></table>
   
-  <p>Calculated optical depth due to electron scattering given a profile
-of the filling factor of ionized gas vs. redshift.</p>
+  <p>The electron scattering optical depth given ionized filling
+factor vs. redshift.</p>
 <div class="rst-section" id="rst-parameters">
 <h1 class="heading">Parameters</h1>
 <p>x_ionH: array</p>
@@ -930,7 +928,7 @@ the published version [ 1999MNRAS.308..854G] has typos)</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu Nov 25 15:47:58 2010
+    Generated by Epydoc 3.0.1 on Tue Apr 26 11:07:51 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

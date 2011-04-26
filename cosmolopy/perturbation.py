@@ -1,4 +1,4 @@
-"""Routines related to perturbation theory and the power spectrum.
+"""Perturbation theory and the power spectrum routines.
 
 This module relies largely on power.c from Eisenstein & Hu (1999 ApJ 511 5)
 
@@ -32,8 +32,7 @@ except ImportError:
 def _vec_transfer_func(k):
     return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
 def transfer_function_EH(k, **cosmology):
-    """
-    Calculate the transfer function as a function of wavenumber k.
+    """The transfer function as a function of wavenumber k.
 
     Parameters
     ----------
@@ -133,7 +132,7 @@ def fgrowth(z, omega_M_0, unnormed=False):
             )
 
 def w_tophat(k, r):
-    r"""Calculate the k-space Fourier transform of a spherical tophat.
+    r"""The k-space Fourier transform of a spherical tophat.
 
     Parameters
     ----------
@@ -187,7 +186,7 @@ def _klims(r, cosmology):
 def _sigmasq_r_scalar(r, 
                       n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
                       omega_lambda_0, h):
-    """Calculate sigma_r^2 at z=0. Works only for scalar r. 
+    """sigma_r^2 at z=0. Works only for scalar r. 
 
     Used internally by the sigma_r function.
 
@@ -323,7 +322,7 @@ def norm_power(**cosmology):
 #  return 3.0 * (h * H100)**2. / ( 8.0 * math.pi * G)
 
 def power_spectrum(k, z, **cosmology):
-    r"""Calculates the matter power spectrum P(k,z).
+    r"""The matter power spectrum P(k,z).
 
     Uses equation 25 of Eisenstein & Hu (1999 ApJ 511 5).
 
@@ -389,7 +388,7 @@ def power_spectrum(k, z, **cosmology):
     return ps 
 
 def volume_radius_dmdr(mass, **cosmology):
-    """Calculate volume, radius, and dm/dr for a sphere of the given mass.
+    """The volume, radius, and dm/dr for a sphere of the given mass.
 
     Uses the mean density of the universe.
 
@@ -417,7 +416,7 @@ def volume_radius_dmdr(mass, **cosmology):
     return volume, r, dmdr
 
 def mass_to_radius(mass, **cosmology):
-    """Calculate the radius in Mpc of a sphere of the given mass.
+    """The radius in Mpc of a sphere of the given mass.
 
     Parameters
     -----------
@@ -440,7 +439,7 @@ def mass_to_radius(mass, **cosmology):
     return r
 
 def radius_to_mass(r, **cosmology):
-    """Calculate the mass of a sphere of radius r in Mpc.
+    """The mass of a sphere of radius r in Mpc.
 
     Uses the mean density of the universe.
 
@@ -457,10 +456,10 @@ def radius_to_mass(r, **cosmology):
 
 
 def virial_temp(mass, z, mu=None, **cosmology):
-    r"""Calculate the Virial temperature for a halo of a given mass.
+    r"""The Virial temperature for a halo of a given mass.
 
-    Calculate the Virial temperature in Kelvin for a halo of a given
-    mass using equation 26 of Barkana & Loeb. 
+    Calculates the Virial temperature in Kelvin for a halo of a given
+    mass using equation 26 of Barkana & Loeb.
 
     The transition from neutral to ionized is assumed to occur at temp
     = 1e4K. At temp >= 10^4 k, the mean partical mass drops from 1.22
@@ -510,7 +509,7 @@ def virial_temp(mass, z, mu=None, **cosmology):
     return temp
 
 def virial_mass(temp, z, mu=None, **cosmology):
-    r"""Calculate the mass of a halo of the given Virial temperature.
+    r"""The mass of a halo of the given Virial temperature.
 
     Uses equation 26 of Barkana & Loeb (2001PhR...349..125B), solved
     for T_vir as a function of mass.

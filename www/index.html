@@ -64,21 +64,21 @@
       <h3>Capabilities include:</h3>
       <dl>
 	<dt><a href="docAPI/cosmolopy.density-module.html">cosmolopy.density</a></dt>
-	<dd>Calculate various cosmological densities.</dd>
+	<dd>Various cosmological densities.</dd>
 	
 	<dt><a href="docAPI/cosmolopy.distance-module.html">cosmolopy.distance</a></dt>
-	<dd>Calculate various cosmological distance measures.</dd>
+	<dd>Various cosmological distance measures.</dd>
 	<dt><a href="docAPI/cosmolopy.luminosityfunction-module.html">cosmolopy.luminosityfunction</a></dt>
-	<dd>Routines related to galaxy luminosity functions (Schechter functions).</dd>
+	<dd>Galaxy luminosity functions (Schechter functions).</dd>
 	<dt><a href="docAPI/cosmolopy.magnitudes-module.html">cosmolopy.magnitudes</a></dt>
-	<dd>Simple routines for conversion in and out of the AB magnitude system.</dd>
+	<dd>Conversion in and out of the AB magnitude system.</dd>
 	<dt><a href="docAPI/cosmolopy.parameters-module.html">cosmolopy.parameters</a></dt>
-	<dd>Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).</dd>
+	<dd>Pre-defined sets of cosmological parameters (e.g. from WMAP).</dd>
 	<dt><a href="docAPI/cosmolopy.perturbation-module.html">cosmolopy.perturbation</a></dt>
 	
-	<dd>Routines related to perturbation theory and the power spectrum.</dd>
+	<dd>Perturbation theory and the power spectrum.</dd>
 	<dt><a href="docAPI/cosmolopy.reionization-module.html">cosmolopy.reionization</a></dt>
-	<dd>Routines related to the reionization of the IGM.</dd>
+	<dd>The reionization of the IGM.</dd>
       </dl>
       </p>
 
@@ -103,8 +103,12 @@
 	unpack it, and run
 	<pre>$ python setup.py install</pre>
       </p>
-      
-    
+      <p>
+      If you have trouble compiling from source, it's probably
+      the <code>EH.power</code> module (everything else is pure
+      python). You can install without it by running:
+      <pre>$ sudo python setup_alt.py install</pre>
+      </p>
     <h3>Download with <tt>git clone</tt></h3>
     <p>If you need bleeding-edge features or want to help with
     development, you can clone the CosmoloPy project (latest

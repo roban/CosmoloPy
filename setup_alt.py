@@ -12,7 +12,7 @@ import os
 packages = find_packages()
 setup(
     name = "CosmoloPy",
-    version = "0.1.101",
+    version = "0.1.102",
     packages = packages,
     install_requires = ['numpy', 'scipy',],
     tests_require = ['nose', 'matplotlib'],
@@ -33,25 +33,25 @@ Capabilities include
 --------------------
 
 `cosmolopy.density`
-  Calculate various cosmological densities.
+  Various cosmological densities.
 
 `cosmolopy.distance`
-  Calculate various cosmological distance measures.
+  Various cosmological distance measures.
 
 `cosmolopy.luminosityfunction`
-  Routines related to galaxy luminosity functions (Schecter functions).
+  Galaxy luminosity functions (Schecter functions).
 
 `cosmolopy.magnitudes`
-  Simple routines for conversion in and out of the AB magnitude system.
+  Conversion in and out of the AB magnitude system.
 
 `cosmolopy.parameters`
-  Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).
+  Pre-defined sets of cosmological parameters (e.g. from WMAP).
 
 `cosmolopy.perturbation`
-  Routines related to perturbation theory and the power spectrum.
+  Perturbation theory and the power spectrum.
 
 `cosmolopy.reionization`
-  Routines related to the reionization of the IGM.
+  The reionization of the IGM.
   
 """,
     classifiers = ['License :: OSI Approved :: MIT License',

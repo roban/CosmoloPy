@@ -4,25 +4,25 @@ Capabilities include
 --------------------
 
 `cosmolopy.density`
-  Calculate various cosmological densities.
+  Various cosmological densities.
 
 `cosmolopy.distance`
-  Calculate various cosmological distance measures.
+  Various cosmological distance measures.
 
 `cosmolopy.luminosityfunction`
-  Routines related to galaxy luminosity functions (Schecter functions).
+  Galaxy luminosity functions (Schecter functions).
 
 `cosmolopy.magnitudes`
-  Simple routines for conversion in and out of the AB magnitude system.
+  Conversion in and out of the AB magnitude system.
 
 `cosmolopy.parameters`
-  Provides some pre-defined sets of cosmological parameters (e.g. from WMAP).
+  Pre-defined sets of cosmological parameters (e.g. from WMAP).
 
 `cosmolopy.perturbation`
-  Routines related to perturbation theory and the power spectrum.
+  Perturbation theory and the power spectrum.
 
 `cosmolopy.reionization`
-  Routines related to the reionization of the IGM.
+  The reionization of the IGM.
 
 Functions take cosmological parameters (which can be numpy arrays)
 as keywords, and ignore any extra keywords. This means you can make a
@@ -39,7 +39,7 @@ cosmology parameters and pass it to each function using the ** syntax.
 
 >>> import cosmolopy.distance as cd
 >>> cosmo = {'omega_M_0':0.3, 'omega_lambda_0':0.7, 'omega_k_0':0.0, 'h':0.72}
->>> d_co, err = cd.comoving_distance(6., **cosmo)
+>>> d_co = cd.comoving_distance(6., **cosmo)
 >>> print "Comoving distance to z=6 is %.1f Mpc" % (d_co)
 Comoving distance to z=6 is 8017.8 Mpc
 
@@ -48,10 +48,10 @@ including a fiducial cosmology (currently the WMAP7+BAO+H0 mean), so
 you can just do this:
 
 >>> from cosmolopy import *
->>> d_a, err1, err2 = cd.angular_diameter_distance(6, **fidcosmo)
+>>> d_a = cd.angular_diameter_distance(6, **fidcosmo)
 >>> print "Angluar-diameter distance to z=6 is %.1f Mpc" % (d_a)
 Angluar-diameter distance to z=6 is 1209.9 Mpc
->>> d_light, err = cd.light_travel_distance(6, **fidcosmo)
+>>> d_light = cd.light_travel_distance(6, **fidcosmo)
 >>> print "Light-travel distance to z=6 is %.1f Mpc" % (d_light)
 Light-travel distance to z=6 is 3922.9 Mpc
 
@@ -88,9 +88,13 @@ Look in the tests/ and examples/ directories for more examples.
 import constants as cc
 import density as cden
 import distance as cd
-import perturbation as cp
+try:
+    import perturbation as cp
+except:
+    pass
 import reionization as cr
 import parameters as cparam
 import magnitudes as cmag
+import luminosityfunction as cl
 
 fidcosmo = cparam.WMAP7_BAO_H0_mean(flat=True, extras=True)

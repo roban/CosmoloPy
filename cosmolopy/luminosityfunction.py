@@ -1,4 +1,4 @@
-"""Routines related to galaxy luminosity functions (Schechter functions).
+"""Galaxy luminosity functions (Schechter functions).
 
 The `LFHistory` class implements a luminosity function history,
 encapsulating the changes in the galaxy luminosity distribution
@@ -172,7 +172,7 @@ def iPhotonRateDensity(schechterParams,
                        maglim=None,
                        sedParams={},
                        wavelength=1500.):
-    """Calculate ion. photon rate density from a luminosity function.
+    """Ionizing photon rate density from a luminosity function.
 
     in units of photons s^-1.
 
@@ -343,7 +343,7 @@ class LFHistory(Saveable):
             self.__dict__[name] = newfunc
 
     def iPhotonRateDensity_z(self, z, maglim=None):
-        """Calculate ion. photon rate density from a luminosity function.
+        """Ionizing photon rate density from a luminosity function.
 
         See the iPhotonRateRatio function.
         """
@@ -355,7 +355,7 @@ class LFHistory(Saveable):
         return lum * self._rQL
 
     def iPhotonRateDensity_t(self, t, maglim=None):
-        """Calculate ion. photon rate density from a luminosity function.
+        """Ionizing photon rate density from a luminosity function.
         
         See the iPhotonRateRatio function.
         """
@@ -676,7 +676,7 @@ class BrokenPowerlawSED(object):
         self.s_red = s_red
 
     def __call__(self, nu):
-        """Calculate the spectrum at the given frequency/frequencies.
+        """The spectrum at the given frequency/frequencies.
 
         Multiply by the total luminosity to get the luminosity per
         unit frequency.

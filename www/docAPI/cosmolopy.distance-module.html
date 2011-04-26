@@ -50,7 +50,7 @@
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
 <h1 class="epydoc">Module distance</h1><p class="nomargin-top"><span class="codelink"><a href="cosmolopy.distance-pysrc.html">source&nbsp;code</a></span></p>
-<p>Calculate various cosmological distance measures.</p>
+<p>Cosmological distance measures.</p>
 <p>Mostly follows David Hogg's pedagogical paper arXiv:astro-ph/9905116v4 .</p>
 <p>Distance units are Mpc, time units are seconds.</p>
 
@@ -69,7 +69,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#get_omega_k_0" class="summary-sig-name">get_omega_k_0</a>(<span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate omega_k_0 for a cosmology, if needed.</td>
+      'Spatial curvature density' omega_k_0 for a cosmology (if needed).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#get_omega_k_0">source&nbsp;code</a></span>
             
@@ -105,7 +105,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#e_z" class="summary-sig-name">e_z</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the unitless Hubble expansion rate at redshift z.</td>
+      The unitless Hubble expansion rate at redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#e_z">source&nbsp;code</a></span>
             
@@ -123,7 +123,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#hubble_z" class="summary-sig-name">hubble_z</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the value of the Hubble constant at redshift z.</td>
+      The value of the Hubble constant at redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#hubble_z">source&nbsp;code</a></span>
             
@@ -141,7 +141,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#hubble_distance_z" class="summary-sig-name">hubble_distance_z</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the value of the Hubble distance at redshift z.</td>
+      The value of the Hubble distance at redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#hubble_distance_z">source&nbsp;code</a></span>
             
@@ -178,7 +178,7 @@ See get_omega_k_0.</td>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#comoving_distance" class="summary-sig-name">comoving_distance</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">z0</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the line-of-sight comoving distance (in Mpc) to redshift z.</td>
+      The line-of-sight comoving distance (in Mpc) to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_distance">source&nbsp;code</a></span>
             
@@ -194,10 +194,11 @@ See get_omega_k_0.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="propper_motion_distance"></a><span class="summary-sig-name">propper_motion_distance</span>(<span class="summary-sig-arg">**args</span>)</span><br />
+          <td><span class="summary-sig"><a name="proper_motion_distance"></a><span class="summary-sig-name">proper_motion_distance</span>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
       Returns comoving_distance_transverse.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#propper_motion_distance">source&nbsp;code</a></span>
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#proper_motion_distance">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -213,7 +214,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#comoving_distance_transverse" class="summary-sig-name">comoving_distance_transverse</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the transverse comoving distance (in Mpc) to redshift z.</td>
+      The transverse comoving distance (in Mpc) to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_distance_transverse">source&nbsp;code</a></span>
             
@@ -232,7 +233,7 @@ See get_omega_k_0.</td>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#angular_diameter_distance" class="summary-sig-name">angular_diameter_distance</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">z0</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the angular-diameter distance (Mpc) to redshift z.</td>
+      The angular-diameter distance (Mpc) to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#angular_diameter_distance">source&nbsp;code</a></span>
             
@@ -250,7 +251,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#luminosity_distance" class="summary-sig-name">luminosity_distance</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the luminosity distance to redshift z.</td>
+      The luminosity distance to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#luminosity_distance">source&nbsp;code</a></span>
             
@@ -268,8 +269,7 @@ See get_omega_k_0.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#diff_comoving_volume" class="summary-sig-name">diff_comoving_volume</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the differential comoving volume element
-dV_c/dz/dSolidAngle.</td>
+      The differential comoving volume element dV_c/dz/dSolidAngle.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#diff_comoving_volume">source&nbsp;code</a></span>
             
@@ -287,7 +287,7 @@ dV_c/dz/dSolidAngle.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#comoving_volume" class="summary-sig-name">comoving_volume</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the comoving volume out to redshift z.</td>
+      The comoving volume out to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#comoving_volume">source&nbsp;code</a></span>
             
@@ -305,7 +305,7 @@ dV_c/dz/dSolidAngle.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#lookback_integrand" class="summary-sig-name">lookback_integrand</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the derivative of the lookback time with redshift: dt_L/dz.</td>
+      The derivative of the lookback time with redshift: dt_L/dz.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#lookback_integrand">source&nbsp;code</a></span>
             
@@ -324,7 +324,7 @@ dV_c/dz/dSolidAngle.</td>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#lookback_time" class="summary-sig-name">lookback_time</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">z0</span>=<span class="summary-sig-default">0.0</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the lookback time (in s) to redshift z.</td>
+      The lookback time (in s) to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#lookback_time">source&nbsp;code</a></span>
             
@@ -343,7 +343,7 @@ dV_c/dz/dSolidAngle.</td>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#age" class="summary-sig-name">age</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">use_flat</span>=<span class="summary-sig-default">True</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the age of the universe as seen at redshift z.</td>
+      The age of the universe as seen at redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#age">source&nbsp;code</a></span>
             
@@ -361,7 +361,7 @@ dV_c/dz/dSolidAngle.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#age_flat" class="summary-sig-name">age_flat</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the age of the universe assuming a flat cosmology.</td>
+      The age of the universe assuming a flat cosmology.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#age_flat">source&nbsp;code</a></span>
             
@@ -377,9 +377,33 @@ dV_c/dz/dSolidAngle.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#quick_distance_function" class="summary-sig-name">quick_distance_function</a>(<span class="summary-sig-arg">function</span>,
+        <span class="summary-sig-arg">zmax</span>=<span class="summary-sig-default">20.0</span>,
+        <span class="summary-sig-arg">zmin</span>=<span class="summary-sig-default">0.0</span>,
+        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.001</span>,
+        <span class="summary-sig-arg">return_inverse</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">k</span>=<span class="summary-sig-default">3</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Return an interpolation function that will give distance as a
+funtion of z</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.distance-pysrc.html#quick_distance_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#quick_age_function" class="summary-sig-name">quick_age_function</a>(<span class="summary-sig-arg">zmax</span>=<span class="summary-sig-default">20.0</span>,
         <span class="summary-sig-arg">zmin</span>=<span class="summary-sig-default">0.0</span>,
-        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.1</span>,
+        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.001</span>,
         <span class="summary-sig-arg">return_inverse</span>=<span class="summary-sig-default">False</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
       Return an interpolation function that will give age as a funtion of z</td>
@@ -400,7 +424,7 @@ dV_c/dz/dSolidAngle.</td>
         <tr>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#quick_redshift_age_function" class="summary-sig-name">quick_redshift_age_function</a>(<span class="summary-sig-arg">zmax</span>=<span class="summary-sig-default">20.0</span>,
         <span class="summary-sig-arg">zmin</span>=<span class="summary-sig-default">0.0</span>,
-        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.1</span>,
+        <span class="summary-sig-arg">zstep</span>=<span class="summary-sig-default">0.001</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
       Return an interpolation function giving z as a funtion of age
 of the universe.</td>
@@ -422,7 +446,7 @@ of the universe.</td>
           <td><span class="summary-sig"><a href="cosmolopy.distance-module.html#light_travel_distance" class="summary-sig-name">light_travel_distance</a>(<span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">z0</span>=<span class="summary-sig-default">0</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the light travel distance to redshift z.</td>
+      The light travel distance to redshift z.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#light_travel_distance">source&nbsp;code</a></span>
             
@@ -442,8 +466,7 @@ of the universe.</td>
         <span class="summary-sig-arg">z_guess</span>=<span class="summary-sig-default">6.0</span>,
         <span class="summary-sig-arg">fmin_args</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Calculate the redshift corresponding to a given light travel
-distance.</td>
+      The redshift corresponding to a given light travel distance.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.distance-pysrc.html#redshift_d_light">source&nbsp;code</a></span>
             
@@ -493,9 +516,10 @@ distance.</td>
     </td>
   </tr></table>
   
-  <p>Calculate omega_k_0 for a cosmology, if needed.</p>
-<p>If omega_k_0 is specified, return it. Otherwise return 1.0 -
-omega_M_0 - omega_lambda_0</p>
+  <p>'Spatial curvature density' omega_k_0 for a cosmology (if needed).</p>
+<p>If omega_k_0 is specified, return it. Otherwise return:</p>
+<blockquote>
+1.0 - omega_M_0 - omega_lambda_0</blockquote>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -537,7 +561,7 @@ modifies the dictionary in place and returns the result.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the unitless Hubble expansion rate at redshift z.</p>
+  <p>The unitless Hubble expansion rate at redshift z.</p>
 <p>In David Hogg's (arXiv:astro-ph/9905116v4) formalism, this is
 equivalent to E(z), defined in his eq. 14.</p>
   <dl class="fields">
@@ -559,7 +583,7 @@ equivalent to E(z), defined in his eq. 14.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the value of the Hubble constant at redshift z.</p>
+  <p>The value of the Hubble constant at redshift z.</p>
 <p>Units are s^-1</p>
 <p>In David Hogg's (arXiv:astro-ph/9905116v4) formalism, this is
 equivalent to H_0 * E(z) (see his eq. 14).</p>
@@ -582,7 +606,7 @@ equivalent to H_0 * E(z) (see his eq. 14).</p>
     </td>
   </tr></table>
   
-  <p>Calculate the value of the Hubble distance at redshift z.</p>
+  <p>The value of the Hubble distance at redshift z.</p>
 <p>Units are Mpc.</p>
 <p>In David Hogg's (arXiv:astro-ph/9905116v4) formalism, this is
 equivalent to D_H / E(z) = c / (H_0 E(z)) [see his eq. 14], which
@@ -629,7 +653,7 @@ appears in the definitions of many other distance measures.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the line-of-sight comoving distance (in Mpc) to redshift z.</p>
+  <p>The line-of-sight comoving distance (in Mpc) to redshift z.</p>
 <p>See equation 15 of David Hogg's arXiv:astro-ph/9905116v4</p>
 <p>Units are Mpc.</p>
 <p>Optionally calculate the integral from z0 to z.</p>
@@ -669,16 +693,23 @@ appears in the definitions of many other distance measures.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the transverse comoving distance (in Mpc) to redshift z.</p>
+  <p>The transverse comoving distance (in Mpc) to redshift z.</p>
 <p>This is also called the proper motion distance, D_M.</p>
 <p>See equation 16 of David Hogg's arXiv:astro-ph/9905116v4</p>
 <p>Units are Mpc.</p>
 <p>This is the distance d_m, such that the comoving distance between
 two events at the same redshift, but separated on the sky by some
 angle delta_theta is d_m * delta_theta.</p>
-<p>Warning: currently returns the error on the line-of-sight comoving
-distance D_C, not the error on the transverse comoving distance
-D_M.</p>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>d_M = cd.comoving_distance_transverse(6., **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Transverse comoving distance to z=6 is %.1f Mpc&quot;</span> % (d_M)
+<span class="py-output">Transverse comoving distance to z=6 is 8017.8 Mpc</span></pre>
+</div>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -699,7 +730,7 @@ D_M.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the angular-diameter distance (Mpc) to redshift z.</p>
+  <p>The angular-diameter distance (Mpc) to redshift z.</p>
 <p>Optionally find the angular diameter distante between objects at
 z0 and z.</p>
 <p>See equations 18-19 of David Hogg's arXiv:astro-ph/9905116v4</p>
@@ -733,7 +764,7 @@ z0 and z.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the luminosity distance to redshift z.</p>
+  <p>The luminosity distance to redshift z.</p>
 <p>Optionally calculate the integral from z0 to z.</p>
 <p>See, for example, David Hogg's arXiv:astro-ph/9905116v4</p>
   <dl class="fields">
@@ -755,8 +786,9 @@ z0 and z.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the differential comoving volume element
-dV_c/dz/dSolidAngle.</p>
+  <p>The differential comoving volume element dV_c/dz/dSolidAngle.</p>
+<p>Dimensions are volume per unit redshift per unit solid angle.</p>
+<p>Units are Mpc**3 Steradians^-1.</p>
 <p>See David Hogg's arXiv:astro-ph/9905116v4, equation 28.</p>
 <div class="rst-section" id="rst-examples">
 <h1 class="heading">Examples</h1>
@@ -787,7 +819,7 @@ dV_c/dz/dSolidAngle.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the comoving volume out to redshift z.</p>
+  <p>The comoving volume out to redshift z.</p>
 <p>See David Hogg's arXiv:astro-ph/9905116v4, equation 29.</p>
 <div class="rst-section" id="rst-examples">
 <h1 class="heading">Examples</h1>
@@ -825,7 +857,7 @@ dV_c/dz/dSolidAngle.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the derivative of the lookback time with redshift: dt_L/dz.</p>
+  <p>The derivative of the lookback time with redshift: dt_L/dz.</p>
 <p>See equation 30 of David Hogg's arXiv:astro-ph/9905116v4</p>
 <p>Units are seconds.</p>
   <dl class="fields">
@@ -848,7 +880,7 @@ dV_c/dz/dSolidAngle.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the lookback time (in s) to redshift z.</p>
+  <p>The lookback time (in s) to redshift z.</p>
 <p>See equation 30 of David Hogg's arXiv:astro-ph/9905116v4</p>
 <p>Units are s.</p>
 <p>Optionally calculate the integral from z0 to z.</p>
@@ -879,7 +911,7 @@ dV_c/dz/dSolidAngle.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the age of the universe as seen at redshift z.</p>
+  <p>The age of the universe as seen at redshift z.</p>
 <p>Age at z is lookback time at z'-&gt;Infinity minus lookback time at z.</p>
 <p>See also: lookback_time.</p>
 <p>Units are s.</p>
@@ -913,7 +945,7 @@ dV_c/dz/dSolidAngle.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the age of the universe assuming a flat cosmology.</p>
+  <p>The age of the universe assuming a flat cosmology.</p>
 <p>Units are s.</p>
 <p>Analytical formula from Peebles, p. 317, eq. 13.2.</p>
 <div class="rst-section" id="rst-examples">
@@ -931,6 +963,61 @@ dV_c/dz/dSolidAngle.</p>
   </dl>
 </td></tr></table>
 </div>
+<a name="quick_distance_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">quick_distance_function</span>(<span class="sig-arg">function</span>,
+        <span class="sig-arg">zmax</span>=<span class="sig-default">20.0</span>,
+        <span class="sig-arg">zmin</span>=<span class="sig-default">0.0</span>,
+        <span class="sig-arg">zstep</span>=<span class="sig-default">0.001</span>,
+        <span class="sig-arg">return_inverse</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">k</span>=<span class="sig-default">3</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.distance-pysrc.html#quick_distance_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return an interpolation function that will give distance as a
+funtion of z</p>
+<p>If return_inverse is True, will also return a function giving z as
+a function of distance.</p>
+<div class="rst-section" id="rst-inputs">
+<h1 class="heading">Inputs</h1>
+<p>function -- the distance function to interpolate (can be any
+callable that takes a redshift argument plus cosmology keywords).</p>
+<p>k -- spline order (<code class="link">scipy.interpolate.InterpolatedUnivariateSpline</code>)</p>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<p>distfunc</p>
+<p>or</p>
+<p>distfunc, zfunc</p>
+</div>
+<div class="rst-section" id="rst-examples">
+<h1 class="heading">Examples</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.distance <span class="py-keyword">as</span> cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> cosmolopy.constants <span class="py-keyword">as</span> cc
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = {<span class="py-string">'omega_M_0'</span> : 0.3, <span class="py-string">'omega_lambda_0'</span> : 0.7, <span class="py-string">'h'</span> : 0.72}
+<span class="py-prompt">&gt;&gt;&gt; </span>cosmo = cd.set_omega_k_0(cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>distfunc, redfunc = cd.quick_distance_function(cd.luminosity_distance, return_inverse=True, **cosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>d = distfunc(6.3333)
+<span class="py-prompt">&gt;&gt;&gt; </span>z = redfunc(d)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.1g&quot;</span> % (distfunc(6.3333)/cd.luminosity_distance(6.3333, **cosmo) - 1.0)
+<span class="py-output">'-2e-16'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.1g&quot;</span> % (z/6.3333 - 1.0)
+<span class="py-output">'0'</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="quick_age_function"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -940,7 +1027,7 @@ dV_c/dz/dSolidAngle.</p>
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">quick_age_function</span>(<span class="sig-arg">zmax</span>=<span class="sig-default">20.0</span>,
         <span class="sig-arg">zmin</span>=<span class="sig-default">0.0</span>,
-        <span class="sig-arg">zstep</span>=<span class="sig-default">0.1</span>,
+        <span class="sig-arg">zstep</span>=<span class="sig-default">0.001</span>,
         <span class="sig-arg">return_inverse</span>=<span class="sig-default">False</span>,
         <span class="sig-arg">**cosmo</span>)</span>
   </h3>
@@ -984,7 +1071,7 @@ a function of age.</p>
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">quick_redshift_age_function</span>(<span class="sig-arg">zmax</span>=<span class="sig-default">20.0</span>,
         <span class="sig-arg">zmin</span>=<span class="sig-default">0.0</span>,
-        <span class="sig-arg">zstep</span>=<span class="sig-default">0.1</span>,
+        <span class="sig-arg">zstep</span>=<span class="sig-default">0.001</span>,
         <span class="sig-arg">**cosmo</span>)</span>
   </h3>
   </td><td align="right" valign="top"
@@ -1031,7 +1118,7 @@ of the universe.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the light travel distance to redshift z.</p>
+  <p>The light travel distance to redshift z.</p>
 <p>Units are Mpc.</p>
 <div class="rst-section" id="rst-examples">
 <h1 class="heading">Examples</h1>
@@ -1064,8 +1151,7 @@ of the universe.</p>
     </td>
   </tr></table>
   
-  <p>Calculate the redshift corresponding to a given light travel
-distance.</p>
+  <p>The redshift corresponding to a given light travel distance.</p>
 <p>Units are the same as light_travel_distance (Mpc).</p>
 <div class="rst-section" id="rst-examples">
 <h1 class="heading">Examples</h1>
@@ -1113,7 +1199,7 @@ distance.</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu Nov 25 15:47:58 2010
+    Generated by Epydoc 3.0.1 on Tue Apr 26 11:07:51 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
