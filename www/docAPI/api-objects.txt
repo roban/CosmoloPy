@@ -107,8 +107,10 @@ cosmolopy.perturbation	cosmolopy.perturbation-module.html
 cosmolopy.perturbation.fgrowth	cosmolopy.perturbation-module.html#fgrowth
 cosmolopy.perturbation._sigmasq_r_scalar	cosmolopy.perturbation-module.html#_sigmasq_r_scalar
 cosmolopy.perturbation.w_tophat	cosmolopy.perturbation-module.html#w_tophat
+cosmolopy.perturbation.havepower	cosmolopy.perturbation-module.html#havepower
 cosmolopy.perturbation._klims	cosmolopy.perturbation-module.html#_klims
 cosmolopy.perturbation.sig_del	cosmolopy.perturbation-module.html#sig_del
+cosmolopy.perturbation.ie	cosmolopy.perturbation-module.html#ie
 cosmolopy.perturbation._sigmasq_integrand_log	cosmolopy.perturbation-module.html#_sigmasq_integrand_log
 cosmolopy.perturbation.volume_radius_dmdr	cosmolopy.perturbation-module.html#volume_radius_dmdr
 cosmolopy.perturbation.transfer_function_EH	cosmolopy.perturbation-module.html#transfer_function_EH
@@ -121,6 +123,7 @@ cosmolopy.perturbation.virial_mass	cosmolopy.perturbation-module.html#virial_mas
 cosmolopy.perturbation.collapse_fraction	cosmolopy.perturbation-module.html#collapse_fraction
 cosmolopy.perturbation._vec_transfer_func	cosmolopy.perturbation-module.html#_vec_transfer_func
 cosmolopy.perturbation.radius_to_mass	cosmolopy.perturbation-module.html#radius_to_mass
+cosmolopy.perturbation.powererror	cosmolopy.perturbation-module.html#powererror
 cosmolopy.perturbation.norm_power	cosmolopy.perturbation-module.html#norm_power
 cosmolopy.perturbation.virial_temp	cosmolopy.perturbation-module.html#virial_temp
 cosmolopy.perturbation.power_spectrum	cosmolopy.perturbation-module.html#power_spectrum

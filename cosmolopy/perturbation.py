@@ -19,11 +19,14 @@ import scipy.integrate as si
 import constants as cc
 import density as cden
 
+powererror = None
 try:
     import EH.power as power
-except ImportError:
-    print "Error importing EH.power. See EH/installation.txt."
-    print "Some functions (transfer_function_EH, etc.) will not work." 
+    havepower = True
+except ImportError as ie:
+    havepower = False
+    powererror = ie
+    pass
 
 # Turn on printing of special function error messages.
 #scipy.special.errprint(1)
@@ -60,7 +63,9 @@ def transfer_function_EH(k, **cosmology):
       http://background.uchicago.edu/~whu/transfer/transferpage.html
 
     """
-    
+    if not havepower:
+        raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
+
     z_val=0
 
     # /* TFmdm_set_cosm() -- User passes all the cosmological parameters as

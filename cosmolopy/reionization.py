@@ -6,11 +6,7 @@ import numpy
 import scipy
 import scipy.integrate as si
 
-try:
-    import perturbation as cp
-except:
-    pass
-
+import perturbation as cp
 import distance as cd
 import constants as cc
 import density as cden

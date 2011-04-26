@@ -88,10 +88,7 @@ Look in the tests/ and examples/ directories for more examples.
 import constants as cc
 import density as cden
 import distance as cd
-try:
-    import perturbation as cp
-except:
-    pass
+import perturbation as cp
 import reionization as cr
 import parameters as cparam
 import magnitudes as cmag

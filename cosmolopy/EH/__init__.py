@@ -3,8 +3,9 @@
 Eisenstein & Hu power spectrum transfer function used in
 `cosmolopy.perturbation.transfer_function_EH`.
 
-This package contains one module, `cosmolopy.EH.power`, which is a
-python wrapper of power.c from Eisenstein & Hu (1999 ApJ 511 5).
+This package contains one module, `power` (or `cosmolopy.EH.power`),
+which is a python wrapper of power.c from Eisenstein & Hu (1999 ApJ
+511 5).
 
   http://background.uchicago.edu/~whu/transfer/transferpage.html
 
