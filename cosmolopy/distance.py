@@ -157,6 +157,8 @@ def comoving_distance(z, z0 = 0, **cosmo):
 def proper_motion_distance(z, **cosmo):
     """Returns comoving_distance_transverse.
 
+    Units are Mpc.
+
     Examples
     --------
 
@@ -258,7 +260,7 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
 def luminosity_distance(z, **cosmo):
     """The luminosity distance to redshift z.
     
-    Optionally calculate the integral from z0 to z.
+    Units are Mpc.
 
     See, for example, David Hogg's arXiv:astro-ph/9905116v4
 
