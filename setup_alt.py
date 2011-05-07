@@ -12,7 +12,7 @@ import os
 packages = find_packages()
 setup(
     name = "CosmoloPy",
-    version = "0.1.102",
+    version = "0.1.103",
     packages = packages,
     install_requires = ['numpy', 'scipy',],
     tests_require = ['nose', 'matplotlib'],
