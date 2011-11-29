@@ -219,8 +219,8 @@ def comoving_distance_transverse(z, **cosmo):
 def angular_diameter_distance(z, z0 = 0, **cosmo):
     """The angular-diameter distance (Mpc) to redshift z.
     
-    Optionally find the angular diameter distante between objects at
-    z0 and z.
+    Optionally find the angular diameter distance between objects at
+    z0 and z (only implemented for omega_k_0 >= 0).
 
     See equations 18-19 of David Hogg's arXiv:astro-ph/9905116v4
 
@@ -239,11 +239,11 @@ def angular_diameter_distance(z, z0 = 0, **cosmo):
     """
 
     omega_k = numpy.atleast_1d(get_omega_k_0(**cosmo))
-    if (numpy.any(omega_k < 0)):
-        raise ValueError("Not implemented for Omega_k < 0")
+    if (numpy.any(omega_k < 0) and not(z0 == 0)):
+        raise ValueError("Not implemented for Omega_k < 0 and z0 > 0")
 
     dm2  = comoving_distance_transverse(z, **cosmo)
-    if z0 is 0:
+    if z0 == 0:
         return dm2 / (1. + z)
 
     dm1 = comoving_distance_transverse(z0, **cosmo)
