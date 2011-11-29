@@ -89,11 +89,15 @@ cosmolopy.luminosityfunction.B2007_z5	cosmolopy.luminosityfunction-module.html#B
 cosmolopy.luminosityfunction.B2008	cosmolopy.luminosityfunction-module.html#B2008
 cosmolopy.luminosityfunction.zlinear	cosmolopy.luminosityfunction-module.html#zlinear
 cosmolopy.magnitudes	cosmolopy.magnitudes-module.html
-cosmolopy.magnitudes.magnitude_AB1450	cosmolopy.magnitudes-module.html#magnitude_AB1450
+cosmolopy.magnitudes.f_nu_lambda	cosmolopy.magnitudes-module.html#f_nu_lambda
+cosmolopy.magnitudes.MAB0	cosmolopy.magnitudes-module.html#MAB0
+cosmolopy.magnitudes.distance_modulus	cosmolopy.magnitudes-module.html#distance_modulus
 cosmolopy.magnitudes.L_nu_from_magAB	cosmolopy.magnitudes-module.html#L_nu_from_magAB
 cosmolopy.magnitudes.magnitude_AB_from_L_nu	cosmolopy.magnitudes-module.html#magnitude_AB_from_L_nu
 cosmolopy.magnitudes.f_nu_from_magAB	cosmolopy.magnitudes-module.html#f_nu_from_magAB
+cosmolopy.magnitudes.nu_lambda	cosmolopy.magnitudes-module.html#nu_lambda
 cosmolopy.magnitudes.magnitude_AB	cosmolopy.magnitudes-module.html#magnitude_AB
+cosmolopy.magnitudes.magnitude_AB1450	cosmolopy.magnitudes-module.html#magnitude_AB1450
 cosmolopy.magnitudes.__package__	cosmolopy.magnitudes-module.html#__package__
 cosmolopy.parameters	cosmolopy.parameters-module.html
 cosmolopy.parameters.WMAP7_ML	cosmolopy.parameters-module.html#WMAP7_ML
