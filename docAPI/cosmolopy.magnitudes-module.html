@@ -66,7 +66,43 @@ Conversions between fluxes, luminosities and AB magnitudes.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="f_nu_from_magAB"></a><span class="summary-sig-name">f_nu_from_magAB</span>(<span class="summary-sig-arg">magAB</span>)</span><br />
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#nu_lambda" class="summary-sig-name">nu_lambda</a>(<span class="summary-sig-arg">coordinate</span>)</span><br />
+      Convert between frequency and wavelength, nu to lambda or
+lambda to nu.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#nu_lambda">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#f_nu_lambda" class="summary-sig-name">f_nu_lambda</a>(<span class="summary-sig-arg">flux</span>,
+        <span class="summary-sig-arg">coordinate</span>)</span><br />
+      Convert f_nu to f_lambda or f_lambda to f_nu.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#f_nu_lambda">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#f_nu_from_magAB" class="summary-sig-name">f_nu_from_magAB</a>(<span class="summary-sig-arg">magAB</span>)</span><br />
       Convert apparent magnitude into flux (erg s^-1 cm^-2 Hz^-1).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#f_nu_from_magAB">source&nbsp;code</a></span>
@@ -83,7 +119,7 @@ Conversions between fluxes, luminosities and AB magnitudes.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="L_nu_from_magAB"></a><span class="summary-sig-name">L_nu_from_magAB</span>(<span class="summary-sig-arg">magAB</span>)</span><br />
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#L_nu_from_magAB" class="summary-sig-name">L_nu_from_magAB</a>(<span class="summary-sig-arg">magAB</span>)</span><br />
       Convert absolute magnitude into luminosity (erg s^-1 Hz^-1).</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#L_nu_from_magAB">source&nbsp;code</a></span>
@@ -100,10 +136,28 @@ Conversions between fluxes, luminosities and AB magnitudes.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="magnitude_AB_from_L_nu"></a><span class="summary-sig-name">magnitude_AB_from_L_nu</span>(<span class="summary-sig-arg">luminosity_nu</span>)</span><br />
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#magnitude_AB_from_L_nu" class="summary-sig-name">magnitude_AB_from_L_nu</a>(<span class="summary-sig-arg">luminosity_nu</span>)</span><br />
       Convert luminosity (erg s^-1 Hz^-1) into absolute magnitude.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#magnitude_AB_from_L_nu">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.magnitudes-module.html#distance_modulus" class="summary-sig-name">distance_modulus</a>(<span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmo</span>)</span><br />
+      Distance modulus mu = m-M.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#distance_modulus">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -142,7 +196,7 @@ Conversions between fluxes, luminosities and AB magnitudes.
         <span class="summary-sig-arg">wavelength</span>,
         <span class="summary-sig-arg">nu_power</span>=<span class="summary-sig-default">-0.5</span>,
         <span class="summary-sig-arg">**cosmo</span>)</span><br />
-      Extrapolate to the AB magnitude at 1450 cc.angstrom_cms.</td>
+      Extrapolate to the AB magnitude at 1450 Angstroms.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#magnitude_AB1450">source&nbsp;code</a></span>
             
@@ -165,6 +219,13 @@ Conversions between fluxes, luminosities and AB magnitudes.
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="MAB0"></a><span class="summary-name">MAB0</span> = <code title="48.599934377717773">48.599934377717773</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
@@ -178,6 +239,209 @@ Conversions between fluxes, luminosities and AB magnitudes.
     <span class="table-header">Function Details</span></td>
 </tr>
 </table>
+<a name="nu_lambda"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nu_lambda</span>(<span class="sig-arg">coordinate</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#nu_lambda">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert between frequency and wavelength, nu to lambda or
+lambda to nu.</p>
+<dl class="rst-docutils">
+<dt>Either:</dt>
+<dd>given <code class="link">lambda</code> returns 'nu' or
+given <code class="link">nu</code> returns <code class="link">lambda</code>.</dd>
+<dt>Units are:</dt>
+<dd><code class="link">Hz</code> for nu and <code class="link">Ang</code> for <code class="link">lambda</code>.</dd>
+</dl>
+<p>Works because <code class="link">nu = c/lambda</code> and <code class="link">lambda = c/nu</code>, and I use <code class="link">c</code>
+in units of <code class="link">Angs/s</code>.</p>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> magnitudes
+<span class="py-prompt">&gt;&gt;&gt; </span>nu = magnitudes.nu_lambda(1216.)
+<span class="py-prompt">&gt;&gt;&gt; </span>lam = magnitudes.nu_lambda(nu)
+<span class="py-prompt">&gt;&gt;&gt; </span>lam
+<span class="py-output">1216.0</span></pre>
+</blockquote>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="f_nu_lambda"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">f_nu_lambda</span>(<span class="sig-arg">flux</span>,
+        <span class="sig-arg">coordinate</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#f_nu_lambda">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert f_nu to f_lambda or f_lambda to f_nu.</p>
+<dl class="rst-docutils">
+<dt>Either:</dt>
+<dd>given <code class="link">f_lambda</code> and <code class="link">lambda</code> returns <code class="link">f_nu</code> and 'nu' or
+given <code class="link">f_nu</code> and <code class="link">nu</code> returns <code class="link">f_lambda</code> and <code class="link">lambda</code>.</dd>
+<dt>Units are:</dt>
+<dd><code class="link">erg s^-1 cm^-2 Hz^-1</code> for f_nu and
+<code class="link">erg s^-1 cm^-2 Ang^-1</code> for <code class="link">f_lambda</code>.</dd>
+</dl>
+<p>Works because <code class="link">f_nu = f_lambda * lambda**2/c</code> and <code class="link">f_lambda = f_nu
+* nu**2/c</code>, and I use <code class="link">c</code> in units of <code class="link">Angs/s</code>.</p>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> magnitudes
+<span class="py-prompt">&gt;&gt;&gt; </span>fnu, nu = magnitudes.f_nu_lambda(2.0, 1216.)
+<span class="py-prompt">&gt;&gt;&gt; </span>flam, lam = magnitudes.f_nu_lambda(fnu, nu)
+<span class="py-prompt">&gt;&gt;&gt; </span>flam, lam
+<span class="py-output">(2.0, 1216.0)</span></pre>
+</blockquote>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="f_nu_from_magAB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">f_nu_from_magAB</span>(<span class="sig-arg">magAB</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#f_nu_from_magAB">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert apparent magnitude into flux (erg s^-1 cm^-2 Hz^-1).</p>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Check that the AB magnitude zero point is 3631 Jy:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> magnitudes
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.4g&quot;</span> % (magnitudes.f_nu_from_magAB(0.0)/1e-23)
+<span class="py-output">'3631'</span></pre>
+</blockquote>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="L_nu_from_magAB"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">L_nu_from_magAB</span>(<span class="sig-arg">magAB</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#L_nu_from_magAB">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert absolute magnitude into luminosity (erg s^-1 Hz^-1).</p>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Check that the AB magnitude zero point is 3631 Jy:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> magnitudes
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> math
+<span class="py-prompt">&gt;&gt;&gt; </span>L_nu = magnitudes.L_nu_from_magAB(0.0)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.4g&quot;</span> % (L_nu/(1e-23 * 4. * math.pi * (10*cc.pc_cm)**2))
+<span class="py-output">'3631'</span></pre>
+</blockquote>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="magnitude_AB_from_L_nu"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">magnitude_AB_from_L_nu</span>(<span class="sig-arg">luminosity_nu</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#magnitude_AB_from_L_nu">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert luminosity (erg s^-1 Hz^-1) into absolute magnitude.</p>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Check that the AB magnitude zero point is 3631 Jy:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> numpy, math
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> magnitudes, cc
+<span class="py-prompt">&gt;&gt;&gt; </span>L_nu = 3631e-23 * (4. * math.pi * (10*cc.pc_cm)**2)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.3f&quot;</span> % numpy.abs(magnitudes.magnitude_AB_from_L_nu(L_nu))
+<span class="py-output">'0.000'</span></pre>
+</blockquote>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="distance_modulus"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">distance_modulus</span>(<span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmo</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.magnitudes-pysrc.html#distance_modulus">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Distance modulus mu = m-M.</p>
+<p>The distance modulus is the difference between the apparent and
+absolute magnitudes,</p>
+<blockquote>
+mu = 5 log(d/10 pc)</blockquote>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> fidcosmo, magnitudes
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;mu(z=6) = %.4g&quot;</span> % magnitudes.distance_modulus(6.0, **fidcosmo)
+<span class="py-output">'mu(z=6) = 48.86'</span></pre>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="magnitude_AB"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -205,12 +469,48 @@ magnitude from a luminosity.</dd>
 <dt>f_lambda: array or scalar</dt>
 <dd>observed flux from the source in units of erg s^-1 cm^-2 Ang^-1</dd>
 <dt>wavelength: array or scalar</dt>
-<dd>the observed wavelength of the flux measurement(s) in angstroms</dd>
+<dd>the observed wavelength of the flux measurement(s) in Angstroms</dd>
 </dl>
 </div>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
 <p>Returns ab (apparent), and AB (absolute) magnitudes.</p>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>Note that here you pass fluxes that are per unit wavelength, not
+per unit frequency. To get the absolute magnitude for a
+<em>luminosity</em> specified in units of erg s^-1 Ang^-1, set z=None.</p>
+</div>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Check that the AB magnitude zero point is 3631 Jy:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> fidcosmo, magnitudes, cc, cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> numpy, math
+<span class="py-prompt">&gt;&gt;&gt; </span>L_nu = 3631e-23 * (4. * math.pi * (10*cc.pc_cm)**2)
+<span class="py-prompt">&gt;&gt;&gt; </span>nu = magnitudes.nu_lambda(1216.)
+<span class="py-prompt">&gt;&gt;&gt; </span>L_lambda, lamb = magnitudes.f_nu_lambda(L_nu, nu)
+<span class="py-prompt">&gt;&gt;&gt; </span>mAB, MAB = magnitudes.magnitude_AB(None, L_lambda, 1216., **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.3f&quot;</span> % numpy.abs(MAB)
+<span class="py-output">'0.000'</span></pre>
+</blockquote>
+<p>Find the apparent (and absolute, which should be zero) magnitudes
+of a 3631 Jy source at z=6.0:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> fidcosmo, magnitudes, cc, cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> numpy, math
+<span class="py-prompt">&gt;&gt;&gt; </span>L_nu = 3631e-23 * (4. * math.pi * (10*cc.pc_cm)**2)
+<span class="py-prompt">&gt;&gt;&gt; </span>nu = magnitudes.nu_lambda(1216.)
+<span class="py-prompt">&gt;&gt;&gt; </span>L_lambda, lamb = magnitudes.f_nu_lambda(L_nu, nu)
+<span class="py-prompt">&gt;&gt;&gt; </span>dl = cd.luminosity_distance(6.0, **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>f_lambda = L_lambda/(4. * math.pi * (dl*cc.Mpc_cm)**2 * (1. + 6.0))
+<span class="py-prompt">&gt;&gt;&gt; </span>mAB, MAB = magnitudes.magnitude_AB(6.0, f_lambda, 7.*1216., **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.3f, %.3f&quot;</span> % (mAB, MAB)
+<span class="py-output">'48.865, 0.000'</span></pre>
+</blockquote>
 </div>
   <dl class="fields">
   </dl>
@@ -234,7 +534,7 @@ magnitude from a luminosity.</dd>
     </td>
   </tr></table>
   
-  <p>Extrapolate to the AB magnitude at 1450 cc.angstrom_cms.</p>
+  <p>Extrapolate to the AB magnitude at 1450 Angstroms.</p>
 <div class="rst-section" id="rst-inputs">
 <h1 class="heading">Inputs</h1>
 <dl class="rst-docutils">
@@ -243,15 +543,15 @@ magnitude from a luminosity.</dd>
 <dt>f_lambda: array or scalar</dt>
 <dd>observed flux from the source in units of erg s^-1 cm^-2 Ang^-1</dd>
 <dt>wavelength: array or scalar</dt>
-<dd>the observed wavelength of the flux measurement(s) in cc.angstrom_cms</dd>
+<dd>the observed wavelength of the flux measurement(s) in Angstroms.</dd>
 <dt>nu_power:</dt>
 <dd>the powerlaw index (f_nu ~ nu^nu_power) used to extrapolate
-the flux to 1450 anstroms.</dd>
+the flux to 1450 Angstroms.</dd>
 </dl>
 </div>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
-<p>Apparent and absolute magnitudes extrapolated to 1450 angstroms.</p>
+<p>Apparent and absolute magnitudes extrapolated to 1450 Angstroms.</p>
 </div>
 <div class="rst-section" id="rst-notes">
 <h1 class="heading">Notes</h1>
@@ -259,6 +559,33 @@ the flux to 1450 anstroms.</dd>
 <blockquote>
 We extrapolate the continuum to rest-frame 1450A, assuming a
 continuum shape f_nu ~ nu^-0.5 to calculate AB_1450.</blockquote>
+</div>
+<div class="rst-section" id="rst-usage">
+<h1 class="heading">Usage</h1>
+<p>Find the apparent and absolute rest-frame 1450 Angstrom magnitudes
+of source with a flux of 3631 Jy at rest-frame 1216 Angstroms at
+z=6.0:</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> cosmolopy <span class="py-keyword">import</span> fidcosmo, magnitudes, cc, cd
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">import</span> numpy, math
+<span class="py-prompt">&gt;&gt;&gt; </span>L_nu = 3631e-23 * (4. * math.pi * (10*cc.pc_cm)**2)
+<span class="py-prompt">&gt;&gt;&gt; </span>nu = magnitudes.nu_lambda(1216.)
+<span class="py-prompt">&gt;&gt;&gt; </span>L_lambda, lamb = magnitudes.f_nu_lambda(L_nu, nu)
+<span class="py-prompt">&gt;&gt;&gt; </span>dl = cd.luminosity_distance(6.0, **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span>f_lambda = L_lambda/(4. * math.pi * (dl*cc.Mpc_cm)**2 * (1. + 6.0))
+<span class="py-prompt">&gt;&gt;&gt; </span>mAB, MAB = magnitudes.magnitude_AB1450(6.0, f_lambda, 7.*1216.,
+<span class="py-more">... </span>                                       **fidcosmo)
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.3f, %.3f&quot;</span> % (mAB, MAB)
+<span class="py-output">'48.769, -0.096'</span></pre>
+</blockquote>
+<p>And is that offset from an absolute magnitude of zero consisten
+with our assumed powerlaw index?</p>
+<blockquote>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-string">&quot;%.3f&quot;</span> %(-2.5 * numpy.log10((1216./1450)**0.5))
+<span class="py-output">'0.096'</span></pre>
+</blockquote>
 </div>
   <dl class="fields">
   </dl>
@@ -291,7 +618,7 @@ continuum shape f_nu ~ nu^-0.5 to calculate AB_1450.</blockquote>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Apr 26 11:52:23 2011
+    Generated by Epydoc 3.0.1 on Tue Nov 29 12:13:15 2011
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
