@@ -255,10 +255,10 @@ def WiggleZ_fiducial():
     omega_b_0 = 0.166*omega_M_0
     cosmo = {'omega_b_0' : omega_b_0,
              'omega_M_0' : omega_M_0,
-             'omega_lambda_0' : 1. - omega_M_0
-             'omega_k_0' = 0.0
-             'h' = 0.71
-             'n' = 0.96
+             'omega_lambda_0' : 1. - omega_M_0,
+             'omega_k_0' = 0.0,
+             'h' = 0.71,
+             'n' = 0.96,
              'sigma_8' = 0.8
              }
     return cosmo
