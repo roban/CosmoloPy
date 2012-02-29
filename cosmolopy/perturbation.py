@@ -160,6 +160,39 @@ def w_tophat(k, r):
     return (3. * ( numpy.sin(k * r) - k * r * numpy.cos(k * r) ) / 
             ((k * r)**3.))
 
+def w_gauss(k, r):
+    r"""The k-space Fourier transform of an isotropic three-dimensional gaussian
+
+    Parameters
+    ----------
+    
+    k: array
+      wavenumber
+
+    r: array
+       width of the 3-D gaussian
+
+    Note: k and r need to be in the same units.
+
+    Returns
+    -------
+    
+    ``\tilde{w}``: array
+      the value of the transformed function at wavenumber k.
+    
+    """
+    return numpy.exp( -(k * r)**2./2. )
+
+def _sigmajsq_integrand_log(logk, r, j, cosmology):
+    """Integrand used internally by the sigma_j function.
+    """
+    k = numpy.exp(logk)
+    # The 1e-10 factor in the integrand is added to avoid roundoff
+    # error warnings. It is divided out later.
+    return (k *
+            (1.e-10 / (2. * math.pi**2.)) * k**(2.*(j+1.)) * 
+            w_gauss(k, r)**2. * 
+            power_spectrum(k, 0.0, **cosmology))
 
 def _sigmasq_integrand_log(logk, r, cosmology):
     """Integrand used internally by the sigma_r function.
@@ -233,6 +266,127 @@ def _sigmasq_r_scalar(r,
     return 1.e10 * integral, 1.e10 * error
 
 _sigmasq_r_vec = numpy.vectorize(_sigmasq_r_scalar)
+
+def _sigmasq_j_scalar(r, j, 
+                      n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
+                      omega_lambda_0, h):
+    """sigma_j^2(r) at z=0. Works only for scalar r. 
+
+    Used internally by the sigma_j function.
+
+    Parameters
+    ----------
+    
+    r : array
+       radius in Mpc.
+
+    j : array
+       order of sigma statistic.
+
+    n, omega_M_0, omega_b_0, omega_n_0, N_nu, omega_lambda_0, h:
+       cosmological parameters, specified like this to allow this
+       function to be vectorized (see source code of sigma_r).
+
+    Returns
+    -------
+
+    sigma^2, error(sigma^2)
+
+    """
+    # r is in Mpc, so k will also by in Mpc for the integration.
+
+    cosmology = {'n':n, 
+                 'deltaSqr':deltaSqr,
+                 'omega_M_0':omega_M_0, 
+                 'omega_b_0':omega_b_0, 
+                 'omega_n_0':omega_n_0, 
+                 'N_nu':N_nu, 
+                 'omega_lambda_0':omega_lambda_0, 
+                 'h':h,}
+    logk_lim = _klims(r, cosmology)
+    #print "Integrating from logk = %.1f to %.1f." % logk_lim
+    
+    # Integrate over logk from -infinity to infinity.
+    integral, error = si.quad(_sigmajsq_integrand_log, 
+                              logk_lim[0], 
+                              logk_lim[1], 
+                              args=(r, j, cosmology),
+                              limit=10000)#, epsabs=1e-9, epsrel=1e-9)
+    return 1.e10 * integral, 1.e10 * error
+
+_sigmasq_j_vec = numpy.vectorize(_sigmasq_j_scalar)
+
+def sigma_j(r, j, z, **cosmology):
+    r"""Sigma statistic of order j for gaussian field of variancea r at redshift z.
+
+    Returns sigma and the error on sigma.
+    
+    Parameters
+    ----------
+    
+    r : array
+       radius of sphere in Mpc
+    
+    j : array
+       order of the sigma statistic (0, 1, 2, 3, ...)
+
+    z : array
+       redshift
+
+    Returns
+    -------
+
+    sigma:
+       j-th order variance of the field smoothed by gaussian with with r
+    
+    error:
+       An estimate of the numerical error on the calculated value of sigma.
+
+    Notes
+    -----
+    :: Eq. (152) of Matsubara (2003)
+
+      \sigma_j(R,z) = \sqrt{\int_0^\infty \frac{k^2}{2 \pi^2}~P(k, z)~k^{2j}
+      \tilde{w}_k^2(k, R)~dk} = \sigma_j(R,0) \left(\frac{D_1(z)}{D_1(0)}\right)
+
+    """
+    omega_M_0 = cosmology['omega_M_0']
+    
+    fg = fgrowth(z, omega_M_0)
+
+    if 'deltaSqr' not in cosmology:
+        cosmology['deltaSqr'] = norm_power(**cosmology)
+    
+    #Uses 'n', as well as (for transfer_function_EH), 'omega_M_0',
+    #'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
+
+    if numpy.isscalar(r):
+        sigmasq_0, errorsq_0 = _sigmasq_j_scalar(r, j,
+                                                 cosmology['n'],
+                                                 cosmology['deltaSqr'],
+                                                 cosmology['omega_M_0'],
+                                                 cosmology['omega_b_0'],
+                                                 cosmology['omega_n_0'],
+                                                 cosmology['N_nu'],
+                                                 cosmology['omega_lambda_0'],
+                                                 cosmology['h'],)
+    else:
+        sigmasq_0, errorsq_0 = _sigmasq_j_vec(r, j,
+                                              cosmology['n'],
+                                              cosmology['deltaSqr'],
+                                              cosmology['omega_M_0'],
+                                              cosmology['omega_b_0'],
+                                              cosmology['omega_n_0'],
+                                              cosmology['N_nu'],
+                                              cosmology['omega_lambda_0'],
+                                              cosmology['h'],)
+    sigma = numpy.sqrt(sigmasq_0) * fg
+
+    # Propagate the error on sigmasq_0 to sigma.
+    error = fg * errorsq_0 / (2. * sigmasq_0)
+
+    return sigma, error
+
 def sigma_r(r, z, **cosmology):
     r"""RMS mass fluctuations of a sphere of radius r at redshift z.
 
