@@ -234,20 +234,23 @@ def WMAP5_mean(flat=False, extras=True):
     return cosmo
 
 
-def WiggleZ_fiducial():
+def WiggleZ_fiducial(extras=True):
     """WiggleZ fiducial cosmological parameter set from Blake et al.
     (arxiv:1105.2862). N.b. that this does not use any WiggleZ results.
     
     Parameters
     ----------
 
-    There are no input parameters. The cosmology is flat by definition
-    and no neutrino extras are provided.
+    extras: boolean
+
+      If True, sets neutrino number N_nu = 0, neutrino density
+      omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24
 
     Notes
     -----
 
     Values taken from the final paragraph of Section 1 of the paper.
+    The cosmology is flat by definition.
 
     """
     omega_M_0 = 0.27
@@ -261,5 +264,7 @@ def WiggleZ_fiducial():
              'n' : 0.96,
              'sigma_8' : 0.8
              }
+    if extras:
+        add_extras(cosmo)
     return cosmo
 
