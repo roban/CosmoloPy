@@ -4,10 +4,13 @@
 def add_extras(cosmo):
     """Sets neutrino number N_nu = 0, neutrino density
        omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.
+       Also sets w = -1.
     """
     extras = {'omega_n_0' : 0.0,
               'N_nu': 0,
-             'Y_He': 0.24}
+              'Y_He': 0.24
+              'w' : -1.0
+              }
 
     cosmo.update(extras)
     return cosmo
