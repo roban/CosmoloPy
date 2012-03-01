@@ -54,11 +54,19 @@ def e_z(z, **cosmo):
     In David Hogg's (arXiv:astro-ph/9905116v4) formalism, this is
     equivalent to E(z), defined in his eq. 14.
 
+    Modified (JBJ, 29-Feb-2012) to include scalar w parameter
+
     """
 
-    return (cosmo['omega_M_0'] * (1+z)**3. + 
-            cosmo['omega_k_0'] * (1+z)**2. + 
-            cosmo['omega_lambda_0'])**0.5
+    if 'w' in cosmo:
+        #ow = exp( si.quad( lambda zp: (1.+cosmo['w']) / (1.+zp), 0., z, limit=1000 ) )
+        return (cosmo['omega_M_0'] * (1+z)**3. + 
+                cosmo['omega_k_0'] * (1+z)**2. + 
+                cosmo['omega_lambda_0'] * (1+z)**(1+cosmo['w']) )**0.5
+    else:
+        return (cosmo['omega_M_0'] * (1+z)**3. + 
+                cosmo['omega_k_0'] * (1+z)**2. + 
+                cosmo['omega_lambda_0'])**0.5
 
 def hubble_z(z, **cosmo):
     """The value of the Hubble constant at redshift z.
@@ -87,11 +95,11 @@ def hubble_distance_z(z, **cosmo):
     
     return cc.c_light_Mpc_s / (H_0 * e_z(z, **cosmo))
 
-def _comoving_integrand(z, omega_M_0, omega_lambda_0, omega_k_0, h):
+def _comoving_integrand(z, omega_M_0, omega_lambda_0, omega_k_0, h, w=-1.):
 
     e_z = (omega_M_0 * (1+z)**3. + 
            omega_k_0 * (1+z)**2. + 
-           omega_lambda_0)**0.5
+           omega_lambda_0 * (1+z)**(1.+w))**0.5
     
     H_0 = h * cc.H100_s
     
@@ -107,11 +115,16 @@ def comoving_integrand(z, **cosmo):
     Units are Mpc.
     
     """
+    if 'w' in cosmo:
+        w = cosmo['w']
+    else:
+        w = -1.
+
     return _comoving_integrand(z,
                                cosmo['omega_M_0'],
                                cosmo['omega_lambda_0'],
                                cosmo['omega_k_0'],
-                               cosmo['h'])
+                               cosmo['h'], w)
 
 def comoving_distance(z, z0 = 0, **cosmo):
     """The line-of-sight comoving distance (in Mpc) to redshift z.
@@ -142,15 +155,21 @@ def comoving_distance(z, z0 = 0, **cosmo):
 
     #cosmo = set_omega_k_0(cosmo)
 
+    if 'w' in cosmo:
+        w = cosmo['w']
+    else:
+        w = -1.
+
     dc_func = \
-        numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h: 
+        numpy.vectorize(lambda z, z0, omega_M_0, omega_lambda_0, omega_k_0, h, w: 
                         si.quad(_comoving_integrand, z0, z, limit=1000,
-                                args=(omega_M_0, omega_lambda_0, omega_k_0, h)))
+                                args=(omega_M_0, omega_lambda_0, omega_k_0, h, w)))
     d_co, err = dc_func(z, z0, 
                         cosmo['omega_M_0'],
                         cosmo['omega_lambda_0'],
                         cosmo['omega_k_0'],
-                        cosmo['h']
+                        cosmo['h'],
+                        w
                         )
     return d_co
 
