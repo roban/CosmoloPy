@@ -205,6 +205,22 @@ def _sigmasq_integrand_log(logk, r, cosmology):
             w_tophat(k, r)**2. * 
             power_spectrum(k, 0.0, **cosmology))
 
+def _klimsj(r, cosmology):
+    """Integration limits used internally by the sigma_j function."""
+    logk = numpy.arange(-20., 20., 0.1)
+    integrand = _sigmajsq_integrand_log(logk, r, cosmology)
+
+    maxintegrand = numpy.max(integrand)
+    factor = 1.e-4
+    highmask = integrand > maxintegrand * factor
+    while highmask.ndim > logk.ndim:
+        highmask = numpy.logical_or.reduce(highmask)
+
+    mink = numpy.min(logk[highmask])
+    maxk = numpy.max(logk[highmask])
+
+    return mink, maxk
+
 def _klims(r, cosmology):
     """Integration limits used internally by the sigma_r function."""
     logk = numpy.arange(-20., 20., 0.1)
@@ -303,7 +319,7 @@ def _sigmasq_j_scalar(r, j,
                  'N_nu':N_nu, 
                  'omega_lambda_0':omega_lambda_0, 
                  'h':h,}
-    logk_lim = _klims(r, cosmology)
+    logk_lim = _klimsj(r, cosmology)
     #print "Integrating from logk = %.1f to %.1f." % logk_lim
     
     # Integrate over logk from -infinity to infinity.
