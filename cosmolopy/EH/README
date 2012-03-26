@@ -1,10 +1,17 @@
+=================================
+Eisenstein & Hu Fitting functions
+=================================
+
+Power spectra for CDM variants without baryonic effects
+=======================================================
+
 Original c code
-===============
+---------------
 
 power.c is redistributed under the MIT License with the permission of
 Wayne Hu
 
-htt://background.uchicago.edu/~whu/transfer/transferpage.html
+http://background.uchicago.edu/~whu/transfer/transferpage.html
 
 and is described in Eisenstein, D. J., & Hu, W. "Power Spectra for
 Cold Dark Matter and Its Variants," 1999, ApJ, 511, 5
@@ -14,7 +21,9 @@ spectrum calculations.
 See LISCENSE file.
 
 Python Interface
-================
+----------------
+
+These notes are by Roban Kramer.
 
 I use swig to generate the python interface to `power.c`.
 
@@ -33,3 +42,30 @@ reason. The code was:
 I still let distutils do the compiling to create `_power.so`. This has
 the advantage of not requiring the user to install swig.
 
+Power spectra with baryonic effects
+===================================
+
+Original Fortran code
+---------------------
+
+tf_fit.f is redistributed under the MIT License
+
+http://background.uchicago.edu/~whu/transfer/transferpage.html
+
+and is described in Eisenstein, D. J., & Hu, W. "Baryonic Features in 
+the Matter Transfer Function," 1998, ApJ, 496, 605
+[astro-ph/9709112]. Please cite this paper to acknowledge use of power
+spectrum calculations.
+
+See LISCENSE file.
+
+Python interface
+----------------
+
+These notes are by Berian James.
+
+I use f2py to wrap tf_fit.f into a python module. This requires modifying
+the original fortran code only to indicate which arguments of the subroutines
+are inputs and which are outputs. These modifications can be spotted in the
+source code by the identifier 'cf2py' at the start of the line. They are
+treated as comments by fortran compilers

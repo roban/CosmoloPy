@@ -1,16 +1,20 @@
-power.c is redistributed under the MIT License with the permission of
+power.c and tf_fit.f are redistributed under the MIT License with the permission of
 Wayne Hu
 
-htt://background.uchicago.edu/~whu/transfer/transferpage.html
+http://background.uchicago.edu/~whu/transfer/transferpage.html
 
-and is described in Eisenstein, D. J., & Hu, W. "Power Spectra for
+and are described in Eisenstein, D. J., & Hu, W. "Power Spectra for
 Cold Dark Matter and Its Variants," 1999, ApJ, 511, 5
-[astro-ph/9710252]. Please cite this paper to acknowledge use of power
-spectrum calculations.
+[astro-ph/9710252], and Ibid. "Baryonic Features in 
+the Matter Transfer Function," 1998, ApJ, 496, 605
+[astro-ph/9709112].
+
+Please cite these papers to acknowledge use of power spectrum calculations.
 
 The MIT License
 
 power.c is copyright (c) 1997 Wayne Hu and Daniel Eisenstein
+tf_fit.f is copyright (c) 1997 Wayne Hu and Daniel Eisenstein
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
