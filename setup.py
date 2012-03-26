@@ -17,6 +17,9 @@ power_module = Extension('cosmolopy.EH._power',
                          sources=[os.path.join(eh_dir, 'power_wrap.c'),
                                   os.path.join(eh_dir, 'power.c')]
                          )
+tffit_module = Extension('cosmolopy.EH._tffit',
+                         sources=[os.path.join(eh_dir, 'tf_fit_wrap.c'),
+                                  os.path.join(eh_dir, 'tf_fit.c')]
 
 packages = find_packages()
 setup(
@@ -29,7 +32,7 @@ setup(
 #        },
     install_requires = ['numpy', 'scipy',],
 
-    ext_modules = [power_module],
+    ext_modules = [power_module, tffit_module],
 
     tests_require = ['nose', 'matplotlib'],
     test_suite = 'nose.collector',
