@@ -1,6 +1,11 @@
 /* The following routines implement all of the fitting formulae in 
 Eisenstein \& Hu (1997) */
 
+/* These routines have been modified by Berian James to remove the
+use of pointers. It is possible to pass pointers with numpy arrays
+through SWIG, but it is more work that just reconfiguring the function
+calls to be like those in power.c */
+
 /* There are two sets of routines here.  The first set,
 
 	TFfit_hmpc(), TFset_parameters(), and TFfit_onek(),
@@ -15,7 +20,9 @@ calculate other quantities given in Section 4 of the paper. */
 #include <math.h>
 #include <stdio.h>
 void TFset_parameters(float omega0hh, float f_baryon, float Tcmb);
-float TFfit_onek(float k, float *tf_baryon, float *tf_cdm); 
+
+//float TFfit_onek(float k, float *tf_baryon, float *tf_cdm); 
+float TFfit_onek(float k); 
 
 void TFfit_hmpc(float omega0, float f_baryon, float hubble, float Tcmb,
 	int numk, float *k, float *tf_full, float *tf_baryon, float *tf_cdm);
@@ -77,10 +84,11 @@ void TFfit_hmpc(float omega0, float f_baryon, float hubble, float Tcmb,
     TFset_parameters(omega0*hubble*hubble, f_baryon, Tcmb);
 
     for (j=0;j<numk;j++) {
-    	tf_thisk = TFfit_onek(k[j]*hubble, &baryon_piece, &cdm_piece); 
-	if (tf_full!=NULL) tf_full[j] = tf_thisk;
-	if (tf_baryon!=NULL) tf_baryon[j] = baryon_piece;
-	if (tf_cdm!=NULL) tf_cdm[j] = cdm_piece;
+      //tf_thisk = TFfit_onek(k[j]*hubble, &baryon_piece, &cdm_piece); 
+      tf_thisk = TFfit_onek(k[j]*hubble); 
+      if (tf_full!=NULL) tf_full[j] = tf_thisk;
+      //if (tf_baryon!=NULL) tf_baryon[j] = baryon_piece;
+      //if (tf_cdm!=NULL) tf_cdm[j] = cdm_piece;
     }
     return;
 }
@@ -114,7 +122,8 @@ float	omhh,		/* Omega_matter*h^2 */
 	beta_node,	/* Sound horizon shift */
 	k_peak,		/* Fit to wavenumber of first peak, in Mpc^-1 */
 	sound_horizon_fit,	/* Fit to sound horizon, in Mpc */
-	alpha_gamma;	/* Gamma suppression in approximate TF */
+        alpha_gamma,	/* Gamma suppression in approximate TF */
+        T_full; /* EDIT: Make transfer function value global */
 
 /* Convenience from Numerical Recipes in C, 2nd edition */
 static float sqrarg;
@@ -190,7 +199,8 @@ You can access them yourself, if you want. */
     return;
 }
 
-float TFfit_onek(float k, float *tf_baryon, float *tf_cdm)
+//float TFfit_onek(float k, float *tf_baryon, float *tf_cdm)
+float TFfit_onek(float k)
 /* Input: k -- Wavenumber at which to calculate transfer function, in Mpc^-1.
 	  *tf_baryon, *tf_cdm -- Input value not used; replaced on output if
 				the input was not NULL. */
@@ -202,16 +212,17 @@ float TFfit_onek(float k, float *tf_baryon, float *tf_cdm)
 {
     float T_c_ln_beta, T_c_ln_nobeta, T_c_C_alpha, T_c_C_noalpha;
     float q, xx, xx_tilde, q_eff;
-    float T_c_f, T_c, s_tilde, T_b_T0, T_b, f_baryon, T_full;
+    //float T_c_f, T_c, s_tilde, T_b_T0, T_b, f_baryon, T_full;
+    float T_c_f, T_c, s_tilde, T_b_T0, T_b, f_baryon; // Define T_full as global
     float T_0_L0, T_0_C0, T_0, gamma_eff; 
     float T_nowiggles_L0, T_nowiggles_C0, T_nowiggles;
 
     k = fabs(k);	/* Just define negative k as positive */
-    if (k==0.0) {
-	if (tf_baryon!=NULL) *tf_baryon = 1.0;
-	if (tf_cdm!=NULL) *tf_cdm = 1.0;
-	return 1.0;
-    }
+    //if (k==0.0) {
+      //if (tf_baryon!=NULL) *tf_baryon = 1.0;
+      //if (tf_cdm!=NULL) *tf_cdm = 1.0;
+    //	return 1.0;
+    //}
 
     q = k/13.41/k_equality;
     xx = k*sound_horizon;
@@ -236,8 +247,8 @@ float TFfit_onek(float k, float *tf_baryon, float *tf_cdm)
     T_full = f_baryon*T_b + (1-f_baryon)*T_c;
 
     /* Now to store these transfer functions */
-    if (tf_baryon!=NULL) *tf_baryon = T_b;
-    if (tf_cdm!=NULL) *tf_cdm = T_c;
+    //if (tf_baryon!=NULL) *tf_baryon = T_b;
+    //if (tf_cdm!=NULL) *tf_cdm = T_c;
     return T_full;
 }
 

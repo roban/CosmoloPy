@@ -28,6 +28,15 @@ except ImportError as ie:
     powererror = ie
     pass
 
+tffiterror = None
+try:
+    import EH.tf_fit as tf_fit
+    havetffit = True
+except ImportError as ie:
+    havetffit = False
+    tffiterror = ie
+    pass
+
 # Turn on printing of special function error messages.
 #scipy.special.errprint(1)
 

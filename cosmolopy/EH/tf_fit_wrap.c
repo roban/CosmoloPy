@@ -2659,9 +2659,8 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_float swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+static swig_type_info *swig_types[2];
+static swig_module_info swig_module = {swig_types, 1, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2695,7 +2694,7 @@ static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 
   /* Put header files here or function declarations like below */
   extern void TFset_parameters(float omega0hh, float f_baryon, float Tcmb);
-  extern float TFfit_onek(float k, float *tf_baryon, float *tf_cdm);
+  extern float TFfit_onek(float k);
   extern float T_full;
   
 
@@ -2816,36 +2815,18 @@ fail:
 SWIGINTERN PyObject *_wrap_TFfit_onek(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   float arg1 ;
-  float *arg2 = (float *) 0 ;
-  float *arg3 = (float *) 0 ;
   float val1 ;
   int ecode1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
   PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   float result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:TFfit_onek",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:TFfit_onek",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_float(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "TFfit_onek" "', argument " "1"" of type '" "float""'");
   } 
   arg1 = (float)(val1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TFfit_onek" "', argument " "2"" of type '" "float *""'"); 
-  }
-  arg2 = (float *)(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_float, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TFfit_onek" "', argument " "3"" of type '" "float *""'"); 
-  }
-  arg3 = (float *)(argp3);
-  result = (float)TFfit_onek(arg1,arg2,arg3);
+  result = (float)TFfit_onek(arg1);
   resultobj = SWIG_From_float((float)(result));
   return resultobj;
 fail:
@@ -2887,19 +2868,15 @@ static PyMethodDef SwigMethods[] = {
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
-  &_swigt__p_float,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
-  _swigc__p_float,
 };
 
 
