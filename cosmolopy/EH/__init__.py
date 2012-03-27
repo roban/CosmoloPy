@@ -9,7 +9,7 @@ i. `power` (or `cosmolopy.EH.power`), which is a python wrapper of power.c
     from Eisenstein & Hu (1999 ApJ 511 5)
 
 ii. `tf_fit` (or `cosmolopy.EH.tf_fit`), which is a python wrapper of
-     tf_fit.f from Eisenstein & Hu (1998 ApJ 496 605)
+     tf_fit.c from Eisenstein & Hu (1998 ApJ 496 605)
 
 The first module contains no baryonic features in the transfer function, but 
 applies to wider range of CDM variants (e.g. including neutrinos). The second
