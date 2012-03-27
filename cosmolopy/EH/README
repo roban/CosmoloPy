@@ -1,10 +1,17 @@
+=================================
+Eisenstein & Hu Fitting functions
+=================================
+
+Power spectra for CDM variants without baryonic effects
+=======================================================
+
 Original c code
-===============
+---------------
 
 power.c is redistributed under the MIT License with the permission of
 Wayne Hu
 
-htt://background.uchicago.edu/~whu/transfer/transferpage.html
+http://background.uchicago.edu/~whu/transfer/transferpage.html
 
 and is described in Eisenstein, D. J., & Hu, W. "Power Spectra for
 Cold Dark Matter and Its Variants," 1999, ApJ, 511, 5
@@ -14,7 +21,9 @@ spectrum calculations.
 See LISCENSE file.
 
 Python Interface
-================
+----------------
+
+These notes are by Roban Kramer.
 
 I use swig to generate the python interface to `power.c`.
 
@@ -33,3 +42,41 @@ reason. The code was:
 I still let distutils do the compiling to create `_power.so`. This has
 the advantage of not requiring the user to install swig.
 
+Power spectra with baryonic effects
+===================================
+
+Original C code
+---------------------
+
+tf_fit.c is redistributed under the MIT License
+
+http://background.uchicago.edu/~whu/transfer/transferpage.html
+
+and is described in Eisenstein, D. J., & Hu, W. "Baryonic Features in 
+the Matter Transfer Function," 1998, ApJ, 496, 605
+[astro-ph/9709112]. Please cite this paper to acknowledge use of power
+spectrum calculations.
+
+See LISCENSE file.
+
+Python interface
+----------------
+
+These notes are by Berian James.
+
+I use SWIG to generate the python interface to `tf_fit.c`, following
+Roban's method with a few modifications.
+
+`tf_fit_wrap.c` and `tf_fit.py` are created from `tf_fit.i` and `tf_fit.c`
+by running:
+
+ > swig -python tf_fit.i
+
+As with power.c, these files will be preserved in distribution, so that the
+user does not need SWIG. I have added an analogous Extension object to 
+setup.py which will compile the library during the cosmolopy build.
+
+Some modifications to the source code of tf_fit.c were required. In particular, 
+tf_fit.TFfit_onek originally took several pointers among its arguments, which I
+have removed. I have also made the returned variable from that function a global.
+In all cases, I have left the original lines in the source code, commented with //.
