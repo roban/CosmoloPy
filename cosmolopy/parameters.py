@@ -9,7 +9,8 @@ def add_extras(cosmo):
     extras = {'omega_n_0' : 0.0,
               'N_nu': 0,
               'Y_He': 0.24,
-              'w' : -1.0
+              'w' : -1.0,
+              'baryonic_effects' : False
               }
 
     cosmo.update(extras)

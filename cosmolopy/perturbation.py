@@ -41,8 +41,11 @@ except ImportError as ie:
 #scipy.special.errprint(1)
 
 @numpy.vectorize
-def _vec_transfer_func(k):
-    return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
+def _vec_transfer_func(k,baryonic_effects=False):
+    if baryonic_effects:
+        return (tf_fit.TFfit_onek(k), power.TFmdm_onek_mpc(k))
+    else:
+        return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
 def transfer_function_EH(k, **cosmology):
     """The transfer function as a function of wavenumber k.
 
@@ -51,7 +54,8 @@ def transfer_function_EH(k, **cosmology):
 
     cosmology : dict 
        Specify the cosmological parameters with the keys 'omega_M_0',
-       'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
+       'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', 'h' and
+       'baryonic_effects'.
     
     k : array
        Wavenumber in Mpc^-1.
@@ -59,7 +63,13 @@ def transfer_function_EH(k, **cosmology):
     Returns
     -------
 
-    A tupple of arrays matching the shape of k:
+    If baryonic_effects is true, returns a tuple of arrays matching 
+    the shape of k:
+      
+      (the transfer function for CDM + Baryons with baryonic effects,
+       the transfer function for CDM + Baryons without baryonic effects)
+
+    Otherwise, returns a tuple of arrays matching the shape of k:
 
       (the transfer function for CDM + Baryons,
       the transfer function for CDM + Baryons + Neutrinos).
@@ -68,38 +78,73 @@ def transfer_function_EH(k, **cosmology):
     -----
 
     Uses transfer function code power.c from Eisenstein & Hu (1999 ApJ 511 5).
+    For baryonic effects, uses tf_fit.c from Eisenstein & Hu (1997 ApJ 496 605).
 
       http://background.uchicago.edu/~whu/transfer/transferpage.html
 
     """
-    if not havepower:
-        raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
+    baryonic_effects = cosmology['baryonic_effects']
+    if baryonic_effects:
+        if not havetffit:
+            raise ImportError, "Could not import EH.tf_fit module. Transfer function cannot be calculated."
+        if not havepower:
+            raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
+    else:
+        if not havepower:
+            raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
 
     z_val=0
 
-    # /* TFmdm_set_cosm() -- User passes all the cosmological parameters as
-    # 	arguments; the routine sets up all of the scalar quantites needed 
-    # 	computation of the fitting formula.  The input parameters are: 
-    # 	1) omega_matter -- Density of CDM, baryons, and massive neutrinos,
-    # 				in units of the critical density. 
-    # 	2) omega_baryon -- Density of baryons, in units of critical. 
-    # 	3) omega_hdm    -- Density of massive neutrinos, in units of critical 
-    # 	4) degen_hdm    -- (Int) Number of degenerate massive neutrino species 
-    # 	5) omega_lambda -- Cosmological constant 
-    # 	6) hubble       -- Hubble constant, in units of 100 km/s/Mpc 
-    # 	7) redshift     -- The redshift at which to evaluate */
-    if int(cosmology['N_nu']) != cosmology['N_nu']:
-        raise TypeError('N_nu must be an integer.')
-    power.TFmdm_set_cosm(cosmology['omega_M_0'], cosmology['omega_b_0'], 
-                         cosmology['omega_n_0'],  int(cosmology['N_nu']), 
-                         cosmology['omega_lambda_0'], cosmology['h'], 
-                         z_val)
+    if not baryonic_effects:
+        # Baryonic effect are not used. Default to more general CDM variants transfer function.
+        #
+        # /* TFmdm_set_cosm() -- User passes all the cosmological parameters as
+        # 	arguments; the routine sets up all of the scalar quantites needed 
+        # 	computation of the fitting formula.  The input parameters are: 
+        # 	1) omega_matter -- Density of CDM, baryons, and massive neutrinos,
+        # 				in units of the critical density. 
+        # 	2) omega_baryon -- Density of baryons, in units of critical. 
+        # 	3) omega_hdm    -- Density of massive neutrinos, in units of critical 
+        # 	4) degen_hdm    -- (Int) Number of degenerate massive neutrino species 
+        # 	5) omega_lambda -- Cosmological constant 
+        # 	6) hubble       -- Hubble constant, in units of 100 km/s/Mpc 
+        # 	7) redshift     -- The redshift at which to evaluate */
+        if int(cosmology['N_nu']) != cosmology['N_nu']:
+            raise TypeError('N_nu must be an integer.')
+        power.TFmdm_set_cosm(cosmology['omega_M_0'], cosmology['omega_b_0'], 
+                             cosmology['omega_n_0'],  int(cosmology['N_nu']), 
+                             cosmology['omega_lambda_0'], cosmology['h'], 
+                             z_val)
     
-    # Given a wavenumber in Mpc^-1, return the transfer function for
-    # the cosmology held in the global variables.
-    if numpy.isscalar(k):
-        return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
-    return _vec_transfer_func(k)
+        # Given a wavenumber in Mpc^-1, return the transfer function for
+        # the cosmology held in the global variables.
+        if numpy.isscalar(k):
+            return (power.TFmdm_onek_mpc(k), power.cvar.tf_cbnu)
+        else:
+            return _vec_transfer_func(k)
+    else:
+        # Baryonic effects are in use. This reduces the range of validity of the 
+        #  transfer function, for instance by not including effects from neutrinos.
+        #
+        # /* TFset_parameters() -- User passes certain cosmological parameters are
+        #     arguments; the routine sets up all of the scalar quantities needed
+        #     in the computation of the fitting formula. The input parameters are:
+        #     1) omega_mhh -- Density of (CDM+Baryons), in units of the critical 
+        #                        density, times the hubble parameter squared.
+        #     2) f_baryon -- The fraction of baryons in all matter
+        #     3) Tcmb -- the CMB temperature in Kelvin. Set to 2.728.
+        omhh = cosmology['omega_M_0'] * cosmology['h'] * cosmology['h']
+        fbaryon = cosmology['omega_b_0'] / cosmology['omega_M_0']
+        Tcmb = 2.728
+        tf_fit.TFset_parameters(omhh, fbaryon, Tcmb)
+
+        # Given a wavenumber in Mpc^-1, return the transfer function for
+        # the cosmology held in the global variables.
+        if numpy.isscalar(k):
+            return (tf_fit.TFfit_onek(k), power.TFmdm_onek_mpc(k))
+        else:
+            return _vec_transfer_func(k, baryonic_effects)
+
 
 def fgrowth(z, omega_M_0, unnormed=False):
     r"""Cosmological perturbation growth factor, normalized to 1 at z = 0.
@@ -248,7 +293,7 @@ def _klims(r, cosmology):
  
 def _sigmasq_r_scalar(r, 
                       n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
-                      omega_lambda_0, h):
+                      omega_lambda_0, h, baryonic_effects):
     """sigma_r^2 at z=0. Works only for scalar r. 
 
     Used internally by the sigma_r function.
@@ -259,7 +304,7 @@ def _sigmasq_r_scalar(r,
     r : array
        radius in Mpc.
 
-    n, omega_M_0, omega_b_0, omega_n_0, N_nu, omega_lambda_0, h:
+    n, omega_M_0, omega_b_0, omega_n_0, N_nu, omega_lambda_0, h, baryonic_effecs:
        cosmological parameters, specified like this to allow this
        function to be vectorized (see source code of sigma_r).
 
@@ -278,7 +323,9 @@ def _sigmasq_r_scalar(r,
                  'omega_n_0':omega_n_0, 
                  'N_nu':N_nu, 
                  'omega_lambda_0':omega_lambda_0, 
-                 'h':h,}
+                 'h':h,
+                 'baryonic_effects':baryonic_effects}
+
     logk_lim = _klims(r, cosmology)
     #print "Integrating from logk = %.1f to %.1f." % logk_lim
     
@@ -294,7 +341,7 @@ _sigmasq_r_vec = numpy.vectorize(_sigmasq_r_scalar)
 
 def _sigmasq_j_scalar(r, j, 
                       n, deltaSqr, omega_M_0, omega_b_0, omega_n_0, N_nu, 
-                      omega_lambda_0, h):
+                      omega_lambda_0, h, baryonic_effects):
     """sigma_j^2(r) at z=0. Works only for scalar r. 
 
     Used internally by the sigma_j function.
@@ -327,7 +374,8 @@ def _sigmasq_j_scalar(r, j,
                  'omega_n_0':omega_n_0, 
                  'N_nu':N_nu, 
                  'omega_lambda_0':omega_lambda_0, 
-                 'h':h,}
+                 'h':h,
+                 'baryonic_effects':baryonic_effects}
     logk_lim = _klimsj(r, j, cosmology)
     #print "Integrating from logk = %.1f to %.1f." % logk_lim
     
@@ -394,7 +442,8 @@ def sigma_j(r, j, z, **cosmology):
                                                  cosmology['omega_n_0'],
                                                  cosmology['N_nu'],
                                                  cosmology['omega_lambda_0'],
-                                                 cosmology['h'],)
+                                                 cosmology['h'],
+                                                 cosmology['baryonic_effects'],)
     else:
         sigmasq_0, errorsq_0 = _sigmasq_j_vec(r, j,
                                               cosmology['n'],
@@ -404,7 +453,8 @@ def sigma_j(r, j, z, **cosmology):
                                               cosmology['omega_n_0'],
                                               cosmology['N_nu'],
                                               cosmology['omega_lambda_0'],
-                                              cosmology['h'],)
+                                              cosmology['h'],
+                                              cosmology['baryonic_effects'],)
     sigma = numpy.sqrt(sigmasq_0) * fg
 
     # Propagate the error on sigmasq_0 to sigma.
@@ -462,7 +512,8 @@ def sigma_r(r, z, **cosmology):
                                                  cosmology['omega_n_0'],
                                                  cosmology['N_nu'],
                                                  cosmology['omega_lambda_0'],
-                                                 cosmology['h'],)
+                                                 cosmology['h'],
+                                                 cosmology['baryonic_effects'],)
     else:
         sigmasq_0, errorsq_0 = _sigmasq_r_vec(r,
                                               cosmology['n'],
@@ -472,7 +523,8 @@ def sigma_r(r, z, **cosmology):
                                               cosmology['omega_n_0'],
                                               cosmology['N_nu'],
                                               cosmology['omega_lambda_0'],
-                                              cosmology['h'],)
+                                              cosmology['h'],
+                                              cosmology['baryonic_effects'],)
     sigma = numpy.sqrt(sigmasq_0) * fg
 
     # Propagate the error on sigmasq_0 to sigma.
