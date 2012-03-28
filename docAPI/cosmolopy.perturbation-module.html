@@ -125,6 +125,44 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#w_gauss" class="summary-sig-name">w_gauss</a>(<span class="summary-sig-arg">k</span>,
+        <span class="summary-sig-arg">r</span>)</span><br />
+      The k-space Fourier transform of an isotropic three-dimensional gaussian</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#w_gauss">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#sigma_j" class="summary-sig-name">sigma_j</a>(<span class="summary-sig-arg">r</span>,
+        <span class="summary-sig-arg">j</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">**cosmology</span>)</span><br />
+      Sigma statistic of order j for gaussian field of variancea r at redshift z.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sigma_j">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="cosmolopy.perturbation-module.html#sigma_r" class="summary-sig-name">sigma_r</a>(<span class="summary-sig-arg">r</span>,
         <span class="summary-sig-arg">z</span>,
         <span class="summary-sig-arg">**cosmology</span>)</span><br />
@@ -360,14 +398,28 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="havepower"></a><span class="summary-name">havepower</span> = <code title="False">False</code>
+        <a name="havepower"></a><span class="summary-name">havepower</span> = <code title="True">True</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="powererror"></a><span class="summary-name">powererror</span> = <code title="ImportError('No module named _power',)">ImportError('No module named _power',)</code>
+        <a name="powererror"></a><span class="summary-name">powererror</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="havetffit"></a><span class="summary-name">havetffit</span> = <code title="True">True</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="tffiterror"></a><span class="summary-name">tffiterror</span> = <code title="None">None</code>
     </td>
   </tr>
 <tr>
@@ -375,13 +427,6 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'cosmolopy'"><code class="variable-quote">'</code><code class="variable-string">cosmolopy</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="ie"></a><span class="summary-name">ie</span> = <code title="ImportError('No module named _power',)">ImportError('No module named _power',)</code>
     </td>
   </tr>
 </table>
@@ -415,21 +460,31 @@
 <dl class="rst-docutils">
 <dt>cosmology <span class="classifier-delimiter">:</span> <span class="rst-classifier">dict</span></dt>
 <dd>Specify the cosmological parameters with the keys 'omega_M_0',
-'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.</dd>
+'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', 'h' and
+'baryonic_effects'.</dd>
 <dt>k <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
 <dd>Wavenumber in Mpc^-1.</dd>
 </dl>
 </div>
 <div class="rst-section" id="rst-returns">
 <h1 class="heading">Returns</h1>
-<p>A tupple of arrays matching the shape of k:</p>
+<p>If baryonic_effects is true, returns a tuple of arrays matching
+the shape of k:</p>
+<blockquote>
+<dl class="rst-docutils">
+<dt>(the transfer function for CDM + Baryons with baryonic effects,</dt>
+<dd>the transfer function for CDM + Baryons without baryonic effects)</dd>
+</dl>
+</blockquote>
+<p>Otherwise, returns a tuple of arrays matching the shape of k:</p>
 <blockquote>
 (the transfer function for CDM + Baryons,
 the transfer function for CDM + Baryons + Neutrinos).</blockquote>
 </div>
 <div class="rst-section" id="rst-notes">
 <h1 class="heading">Notes</h1>
-<p>Uses transfer function code power.c from Eisenstein &amp; Hu (1999 ApJ 511 5).</p>
+<p>Uses transfer function code power.c from Eisenstein &amp; Hu (1999 ApJ 511 5).
+For baryonic effects, uses tf_fit.c from Eisenstein &amp; Hu (1997 ApJ 496 605).</p>
 <blockquote>
 <a class="rst-reference external" href="http://background.uchicago.edu/~whu/transfer/transferpage.html" target="_top">http://background.uchicago.edu/~whu/transfer/transferpage.html</a></blockquote>
 </div>
@@ -507,6 +562,93 @@ D_1(z) = (1+z_\mathrm{eq}) \mathtt{fgrowth}(z,\Omega_{M0}, 1)
 <dt><tt class="rst-docutils literal">\tilde{w}</tt>: array</dt>
 <dd>the value of the transformed function at wavenumber k.</dd>
 </dl>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="w_gauss"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">w_gauss</span>(<span class="sig-arg">k</span>,
+        <span class="sig-arg">r</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#w_gauss">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The k-space Fourier transform of an isotropic three-dimensional gaussian</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>k: array</dt>
+<dd>wavenumber</dd>
+<dt>r: array</dt>
+<dd>width of the 3-D gaussian</dd>
+</dl>
+<p>Note: k and r need to be in the same units.</p>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt><tt class="rst-docutils literal">\tilde{w}</tt>: array</dt>
+<dd>the value of the transformed function at wavenumber k.</dd>
+</dl>
+</div>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sigma_j"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sigma_j</span>(<span class="sig-arg">r</span>,
+        <span class="sig-arg">j</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">**cosmology</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cosmolopy.perturbation-pysrc.html#sigma_j">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sigma statistic of order j for gaussian field of variancea r at redshift z.</p>
+<p>Returns sigma and the error on sigma.</p>
+<div class="rst-section" id="rst-parameters">
+<h1 class="heading">Parameters</h1>
+<dl class="rst-docutils">
+<dt>r <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>radius of sphere in Mpc</dd>
+<dt>j <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>order of the sigma statistic (0, 1, 2, 3, ...)</dd>
+<dt>z <span class="classifier-delimiter">:</span> <span class="rst-classifier">array</span></dt>
+<dd>redshift</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-returns">
+<h1 class="heading">Returns</h1>
+<dl class="rst-docutils">
+<dt>sigma:</dt>
+<dd>j-th order variance of the field smoothed by gaussian with with r</dd>
+<dt>error:</dt>
+<dd>An estimate of the numerical error on the calculated value of sigma.</dd>
+</dl>
+</div>
+<div class="rst-section" id="rst-notes">
+<h1 class="heading">Notes</h1>
+<p>:: Eq. (152) of Matsubara (2003)</p>
+<blockquote>
+sigma_j(R,z) = sqrt{int_0^infty frac{k^2}{2 pi^2}~P(k, z)~k^{2j}
+tilde{w}_k^2(k, R)~dk} = sigma_j(R,0) left(frac{D_1(z)}{D_1(0)}right)</blockquote>
 </div>
   <dl class="fields">
   </dl>
@@ -961,7 +1103,8 @@ from the average density.</p>
 <span class="py-more">... </span>         <span class="py-string">'N_nu'</span> : 0,
 <span class="py-more">... </span>         <span class="py-string">'h'</span> : 0.72,
 <span class="py-more">... </span>         <span class="py-string">'n'</span> : 1.0,
-<span class="py-more">... </span>         <span class="py-string">'sigma_8'</span> : 0.9
+<span class="py-more">... </span>         <span class="py-string">'sigma_8'</span> : 0.9,
+<span class="py-more">... </span>         <span class="py-string">'baryonic_effects'</span> : False
 <span class="py-more">... </span>         }
 <span class="py-prompt">&gt;&gt;&gt; </span>fc = cp.collapse_fraction(*cp.sig_del(1e4, 0, **cosmo))
 <span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> round(fc, 4)
@@ -1001,7 +1144,7 @@ from the average density.</p>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Nov 29 12:17:19 2011
+    Generated by Epydoc 3.0.1 on Tue Mar 27 20:49:14 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
