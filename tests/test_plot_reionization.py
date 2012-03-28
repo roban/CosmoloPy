@@ -34,7 +34,7 @@ def test_plot_FZH():
     cosmo['omega_n_0'] = 0.0  # not specified in paper
     cosmo['N_nu'] = 0  # not specified in paper
     cosmo['Y_He'] = 0.24  # not specified in paper
-
+    cosmo['baryonic_effects'] = False
     dz = 0.1
     z = numpy.arange(25., 8. - 1.5 * dz, -1. * dz)
     

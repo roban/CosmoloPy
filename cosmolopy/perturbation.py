@@ -916,7 +916,8 @@ def collapse_fraction(sigma_min, delta_crit, sigma_mass=0, delta=0):
     ...          'N_nu' : 0,
     ...          'h' : 0.72,
     ...          'n' : 1.0,
-    ...          'sigma_8' : 0.9
+    ...          'sigma_8' : 0.9,
+    ...          'baryonic_effects' : False
     ...          } 
     >>> fc = cp.collapse_fraction(*cp.sig_del(1e4, 0, **cosmo))
     >>> print round(fc, 4)

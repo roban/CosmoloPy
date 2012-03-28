@@ -45,7 +45,8 @@ def test_plot_integrate_ionization_recomb_BH(xHe=0.0):
              #'tau_err' : 0.03,
              'omega_n_0' : 0.0,
              'N_nu': 0,
-             'Y_He': 0.24
+             'Y_He': 0.24,
+             'baryonic_effects' : False,
              }
 
     nIonDot2 = lambda z1: cr.ionization_from_luminosity(z1,
