@@ -52,7 +52,7 @@ m_He_g = 4.002602 * amu_g # g
 doc += "  M_sun_g: Solar mass in grams.\n"
 M_sun_g = 1.98892e33 # g
 
-doc += "  c_light_cm_s: Speed of light in Mpc/s (from google calculator)\n"
+doc += "  c_light_cm_s: Speed of light in cm/s (from google calculator)\n"
 c_light_cm_s = 29979245800. # cm/s
 
 doc += "  c_light_Mpc_s: Speed of light in Mpc/s\n"
