@@ -16,12 +16,12 @@ import scipy
 import scipy.special
 import scipy.integrate as si
 
-import constants as cc
-import density as cden
+from . import constants as cc
+from . import density as cden
 
 powererror = None
 try:
-    import EH.power as power
+    from .EH import power
     havepower = True
 except ImportError as ie:
     havepower = False
@@ -30,7 +30,7 @@ except ImportError as ie:
 
 tffiterror = None
 try:
-    import EH.tf_fit as tf_fit
+    from .EH import tf_fit as tf_fit
     havetffit = True
 except ImportError as ie:
     havetffit = False
@@ -86,12 +86,12 @@ def transfer_function_EH(k, **cosmology):
     baryonic_effects = cosmology['baryonic_effects']
     if baryonic_effects:
         if not havetffit:
-            raise ImportError, "Could not import EH.tf_fit module. Transfer function cannot be calculated."
+            raise ImportError("Could not import EH.tf_fit module. Transfer function cannot be calculated.")
         if not havepower:
-            raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
+            raise ImportError("Could not import EH.power module. Transfer function cannot be calculated.")
     else:
         if not havepower:
-            raise ImportError, "Could not import EH.power module. Transfer function cannot be calculated."
+            raise ImportError("Could not import EH.power module. Transfer function cannot be calculated.")
 
     z_val=0
 

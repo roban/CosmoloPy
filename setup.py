@@ -24,8 +24,8 @@ tf_fit_module = Extension('cosmolopy.EH._tf_fit',
 
 packages = find_packages()
 setup(
-    name = "CosmoloPy",
-    version = "0.1.105",
+    name = "CosmoloPy3",
+    version = "0.2",
     packages = packages,
 #    package_data = {
 #        # If any package contains *.so files, include them:

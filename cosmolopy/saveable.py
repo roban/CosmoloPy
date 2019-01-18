@@ -58,7 +58,7 @@ class Saveable(object):
         """
         picfile = NullWriter()
         sdict = self.__dict__.copy()
-        for k, v in sdict.items():
+        for k, v in list(sdict.items()):
             # Avoid self references (and thereby infinite recurion).
             if v is self:
                 del sdict[k]
@@ -68,8 +68,8 @@ class Saveable(object):
                 pickle.dump(v, picfile)
             except (TypeError, pickle.PicklingError) as err:
                 if hasattr(self, 'verbose') and self.verbose:
-                    print "Won't pickle", k, type(v), ": "
-                    print "'", err, "'"
+                    print("Won't pickle", k, type(v), ": ")
+                    print("'", err, "'")
                 del sdict[k]
         return sdict
     def __getstate__(self):

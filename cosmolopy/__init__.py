@@ -85,13 +85,13 @@ Look in the tests/ and examples/ directories for more examples.
 
 """
 
-import constants as cc
-import density as cden
-import distance as cd
-import perturbation as cp
-import reionization as cr
-import parameters as cparam
-import magnitudes as cmag
-import luminosityfunction as cl
+from . import constants as cc
+from . import density as cden
+from . import distance as cd
+from . import perturbation as cp
+from . import reionization as cr
+from . import parameters as cparam
+from . import magnitudes as cmag
+from . import luminosityfunction as cl
 
 fidcosmo = cparam.WMAP7_BAO_H0_mean(flat=True, extras=True)

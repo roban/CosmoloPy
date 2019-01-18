@@ -14,7 +14,7 @@ import scipy.integrate as si
 import scipy.interpolate
 import scipy.optimize
 
-import constants as cc
+from . import constants as cc
 
 def get_omega_k_0(**cosmo):
     """'Spatial curvature density' omega_k_0 for a cosmology (if needed).
@@ -483,7 +483,7 @@ def age_flat(z, **cosmo):
     omega_k = get_omega_k_0(**cosmo)
     if (numpy.any(omega_k != 0)):
         #raise ValueError("Not implemented for Omega_k != 0")
-        print "Warning: using lambda = 1 - omega_M for non-flat cosmology!"
+        print("Warning: using lambda = 1 - omega_M for non-flat cosmology!")
 
     om = cosmo['omega_M_0']
     lam = 1. - cosmo['omega_M_0']
