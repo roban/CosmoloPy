@@ -11,7 +11,7 @@ import scipy.interpolate
 
 import cosmolopy.distance as cd
 import cosmolopy.constants as cc
-from saveable import Saveable
+from .saveable import Saveable
 
 class AgeSpacedRedshift(Saveable):
     """Set up uniform time array and corresponding redshift array.
@@ -35,8 +35,8 @@ class AgeSpacedRedshift(Saveable):
         self.t = numpy.arange(self.tmin, self.tmax + 1.01 * self.dt, self.dt)
         self.t_yr = self.t / cc.yr_s
         self.z = self.redshiftfunc(self.t)
-        print " Using %i points in t, dt = %.3g yr." % (len(self.t_yr),
-                                                        self.dt_yr)
+        print(" Using %i points in t, dt = %.3g yr." % (len(self.t_yr),
+                                                        self.dt_yr))
 
     def age_Gyr(self, z):
         return self.agefunc(z)/cc.yr_s/1e9
@@ -478,16 +478,16 @@ def integrate_piecewise(function, x, method='romberg', return_pieces=False,
     
     x = numpy.asarray(x)
     if numpy.any(x[1:] - x[:-1] < 0):
-        raise ValueError, "Array x must increase monotonically."
+        raise ValueError("Array x must increase monotonically.")
     if numpy.any(numpy.isnan(x)):
-        raise ValueError, "Array x must not include NaN values." 
+        raise ValueError("Array x must not include NaN values.") 
     integral_list = [0.0]
     if method is None:
         method = 'quad'
     if method=='quad':
         args = {'limit':200}
         args.update(kwargs)
-        for i in xrange(1, len(x)):
+        for i in range(1, len(x)):
             a, b = x[i-1], x[i]
             integral, error = scipy.integrate.quad(function, a, b,
                                                    **args)
@@ -495,13 +495,13 @@ def integrate_piecewise(function, x, method='romberg', return_pieces=False,
     elif method=='romberg':
         args = {'divmax':100, 'vec_func':True}
         args.update(kwargs)
-        for i in xrange(1, len(x)):
+        for i in range(1, len(x)):
             a, b = x[i-1], x[i]
             integral = scipy.integrate.romberg(function, a, b,
                                                **args)
             integral_list.append(integral)
     else:
-        raise ValueError, "Method '%s' unknown." % method
+        raise ValueError("Method '%s' unknown." % method)
 
     integrals = numpy.asarray(integral_list)
     if return_pieces:
@@ -567,8 +567,8 @@ class Normalize:
         newfunction = lambda x: function(x)/integral
 
         if not self.quiet:
-            print "Normalization factor for %s is %.3g" % (function.__name__,
-                                                           1./integral)
+            print("Normalization factor for %s is %.3g" % (function.__name__,
+                                                           1./integral))
         # inspired by
         # http://wiki.python.org/moin/PythonDecoratorLibrary#DifferentDecoratorForms
 

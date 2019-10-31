@@ -272,7 +272,7 @@ class LFHistory(Saveable):
                  wavelength = 1500.,
                  **cosmo):
         
-        for (k, v) in params.iteritems():
+        for (k, v) in params.items():
             params[k] = numpy.asarray(v)
             
         self.params = params
@@ -310,26 +310,26 @@ class LFHistory(Saveable):
                                               bounds_behavior=MStar_bounds,
                                               **extrap_args
                                               )
-        print "M*:",
-        print self._MStarfunc.extrap_string()
+        print("M*:", end=' ')
+        print(self._MStarfunc.extrap_string())
 
         self._phiStarfunc = utils.Extrapolate1d(self.xobs, self.phiStar,
                                                 bounds_behavior=phiStar_bounds,
                                                 **extrap_args
                                                 )
-        print "phi*:",
-        print self._phiStarfunc.extrap_string()
+        print("phi*:", end=' ')
+        print(self._phiStarfunc.extrap_string())
         self._alphafunc = utils.Extrapolate1d(self.xobs, self.alpha,
                                               bounds_behavior=alpha_bounds,
                                               **extrap_args
                                               )
-        print "alpha:",
-        print self._alphafunc.extrap_string()
+        print("alpha:", end=' ')
+        print(self._alphafunc.extrap_string())
         
         self._SED = BrokenPowerlawSED(**sedParams)
         self._rQL = self._SED.iPhotonRateRatio(wavelength)
 
-        for name, func in globals().items():
+        for name, func in list(globals().items()):
             if not name.startswith('schechter'):
                 continue
             def newfunc(z, _name=name, _func=func, **kwargs):
@@ -383,7 +383,7 @@ class LFHistory(Saveable):
                     'alpha':self._alphafunc(t)}
         elif self.extrap_var == 'z':
             ### FIX THIS ###
-            raise NotImplementedError, "params_t not implemented for z interps!"
+            raise NotImplementedError("params_t not implemented for z interps!")
 
     def params_z(self, z):
         """Return interp/extrapolated Schechter function parameters."""
@@ -411,7 +411,7 @@ def plotLFevo(hist=None,
     find total luminsity.
     """
 
-    for (k, v) in params.iteritems():
+    for (k, v) in params.items():
         params[k] = numpy.asarray(v)
 
     if hist is None:
@@ -434,7 +434,7 @@ def plotLFevo(hist=None,
         ltot = schechterCumuLM(magnitudeAB=maglim,
                                MStar=MStar, phiStar=phiStar, alpha=alpha)
 
-    print hist._MStarfunc.extrap_string()
+    print(hist._MStarfunc.extrap_string())
 
     zPlot = numpy.arange(z.min()-0.1, z_max, 0.1)
     tPlot = cd.age(zPlot, **cosmo)[0] / cc.yr_s
@@ -729,8 +729,8 @@ if __name__ == '__main__':
         options.filename = args[0]
 
     if options.filename is None:
-        print "No filename given."
-        print usage
+        print("No filename given.")
+        print(usage)
     else:
         prefix, extension = os.path.splitext(options.filename)
     

@@ -7,9 +7,9 @@ import scipy
 import scipy.special
 import scipy.integrate as si
 
-import constants as cc
-import distance as cd
-from distance import get_omega_k_0, set_omega_k_0
+from . import constants as cc
+from . import distance as cd
+from .distance import get_omega_k_0, set_omega_k_0
 
 def omega_M_z(z, **cosmo):
     """Matter density omega_M as a function of redshift z.
