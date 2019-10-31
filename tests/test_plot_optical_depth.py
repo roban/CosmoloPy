@@ -4,6 +4,8 @@ Also reproduces a figure from Griffiths et al. astro-ph/9812125v3
 (don't use the published version, which contains errors).
 """
 
+from __future__ import absolute_import, division, print_function
+
 import math
 
 import numpy

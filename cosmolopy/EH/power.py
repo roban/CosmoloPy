@@ -5,6 +5,8 @@
 # the SWIG interface file instead.
 # This file is compatible with both classic and new-style classes.
 
+from __future__ import absolute_import, division, print_function
+
 from sys import version_info
 if version_info >= (2,6,0):
     def swig_import_helper():

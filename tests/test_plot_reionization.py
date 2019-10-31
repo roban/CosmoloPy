@@ -5,6 +5,8 @@ that it runs without errors.
 
 """
 
+from __future__ import absolute_import, division, print_function
+
 import numpy
 import numpy.testing.utils as ntest
 import matplotlib.pyplot as pylab

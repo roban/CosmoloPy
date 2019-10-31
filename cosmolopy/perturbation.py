@@ -8,6 +8,8 @@ See notes in `cosmolopy.EH`.
 
 """
 
+from __future__ import absolute_import, division, print_function
+
 import math
 import warnings
 
@@ -21,7 +23,7 @@ from . import density as cden
 
 powererror = None
 try:
-    from .EH import power
+    import cosmolopy.EH.power as power
     havepower = True
 except ImportError as ie:
     havepower = False
@@ -30,7 +32,7 @@ except ImportError as ie:
 
 tffiterror = None
 try:
-    from .EH import tf_fit as tf_fit
+    import cosmolopy.EH.tf_fit as tf_fit
     havetffit = True
 except ImportError as ie:
     havetffit = False
@@ -502,7 +504,7 @@ def sigma_r(r, z, **cosmology):
     
     #Uses 'n', as well as (for transfer_function_EH), 'omega_M_0',
     #'omega_b_0', 'omega_n_0', 'N_nu', 'omega_lambda_0', and 'h'.
-
+    
     if numpy.isscalar(r):
         sigmasq_0, errorsq_0 = _sigmasq_r_scalar(r,
                                                  cosmology['n'],

@@ -1,6 +1,8 @@
 """Test SFR - UV luminosity conversion.
 """
 
+from __future__ import absolute_import, division, print_function
+
 import numpy
 
 import cosmolopy.parameters as cparam

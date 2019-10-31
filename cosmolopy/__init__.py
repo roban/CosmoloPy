@@ -85,6 +85,8 @@ Look in the tests/ and examples/ directories for more examples.
 
 """
 
+from __future__ import absolute_import, division, print_function
+
 from . import constants as cc
 from . import density as cden
 from . import distance as cd

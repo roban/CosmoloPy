@@ -1,6 +1,8 @@
 """Plot some distance measures versus redshift and omega_M.
 
 """
+from __future__ import absolute_import, division, print_function
+
 import sys
 import getopt
 

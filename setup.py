@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+# Future imports
+
+from __future__ import absolute_import, division, print_function
+
 from setuptools import setup, find_packages, Extension
 import os
 #import nose
@@ -24,8 +28,8 @@ tf_fit_module = Extension('cosmolopy.EH._tf_fit',
 
 packages = find_packages()
 setup(
-    name = "CosmoloPy3",
-    version = "0.2",
+    name = "cosmolopy",
+    version = "0.3",
     packages = packages,
 #    package_data = {
 #        # If any package contains *.so files, include them:
@@ -37,6 +41,7 @@ setup(
 
     tests_require = ['nose', 'matplotlib'],
     test_suite = 'nose.collector',
+    platforms=["Windows", "Linux", "Unix"],
 
     # metadata for upload to PyPI
     author = "Roban Hultman Kramer",
@@ -46,6 +51,7 @@ setup(
     keywords = ("astronomy cosmology cosmological distance density galaxy" +
                 "luminosity magnitude reionization Press-Schechter Schecter"),
     license = "MIT",
+    python_requires = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4",
     long_description = \
 """CosmoloPy is a package of cosmology routines built on NumPy/SciPy.
 
@@ -76,7 +82,12 @@ Capabilities include
 """,
     classifiers = ['License :: OSI Approved :: MIT License',
                    'Programming Language :: Python',
-                   'Programming Language :: Python :: 2.6',
+                   'Programming Language :: Python :: 2.7',
+                   'Programming Language :: Python :: 3.5',
+                   'Programming Language :: Python :: 3.6',
+                   'Programming Language :: Python :: 3.7',                   
+                   'Programming Language :: Python :: 2',                   
+                   'Programming Language :: Python :: 3',                   
                    'Topic :: Scientific/Engineering :: Astronomy',
                    'Operating System :: OS Independent'
                    ]

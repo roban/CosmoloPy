@@ -1,5 +1,7 @@
 """Reionization consistency check with BK&P 2009MNRAS.397..971B"""
 
+from __future__ import absolute_import, division, print_function
+
 import numpy
 import numpy.testing.utils as ntest
 import matplotlib.pyplot as pylab

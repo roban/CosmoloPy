@@ -12,6 +12,8 @@ Constants are:
 
 """
 
+from __future__ import absolute_import, division, print_function
+
 ### If you add a constant, make sure to add a description too. ###
 
 doc = ""

@@ -1,6 +1,9 @@
 """Reproduce some plots from David Hogg's arXiv:astro-ph/9905116v4
 
 """
+
+from __future__ import absolute_import, division, print_function
+
 import inspect
 
 import numpy

@@ -1,6 +1,8 @@
 """Some pre-defined sets of cosmological parameters (e.g. from WMAP).
 """
 
+from __future__ import absolute_import, division, print_function
+
 def add_extras(cosmo):
     """Sets neutrino number N_nu = 0, neutrino density
        omega_n_0 = 0.0, Helium mass fraction Y_He = 0.24.

@@ -1,6 +1,9 @@
 """Check that the power module is working."""
 
+from __future__ import absolute_import, division, print_function
+
 import numpy.testing.utils as ntest
+
 def test_power():
     """Check that the power module is working."""
     import cosmolopy.EH.power as power
