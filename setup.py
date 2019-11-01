@@ -3,11 +3,24 @@
 
 from __future__ import absolute_import, division, print_function
 
+import subprocess
 from setuptools import setup, find_packages, Extension
 import os
 #import nose
 
 eh_dir = os.path.join('.','cosmolopy','EH')
+
+def generate_swig():
+    cwd = os.path.abspath(os.path.dirname(__file__))
+    print("Swigging sources")
+    for d in ('power','tf_fit'):
+        filename = os.path.join(cwd, 'cosmolopy', 'EH', d+'.i')        
+        p = subprocess.call(['swig', '-python', filename],
+                            cwd=cwd)
+        if p != 0:
+            raise RuntimeError("Running swig failed!")
+
+generate_swig()
 
 ### I used to let distutils run swig for me on power.i to create
 ### power_wrap.c and power.py, but that stopped working for some
@@ -19,12 +32,11 @@ eh_dir = os.path.join('.','cosmolopy','EH')
 #                         )
 power_module = Extension('cosmolopy.EH._power',
                          sources=[os.path.join(eh_dir, 'power_wrap.c'),
-                                  os.path.join(eh_dir, 'power.c')]
-                         )
+                                  os.path.join(eh_dir, 'power.c')])
+
 tf_fit_module = Extension('cosmolopy.EH._tf_fit',
                          sources=[os.path.join(eh_dir, 'tf_fit_wrap.c'),
-                                  os.path.join(eh_dir, 'tf_fit.c')]
-                         )
+                                  os.path.join(eh_dir, 'tf_fit.c')])
 
 packages = find_packages()
 setup(

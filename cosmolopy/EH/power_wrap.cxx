@@ -15,6 +15,30 @@
 
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
 
+
+#ifdef __cplusplus
+/* SwigValueWrapper is described in swig.swg */
+template<typename T> class SwigValueWrapper {
+  struct SwigMovePointer {
+    T *ptr;
+    SwigMovePointer(T *p) : ptr(p) { }
+    ~SwigMovePointer() { delete ptr; }
+    SwigMovePointer& operator=(SwigMovePointer& rhs) { T* oldptr = ptr; ptr = 0; delete oldptr; ptr = rhs.ptr; rhs.ptr = 0; return *this; }
+  } pointer;
+  SwigValueWrapper& operator=(const SwigValueWrapper<T>& rhs);
+  SwigValueWrapper(const SwigValueWrapper<T>& rhs);
+public:
+  SwigValueWrapper() : pointer(0) { }
+  SwigValueWrapper& operator=(const T& t) { SwigMovePointer tmp(new T(t)); pointer = tmp; return *this; }
+  operator T&() const { return *pointer.ptr; }
+  T *operator&() { return pointer.ptr; }
+};
+
+template <typename T> T SwigValueInit() {
+  return T();
+}
+#endif
+
 /* -----------------------------------------------------------------------------
  *  This section contains generic SWIG labels for method/variable
  *  declarations/attributes, and other compiler dependent labels.
@@ -3009,8 +3033,81 @@ static swig_module_info swig_module = {swig_types, 1, 0, 0, 0, 0};
 #define SWIG_VERSION SWIGVERSION
 
 
-#define SWIG_as_voidptr(a) (void *)((const void *)(a)) 
-#define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),(void**)(a)) 
+#define SWIG_as_voidptr(a) const_cast< void * >(static_cast< const void * >(a)) 
+#define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),reinterpret_cast< void** >(a)) 
+
+
+#include <stdexcept>
+
+
+namespace swig {
+  class SwigPtr_PyObject {
+  protected:
+    PyObject *_obj;
+
+  public:
+    SwigPtr_PyObject() :_obj(0)
+    {
+    }
+
+    SwigPtr_PyObject(const SwigPtr_PyObject& item) : _obj(item._obj)
+    {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      Py_XINCREF(_obj);      
+      SWIG_PYTHON_THREAD_END_BLOCK;
+    }
+    
+    SwigPtr_PyObject(PyObject *obj, bool initial_ref = true) :_obj(obj)
+    {
+      if (initial_ref) {
+        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+        Py_XINCREF(_obj);
+        SWIG_PYTHON_THREAD_END_BLOCK;
+      }
+    }
+    
+    SwigPtr_PyObject & operator=(const SwigPtr_PyObject& item) 
+    {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      Py_XINCREF(item._obj);
+      Py_XDECREF(_obj);
+      _obj = item._obj;
+      SWIG_PYTHON_THREAD_END_BLOCK;
+      return *this;      
+    }
+    
+    ~SwigPtr_PyObject() 
+    {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      Py_XDECREF(_obj);
+      SWIG_PYTHON_THREAD_END_BLOCK;
+    }
+    
+    operator PyObject *() const
+    {
+      return _obj;
+    }
+
+    PyObject *operator->() const
+    {
+      return _obj;
+    }
+  };
+}
+
+
+namespace swig {
+  struct SwigVar_PyObject : SwigPtr_PyObject {
+    SwigVar_PyObject(PyObject* obj = 0) : SwigPtr_PyObject(obj, false) { }
+    
+    SwigVar_PyObject & operator = (PyObject* obj)
+    {
+      Py_XDECREF(_obj);
+      _obj = obj;
+      return *this;      
+    }
+  };
+}
 
 
   /* Put header files here or function declarations like below */
@@ -3121,7 +3218,7 @@ SWIG_AsVal_float (PyObject * obj, float *val)
     if (SWIG_Float_Overflow_Check(v)) {
       return SWIG_OverflowError;
     } else {
-      if (val) *val = (float)(v);
+      if (val) *val = static_cast< float >(v);
     }
   }  
   return res;
@@ -3220,7 +3317,7 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     if ((v < INT_MIN || v > INT_MAX)) {
       return SWIG_OverflowError;
     } else {
-      if (val) *val = (int)(v);
+      if (val) *val = static_cast< int >(v);
     }
   }  
   return res;
@@ -3283,39 +3380,39 @@ SWIGINTERN PyObject *_wrap_TFmdm_set_cosm(PyObject *SWIGUNUSEDPARM(self), PyObje
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "TFmdm_set_cosm" "', argument " "1"" of type '" "float""'");
   } 
-  arg1 = (float)(val1);
+  arg1 = static_cast< float >(val1);
   ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TFmdm_set_cosm" "', argument " "2"" of type '" "float""'");
   } 
-  arg2 = (float)(val2);
+  arg2 = static_cast< float >(val2);
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "TFmdm_set_cosm" "', argument " "3"" of type '" "float""'");
   } 
-  arg3 = (float)(val3);
+  arg3 = static_cast< float >(val3);
   ecode4 = SWIG_AsVal_int(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TFmdm_set_cosm" "', argument " "4"" of type '" "int""'");
   } 
-  arg4 = (int)(val4);
+  arg4 = static_cast< int >(val4);
   ecode5 = SWIG_AsVal_float(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "TFmdm_set_cosm" "', argument " "5"" of type '" "float""'");
   } 
-  arg5 = (float)(val5);
+  arg5 = static_cast< float >(val5);
   ecode6 = SWIG_AsVal_float(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "TFmdm_set_cosm" "', argument " "6"" of type '" "float""'");
   } 
-  arg6 = (float)(val6);
+  arg6 = static_cast< float >(val6);
   ecode7 = SWIG_AsVal_float(obj6, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "TFmdm_set_cosm" "', argument " "7"" of type '" "float""'");
   } 
-  arg7 = (float)(val7);
+  arg7 = static_cast< float >(val7);
   result = (int)TFmdm_set_cosm(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-  resultobj = SWIG_From_int((int)(result));
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3335,9 +3432,9 @@ SWIGINTERN PyObject *_wrap_TFmdm_onek_mpc(PyObject *SWIGUNUSEDPARM(self), PyObje
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "TFmdm_onek_mpc" "', argument " "1"" of type '" "float""'");
   } 
-  arg1 = (float)(val1);
+  arg1 = static_cast< float >(val1);
   result = (float)TFmdm_onek_mpc(arg1);
-  resultobj = SWIG_From_float((float)(result));
+  resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3357,9 +3454,9 @@ SWIGINTERN PyObject *_wrap_TFmdm_onek_hmpc(PyObject *SWIGUNUSEDPARM(self), PyObj
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "TFmdm_onek_hmpc" "', argument " "1"" of type '" "float""'");
   } 
-  arg1 = (float)(val1);
+  arg1 = static_cast< float >(val1);
   result = (float)TFmdm_onek_hmpc(arg1);
-  resultobj = SWIG_From_float((float)(result));
+  resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3373,7 +3470,7 @@ SWIGINTERN int Swig_var_tf_cbnu_set(PyObject *_val) {
     if (!SWIG_IsOK(res)) {
       SWIG_exception_fail(SWIG_ArgError(res), "in variable '""tf_cbnu""' of type '""float""'");
     }
-    tf_cbnu = (float)(val);
+    tf_cbnu = static_cast< float >(val);
   }
   return 0;
 fail:
@@ -3384,7 +3481,7 @@ fail:
 SWIGINTERN PyObject *Swig_var_tf_cbnu_get(void) {
   PyObject *pyobj = 0;
   
-  pyobj = SWIG_From_float((float)(tf_cbnu));
+  pyobj = SWIG_From_float(static_cast< float >(tf_cbnu));
   return pyobj;
 }
 
