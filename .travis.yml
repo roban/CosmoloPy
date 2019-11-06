@@ -40,6 +40,9 @@ install:
   - python$PY setup.py sdist bdist_wheel
   - twine check dist/*
 
+script:
+  - echo "Hello world"
+
 deploy:
   provider: pypi
   user: __token__
