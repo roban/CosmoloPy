@@ -24,6 +24,15 @@ jobs:
     - python: 3.8-dev
 
 before_install:
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      sudo apt-get update -q
+      sudo apt-get install -y swig
+    else
+      brew update
+      brew cleanup
+      brew install swig
+    fi
   - python$PY -m pip install --upgrade pip setuptools wheel twine
 
 install:
