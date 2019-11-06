@@ -1,0 +1,50 @@
+language: python
+dist: xenial
+sudo: true
+os: linux
+
+jobs:
+  include:
+    - os: osx
+      python: 2
+      language: generic
+    - os: osx
+      python: 3
+      language: generic
+      env: PY=3
+    - python: 2.7
+    - python: 3.5
+    - python: 3.5-dev
+    - python: 3.6
+    - python: 3.6-dev
+    - python: 3.7
+    - python: 3.7-dev
+    - python: 3.8-dev
+  allow_failures:
+    - python: 3.8-dev
+
+before_install:
+  - python$PY -m pip install --upgrade pip setuptools wheel twine
+
+install:
+  - python$PY setup.py build_ext --inplace
+  - python$PY setup.py sdist bdist_wheel
+  - twine check dist/*
+
+deploy:
+  provider: pypi
+  user: __token__
+  password:
+    secure: "XXUklxRJATViUpvlmpYpEWiVN3rrN0yU9JrcUdAGpbNp98XUhIdb/UZ0ghebLq0h73ENFHMpQg+LsOAt4pRWAYUXE9SWhf2Fv0LGqZ6IoDQFS0DOLVjAyGxSFHD913zfbE45ktwbh+jsewnZbcOP4TRtTFC3nknAXXNbNnvIigYM3uSHqy7rCvZ1UjEB8Kbxp+MGF9Qi1RW4vSkpzEhkoxPiqVJk5HSr5GO9PPv8mdmTyeiHR+4c6jQH3DSUu8hAuXoNES06qOYPLGOBqu94EpR1e54bsmgQkBApb099FC8HOr40zWOxVSqrvKzNiEyD2LSrMU85TxqoVxrrh7NJzaHjglCncpQ48gGJk/rVxx4JjXxefZCKZ5rnyvx2OybBIxStRYYZtsiguWP1TaJmRSx3Mwd92udhIkc1nAeUvET9oJ9otQwI24k/Ah6Cib+hQ67s0m9JTMsKl1epf+YJlkFVTkStT+gvB0JRfCWxigf5SCd7hpNkqFJ0+JW5XcThPiaeF6vkGV0vmmuWVyJFe/ggWPmtXV3VORgT69EfGDIGEAH+KBMhi8nRf+LjtEOQyqyxse7HnofYf+cpcjKFUEortp0Ji3JmErmJHCjX+QK837NdkRfNigHfiw2Lc5yVc/NU4+sIqatMIdVYIpImUTM+bNvkxPXIZ49dqX0gfmY="
+  distributions: "sdist bdist_wheel"
+  skip_existing: true
+#  on:
+#    branch: master
+
+notifications:
+  email:
+    recipients:
+      - mail@alanrduffy.com
+    on_success: change
+    on_failure: always
+    
