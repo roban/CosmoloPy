@@ -52,7 +52,7 @@ script:
 after_success:
   - python$PY -m pip install auditwheel
   - auditwheel repair dist/*.whl
-  - python$PY twine upload dist/*
+  - twine upload dist/*
 
 notifications:
   email:
