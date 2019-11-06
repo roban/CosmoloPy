@@ -3,6 +3,12 @@ dist: xenial
 sudo: true
 os: linux
 
+env:
+  global:
+    - WHEELHOUSE_UPLOADER_USERNAME=astroduff
+    - secure: "TrUY9IGh4fJ9dYoyddjg/rCrTk6u7j3Z5S4Pb93JPZMAI0mhD6r+k8dycm1kG+LLkkB5qqXdDOQHmPyntzct9rZze5jTwuii5bYHK9PGAEizVm12BFXhtn0xOBLL+uEy7CYw/OauTOu9qNLRqxedgof+lthj89XtYctqdnY8bVP9aNMeKmVZ0l+dWoG49a3D/VdaBMZMfLJ32YSL485C4XrsUBwJnGSu48LIhtWr1QvTFOBORckxY2FNJlTktKUfVy4BYlfhUmqyX8S6WElb/p9qwRyOnRgoSzq7jz1XlLHIsgDp50y05oFAdobb5Jx5kF7XhBfdA2heor5FfUfCLM5Cq4uUGPdllh42K+ipXRAPHF8EDaxCINCMuNGZq1jpuvUNTl2CKRBqfgYcIPMKT3x++36XlgR8FIODNXSfNgFfy8vg/U4Mkfagf2ecepbkjXLNv9BK6Xz/1iwptiWY0mB9jeFblQBY9xYyhSnKUHdZ937J9FgN22rHDmMMy+zCCTw54N81tbe+Gk18mEbIk9JXPgKxoFzRU8pcuopsb5Rcf+e++xc9X3m/7nS6rUgSDGrRjDt5p4z41dh17j97rOzHTG6gVq1x6azQR97Y3DDD2hVCwtdUyl4HnHQ3akRg1MH59nx9U/CO5zME32ajBDFXRxUrAUvhcGWcvvInAig="
+
+
 jobs:
   include:
     - os: osx
@@ -43,15 +49,20 @@ install:
 script:
   - echo "Hello world"
 
-deploy:
-  provider: pypi
-  user: __token__
-  password:
-    secure: "XXUklxRJATViUpvlmpYpEWiVN3rrN0yU9JrcUdAGpbNp98XUhIdb/UZ0ghebLq0h73ENFHMpQg+LsOAt4pRWAYUXE9SWhf2Fv0LGqZ6IoDQFS0DOLVjAyGxSFHD913zfbE45ktwbh+jsewnZbcOP4TRtTFC3nknAXXNbNnvIigYM3uSHqy7rCvZ1UjEB8Kbxp+MGF9Qi1RW4vSkpzEhkoxPiqVJk5HSr5GO9PPv8mdmTyeiHR+4c6jQH3DSUu8hAuXoNES06qOYPLGOBqu94EpR1e54bsmgQkBApb099FC8HOr40zWOxVSqrvKzNiEyD2LSrMU85TxqoVxrrh7NJzaHjglCncpQ48gGJk/rVxx4JjXxefZCKZ5rnyvx2OybBIxStRYYZtsiguWP1TaJmRSx3Mwd92udhIkc1nAeUvET9oJ9otQwI24k/Ah6Cib+hQ67s0m9JTMsKl1epf+YJlkFVTkStT+gvB0JRfCWxigf5SCd7hpNkqFJ0+JW5XcThPiaeF6vkGV0vmmuWVyJFe/ggWPmtXV3VORgT69EfGDIGEAH+KBMhi8nRf+LjtEOQyqyxse7HnofYf+cpcjKFUEortp0Ji3JmErmJHCjX+QK837NdkRfNigHfiw2Lc5yVc/NU4+sIqatMIdVYIpImUTM+bNvkxPXIZ49dqX0gfmY="
-  distributions: "sdist bdist_wheel"
-  skip_existing: true
-  on:
-    branch: dev
+after_success:
+  - python$PY -m pip install wheelhouse_uploader auditwheel
+  - auditwheel repair dist/*.whl
+  - python$PY -m wheelhouse_uploader upload --local-folder dist/ my_wheelhouse
+
+#deploy:
+#  provider: pypi
+#  user: __token__
+#  password:
+#    secure: "XXUklxRJATViUpvlmpYpEWiVN3rrN0yU9JrcUdAGpbNp98XUhIdb/UZ0ghebLq0h73ENFHMpQg+LsOAt4pRWAYUXE9SWhf2Fv0LGqZ6IoDQFS0DOLVjAyGxSFHD913zfbE45ktwbh+jsewnZbcOP4TRtTFC3nknAXXNbNnvIigYM3uSHqy7rCvZ1UjEB8Kbxp+MGF9Qi1RW4vSkpzEhkoxPiqVJk5HSr5GO9PPv8mdmTyeiHR+4c6jQH3DSUu8hAuXoNES06qOYPLGOBqu94EpR1e54bsmgQkBApb099FC8HOr40zWOxVSqrvKzNiEyD2LSrMU85TxqoVxrrh7NJzaHjglCncpQ48gGJk/rVxx4JjXxefZCKZ5rnyvx2OybBIxStRYYZtsiguWP1TaJmRSx3Mwd92udhIkc1nAeUvET9oJ9otQwI24k/Ah6Cib+hQ67s0m9JTMsKl1epf+YJlkFVTkStT+gvB0JRfCWxigf5SCd7hpNkqFJ0+JW5XcThPiaeF6vkGV0vmmuWVyJFe/ggWPmtXV3VORgT69EfGDIGEAH+KBMhi8nRf+LjtEOQyqyxse7HnofYf+cpcjKFUEortp0Ji3JmErmJHCjX+QK837NdkRfNigHfiw2Lc5yVc/NU4+sIqatMIdVYIpImUTM+bNvkxPXIZ49dqX0gfmY="
+#  distributions: "sdist bdist_wheel"
+#  skip_existing: true
+#  on:
+#    branch: dev
 
 notifications:
   email:
