@@ -83,3 +83,4 @@ If you don't have nose:
 
     > python setup.py test
     > python -m doctest cosmolopy/*.py
+

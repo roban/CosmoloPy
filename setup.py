@@ -3,53 +3,68 @@
 
 from __future__ import absolute_import, division, print_function
 
+import re
 import subprocess
 from setuptools import setup, find_packages, Extension
-import os
-#import nose
+from os import path
+import sys
 
-eh_dir = os.path.join('.','cosmolopy','EH')
+dirpath = path.abspath(path.dirname(__file__))
+
+eh_dir = path.join(dirpath,'cosmolopy','EH')
+
+ext_names = ['power', 'tf_fit']
 
 def generate_swig():
-    cwd = os.path.abspath(os.path.dirname(__file__))
     print("Swigging sources")
-    for d in ('power','tf_fit'):
-        filename = os.path.join(cwd, 'cosmolopy', 'EH', d+'.i')        
+    for d in ext_names:
+        filename = path.join(eh_dir, d+'.i')        
         p = subprocess.call(['swig', '-python', filename],
-                            cwd=cwd)
+                            cwd=dirpath)
         if p != 0:
             raise RuntimeError("Running swig failed!")
 
-generate_swig()
+# Generate swig if build is requested
+for command in ['build', 'bdist_wheel', 'build_ext', 'build_src']:
+    if command in sys.argv[1:]:
+        generate_swig()
+        break
 
-### I used to let distutils run swig for me on power.i to create
-### power_wrap.c and power.py, but that stopped working for some
-### reason.
-# Stuff used to build the cosmolopy.EH._power module:
-#power_module = Extension('cosmolopy.EH._power',
-#                         sources=[os.path.join(eh_dir, 'power.i'),
-#                                  os.path.join(eh_dir, 'power.c')]
-#                         )
-power_module = Extension('cosmolopy.EH._power',
-                         sources=[os.path.join(eh_dir, 'power_wrap.c'),
-                                  os.path.join(eh_dir, 'power.c')])
+# Generate dict of all data files to include
+EH_files = []
+if 'sdist' in sys.argv[1:]:
+    for name in ext_names:
+        EH_files.extend(['%s.c' % (name), '%s.i' % (name)])
+package_data = {
+    '': ['*.txt', '*.rst', 'LISCENSE'],
+    'cosmolopy.EH': EH_files}
 
-tf_fit_module = Extension('cosmolopy.EH._tf_fit',
-                         sources=[os.path.join(eh_dir, 'tf_fit_wrap.c'),
-                                  os.path.join(eh_dir, 'tf_fit.c')])
+# Create extension modules
+ext_mods = []
+for name in ext_names:
+    mod = Extension('cosmolopy.EH._%s' % (name),
+                    sources=[path.join(eh_dir, '%s_wrap.c' % (name)),
+                             path.join(eh_dir, '%s.c' % (name))])
+    ext_mods.append(mod)
 
-packages = find_packages()
+# Get the requirements list
+with open(path.join(dirpath, 'requirements.txt'), 'r') as f:
+    requirements = f.read().splitlines()
+
+# Read the __version__.py file
+with open(path.join(dirpath, 'cosmolopy/__version__.py'), 'r') as f:
+    vf = f.read()
+
+# Obtain version from read-in __version__.py file
+version = re.search(r"^_*version_* = ['\"]([^'\"]*)['\"]", vf, re.M).group(1)
+
 setup(
     name = "cosmolopy",
-    version = "0.4rc2",
-    packages = packages,
-#    package_data = {
-#        # If any package contains *.so files, include them:
-#        '': ['*.so'],
-#        },
-    install_requires = ['numpy', 'scipy',],
+    version = version,
+    packages = find_packages(),
+    install_requires = requirements,
 
-    ext_modules = [power_module, tf_fit_module],
+    ext_modules = ext_mods,
 
     tests_require = ['nose', 'matplotlib'],
     test_suite = 'nose.collector',
@@ -64,6 +79,7 @@ setup(
                 "luminosity magnitude reionization Press-Schechter Schecter"),
     license = "MIT",
     python_requires = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4",
+    package_data=package_data,
     long_description = \
 """CosmoloPy is a package of cosmology routines built on NumPy/SciPy.
 
