@@ -25,7 +25,7 @@ def generate_swig():
             raise RuntimeError("Running swig failed!")
 
 # Generate swig if build is requested
-for command in ['build', 'bdist_wheel', 'build_ext', 'build_src']:
+for command in ['develop', 'build', 'bdist_wheel', 'build_ext', 'build_src']:
     if command in sys.argv[1:]:
         generate_swig()
         break
