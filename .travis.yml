@@ -58,9 +58,8 @@ script:
       python$PY -c "import cosmolopy; import cosmolopy.EH.power"
       cd ..
     fi
-  - ls wheelhouse/
 
 after_success:
   - pip$PY install twine
-  - twine upload --skip-existing wheelhouse/cosmolopy*
+  - python$PY -m twine upload --skip-existing wheelhouse/cosmolopy*
 
