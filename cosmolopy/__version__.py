@@ -2,4 +2,4 @@
 
 # %% VERSIONS
 # Default/Latest/Current version
-__version__ = '0.4rc1'
+__version__ = '0.4'
