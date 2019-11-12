@@ -54,8 +54,8 @@ def test_tau_BKP():
     i = -1
     for cosmo in cosmos:
         i += 1
-        print
-        print names[i]
+
+        print("\n%s" % (names[i]))
         # calculate ionized fraction, including recombinations
         x_rec, w_rec, t = cr.integrate_ion_recomb_collapse(z, f_ion,
                                                            m_min,
@@ -74,19 +74,19 @@ def test_tau_BKP():
 
         tau = tau_later
 
-        print "tau(WMAP) = %.3f" % cosmo['tau']
+        print("tau(WMAP) = %.3f" % (cosmo['tau']))
         for j in range(len(f_ion.flat)):
             if round(f_ion[j],1) != 50.0:
                 continue
-            print "with f_* f_esc_gamma N_gamma = %.1f:" % f_ion[j]
+            print("with f_* f_esc_gamma N_gamma = %.1f:" % (f_ion[j]))
             pylab.plot(z, x_rec[j], ls='-', color=colors[i])
             pylab.plot(z, w_rec[j], ls=':', color=colors[i])
             #pylab.plot(z, 10. * tau[j], ls='--', color=colors[i])
             pylab.plot(z, 10. * (tau_0[j] - tau[j]), ls='--', color=colors[i])
             pylab.axhline(y=10. * tau_0[j], ls='--', color=colors[i])
-            print "tau(z=0)  = %.4f" % tau_0[j]
-            print " fractional diff. = %.3g" % ((tau_0[j] - cosmo['tau']) / 
-                                                cosmo['tau'])
+            print("tau(z=0)  = %.4f" % (tau_0[j]))
+            print("fractional diff. = %.3g" % ((tau_0[j] - cosmo['tau']) / 
+                                                cosmo['tau']))
             if i==1:
                 # Make sure we recover the WMAP value.
                 ntest.assert_approx_equal(tau_0[j], cosmo['tau'], 2)

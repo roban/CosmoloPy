@@ -42,15 +42,15 @@ def test_GBL_tau_star():
                                                   x_ionHe=x_ionHe, 
                                                   return_tau_star=True,
                                                   **cosmo)
-    print "tau_star = %.7f" % tau_star
-    print ("tau_star/(h Omega_b) = %.7f =? 0.061" % 
+    print("tau_star = %.7f" % (tau_star))
+    print("tau_star/(h Omega_b) = %.7f =? 0.061" % 
            (tau_star / (cosmo['h'] * cosmo['omega_b_0'])))
 
     ntest.assert_approx_equal(tau_star / (cosmo['h'] * cosmo['omega_b_0']),
                               0.061,
                               2)
 
-    print "(1 - Y_He/2) = %.3f =? 0.88" % (1. - (cosmo['Y_He']/2.))
+    print("(1 - Y_He/2) = %.3f =? 0.88" % (1. - (cosmo['Y_He']/2.)))
     ntest.assert_approx_equal((1. - (cosmo['Y_He']/2.)),
                               0.88,
                               7)
@@ -64,7 +64,7 @@ def test_GBL_tau_star():
                            (8. * math.pi * cc.G_const_Mpc_Msun_s * 
                             (cc.m_p_g/cc.M_sun_g))))
 
-    print "tau_star_explicit = %.7f =? tau_star" % tau_star_explicit
+    print("tau_star_explicit = %.7f =? tau_star" % (tau_star_explicit))
     ntest.assert_approx_equal(tau_star, tau_star_explicit, 3)
 
 def test_GBL_tau_inst():
@@ -113,9 +113,9 @@ def test_GBL_tau_inst():
                    ls=linestyle[i], color='k')
         diff = (tau_int[i] - tau_inst[i]) / tau_inst[i]
         diff[numpy.isnan(diff)] = 0.0
-        print ("max fractional error in num. int. = %.3g" % 
+        print("max fractional error in num. int. = %.3g" % 
                numpy.max(numpy.abs(diff))
-               )
+             )
         ntest.assert_array_less(numpy.abs(diff), 
                                 numpy.zeros(diff.shape) + 2.e-4)
 

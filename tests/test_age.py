@@ -4,6 +4,9 @@ from __future__ import absolute_import, division, print_function
 
 import numpy
 import numpy.testing.utils as ntest
+import matplotlib as mpl
+mpl.use('Agg')
+
 import matplotlib.pyplot as pylab
 
 import cosmolopy.distance as cd

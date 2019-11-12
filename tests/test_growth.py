@@ -32,7 +32,7 @@ def cosmo_wmap_5():
 def test_growth(cosmo=None):
     if cosmo is None:
         cosmo = cosmo_wmap_5()
-    print "Comparing growth factor with calculations from http://icosmo.org/"
+    print("Comparing growth factor with calculations from http://icosmo.org/")
 
     # load external distance calculations
     # z D
@@ -55,8 +55,8 @@ def test_growth(cosmo=None):
     diff = (ic_growth[:,1] - cp_growth) / ic_growth[:,1]
 
     maxdiff = numpy.max(numpy.abs(diff))
-    print "Maximum fraction difference in %s is %e." % (label,
-                                                        maxdiff)
+    print("Maximum fraction difference in %s is %e." % (label,
+                                                        maxdiff))
     pylab.plot(z,
                diff, 
                label=label, ls='-')

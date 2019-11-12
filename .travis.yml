@@ -7,7 +7,6 @@ env:
   global:
     - TWINE_USERNAME=astroduff
     - secure: "hAv1a07lo6B/T/z3+kt4iwvBb3GgT9kUPiKFgjCaVo/qpDWCSsddhwEClr+YwlqhSoGOyP6iEcbmE7HpZ5BKwgoBKdDkPxFZOP6DH7ZGEW4xTrEItSfhgOIyV0sOThTnA5EUv1xh9UQ1GD7WOf1ZYIl2zxadgj+cD0BmEkOfOhr7/c393rUPplfwc20ZJpyesmlxBnAZRIAd9T61uIQKsRN3w0e47G+OWKM8ykwkqsHGQCJV+3C1wHnmtoQyoCpFVq3tlJCQ/cA8UGyljap8cd3+Qp3CoXl9LngvKJS9ojA3cUj1+gZxAz5Jk3jkZlJoqIFM/mu0i/wHXgwKUsd9YJ0huqvnKusS5HAv8a12kYE+L/3oLNbMOrdtSdS1/LmugfLiSdeDMjsas8IRckP3qNPXDPfC5+7CGr2lA3ZxlJeGb4HjWHtbTZLLeGVGB8YuaTZEao+2RuYqR1FYQlIQsEtU8AQ5dQ0EPVPk2e+7N5nabt6InksWBLGu9jZPZCIauKvGgqeC77wZOymKPCawE6lgnwp8ItYL9jC2BtckaFRdVEl/1yySn7wmMnIaQHQRAEmsxe2DcPjnHN2wjbss7OcT8NegTGQTwajQ1lt7yjFqSLlNsZBgK894bK8SrZrYcIIg9WVBWqPuP9NGOGGlLIk6ujuvFfGy2eRqvvi7FPs="
-    - TWINE_REPOSITORY_URL=https://test.pypi.org/legacy/
 
 matrix:
   include:
@@ -62,4 +61,3 @@ script:
 after_success:
   - pip$PY install twine
   - python$PY -m twine upload --skip-existing wheelhouse/cosmolopy*
-

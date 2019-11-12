@@ -35,42 +35,28 @@ For tests (optional):
 For power spectrum calculation (needed for most of perturbation module):
   python-dev 
 
-Installation of Prerequisites under Ubuntu
-------------------------------------------
-
-    > sudo apt-get install python-numpy python-scipy python-matplotlib 
-    > sudo apt-get install python-dev
-
-Installation from PYPI
+Installation from PyPI
 ======================
 
 You can easily install the pacakge directly from the Python Package
-Index with easy_install or pip.
+Index with pip.
 
-Run either:
+Run with:
 
-    > sudo easy_install cosmolopy
-
-Or:
-
-    > sudo pip install cosmolopy
+    > pip install cosmolopy
 
 Installation from Source
 ========================
 
-If you've downloaded the source, install it by running
+If you've downloaded the source, first install Swig-3 or later and then 
+install it by running (in CosmoloPy folder)
 
-    > sudo python setup.py install
-
-If you have trouble compiling from source, it's probably the EH.power
-module (everything else is pure python). You can install without it by
-running:
-
-    > sudo python setup_alt.py install
+    > pip install . 
 
 Testing
 =======
 
+Note that currently the _udot integration appears to be failing in nosetests.
 The prefered way to run all tests is:
 
     > python setup.py nosetests --with-doctest
@@ -84,3 +70,8 @@ If you don't have nose:
     > python setup.py test
     > python -m doctest cosmolopy/*.py
 
+Contributors
+============
+
+- Python 3 implementation by @JohannesBuchner and @1313e 
+- Automated PyPI deployment on Travis by @1313e
