@@ -1,6 +1,8 @@
 """Reproduce some results from Bolton and Haehnelt (2007MNRAS.382..325B).
 """
 
+from __future__ import absolute_import, division, print_function
+
 import pylab
 
 import numpy

@@ -1,3 +1,5 @@
+from __future__ import absolute_import, division, print_function
+
 import numpy
 
 def fractional_diff_string(actual, desired, places=3):

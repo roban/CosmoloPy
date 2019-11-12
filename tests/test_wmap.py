@@ -6,6 +6,8 @@ them.
 
 """
 
+from __future__ import absolute_import, division, print_function
+
 import numpy
 import numpy.testing.utils as ntest
 import matplotlib.pyplot as pylab
@@ -60,8 +62,8 @@ def test_tau_instant():
                                             verbose = 1,
                                             **cosmo)
 
-        print "z_r = %f, testing tau:" % zr,
-        print tu.fractional_diff_string(tau_zr, tau_calc, 3)
+        print("z_r = %f, testing tau:" % (zr))
+        print(tu.fractional_diff_string(tau_zr, tau_calc, 3))
 
         ntest.assert_approx_equal(tau_calc, tau_zr, significant=2, 
                                   err_msg="Optical depth doesn't match WMAP")
@@ -97,13 +99,13 @@ def test_t_0():
         age /= gyr
         age_flat /= gyr
 
-        print "integrated age: ",
-        print tu.fractional_diff_string(age, cosmo['t_0'], 4)
+        print("integrated age: ")
+        print(tu.fractional_diff_string(age, cosmo['t_0'], 4))
         ntest.assert_approx_equal(age, cosmo['t_0'], significant=3, 
                                   err_msg="Integrated age doesn't match WMAP")
 
-        print "analytical age: ",
-        print tu.fractional_diff_string(age_flat, cosmo['t_0'], 4)
+        print("analytical age: ")
+        print(tu.fractional_diff_string(age_flat, cosmo['t_0'], 4))
         ntest.assert_approx_equal(age_flat, cosmo['t_0'], significant=3, 
                                   err_msg="Analytical age doesn't match WMAP")
 

@@ -1,6 +1,9 @@
 """Check that the tf_fit module is working."""
 
+from __future__ import absolute_import, division, print_function
+
 import numpy.testing.utils as ntest
+
 def test_tf_fit():
     """Check that the tf_fit module is working."""
     import cosmolopy.EH.tf_fit as tf_fit

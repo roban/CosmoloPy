@@ -1,6 +1,8 @@
 """Test SFR - UV luminosity conversion.
 """
 
+from __future__ import absolute_import, division, print_function
+
 import numpy
 
 import cosmolopy.parameters as cparam
@@ -19,9 +21,9 @@ def test_sfr():
     lum = magnitudes.L_nu_from_magAB(mag)
     sfr = luminosityfunction.sfr_from_L_nu(lum)
 
-    print "M = %.3g -> L_nu = %.3g erg/s/Hz -> SFR = %.3g Msun/yr" % (mag,
+    print("M = %.3g -> L_nu = %.3g erg/s/Hz -> SFR = %.3g Msun/yr" % (mag,
                                                                       lum,
-                                                                      sfr)
+                                                                      sfr))
     assert numpy.round(sfr) == 1
 
 def test_sfrd():
@@ -57,17 +59,17 @@ def test_sfrd():
                                               alpha=alpha)
     sfrd = luminosityfunction.sfr_from_L_nu(ltot)
 
-    print """Lmin = 0.2 L*z=6 -> Lmin/erg/s/Hz = %.3g -> Mmin = %.3g ->
-    log(rho/(erg/s/Hz/Mpc^3)) = %.3g -> log(SFRD/(MSun/yr)) = %.3g"""\
-    % (lmin, magmin, numpy.log10(ltot), numpy.log10(sfrd))
+    print("""Lmin = 0.2 L*z=6 -> Lmin/erg/s/Hz = %.3g -> Mmin = %.3g ->
+    log(rho/(erg/s/Hz/Mpc^3)) = %.3g -> log(SFRD/(MSun/yr)) = %.3g"""
+    % (lmin, magmin, numpy.log10(ltot), numpy.log10(sfrd)))
 
     ltotz6 = luminosityfunction.schechterCumuLM(magnitudeAB=magmin,
                                                 MStar=mStarz6,
                                                 phiStar=phiStar,
                                                 alpha=alpha)
 
-    print "luminosity density increase from z=7 to z=6 is %.2g percent." \
-          % (100 * (1. - ltot/ltotz6))
+    print("luminosity density increase from z=7 to z=6 is %.2g percent." 
+          % (100 * (1. - ltot/ltotz6)))
 
 
     assert numpy.abs(numpy.round(1. - ltot/ltotz6, 1) - 0.5) < 0.1
