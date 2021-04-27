@@ -1,0 +1,14 @@
+include LISCENSE
+include README.rst
+include MANIFEST.in
+include requirements*.txt
+include conftest.py
+
+exclude travis www
+recursive-exclude travis *
+recursive-exclude www *
+exclude *.yml
+exclude *.bash
+exclude pypi_notes.txt
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

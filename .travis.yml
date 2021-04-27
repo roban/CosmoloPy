@@ -21,7 +21,10 @@ matrix:
       env: PYTHON=3.6.9 PY=3.6
     - os: osx
       language: generic
-      env: PYTHON=3.7.5 PY=3.7
+      env: PYTHON=3.7.9 PY=3.7
+    - os: osx
+      language: generic
+      env: PYTHON=3.8.8 PY=3.8
     - sudo: required
       services:
         - docker
