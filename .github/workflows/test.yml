@@ -52,7 +52,7 @@ jobs:
     - name: Install dependencies
       run: |
         brew install swig@3
-        echo 'export PATH="/usr/local/opt/swig@3/bin:$PATH"' >> /Users/runner/.bash_profile
+        brew link swig@3
         python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
     - name: Create wheels
