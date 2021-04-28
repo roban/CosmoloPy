@@ -52,8 +52,7 @@ jobs:
     - name: Install dependencies
       run: |
         brew install swig@3
-        ln /usr/local/swig/3.0.12/bin/swig /usr/bin/swig --symbolic
-        ln /usr/local/swig/3.0.12/bin/ccache-swig /usr/bin/ccache-swig --symbolic
+        echo 'export PATH="/usr/local/opt/swig@3/bin:$PATH"' >> /Users/runner/.bash_profile
         python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
     - name: Create wheels
