@@ -29,6 +29,7 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
+        pip install twine
         twine upload --repository testpypi --skip-existing wheelhouse/cosmolopy*
 
   macosx:
@@ -38,7 +39,7 @@ jobs:
       matrix:
         architecture: [x64]
         os: [macos-latest]
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        python-version: [2.7, 3.6, 3.7, 3.8]
       fail-fast: false
 
     steps:
@@ -52,7 +53,7 @@ jobs:
       run: |
         brew update
         brew cleanup
-        brew install swig
+        brew install swig==3.0.12
         python -m pip install --upgrade pip setuptools wheel
         pip install -r requirements.txt
     - name: Create wheels
@@ -69,5 +70,6 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
+        pip install twine
         twine upload --repository testpypi --skip-existing wheelhouse/cosmolopy*
 
