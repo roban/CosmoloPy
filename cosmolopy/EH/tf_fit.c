@@ -19,6 +19,7 @@ calculate other quantities given in Section 4 of the paper. */
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 void TFset_parameters(float omega0hh, float f_baryon, float Tcmb);
 
 //float TFfit_onek(float k, float *tf_baryon, float *tf_cdm); 

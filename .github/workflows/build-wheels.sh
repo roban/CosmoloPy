@@ -7,7 +7,7 @@ ln /usr/local/swig/3.0.12/bin/swig /usr/bin/swig --symbolic
 ln /usr/local/swig/3.0.12/bin/ccache-swig /usr/bin/ccache-swig --symbolic
 
 # Compile wheels
-for PYBIN in /opt/python/*[23][5678]*/bin; do
+for PYBIN in /opt/python/*[3][678]*/bin; do
     "${PYBIN}/pip" install -r /io/requirements.txt
     "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
@@ -18,7 +18,7 @@ for whl in wheelhouse/cosmolopy*.whl; do
 done
 
 # Install packages and test
-for PYBIN in /opt/python/*[23][5678]*/bin/; do
+for PYBIN in /opt/python/*[3][678]*/bin/; do
     "${PYBIN}/pip" install cosmolopy --no-index -f /io/wheelhouse
     "${PYBIN}/python" -c "import cosmolopy; import cosmolopy.EH.power"
 done
