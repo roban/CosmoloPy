@@ -1,0 +1,28 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} ${{ matrix.architecture }}, Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        architecture: x64
+        os: ubuntu-latest
+        docker_image: quay.io/pypa/manylinux2010_x86_64
+        platform: manylinux2010_x86_64
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Pull Docker image
+      run: |
+        docker pull ${{ matrix.docker_image }}
+    - name: Run Docker image
+      run: |
+        docker run --rm -e PLAT=${{ matrix.platform }} -v `pwd`:/io ${{ matrix.docker_image }} $PRE_CMD /io/.github/workflows/build-wheels.sh
+
