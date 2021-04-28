@@ -7,12 +7,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.os }} ${{ matrix.architecture }}, Python ${{ matrix.python-version }}
-    runs-on: ${{ matrix.os }}
+    name: ubuntu-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        architecture: [x64]
-        os: [ubuntu-latest]
         docker_image: [quay.io/pypa/manylinux2010_x86_64]
         platform: [manylinux2010_x86_64]
       fail-fast: false
