@@ -39,7 +39,7 @@ jobs:
       matrix:
         architecture: [x64]
         os: [macos-latest]
-        python-version: [2.7, 3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
       fail-fast: false
 
     steps:

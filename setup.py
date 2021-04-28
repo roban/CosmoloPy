@@ -18,7 +18,7 @@ ext_names = ['power', 'tf_fit']
 def generate_swig():
     print("Swigging sources")
     for d in ext_names:
-        filename = path.join(eh_dir, d+'.i')        
+        filename = path.join(eh_dir, d+'.i')
         p = subprocess.call(['swig', '-python', filename],
                             cwd=dirpath)
         if p != 0:
@@ -78,7 +78,7 @@ setup(
     keywords = ("astronomy cosmology cosmological distance density galaxy" +
                 "luminosity magnitude reionization Press-Schechter Schecter"),
     license = "MIT",
-    python_requires = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4",
+    python_requires = ">=3.6, <4",
     package_data=package_data,
     long_description = \
 """CosmoloPy is a package of cosmology routines built on NumPy/SciPy.
@@ -106,16 +106,14 @@ Capabilities include
 
 `cosmolopy.reionization`
   The reionization of the IGM.
-  
+
 """,
     classifiers = ['License :: OSI Approved :: MIT License',
                    'Programming Language :: Python',
-                   'Programming Language :: Python :: 2.7',
-                   'Programming Language :: Python :: 3.5',
+                   'Programming Language :: Python :: 3',
                    'Programming Language :: Python :: 3.6',
-                   'Programming Language :: Python :: 3.7',                   
-                   'Programming Language :: Python :: 2',                   
-                   'Programming Language :: Python :: 3',                   
+                   'Programming Language :: Python :: 3.7',
+                   'Programming Language :: Python :: 3.8',
                    'Topic :: Scientific/Engineering :: Astronomy',
                    'Operating System :: OS Independent'
                    ]
