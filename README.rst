@@ -38,7 +38,7 @@ For power spectrum calculation (needed for most of perturbation module):
 Installation from PyPI
 ======================
 
-If you use Python 3.5–3.7 on Linux, you can easily install the package directly from the Python Package
+You can easily install the package directly from the Python Package
 Index with pip.
 
 Run with:
@@ -48,10 +48,8 @@ Run with:
 Installation from Source
 ========================
 
-If you use a different operating system or a more recent version of Python,
-you first need to install `SWIG <https://github.com/swig/swig/>`_ v3 or later.
-Then, download the CosmoloPy source and
-install it by running (in CosmoloPy folder)
+To install from source, you first need to install `SWIG <https://github.com/swig/swig/>`_ v3 or later.
+Then, download the CosmoloPy source and install it by running (in CosmoloPy folder)
 
     > pip install . 
 
@@ -76,4 +74,4 @@ Contributors
 ============
 
 - Python 3 implementation by @JohannesBuchner and @1313e 
-- Automated PyPI deployment on Travis by @1313e
+- Automated PyPI deployment on GitHub Actions by @1313e
