@@ -24,12 +24,12 @@ jobs:
       run: |
         docker run --rm -e PLAT=${{ matrix.platform }} -v `pwd`:/io ${{ matrix.docker_image }} $PRE_CMD /io/.github/workflows/build-wheels.sh
     - name: Deploy package
-      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/github_actions' }}
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        twine upload --skip-existing wheelhouse/cosmolopy*
+        twine upload --repository testpypi --skip-existing wheelhouse/cosmolopy*
 
   macosx:
     name: ${{ matrix.os }} ${{ matrix.architecture }}, Python ${{ matrix.python-version }}
@@ -64,10 +64,10 @@ jobs:
         python -c "import cosmolopy; import cosmolopy.EH.power"
         cd ..
     - name: Deploy package
-      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/github_actions' }}
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        twine upload --skip-existing wheelhouse/cosmolopy*
+        twine upload --repository testpypi --skip-existing wheelhouse/cosmolopy*
 
