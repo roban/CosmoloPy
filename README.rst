@@ -2,7 +2,7 @@
 CosmoloPy 
 =========
 
-a cosmology package for Python
+A cosmology package for Python.
 
 For documentation and installation instructions, see
 http://roban.github.com/CosmoloPy/
@@ -38,7 +38,7 @@ For power spectrum calculation (needed for most of perturbation module):
 Installation from PyPI
 ======================
 
-You can easily install the pacakge directly from the Python Package
+You can easily install the package directly from the Python Package
 Index with pip.
 
 Run with:
@@ -48,8 +48,8 @@ Run with:
 Installation from Source
 ========================
 
-If you've downloaded the source, first install Swig-3 or later and then 
-install it by running (in CosmoloPy folder)
+To install from source, you first need to install `SWIG <https://github.com/swig/swig/>`_ v3 or later.
+Then, download the CosmoloPy source and install it by running (in CosmoloPy folder)
 
     > pip install . 
 
@@ -74,4 +74,4 @@ Contributors
 ============
 
 - Python 3 implementation by @JohannesBuchner and @1313e 
-- Automated PyPI deployment on Travis by @1313e
+- Automated PyPI deployment on GitHub Actions by @1313e
