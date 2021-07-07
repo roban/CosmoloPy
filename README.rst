@@ -5,7 +5,7 @@ CosmoloPy
 A cosmology package for Python.
 
 For documentation and installation instructions, see
-http://roban.github.com/CosmoloPy/
+http://roban.github.io/CosmoloPy/
 
 CosmoloPy is released under the MIT software liscense (see LISCENSE).
 
